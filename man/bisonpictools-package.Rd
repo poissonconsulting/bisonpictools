@@ -4,12 +4,24 @@
 \name{bisonpictools-package}
 \alias{bisonpictools}
 \alias{bisonpictools-package}
-\title{bisonpictools: What the Package Does (One Line, Title Case)}
+\title{bisonpictools: Ronald Wood Bison Camera Trap Tools}
 \description{
-What the package does (one paragraph).
+This package facilitates the manipulation, exploration, and analysis of Ronald Wood Bison camera trap data.
 }
 \author{
-\strong{Maintainer}: First Last \email{first.last@example.com} (\href{https://orcid.org/YOUR-ORCID-ID}{ORCID})
+\strong{Maintainer}: Nicole Hill \email{nicole@poissonconsulting.ca} (\href{https://orcid.org/0000-0002-7623-2153}{ORCID})
+
+Authors:
+\itemize{
+  \item Joe Thorley \email{joe@poissonconsulting.ca} (\href{https://orcid.org/0000-0002-7683-4592}{ORCID})
+}
+
+Other contributors:
+\itemize{
+  \item Andrea Kortello \email{andrea@poissonconsulting.ca} (\href{https://orcid.org/0000-0001-8047-3331}{ORCID}) [contributor]
+  \item Ayla Pearson \email{ayla@poissonconsulting.ca} (\href{https://orcid.org/0000-0001-7388-1222}{ORCID}) [contributor]
+  \item Alberta Environment and Parks \email{troy.hegel@gov.ab.ca} [copyright holder]
+}
 
 }
 \keyword{internal}
