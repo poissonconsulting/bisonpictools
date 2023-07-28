@@ -17,3 +17,6 @@ A tibble of data ready for plotting
 \description{
 Manipulate Data for Plot
 }
+\examples{
+manipulate_data_plot(event_data(), location_data())
+}

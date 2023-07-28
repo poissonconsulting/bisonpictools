@@ -2,15 +2,13 @@ Package: bisonpictools
 Title: Ronald Wood Bison Camera Trap Tools
 Version: 0.0.0.9000
 Authors@R: c(
-    person("Joe", "Thorley", , "joe@poissonconsulting.ca", role = "aut",
-           comment = c(ORCID = "0000-0002-7683-4592")),
     person("Nicole", "Hill", , "nicole@poissonconsulting.ca", role = c("aut", "cre"),
            comment = c(ORCID = "0000-0002-7623-2153")),
     person("Andrea", "Kortello", , "andrea@poissonconsulting.ca", role = "ctb",
            comment = c(ORCID = "0000-0001-8047-3331")),
     person("Ayla", "Pearson", , "ayla@poissonconsulting.ca", role = "ctb",
            comment = c(ORCID = "0000-0001-7388-1222")),
-    person("Alberta", "Environment and Parks", , "troy.hegel@gov.ab.ca", role = "cph")
+    person("Alberta Environment and Parks", role = "cph")
   )
 Description: This package facilitates the manipulation, exploration, and analysis of Ronald Wood Bison camera trap data.
 License: `use_mit_license()`
@@ -23,4 +21,5 @@ Config/testthat/edition: 3
 Imports: 
     chk,
     dplyr,
-    dttr2
+    dttr2,
+    ggplot2

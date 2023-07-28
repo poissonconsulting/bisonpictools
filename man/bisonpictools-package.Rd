@@ -11,16 +11,11 @@ This package facilitates the manipulation, exploration, and analysis of Ronald W
 \author{
 \strong{Maintainer}: Nicole Hill \email{nicole@poissonconsulting.ca} (\href{https://orcid.org/0000-0002-7623-2153}{ORCID})
 
-Authors:
-\itemize{
-  \item Joe Thorley \email{joe@poissonconsulting.ca} (\href{https://orcid.org/0000-0002-7683-4592}{ORCID})
-}
-
 Other contributors:
 \itemize{
   \item Andrea Kortello \email{andrea@poissonconsulting.ca} (\href{https://orcid.org/0000-0001-8047-3331}{ORCID}) [contributor]
   \item Ayla Pearson \email{ayla@poissonconsulting.ca} (\href{https://orcid.org/0000-0001-7388-1222}{ORCID}) [contributor]
-  \item Alberta Environment and Parks \email{troy.hegel@gov.ab.ca} [copyright holder]
+  \item Alberta Environment and Parks [copyright holder]
 }
 
 }
