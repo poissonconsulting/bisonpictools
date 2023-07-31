@@ -9,7 +9,7 @@ plot_ratios(
   location_data,
   numerator,
   denominator,
-  years = unique(event_data$start_year),
+  years = unique(as.character(event_data$start_year)),
   locations = unique(location_data$location_id)
 )
 }
@@ -30,8 +30,23 @@ plot_ratios(
 a \code{ggplot} object
 }
 \description{
-Plot Ratios of Ronald Wood Bison camera events
+Generates bubble plot of ratio of the sex-age classes supplied to \code{numerator} and \code{denominator}. The ratio is given as numerator\verb{:(}denominator\code{+}numerator`)) to avoid infinite values when the numerator is ≥ 1 and the denominator = 0. Each point represents an event. The size of the point represents the total herd size, and the colour of the point represents the value of the ratio.
 }
-\details{
-The ratio is presented as numerator:(denominator + numerator)) to avoid infinite values when the numerator is ≥ 1 and the denominator = 0.
+\examples{
+# Plot calf:(cow + calf) ratio
+plot_ratios(
+  event_data = event_data(), 
+  location_data = location_data(), 
+  numerator = c("f0", "m0", "u0"), 
+  denominator = c("fa")
+ )
+# Plot ratio of female:(male + female) of yearlings in 2021 at site RBLH007 only
+plot_ratios(
+  event_data = event_data(), 
+  location_data = location_data(), 
+  numerator = "f1", 
+  denominator = "m1", 
+  years = "2021", 
+  locations = "RLBH007"
+ )
 }

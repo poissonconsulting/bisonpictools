@@ -12,7 +12,7 @@ manipulate_data_plot(event_data, location_data)
 \item{location_data}{a tibble of templated location data}
 }
 \value{
-A tibble of data ready for plotting
+A tibble of data prepared for plotting.
 }
 \description{
 Manipulate Data for Plot

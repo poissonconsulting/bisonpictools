@@ -22,4 +22,7 @@ Imports:
     chk,
     dplyr,
     dttr2,
-    ggplot2
+    lifecycle,
+    ggplot2,
+    rlang,
+    tidyr
