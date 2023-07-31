@@ -1,8 +1,7 @@
 # Unusual inputs
 test_that("errors with null input", {
-  expect_error(manipulate_data_plot(NULL), "no applicable method for 'left_join' applied to an object of class \"NULL\"")  
-  expect_error(manipulate_data_plot(event_data(), NULL), "`x` and `y` must share the same src.")  
-})
+  expect_chk_error(manipulate_data_plot(NULL), "`event_data` must be a data.frame.")  
+  expect_chk_error(manipulate_data_plot(event_data(), NULL), "`location_data` must be a data.frame.")  })
 
 test_that("errors with vector inputs", {
   expect_error(manipulate_data_plot(c(1, 2, 3), c(1, 2, 3)))
@@ -54,4 +53,3 @@ test_that("all count columns are integers", {
 test_that("dayte_time column is a POSIXct vector", {
   expect_true(is.POSIXct(x$dayte_time))
 })
-
