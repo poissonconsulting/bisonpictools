@@ -1,4 +1,6 @@
 #' Plot Ratios of Ronald Wood Bison camera events
+#' 
+#' Generates bubble plot of ratio of the sex-age classes supplied to `numerator` and `denominator`. The ratio is given as numerator`:(`denominator` + `numerator`)) to avoid infinite values when the numerator is ≥ 1 and the denominator = 0. Each point represents an event. The size of the point represents the total herd size, and the colour of the point represents the value of the ratio.
 #'
 #' @param event_data a tibble of templated event data
 #' @param location_data a tibble of templated location data
@@ -8,54 +10,44 @@
 #' @param locations a character vector of location_ids to include in the plot
 #'
 #' @return a `ggplot` object
-#' @details
-#' The ratio is presented as numerator:(denominator + numerator)) to avoid infinite values when the numerator is ≥ 1 and the denominator = 0. 
 #' @export
 #'
 #' @examples
 #' # Plot calf:(cow + calf) ratio
-#' plot_ratios(event_data = event_data(), location_data = location_data(), numerator = c("f0", "m0", "u0"), denominator = c("fa"))
+#' plot_ratios(
+#'   event_data = event_data(), 
+#'   location_data = location_data(), 
+#'   numerator = c("f0", "m0", "u0"), 
+#'   denominator = c("fa")
+#'  )
 #' # Plot ratio of female:(male + female) of yearlings in 2021 at site RBLH007 only
-#' plot_ratios(event_data = event_data(), location_data = location_data(), numerator = "f1", denominator = "m1", years = 2021, locations = "RBLH007")
+#' plot_ratios(
+#'   event_data = event_data(), 
+#'   location_data = location_data(), 
+#'   numerator = "f1", 
+#'   denominator = "m1", 
+#'   years = "2021", 
+#'   locations = "RLBH007"
+#'  )
 plot_ratios <- function(event_data, location_data, numerator, denominator, 
-                        years = unique(event_data$start_year),
+                        years = unique(as.character(event_data$start_year)),
                         locations = unique(location_data$location_id)) {
   
   data <- manipulate_data_plot(event_data, location_data)
   
-  data$numerator <- rowSums(data[, numerator])
-  data$denominator <- rowSums(data[, denominator])
-  data$ratio <- data$numerator / (data$numerator + data$denominator)
-  
   max_herdsize <- max(data$herdsize)
-    
-  data <-
-    data %>% 
-    dplyr::filter(
-      !(numerator == 0 & denominator == 0),
-      .data$year %in% years,
-      .data$location_id %in% locations
-    ) %>% 
-    dplyr::mutate(
-      year = droplevels(.data$year),
-      location_id = droplevels(.data$location_id)
-    )
   
-  seasons <- 
-    dplyr::tribble(
-            ~season,           ~start_dayte,            ~end_dayte,
-          "Calving",  "1972-04-01 00:00:00", "1972-06-30 00:00:00",
-      "Summer/Fall",  "1972-07-01 00:00:00", "1972-11-30 00:00:00",
-           "Winter",  "1972-12-01 00:00:00", "1972-12-31 00:00:00",
-           "Winter",  "1972-01-01 00:00:00", "1972-03-31 00:00:00",
-    ) %>% 
-    dplyr::mutate(
-      dplyr::across(
-        dplyr::ends_with("dayte"), 
-        \(x) dttr2::dtt_date_time(x) %>% 
-          dttr2::dtt_dayte_time()
-      )
-    )
+  data <- manipulate_ratios(
+    data = data, 
+    numerator = numerator, 
+    denominator = denominator, 
+    years = years, 
+    locations = locations
+  )
+
+  seasons <- seasons()
+  
+  ratio_name <- ratio_names(numerator, denominator)
   
   gp <- ggplot2::ggplot() +
     ggplot2::geom_rect(
@@ -107,7 +99,7 @@ plot_ratios <- function(event_data, location_data, numerator, denominator,
     ) +
     ggplot2::xlab("Date") +
     ggplot2::ylab("Location ID") +
-    ggplot2::labs(colour = "Ratio", size = "Herd Size", fill = "Season") +
+    ggplot2::labs(colour = ratio_name, size = "Herd Size", fill = "Season") +
     NULL
 
   gp
