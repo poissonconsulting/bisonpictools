@@ -14,7 +14,7 @@
 
 #' Plot Ratios of Ronald Wood Bison camera events
 #' 
-#' Generates bubble plot of ratio of the sex-age classes supplied to `numerator` and `denominator`. The ratio is given as numerator`:(`denominator` + `numerator`)) to avoid infinite values when the numerator is ≥ 1 and the denominator = 0. Each point represents an event. The size of the point represents the total herd size, and the colour of the point represents the value of the ratio.
+#' Generates bubble plot of ratio of the sex-age classes supplied to `numerator` and `denominator`. The ratio is given as `numerator:(denominator + numerator))` to avoid infinite values when `numerator ≥ 1` and `denominator = 0`. Each point represents an event. The size of the point represents the total group size, and the colour of the point represents the value of the ratio.
 #'
 #' @param event_data a tibble of templated event data
 #' @param location_data a tibble of templated location data
