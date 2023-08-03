@@ -31,8 +31,10 @@ ratio_names <- function(numerator, denominator) {
   
   names <- dplyr::tribble(
     ~numerator, ~denominator, ~name,
-    "fa", "ma", "cow:(bull + cow)",
-    "ma", "fa", "bull:(cow + bull)",
+    "fa", "ma", "adult cow:(bull + cow)",
+    "ma", "fa", "adult bull:(cow + bull)",
+    "fa", c("m2", "m3", "ma"), "mature cow:(bull + cow)",
+    c("m2", "m3", "ma"), "fa", "mature bull:(cow + bull)",
     "f1", "m1", "yearling female:(male + female)",
     "m1", "f1", "yearling male:(female + male)",
     "f0", "m0", "calf female:(male + female)",
