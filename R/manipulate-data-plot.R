@@ -16,17 +16,17 @@
 #'
 #' @param event_data a tibble of templated event data
 #' @param location_data a tibble of templated location data
+#' @param numerator a character vector of sex-age codes to go in the numerator of the ratio
+#' @param denominator a character vector of sex-age codes to go in the denominator of the ratio
 #'
 #' @return A tibble of data prepared for plotting.
 #' @export
 #'
 #' @examples
-#' manipulate_data_plot(event_data(), location_data())
-manipulate_data_plot <- function(event_data, location_data) {
-  # TODO:: add checks, one for each argument.
+#' manipulate_data_plot(event_data(), location_data(), "fa", "ma")
+manipulate_data_plot <- function(event_data, location_data, numerator, denominator) {
   chk::chk_data(event_data)
   chk::chk_data(location_data)
-  # Check names
   chk::check_names(
     event_data, 
     c("location_id", "start_year", "start_month", "start_day", "start_hour", 
@@ -72,9 +72,8 @@ manipulate_data_plot <- function(event_data, location_data) {
           day = .data$start_day,
           hour = .data$start_hour,
           minute = .data$start_minute
-          # tz = ?
         ),
-        herdsize = .data$fa + .data$f1 + .data$f0 + .data$fu + .data$ma + 
+        groupsize = .data$fa + .data$f1 + .data$f0 + .data$fu + .data$ma + 
           .data$m3 + .data$m2 + .data$m1 + .data$m0 + .data$mu + 
           .data$ua + .data$u1 + .data$u0 + .data$uu,
         year = dttr2::dtt_year(.data$datetime_start),
@@ -82,7 +81,7 @@ manipulate_data_plot <- function(event_data, location_data) {
         dayte = dttr2::dtt_dayte(.data$dayte_time),
         across(
           c("fa", "f1", "f0", "fu", "ma", "m3", "m2", "m1", "m0", "mu", "ua", 
-            "u1", "u0", "uu", "herdsize"),
+            "u1", "u0", "uu", "groupsize"),
           \(x) as.integer(x)
         )
       ) |> 
@@ -93,7 +92,7 @@ manipulate_data_plot <- function(event_data, location_data) {
         season = factor(.data$season)
       ) |>
       dplyr::select(
-        "location_id", "herdsize", "fa", "f1", "f0", "fu", "ma", "m3", "m2", 
+        "location_id", "groupsize", "fa", "f1", "f0", "fu", "ma", "m3", "m2", 
         "m1", "m0", "mu", "ua", "u1", "u0", "uu", "season", "dayte_time", "year"
       )
   data
