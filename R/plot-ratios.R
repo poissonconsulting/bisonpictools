@@ -80,15 +80,15 @@ plot_ratios <- function(event_data, location_data, numerator, denominator,
       ggplot2::aes(
         x = .data$dayte_time,
         y = .data$location_id,
-        size = .data$herdsize,
-        colour = .data$ratio
+        colour = .data$groupsize,
+        size = .data$ratio
       ),
       alpha = 0.5
     ) +
     ggplot2::facet_wrap(~.data$year) +
     ggplot2::scale_size_continuous(
-      breaks = round(seq(1, max_herdsize, length.out = 4)),
-      limits = c(0, max_herdsize)
+      breaks = (seq(0, 1, by = 0.2)),
+      limits = c(0, 1)
     ) +
     ggplot2::scale_fill_discrete(type = c("#63BB42", "#F7B500", "#7D7D7D")) +
     ggplot2::scale_x_datetime(
@@ -96,10 +96,10 @@ plot_ratios <- function(event_data, location_data, numerator, denominator,
       date_labels = "%b", 
       expand = c(0.02, 0)
     ) +
-    ggplot2::scale_colour_gradient(
-      breaks = seq(0, 1, by = 0.2),
-      limits = c(0, 1)
-    ) +
+    # ggplot2::scale_colour_gradient(
+    #   breaks = seq(0, 1, by = 0.2),
+    #   limits = c(0, 1)
+    # ) +
     ggplot2::guides(
       colour = ggplot2::guide_legend(show.limits = TRUE, order = 3),
       fill = ggplot2::guide_legend(order = 1),
@@ -113,7 +113,7 @@ plot_ratios <- function(event_data, location_data, numerator, denominator,
     ) +
     ggplot2::xlab("Date") +
     ggplot2::ylab("Location ID") +
-    ggplot2::labs(colour = ratio_name, size = "Herd Size", fill = "Season") +
+    ggplot2::labs(colour = "Group Size", size = ratio_name, fill = "Season") +
     NULL
 
   gp
