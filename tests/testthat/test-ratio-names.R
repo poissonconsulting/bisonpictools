@@ -11,11 +11,21 @@ test_that("ratio names generates correct name for calf:(bull + calf) ratio", {
 })
 
 test_that("ratio names generates correct name for cow:(bull + cow) ratio", {
-  expect_equal(ratio_names("fa", "ma"), "cow:(bull + cow)")
+  expect_equal(ratio_names("fa", "ma"), "adult cow:(bull + cow)")
 })
 
 test_that("ratio names generates correct name for bull:(cow + bull) ratio", {
-  expect_equal(ratio_names("ma", "fa"), "bull:(cow + bull)")
+  expect_equal(ratio_names("ma", "fa"), "adult bull:(cow + bull)")
+})
+
+test_that("ratio names generates correct name for cow:(bull + cow) ratio", {
+  expect_equal(ratio_names("fa", c("ma", "m2", "m3")), "mature cow:(bull + cow)")
+  expect_equal(ratio_names("fa", c("m3", "ma", "m2")), "mature cow:(bull + cow)")
+})
+
+test_that("ratio names generates correct name for bull:(cow + bull) ratio", {
+  expect_equal(ratio_names(c("ma", "m2", "m3"), "fa"), "mature bull:(cow + bull)")
+  expect_equal(ratio_names(c("m3", "m2", "ma"), "fa"), "mature bull:(cow + bull)")
 })
 
 test_that("ratio names generates correct name for yearling female:(male + female) ratio", {

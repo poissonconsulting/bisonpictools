@@ -47,7 +47,7 @@ test_that("all count columns are integers", {
   expect_true(is.integer(x$u1))
   expect_true(is.integer(x$u0))
   expect_true(is.integer(x$uu))
-  expect_true(is.integer(x$herdsize))
+  expect_true(is.integer(x$groupsize))
 })
 
 test_that("dayte_time column is a POSIXct vector", {
