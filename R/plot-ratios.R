@@ -49,7 +49,7 @@ plot_ratios <- function(event_data, location_data, numerator, denominator,
   
   data <- manipulate_data_plot(event_data, location_data)
   
-  max_herdsize <- max(data$herdsize)
+  max_groupsize <- max(data$groupsize)
   
   data <- manipulate_ratios(
     data = data, 
