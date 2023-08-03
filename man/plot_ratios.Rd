@@ -30,7 +30,7 @@ plot_ratios(
 a \code{ggplot} object
 }
 \description{
-Generates bubble plot of ratio of the sex-age classes supplied to \code{numerator} and \code{denominator}. The ratio is given as numerator\verb{:(}denominator\code{+}numerator`)) to avoid infinite values when the numerator is ≥ 1 and the denominator = 0. Each point represents an event. The size of the point represents the total herd size, and the colour of the point represents the value of the ratio.
+Generates bubble plot of ratio of the sex-age classes supplied to \code{numerator} and \code{denominator}. The ratio is given as \verb{numerator:(denominator + numerator))} to avoid infinite values when \verb{numerator ≥ 1} and \code{denominator = 0}. Each point represents an event. The size of the point represents the total group size, and the colour of the point represents the value of the ratio.
 }
 \examples{
 # Plot calf:(cow + calf) ratio
