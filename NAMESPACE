@@ -2,6 +2,8 @@
 
 export(event_data)
 export(location_data)
+export(manipulate_data_analysis_event)
+export(manipulate_data_analysis_location)
 export(manipulate_data_plot)
 export(manipulate_ratios)
 export(plot_ratios)
