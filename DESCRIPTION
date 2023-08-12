@@ -25,4 +25,5 @@ Imports:
     lifecycle,
     ggplot2,
     rlang,
-    tidyr
+    tidyr,
+    chktemplate
