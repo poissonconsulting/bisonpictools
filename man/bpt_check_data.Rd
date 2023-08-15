@@ -4,12 +4,14 @@
 \alias{bpt_check_data}
 \title{Data Checks}
 \usage{
-bpt_check_data(data, template)
+bpt_check_data(event = NULL, location = NULL, complete = FALSE)
 }
 \arguments{
-\item{data}{A list containing the location and event data}
+\item{event}{A data frame of event data.}
 
-\item{template}{A list of the templates}
+\item{location}{A data frame of location data.}
+
+\item{complete}{A flag indicating if all data frames need to be supplied.}
 }
 \value{
 List of data frames
@@ -19,10 +21,12 @@ Confirms the columns types match the template, the values follow the allowed
 ranges of the template and tables can be joined appropriately.
 }
 \examples{
-bpt_check_data(
-  list(
-    Locations = location_data(),  
-    Events = event_data()
-   )
- )
+data <- bpt_check_data(
+  event = event_data(), location = location_data(), complete = TRUE
+)
+location <- bpt_check_data(location = location_data(), complete = FALSE)
+event <- bpt_check_data(event = event_data(), complete = FALSE)
+\dontrun{
+event <- bpt_check_data(event = event_data(), complete = TRUE)
+}
 }

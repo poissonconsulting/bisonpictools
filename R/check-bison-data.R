@@ -10,6 +10,14 @@
 #' @return List of data frames
 #'
 #' @examples
+#' data <- bpt_check_data(
+#'   event = event_data(), location = location_data(), complete = TRUE
+#' )
+#' location <- bpt_check_data(location = location_data(), complete = FALSE)
+#' event <- bpt_check_data(event = event_data(), complete = FALSE)
+#' \dontrun{
+#' event <- bpt_check_data(event = event_data(), complete = TRUE)
+#' }
 bpt_check_data <- function(event = NULL, location = NULL, complete = FALSE) {
   chk_datas(
     event = event,
@@ -52,21 +60,21 @@ chk_datas <- function(..., template, joins = NULL, complete = FALSE) {
   data
 }
 
-events <- event_data()
-# try a bad value
-events[2, 7] <- 1004
-# change column type
-events$f1 <- as.character(events$f1) 
-
-dat <- bpt_check_data(event = events, location = location_data(), complete = TRUE)
-dat <- bpt_check_data(event = events, location = location_data(), complete = FALSE)
-dat1 <- bpt_check_data(location = location_data(), complete = TRUE)
-dat1 <- bpt_check_data(location = location_data(), complete = FALSE)
-dat2 <- bpt_check_data(event = events, complete = TRUE)
-dat2 <- bpt_check_data(event = events, complete = FALSE)
-
-
-dat2
+# events <- event_data()
+# # try a bad value
+# events[2, 7] <- 1004
+# # change column type
+# events$f1 <- as.character(events$f1) 
+# 
+# dat <- bpt_check_data(event = events, location = location_data(), complete = TRUE)
+# dat <- bpt_check_data(event = events, location = location_data(), complete = FALSE)
+# dat1 <- bpt_check_data(location = location_data(), complete = TRUE)
+# dat1 <- bpt_check_data(location = location_data(), complete = FALSE)
+# dat2 <- bpt_check_data(event = events, complete = TRUE)
+# dat2 <- bpt_check_data(event = events, complete = FALSE)
+# 
+# 
+# dat2
 
 # # prep below
 # bpt_check_data <- function(data) {
