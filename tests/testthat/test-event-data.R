@@ -1,5 +1,5 @@
 test_that("event_data produces tibble of expected dimensions", {
-  expect_equal(dim(event_data()), c(2, 20))
+  expect_equal(dim(event_data()), c(7, 20))
 })
 
 test_that("expect error with arguments supplied to event_data", {
