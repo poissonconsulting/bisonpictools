@@ -1,4 +1,4 @@
-#' Data Checks
+#' Data Checks based on the Template
 #' 
 #' Confirms the columns types match the template, the values follow the allowed
 #' ranges of the template and tables can be joined appropriately. 
