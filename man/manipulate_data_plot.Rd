@@ -4,16 +4,12 @@
 \alias{manipulate_data_plot}
 \title{Manipulate Data for Plot}
 \usage{
-manipulate_data_plot(event_data, location_data, numerator, denominator)
+manipulate_data_plot(event_data, location_data)
 }
 \arguments{
 \item{event_data}{a tibble of templated event data}
 
 \item{location_data}{a tibble of templated location data}
-
-\item{numerator}{a character vector of sex-age codes to go in the numerator of the ratio}
-
-\item{denominator}{a character vector of sex-age codes to go in the denominator of the ratio}
 }
 \value{
 A tibble of data prepared for plotting.
@@ -22,5 +18,5 @@ A tibble of data prepared for plotting.
 Manipulate Data for Plot
 }
 \examples{
-manipulate_data_plot(event_data(), location_data(), "fa", "ma")
+manipulate_data_plot(event_data(), location_data())
 }

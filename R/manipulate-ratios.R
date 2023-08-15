@@ -19,7 +19,7 @@
 #' @param data a tibble of manipulated event and location data, with factor columns `year`, `location_id`, and integer columns c(`fa`, `f1`, `f0`, `fu`, `ma`, `m3`, `m2`, `m1`, `m0`, `mu`, `ua`, `u1`, `u0`, and `uu`)
 #' @param numerator a character vector of sex-age codes to go in the numerator of the ratio
 #' @param denominator a character vector of sex-age codes to go in the denominator of the ratio
-#' @param years a numeric vector of years to include in the plot
+#' @param years a character vector of years to include in the plot
 #' @param locations a character vector of location_ids to include in the plot
 #'
 #' @return the original tibble, with additional columns `numerator`, `denominator`, and `ratio`

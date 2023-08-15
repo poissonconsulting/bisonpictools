@@ -19,7 +19,7 @@ manipulate_ratios(
 
 \item{denominator}{a character vector of sex-age codes to go in the denominator of the ratio}
 
-\item{years}{a numeric vector of years to include in the plot}
+\item{years}{a character vector of years to include in the plot}
 
 \item{locations}{a character vector of location_ids to include in the plot}
 }
