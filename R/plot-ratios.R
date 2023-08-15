@@ -58,18 +58,23 @@ plot_ratios <- function(event_data, location_data, numerator, denominator,
     years = years, 
     locations = locations
   )
+  
+  study_years <- as.character(unique(data$study_year))
+  study_year_start <- stringr::str_extract(study_years, "\\d{4}")
 
-  seasons <- seasons()
+  seasons <- seasons_plot(study_year_start)
   
   ratio_name <- ratio_names(numerator, denominator)
+  
+  if (nrow(data) == 0L) stop("There are 0 individuals in the selection for numerator and denominator. Ratio not plotted.")
   
   gp <- ggplot2::ggplot() +
     ggplot2::geom_rect(
       data = seasons,
       ggplot2::aes(
         fill = .data$season,
-        xmin = .data$start_dayte,
-        xmax = .data$end_dayte
+        xmin = .data$start_date_time,
+        xmax = .data$end_date_time
       ),
       ymin = 0,
       ymax = nlevels(data$location_id) + 1,
@@ -78,38 +83,31 @@ plot_ratios <- function(event_data, location_data, numerator, denominator,
     ggplot2::geom_point(
       data = data,
       ggplot2::aes(
-        x = .data$dayte_time,
+        x = .data$date_time,
         y = .data$location_id,
         colour = .data$groupsize,
         size = .data$ratio
       ),
       alpha = 0.5
     ) +
-    ggplot2::facet_wrap(~.data$year) +
+    ggplot2::facet_wrap(~.data$study_year, scales = "free_x") +
     ggplot2::scale_size_continuous(
       breaks = (seq(0, 1, by = 0.2)),
       limits = c(0, 1)
     ) +
+    ggplot2::scale_colour_gradient(
+      n.breaks = 4
+    ) +
     ggplot2::scale_fill_discrete(type = c("#63BB42", "#F7B500", "#7D7D7D")) +
     ggplot2::scale_x_datetime(
-      date_breaks = "1 month", 
-      date_labels = "%b", 
+      date_breaks = "1 month",
+      date_labels = "%b",
       expand = c(0.02, 0)
     ) +
-    # ggplot2::scale_colour_gradient(
-    #   breaks = seq(0, 1, by = 0.2),
-    #   limits = c(0, 1)
-    # ) +
     ggplot2::guides(
       colour = ggplot2::guide_legend(show.limits = TRUE, order = 3),
       fill = ggplot2::guide_legend(order = 1),
-      size = ggplot2::guide_legend(order = 2)
-    ) +
-    ggplot2::expand_limits(
-      x = c(
-        as.POSIXct("1972-01-01 00:00:00"), 
-        as.POSIXct("1972-12-31 11:59:59")
-      )
+      size = ggplot2::guide_legend(show.limits = TRUE, order = 2)
     ) +
     ggplot2::xlab("Date") +
     ggplot2::ylab("Location ID") +
@@ -117,4 +115,25 @@ plot_ratios <- function(event_data, location_data, numerator, denominator,
     NULL
 
   gp
+}
+
+
+seasons_plot <- function(study_year_start) {
+  x <- dplyr::tibble(
+    year = as.integer(study_year_start),
+    year_diff = .data$year - 1972L
+  )
+  
+  seasons() |> 
+    dplyr::cross_join(x) |> 
+    dplyr::mutate(
+      start_date_time = dttr2::dtt_add_years(.data$start_dayte, .data$year_diff),
+      end_date_time = dttr2::dtt_add_years(.data$end_dayte, .data$year_diff),
+      study_year = stringr::str_c(as.character(.data$year), "-", as.character(.data$year + 1)),
+      study_year = factor(.data$study_year),
+      season = factor(.data$season, levels = c("Calving", "Summer/Fall", "Winter"))
+    ) |> 
+    dplyr::select(
+      "season", "start_date_time", "end_date_time", 'study_year'
+    )
 }
