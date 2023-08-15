@@ -10,7 +10,7 @@ seasons()
 A tibble
 }
 \description{
-Generates a table of the dates of different seasons relevant to Ronald Wood Bison movement patterns: calving, summer/fall, and winter. Start and end dates of each season are based in the year 1972.
+Generates a table of the dates of different seasons relevant to Ronald Wood Bison movement patterns: calving, summer/fall, and winter. Start and end dates of each season are based in the study year 1972-1973.
 }
 \examples{
 seasons()
