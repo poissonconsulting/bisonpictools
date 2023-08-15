@@ -25,4 +25,4 @@ Imports:
     lifecycle,
     ggplot2,
     rlang,
-    tidyr
+    stringr
