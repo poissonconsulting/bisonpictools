@@ -33,7 +33,7 @@ chk_datas <- function(..., template, joins = NULL, complete = FALSE) {
   
   template_names <- names(template)
   
-  data[sapply(data, is.null)] <- NULL
+  data[vapply(data, is.null, FUN.VALUE = TRUE)] <- NULL
   data_names <- names(data)
   
   if (!any(data_names %in% template_names)) {
