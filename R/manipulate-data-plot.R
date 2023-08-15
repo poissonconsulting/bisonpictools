@@ -16,15 +16,13 @@
 #'
 #' @param event_data a tibble of templated event data
 #' @param location_data a tibble of templated location data
-#' @param numerator a character vector of sex-age codes to go in the numerator of the ratio
-#' @param denominator a character vector of sex-age codes to go in the denominator of the ratio
 #'
 #' @return A tibble of data prepared for plotting.
 #' @export
 #'
 #' @examples
-#' manipulate_data_plot(event_data(), location_data(), "fa", "ma")
-manipulate_data_plot <- function(event_data, location_data, numerator, denominator) {
+#' manipulate_data_plot(event_data(), location_data())
+manipulate_data_plot <- function(event_data, location_data) {
   chk::chk_data(event_data)
   chk::chk_data(location_data)
   chk::check_names(
@@ -44,25 +42,7 @@ manipulate_data_plot <- function(event_data, location_data, numerator, denominat
   chk::chk_all(location_data[, c("latitude", "longitude")], chk::chk_numeric)
   chk::chk_character_or_factor(event_data$location_id)
   chk::chk_true(all(event_data$location_id %in% location_data$location_id))
-  
-  seasons_dat <- seasons() |>
-    tidyr::pivot_longer(
-      cols = c("start_dayte", "end_dayte"),
-      names_to = NULL,
-      values_to = "dayte"
-    ) |>
-    dplyr::mutate(
-      season = dplyr::if_else(dttr2::dtt_month(.data$dayte) == 12, "Winter2", .data$season),
-      dayte = dttr2::dtt_dayte(.data$dayte)
-    ) |>
-    dplyr::group_by(.data$season) |>
-    tidyr::complete(dayte = seq(min(.data$dayte), max(.data$dayte), by = "1 day")) |>
-    dplyr::ungroup() |>
-    dplyr::arrange(.data$dayte) |>
-    dplyr::mutate(
-      season = dplyr::if_else(.data$season == "Winter2", "Winter", .data$season)
-    )
-  
+
   data <- 
     dplyr::left_join(event_data, location_data, by = "location_id") |> 
     dplyr::mutate(
@@ -77,23 +57,26 @@ manipulate_data_plot <- function(event_data, location_data, numerator, denominat
           .data$m3 + .data$m2 + .data$m1 + .data$m0 + .data$mu + 
           .data$ua + .data$u1 + .data$u0 + .data$uu,
         year = dttr2::dtt_year(.data$datetime_start),
-        dayte_time = dttr2::dtt_dayte_time(.data$datetime_start),
-        dayte = dttr2::dtt_dayte(.data$dayte_time),
+        study_year = dttr2::dtt_study_year(.data$datetime_start, 4L),
+        month = dttr2::dtt_month(.data$datetime_start),
         across(
           c("fa", "f1", "f0", "fu", "ma", "m3", "m2", "m1", "m0", "mu", "ua", 
             "u1", "u0", "uu", "groupsize"),
           \(x) as.integer(x)
         )
       ) |> 
-      dplyr::left_join(seasons_dat, by = "dayte") |>
       dplyr::mutate(
         location_id = factor(.data$location_id),
         year = factor(.data$year),
-        season = factor(.data$season)
+        study_year = factor(.data$study_year),
       ) |>
+      dplyr::rename(
+        date_time = "datetime_start"
+      ) |> 
       dplyr::select(
         "location_id", "groupsize", "fa", "f1", "f0", "fu", "ma", "m3", "m2", 
-        "m1", "m0", "mu", "ua", "u1", "u0", "uu", "season", "dayte_time", "year"
+        "m1", "m0", "mu", "ua", "u1", "u0", "uu", "study_year", "date_time",
+        "year"
       )
   data
 }
