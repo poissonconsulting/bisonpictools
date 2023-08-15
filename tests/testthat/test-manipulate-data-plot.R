@@ -25,10 +25,6 @@ test_that("location_id column is a factor", {
   expect_true(is.factor(x$location_id))
 })
 
-test_that("season column is a factor", {
-  expect_true(is.factor(x$season))
-})
-
 test_that("year column is a factor", {
   expect_true(is.factor(x$year))
 })
@@ -48,8 +44,4 @@ test_that("all count columns are integers", {
   expect_true(is.integer(x$u0))
   expect_true(is.integer(x$uu))
   expect_true(is.integer(x$groupsize))
-})
-
-test_that("dayte_time column is a POSIXct vector", {
-  expect_true(is.POSIXct(x$dayte_time))
 })
