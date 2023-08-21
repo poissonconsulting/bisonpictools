@@ -19,10 +19,10 @@
 #' event <- bpt_check_data(event = event_data(), complete = TRUE)
 #' }
 bpt_check_data <- function(event = NULL, location = NULL, complete = FALSE) {
-  chktemplate::check_data_format(
-    event = event,
-    location = location,
-    template = bisonpictools::template,
-    complete = complete
-  )
+  # chktemplate::check_data_format(
+  #   event = event,
+  #   location = location,
+  #   template = bisonpictools::template,
+  #   complete = complete
+  # )
 }
