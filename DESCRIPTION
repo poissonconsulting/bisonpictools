@@ -27,6 +27,7 @@ Suggests:
     readxl
 Remotes: 
     poissonconsulting/chktemplate
+    poissonconsulting/dttr2
 Depends: 
     R (>= 2.10)
 LazyData: true
