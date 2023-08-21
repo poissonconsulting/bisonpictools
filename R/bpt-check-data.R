@@ -1,0 +1,28 @@
+#' Data Checks based on the Template
+#' 
+#' Confirms the columns types match the template, the values follow the allowed
+#' ranges of the template and tables can be joined appropriately. 
+#'
+#' @param event A data frame of event data.
+#' @param location A data frame of location data.
+#' @param complete A flag indicating if all data frames need to be supplied.
+#'
+#' @return List of data frames
+#'
+#' @examples
+#' \dontrun{
+#' data <- bpt_check_data(
+#'   event = event_data(), location = location_data(), complete = TRUE
+#' )
+#' location <- bpt_check_data(location = location_data(), complete = FALSE)
+#' event <- bpt_check_data(event = event_data(), complete = FALSE)
+#' event <- bpt_check_data(event = event_data(), complete = TRUE)
+#' }
+bpt_check_data <- function(event = NULL, location = NULL, complete = FALSE) {
+  chktemplate::check_data_format(
+    event = event,
+    location = location,
+    template = bisonpictools::template,
+    complete = complete
+  )
+}

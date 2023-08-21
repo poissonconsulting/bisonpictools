@@ -12,12 +12,6 @@ Authors@R: c(
   )
 Description: This package facilitates the manipulation, exploration, and analysis of Ronald Wood Bison camera trap data.
 License: Apache License (>= 2)
-Encoding: UTF-8
-Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.2.3
-Suggests: 
-    testthat (>= 3.0.0)
-Config/testthat/edition: 3
 Imports: 
     chk,
     dplyr,
@@ -25,4 +19,18 @@ Imports:
     lifecycle,
     ggplot2,
     rlang,
-    stringr
+    stringr,
+    tidyr,
+    chktemplate
+Suggests: 
+    testthat (>= 3.0.0),
+    readxl
+Remotes: 
+    poissonconsulting/chktemplate
+Depends: 
+    R (>= 2.10)
+LazyData: true
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.2.3
+Config/testthat/edition: 3
