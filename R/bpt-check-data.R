@@ -42,36 +42,45 @@ chk_datas <- function(..., template, joins = NULL, complete = FALSE) {
     )
   }
   
-  # if complete = TRUE then must have all names represented
-  if (complete) {
-    if (!all(template_names %in% data_names)) {
-      stop("All sheets must be present")
-    }
-  }
+
   
   # check individual datasets
   data <- check_column_types(data, template)
   data <- check_template_ranges(data, template)
 
-  
+  # if complete = TRUE then must have all names represented
+  if (complete) {
+    if (!all(template_names %in% data_names)) {
+      stop("All sheets must be present")
+    }
+    
+    check_template_join(data, template)
+    
+  }
   
   # if complete = TRUE then check joins
   
   data
 }
 
-# events <- event_data()
-# # try a bad value
-# events[2, 7] <- 1004
-# # change column type
-# events$f1 <- as.character(events$f1) 
-# 
-# dat <- bpt_check_data(event = events, location = location_data(), complete = TRUE)
-# dat <- bpt_check_data(event = events, location = location_data(), complete = FALSE)
-# dat1 <- bpt_check_data(location = location_data(), complete = TRUE)
-# dat1 <- bpt_check_data(location = location_data(), complete = FALSE)
-# dat2 <- bpt_check_data(event = events, complete = TRUE)
-# dat2 <- bpt_check_data(event = events, complete = FALSE)
+events <- bisonpictools::event_data()
+# try a bad value
+events[2, 7] <- 1004
+# change column type
+events$f1 <- as.character(events$f1)
+
+
+location <- bisonpictools::location_data()
+location[2, 1] <- "RLBH008"
+dat1 <- bpt_check_data(location = location, complete = FALSE)
+
+
+dat <- bpt_check_data(event = events, location = location, complete = TRUE)
+dat <- bpt_check_data(event = events, location = location_data(), complete = FALSE)
+dat1 <- bpt_check_data(location = location_data(), complete = TRUE)
+dat1 <- bpt_check_data(location = location_data(), complete = FALSE)
+dat2 <- bpt_check_data(event = events, complete = TRUE)
+dat2 <- bpt_check_data(event = events, complete = FALSE)
 # 
 # 
 # dat2
@@ -183,4 +192,195 @@ check_template_ranges <- function(data, template) {
   }
   data
 }
+
+
+
+
+
+
+
+
+
+
+
+
+check_template_join <- function(data, template) {
+  for (i in names(template)) {
+    if ("join" %in% template[[i]]$name) {
+      
+      x <- template[[i]][-1]
+      
+      join_by <- which(!is.na(as.vector(
+        template[[i]][template[[i]]$name == "join", ][-1]
+      )))
+      join_by <- names(x)[join_by]
+      if (length(join_by) == 0) {
+        next()
+      }
+      
+      # get the table name for the x table
+      tbl_x <- unique(template[[i]][[join_by]][template[[i]]$name == "join"])
+      
+      # error if more then 1 table is listed 
+      if (length(tbl_x) < 1) {
+        stop("Only 1 table can be joined")
+      } 
+      
+      l <- list(list(
+        tbl_y = i,
+        tbl_x = tbl_x,
+        by = join_by
+      ))
+      
+      names(l) <- i
+      
+      joins <- c(joins, l)
+      
+      if (!chk::vld_join(
+        data[[joins[[i]]$tbl_y]], data[[joins[[i]]$tbl_x]], by = c(joins[[i]]$by)
+      )) {
+        
+        no_match <- unique(
+          data[[joins[[i]]$tbl_y]][!data[[joins[[i]]$tbl_y]][[joins[[i]]$by]] %in% 
+                                     data[[joins[[i]]$tbl_x]][[joins[[i]]$by]],][[joins[[i]]$by]]
+        )
+        
+        chk::abort_chk(
+          "All ", joins[[i]]$by, " values in the ", joins[[i]]$tbl_y, 
+          " table must be in the ", joins[[i]]$tbl_x, " table. The following value(s)
+    are not in the ", joins[[i]]$tbl_x, " table:", chk::cc(no_match)
+        )
+      }
+      
+    }
+  }
+  
+}
+
+
+
+template <- bisonpictools::template
+
+event <- bisonpictools::event_data()
+location <- bisonpictools::location_data()
+location[2, 1] <- "RLBH006"
+
+data <- list(event = event, location = location)
+
+
+check_template_join(data, template)
+
+
+
+
+template <- bisonpictools::template
+#template <- template[[2]]
+#x <- template[-1]
+
+for (i in names(template)) {
+  if ("join" %in% template[[i]]$name) {
+    
+    x <- template[[i]][-1]
+    join_by <- which(!is.na(as.vector(
+      template[template$name == "join", ][-1]
+    )))
+    join_by <- names(x)[join_by]
+    if (length(join_by) == 0) {
+      return()
+    }
+    
+    # get the table name for the x table
+    tbl_x <- unique(template[[join_by]][template$name == "join"])
+    
+    # error if more then 1 table is listed 
+    if (length(tbl_x) < 1) {
+      stop("Only 1 table can be joined")
+    } 
+    
+    l <- list(list(
+      tbl_y = i,
+      tbl_x = tbl_x,
+      by = join_by
+    ))
+    
+    names(l) <- i
+    
+    joins <- c(joins, l)
+    
+    if (!chk::vld_join(
+      data[[joins[[i]]$tbl_y]], data[[joins[[i]]$tbl_x]], by = c(joins[[i]]$by)
+    )) {
+      
+      no_match <- unique(
+        data[[joins[[i]]$tbl_y]][!data[[joins[[i]]$tbl_y]][[joins[[i]]$by]] %in% 
+                                   data[[joins[[i]]$tbl_x]][[joins[[i]]$by]],][[joins[[i]]$by]]
+      )
+      
+      chk::abort_chk(
+        "All ", joins[[i]]$by, " values in the ", joins[[i]]$tbl_y, 
+        " table must be in the ", joins[[i]]$tbl_x, " table. The following value(s)
+    are not in the ", joins[[i]]$tbl_x, " table:", chk::cc(no_match)
+      )
+    }
+    
+  }
+}
+
+
+
+i <- "event"
+
+joins <- list()
+
+join_by <- which(!is.na(as.vector(
+  template[template$name == "join", ][-1]
+)))
+join_by <- names(x)[join_by]
+
+# return if no join has been specified 
+if (length(join_by) == 0) {
+  return()
+}
+
+# get the table name for the x table
+tbl_x <- unique(template[[join_by]][template$name == "join"])
+
+# error if more then 1 table is listed 
+if (length(tbl_x) < 1) {
+  stop("Only 1 table can be joined")
+} 
+
+l <- list(list(
+  tbl_y = i,
+  tbl_x = tbl_x,
+  by = join_by
+))
+
+names(l) <- i
+l
+
+joins <- c(
+  joins, 
+  l
+)
+joins
+
+
+if (!chk::vld_join(
+  data[[joins[[i]]$tbl_y]], data[[joins[[i]]$tbl_x]], by = c(joins[[i]]$by)
+)) {
+  
+  no_match <- unique(
+    data[[joins[[i]]$tbl_y]][!data[[joins[[i]]$tbl_y]][[joins[[i]]$by]] %in% 
+        data[[joins[[i]]$tbl_x]][[joins[[i]]$by]],][[joins[[i]]$by]]
+  )
+  
+  chk::abort_chk(
+    "All ", joins[[i]]$by, " values in the ", joins[[i]]$tbl_y, 
+    " table must be in the ", joins[[i]]$tbl_x, " table. The following value(s)
+    are not in the ", joins[[i]]$tbl_x, " table:", chk::cc(no_match)
+  )
+}
+
+
 
