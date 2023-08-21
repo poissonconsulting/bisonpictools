@@ -14,6 +14,11 @@ The goal of bisonpictools is to …
 
 ## Installation
 
+``` r
+# install.packages("remotes")
+remotes::install_github("poissonconsulting/bisonpictools")
+```
+
 ## Example
 
 This is a basic example which shows you how to solve a common problem:
