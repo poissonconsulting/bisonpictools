@@ -22,11 +22,13 @@ ranges of the template and tables can be joined appropriately.
 }
 \examples{
 \dontrun{
+# When all data sets are present
 data <- bpt_check_data(
   event = event_data(), location = location_data(), complete = TRUE
 )
-location <- bpt_check_data(location = location_data(), complete = FALSE)
-event <- bpt_check_data(event = event_data(), complete = FALSE)
-event <- bpt_check_data(event = event_data(), complete = TRUE)
+# To check only a single data set
+data_1 <- bpt_check_data(location = location_data())
+data_2 <- bpt_check_data(event = event_data())
+
 }
 }
