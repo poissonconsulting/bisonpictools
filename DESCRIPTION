@@ -8,7 +8,8 @@ Authors@R: c(
            comment = c(ORCID = "0000-0001-8047-3331")),
     person("Ayla", "Pearson", , "ayla@poissonconsulting.ca", role = "ctb",
            comment = c(ORCID = "0000-0001-7388-1222")),
-    person("Alberta Environment and Parks", "Troy.Hegel@gov.ab.ca", role = "cph")
+    person("Troy", "Hegel", , "Troy.Hegel@gov.ab.ca", role = "ctb"),
+    person("Alberta Environment and Parks", role = "cph")
   )
 Description: This package facilitates the manipulation, exploration, and analysis of Ronald Wood Bison camera trap data.
 License: Apache License (>= 2)
