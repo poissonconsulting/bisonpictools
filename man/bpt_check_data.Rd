@@ -23,10 +23,10 @@ ranges of the template and tables can be joined appropriately.
 \examples{
 \dontrun{
 data <- bpt_check_data(
-  event = event_data(), location = location_data(), complete = TRUE
+  event = bpt_event_data(), location = bpt_location_data(), complete = TRUE
 )
-location <- bpt_check_data(location = location_data(), complete = FALSE)
-event <- bpt_check_data(event = event_data(), complete = FALSE)
-event <- bpt_check_data(event = event_data(), complete = TRUE)
+location <- bpt_check_data(location = bpt_location_data(), complete = FALSE)
+event <- bpt_check_data(event = bpt_event_data(), complete = FALSE)
+event <- bpt_check_data(event = bpt_event_data(), complete = TRUE)
 }
 }
