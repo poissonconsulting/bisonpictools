@@ -6,16 +6,16 @@ on:
   pull_request:
     branches: [main, master]
 
-
-name: coverage
+name: test-coverage
 
 jobs:
-  coverage:
-    if: "!contains(github.event.head_commit.message, 'skip ci')"
-    runs-on: macOS-latest
+  test-coverage:
+    runs-on: ubuntu-latest
     env:
       GITHUB_PAT: ${{ secrets.PRIVATE_ACTIONS_PAT }}
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }} 
+    
     steps:
       - uses: actions/checkout@v3
 
@@ -50,8 +50,3 @@ jobs:
         with:
           name: coverage-test-failures
           path: ${{ runner.temp }}/package
-
-      - name: Upload coverage reports to Codecov
-        uses: codecov/codecov-action@v3
-        env:
-          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
