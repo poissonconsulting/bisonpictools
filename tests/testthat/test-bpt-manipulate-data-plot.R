@@ -1,11 +1,13 @@
 # Unusual inputs
 test_that("errors with null input", {
-  expect_chk_error(bpt_manipulate_data_plot(NULL), "Data.frame must be a data.frame.")  
-  expect_chk_error(bpt_manipulate_data_plot(bpt_event_data(), NULL), "Data.frame must be a data.frame.")  
+  expect_error(bpt_manipulate_data_plot(NULL), "argument \"location_data\" is missing, with no default")  
+  expect_chk_error(bpt_manipulate_data_plot(bpt_event_data(), NULL), "The `complete = TRUE` argument was provided but not all data sets were
+        supplied. Either change `complete = FALSE` or supply all the data in the
+        `...` argument.")  
 })
 
 test_that("errors with vector inputs", {
-  expect_error(bpt_manipulate_data_plot(c(1, 2, 3), c(1, 2, 3)), "Data.frame must be a data.frame.")
+  expect_chk_error(bpt_manipulate_data_plot(c(1, 2, 3), c(1, 2, 3)), "Column names in data must include 'f0', 'f1', 'fa', 'fu', 'location_id', 'm0', 'm1', 'm2', ... and 'uu'.")
 })
 
 # Wrong input type 
@@ -17,7 +19,7 @@ test_that("errors with numeric location_id column", {
         dplyr::mutate(location_id = 1:nrow(bpt_event_data())),
       location_data = bpt_location_data() 
     ),
-    "`event_data\\$location_id` must inherit from S3 class 'character'."
+    "All 'location_id' values in the event table must be in the location table. The following rows\\(s\\) in the event table are causing the issue: 1, 2, 3, 4, 5, 6, 7."
   )
 })
 
@@ -27,7 +29,7 @@ test_that("errors with real f0 column", {
       event_data = bpt_event_data() |> 
         dplyr::mutate(f0 = as.numeric(.data$f0)),
       location_data = bpt_location_data()
-    ),
+    ), # This isn't producing an error? Is it because it can be coerced to integer?
     "`event_data\\$f0` must inherit from S3 class 'integer'."
   )
 })
@@ -38,8 +40,18 @@ test_that("errors with character f0 column", {
       event_data = bpt_event_data() |> 
         dplyr::mutate(f0 = as.character(.data$f0)),
       location_data = bpt_location_data()
-    ),
+    ), # Is this also because it can be coerced to integer?
     "`event_data\\$f0` must inherit from S3 class 'integer'."
+  )
+  
+  # Produces informative error when it's letters instead
+  expect_chk_error(
+    bpt_manipulate_data_plot(
+      event_data = bpt_event_data() |> 
+        dplyr::mutate(f0 = letters[1:nrow(bpt_event_data())]),
+      location_data = bpt_location_data()
+    ), # Is this also because it can be coerced to integer?
+    "The following values in column 'f0' should be a integer: 'a', 'b', 'c', 'd', 'e', 'f' and 'g'."
   )
 })
 
@@ -486,7 +498,19 @@ test_that("errors if `event_data` has location_id's that are not present in `loc
           )
         ),
       location_data = bpt_location_data()
-    )
+    ),
+    "All 'location_id' values in the event table must be in the location table. The following rows\\(s\\) in the event table are causing the issue: 1, 2, 3, 4, 5, 6, 7."
+  )
+  
+  expect_chk_error(
+    bpt_manipulate_data_plot(
+      event_data = bpt_event_data() |> 
+        dplyr::mutate(
+          location_id = dplyr::if_else(location_id == "RLBH007", "RLBH012", location_id)
+        ),
+      location_data = bpt_location_data()
+    ),
+    "All 'location_id' values in the event table must be in the location table. The following rows\\(s\\) in the event table are causing the issue: 4, 5, 6, 7."
   )
 })
 
