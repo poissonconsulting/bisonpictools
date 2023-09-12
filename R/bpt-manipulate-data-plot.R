@@ -23,25 +23,46 @@
 #' @examples
 #' bpt_manipulate_data_plot(bpt_event_data(), bpt_location_data())
 bpt_manipulate_data_plot <- function(event_data, location_data) {
-  chk::chk_data(event_data)
-  chk::chk_data(location_data)
-  chk::check_names(
-    event_data, 
-    c("location_id", "start_year", "start_month", "start_day", "start_hour", 
-      "start_minute", "fa", "f1", "f0", "fu", "ma", "m3", "m2", "m1", 
-      "m0", "mu", "ua", "u1", "u0", "uu")
+  chk::check_data(
+    event_data,
+    values = list(
+      "location_id" = "a",
+      "start_year" = 1L,
+      "start_month" = 1L,
+      "start_day" = 1L,
+      "start_hour" = 1L,
+      "start_minute" = 1L,
+      "fa" = 1L,
+      "f1" = 1L,
+      "f0" = 1L,
+      "fu" = 1L,
+      "ma" = 1L,
+      "m3" = 1L,
+      "m2" = 1L,
+      "m1" = 1L,
+      "m0" = 1L,
+      "mu" = 1L,
+      "ua" = 1L,
+      "u1" = 1L,
+      "u0" = 1L,
+      "uu" = 1L
+    ),
+    exclusive = TRUE,
+    key = c("location_id", "start_year", "start_month", "start_day", "start_hour", "start_minute")
   )
-  chk::check_names(location_data, c("location_id", "latitude", "longitude"))
-  chk::chk_all(
-    event_data[, c("fa", "f1", "f0", "fu", "ma", "m3", "m2", "m1", "m0", "mu", 
-                   "ua", "u1", "u0", "uu", "start_year", "start_month", 
-                   "start_day", "start_hour", "start_minute")],
-    chk::chk_integer
+  
+  chk::check_data(
+    location_data,
+    values = list(
+      "location_id" = "a",
+      "latitude" = 1,
+      "longitude" = 1
+    ),
+    exclusive = TRUE,
+    key = "location_id"
   )
-  chk::chk_character_or_factor(event_data$location_id)
-  chk::chk_all(location_data[, c("latitude", "longitude")], chk::chk_numeric)
-  chk::chk_character_or_factor(event_data$location_id)
-  chk::chk_true(all(event_data$location_id %in% location_data$location_id))
+  
+  chk::chk_join(event_data, location_data, by = "location_id")
 
   data <- 
     dplyr::left_join(event_data, location_data, by = "location_id") |> 
