@@ -44,13 +44,24 @@ test_that("ratio names generates correct name for calf male:(female + male) rati
   expect_equal(bpt_ratio_names("m0", "f0"), "calf male:(female + male)")
 })
 
-test_that("ratio names generates correct name for total female:(male + female) ratio", {
+test_that("ratio names generates correct name for female:(male + female) ratio without unknowns", {
   expect_equal(
     bpt_ratio_names(c("f0", "f1", "fa"), c("m0", "m1", "ma", "m2", "m3")),
     "female:(male + female)"
   )
   expect_equal(
     bpt_ratio_names(c("f1", "fa", "f0"), c( "m3", "ma", "m0", "m1", "m2")),
+    "female:(male + female)"
+  )
+})
+
+test_that("ratio names generates correct name for total female:(male + female) ratio", {
+  expect_equal(
+    bpt_ratio_names(c("f0", "f1", "fa", "fu"), c("m0", "m1", "ma", "m2", "m3", "mu")),
+    "female:(male + female)"
+  )
+  expect_equal(
+    bpt_ratio_names(c("f1", "fa", "fu", "f0"), c("mu", "m3", "ma", "m0", "m1", "m2")),
     "female:(male + female)"
   )
 })
