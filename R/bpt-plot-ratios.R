@@ -29,19 +29,19 @@
 #' @examples
 #' # Plot calf:(cow + calf) ratio
 #' bpt_plot_ratios(
-#'   event_data = bpt_event_data(), 
-#'   location_data = bpt_location_data(), 
+#'   event_data = bpt_event_data, 
+#'   location_data = bpt_location_data, 
 #'   numerator = c("f0", "m0", "u0"), 
 #'   denominator = c("fa")
 #'  )
 #' # Plot ratio of female:(male + female) of yearlings in 2021 at site RBLH007 only
 #' bpt_plot_ratios(
-#'   event_data = bpt_event_data(), 
-#'   location_data = bpt_location_data(), 
+#'   event_data = bpt_event_data, 
+#'   location_data = bpt_location_data, 
 #'   numerator = "f1", 
 #'   denominator = "m1", 
-#'   study_years = "2021-2022", 
-#'   locations = "RLBH007"
+#'   study_years = "2020-2021", 
+#'   locations = "LOCID1"
 #'  )
 bpt_plot_ratios <- function(event_data, location_data, numerator, denominator, 
                         study_years = bpt_study_years(event_data),

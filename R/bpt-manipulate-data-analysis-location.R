@@ -6,7 +6,7 @@
 #' @export
 #'
 #' @examples
-#' bpt_manipulate_data_analysis_location(bpt_location_data())
+#' bpt_manipulate_data_analysis_location(bpt_location_data)
 bpt_manipulate_data_analysis_location <- function(location_data) {
   location_data
 }

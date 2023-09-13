@@ -6,7 +6,7 @@
 #' @export
 #'
 #' @examples
-#' bpt_manipulate_data_analysis_event(bpt_event_data())
+#' bpt_manipulate_data_analysis_event(bpt_event_data)
 bpt_manipulate_data_analysis_event <- function(event_data) {
   event_data
 }

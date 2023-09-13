@@ -16,5 +16,5 @@ a tibble of manipulated location data
 Prepare Location Data for Analysis
 }
 \examples{
-bpt_manipulate_data_analysis_location(bpt_location_data())
+bpt_manipulate_data_analysis_location(bpt_location_data)
 }

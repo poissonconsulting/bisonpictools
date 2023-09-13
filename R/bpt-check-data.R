@@ -13,14 +13,14 @@
 #' \dontrun{
 #' # When all data sets are present
 #' data <- bpt_check_data(
-#'   event = bpt_event_data(), location = bpt_location_data(), complete = TRUE
+#'   event = bpt_event_data, location = bpt_location_data, complete = TRUE
 #' )
 #' # To check only a single data set
-#' data_1 <- bpt_check_data(location = location_data())
-#' data_2 <- bpt_check_data(event = event_data())
-#' location <- bpt_check_data(location = bpt_location_data(), complete = FALSE)
-#' event <- bpt_check_data(event = bpt_event_data(), complete = FALSE)
-#' event <- bpt_check_data(event = bpt_event_data(), complete = TRUE)
+#' data_1 <- bpt_check_data(location = location_data)
+#' data_2 <- bpt_check_data(event = event_data)
+#' location <- bpt_check_data(location = bpt_location_data, complete = FALSE)
+#' event <- bpt_check_data(event = bpt_event_data, complete = FALSE)
+#' event <- bpt_check_data(event = bpt_event_data, complete = TRUE)
 #' }
 bpt_check_data <- function(event = NULL, location = NULL, complete = FALSE) {
   chktemplate::check_data_format(

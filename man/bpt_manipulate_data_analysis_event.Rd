@@ -16,5 +16,5 @@ a tibble of manipulated event data
 Prepare Event Data for Analysis
 }
 \examples{
-bpt_manipulate_data_analysis_event(bpt_event_data())
+bpt_manipulate_data_analysis_event(bpt_event_data)
 }

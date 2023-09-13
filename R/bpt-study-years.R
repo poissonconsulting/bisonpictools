@@ -8,7 +8,7 @@
 #' @export
 #'
 #' @examples
-#' bpt_study_years(bpt_event_data())
+#' bpt_study_years(bpt_event_data)
 bpt_study_years <- function(event_data) {
   event_data$datetime_start <- dttr2::dtt_date_time_from_ints(
     year = event_data$start_year,

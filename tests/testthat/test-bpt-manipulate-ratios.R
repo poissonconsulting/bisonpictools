@@ -1,7 +1,7 @@
 test_that("errors with unknown numerator class", {
   expect_error(
     bpt_manipulate_ratios(
-      data = bpt_manipulate_data_plot(bpt_event_data(), bpt_location_data()), 
+      data = bpt_manipulate_data_plot(bpt_event_data, bpt_location_data), 
       numerator = "f6", 
       denominator = "f1"
     ),
@@ -12,7 +12,7 @@ test_that("errors with unknown numerator class", {
 test_that("errors with unknown denominator class", {
   expect_error(
     bpt_manipulate_ratios(
-      data = bpt_manipulate_data_plot(bpt_event_data(), bpt_location_data()), 
+      data = bpt_manipulate_data_plot(bpt_event_data, bpt_location_data), 
       numerator = "f0", 
       denominator = "f5"
     ),
@@ -22,12 +22,12 @@ test_that("errors with unknown denominator class", {
 
 test_that("same number of rows as event_data without filtering", {
   x <- bpt_manipulate_ratios(
-    data = bpt_manipulate_data_plot(bpt_event_data(), bpt_location_data()), 
+    data = bpt_manipulate_data_plot(bpt_event_data, bpt_location_data), 
     numerator = "f0", 
     denominator = "f1"
   )
   expect_equal(
-    nrow(x), nrow(bpt_event_data() |> dplyr::filter(f0 > 0 | f1 > 0))
+    nrow(x), nrow(bpt_event_data |> dplyr::filter(f0 > 0 | f1 > 0))
   )
 })
 
@@ -35,17 +35,17 @@ test_that("filters out years", {
   expect_equal(
     nrow(
       bpt_manipulate_ratios(
-        data = bpt_manipulate_data_plot(bpt_event_data(), bpt_location_data()),
+        data = bpt_manipulate_data_plot(bpt_event_data, bpt_location_data),
         numerator = "f0",
         denominator = "m0"
       )
     ),
-    7L
+    12L
   )
   expect_equal(
     nrow(
       bpt_manipulate_ratios(
-        data = bpt_manipulate_data_plot(bpt_event_data(), bpt_location_data()),
+        data = bpt_manipulate_data_plot(bpt_event_data, bpt_location_data),
         numerator = "f0",
         denominator = "m0",
         study_years = "2021-2022"
@@ -56,19 +56,19 @@ test_that("filters out years", {
   expect_equal(
     nrow(
       bpt_manipulate_ratios(
-        data = bpt_manipulate_data_plot(bpt_event_data(), bpt_location_data()),
+        data = bpt_manipulate_data_plot(bpt_event_data, bpt_location_data),
         numerator = "f0",
         denominator = "m0",
-        study_years = "2022-2023"
+        study_years = "2020-2021"
       )
     ),
-    4L
+    3L
 )
 })
 
 # Output
 x <- bpt_manipulate_ratios(
-  data = bpt_manipulate_data_plot(bpt_event_data(), bpt_location_data()), 
+  data = bpt_manipulate_data_plot(bpt_event_data, bpt_location_data), 
   numerator = "f1", 
   denominator = "f0"
 )

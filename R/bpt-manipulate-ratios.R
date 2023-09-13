@@ -27,11 +27,11 @@
 #'
 #' @examples
 #' bpt_manipulate_ratios(
-#'  data = bpt_manipulate_data_plot(bpt_event_data(), bpt_location_data()),
+#'  data = bpt_manipulate_data_plot(bpt_event_data, bpt_location_data),
 #'  numerator = "fa", 
 #'  denominator = "ma", 
-#'  study_years = "2021-2022", 
-#'  locations = "RLBH007"
+#'  study_years = "2020-2021", 
+#'  locations = "LOCID1"
 #' )
 bpt_manipulate_ratios <- function(data, numerator, denominator, study_years = unique(data$study_year), locations = unique(data$location_id)) {
   chk::chk_data(data)
