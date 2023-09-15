@@ -39,8 +39,8 @@ bpt_manipulate_ratios <- function(data, numerator, denominator, study_years = un
   chk::chk_character(denominator)
   chk::chk_character_or_factor(study_years)
   chk::chk_character_or_factor(locations)
-  chk::chk_true(all(study_years %in% data$study_year))
-  chk::chk_true(all(locations %in% data$location_id))
+  chk::chk_subset(study_years, data$study_year)
+  chk::chk_subset(locations, data$location_id)
   
   class_numerator <- all(numerator %in% c("fa", "f1", "f0", "fu", "ma", "m3", "m2", "m1", "m0", "mu", "ua", "u1", "u0", "uu"))
   if(!class_numerator) stop ("Numerator is not a compatible class. Ensure all elements are in: c('fa', 'f1', f0', 'fu', 'ma', 'm3', 'm2', 'm1', 'm0', 'mu', 'ua', 'u1', 'u0', 'uu').")
