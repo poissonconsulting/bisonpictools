@@ -49,14 +49,14 @@ bpt_plot_ratios(
 
 
 Several age/sex classes can be combined to plot ratios of interest.
-For example, this plots the calf:(yearling + calf) ratio.
+For example, this plots the calf:(cow + calf) ratio:
 
 ```{r}
 bpt_plot_ratios(
   bpt_event_data, 
   bpt_location_data, 
-  numerator = c("f0", "m0"),
-  denominator = c("f1", "m1")
+  numerator = c("f0", "m0", "u0"),
+  denominator = c("fa")
 )
 ```
 
