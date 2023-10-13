@@ -1,21 +1,21 @@
 # Unusual inputs
 test_that("errors with null input", {
-  expect_error(bpt_manipulate_data_plot(NULL), "argument \"location_data\" is missing, with no default")  
+  expect_error(bpt_manipulate_data_plot(NULL), "argument \"location_data\" is missing, with no default")
   expect_chk_error(bpt_manipulate_data_plot(bpt_event_data, NULL), "The `complete = TRUE` argument was provided but not all data sets were
         supplied. Either change `complete = FALSE` or supply all the data in the
-        `...` argument.")  
+        `...` argument.")
 })
 
 test_that("errors with vector inputs", {
   expect_chk_error(bpt_manipulate_data_plot(c(1, 2, 3), c(1, 2, 3)), "Column names in data must include 'f0', 'f1', 'fa', 'fu', 'location_id', 'm0', 'm1', 'm2', ... and 'uu'.")
 })
 
-# Wrong input type 
+# Wrong input type
 # event_data ----
 test_that("errors with numeric location_id column", {
   expect_chk_error(
     bpt_manipulate_data_plot(
-      event_data = bpt_event_data |> 
+      event_data = bpt_event_data |>
         dplyr::mutate(location_id = 1:nrow(bpt_event_data)),
       location_data = bpt_location_data
     ),
@@ -25,7 +25,7 @@ test_that("errors with numeric location_id column", {
 
 test_that("coerces to integer with character f0 column", {
   x <- bpt_manipulate_data_plot(
-    event_data = bpt_event_data |> 
+    event_data = bpt_event_data |>
       dplyr::mutate(f0 = as.numeric(.data$f0)),
     location_data = bpt_location_data
   )
@@ -35,7 +35,7 @@ test_that("coerces to integer with character f0 column", {
 test_that("letters in 'f0' column produces error", {
   expect_chk_error(
     bpt_manipulate_data_plot(
-      event_data = bpt_event_data |> 
+      event_data = bpt_event_data |>
         dplyr::mutate(f0 = letters[1:nrow(bpt_event_data)]),
       location_data = bpt_location_data
     ),
@@ -48,7 +48,7 @@ test_that("errors with numeric location_id column", {
   expect_chk_error(
     bpt_manipulate_data_plot(
       event_data = bpt_event_data,
-      location_data = bpt_location_data |> 
+      location_data = bpt_location_data |>
         dplyr::mutate(location_id = 1:nrow(bpt_location_data))
     ),
     "All 'location_id' values in the event table must be in the location table. The following rows\\(s\\) in the event table are causing the issue: 1, 2, 3, 4, 5, 6, 7."
@@ -59,7 +59,7 @@ test_that("errors with numeric location_id column", {
 test_that("errors if `event_data` has location_id's that are not present in `location_data`", {
   expect_chk_error(
     bpt_manipulate_data_plot(
-      event_data = bpt_event_data |> 
+      event_data = bpt_event_data |>
         dplyr::mutate(
           location_id = c(
             rep("LOCID10", nrow(bpt_event_data))
@@ -69,10 +69,10 @@ test_that("errors if `event_data` has location_id's that are not present in `loc
     ),
     "All 'location_id' values in the event table must be in the location table. The following rows\\(s\\) in the event table are causing the issue: 1, 2, 3, 4, 5, 6, 7, 8, ..., 12."
   )
-  
+
   expect_chk_error(
     bpt_manipulate_data_plot(
-      event_data = bpt_event_data |> 
+      event_data = bpt_event_data |>
         dplyr::mutate(
           location_id = dplyr::if_else(location_id == "LOCID1", "LOCID10", location_id)
         ),
@@ -84,7 +84,7 @@ test_that("errors if `event_data` has location_id's that are not present in `loc
 
 # Expected outputs
 x <- bpt_manipulate_data_plot(
-  event_data = bpt_event_data, 
+  event_data = bpt_event_data,
   location_data = bpt_location_data
 )
 

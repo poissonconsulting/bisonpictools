@@ -1,8 +1,8 @@
 test_that("errors with unknown numerator class", {
   expect_error(
     bpt_manipulate_ratios(
-      data = bpt_manipulate_data_plot(bpt_event_data, bpt_location_data), 
-      numerator = "f6", 
+      data = bpt_manipulate_data_plot(bpt_event_data, bpt_location_data),
+      numerator = "f6",
       denominator = "f1"
     ),
     "Numerator is not a compatible class. Ensure all elements are in: c\\('fa', 'f1', f0', 'fu', 'ma', 'm3', 'm2', 'm1', 'm0', 'mu', 'ua', 'u1', 'u0', 'uu'\\)."
@@ -12,8 +12,8 @@ test_that("errors with unknown numerator class", {
 test_that("errors with unknown denominator class", {
   expect_error(
     bpt_manipulate_ratios(
-      data = bpt_manipulate_data_plot(bpt_event_data, bpt_location_data), 
-      numerator = "f0", 
+      data = bpt_manipulate_data_plot(bpt_event_data, bpt_location_data),
+      numerator = "f0",
       denominator = "f5"
     ),
     "Denominator is not a compatible class. Ensure all elements are in: c\\('fa', 'f1', f0', 'fu', 'ma', 'm3', 'm2', 'm1', 'm0', 'mu', 'ua', 'u1', 'u0', 'uu'\\)."
@@ -22,8 +22,8 @@ test_that("errors with unknown denominator class", {
 
 test_that("same number of rows as event_data without filtering", {
   x <- bpt_manipulate_ratios(
-    data = bpt_manipulate_data_plot(bpt_event_data, bpt_location_data), 
-    numerator = "f0", 
+    data = bpt_manipulate_data_plot(bpt_event_data, bpt_location_data),
+    numerator = "f0",
     denominator = "f1"
   )
   expect_equal(
@@ -63,13 +63,13 @@ test_that("filters out years", {
       )
     ),
     3L
-)
+  )
 })
 
 # Output
 x <- bpt_manipulate_ratios(
-  data = bpt_manipulate_data_plot(bpt_event_data, bpt_location_data), 
-  numerator = "f1", 
+  data = bpt_manipulate_data_plot(bpt_event_data, bpt_location_data),
+  numerator = "f1",
   denominator = "f0"
 )
 

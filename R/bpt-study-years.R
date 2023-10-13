@@ -1,5 +1,5 @@
 #' Calculate Study Years
-#' 
+#'
 #' Calculate the unique set of study years beginning on Apr. 1 of each year of a templated `event_data` tibble.
 #'
 #' @param event_data a tibble of templated event data

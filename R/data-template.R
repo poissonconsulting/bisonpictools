@@ -17,7 +17,7 @@
 #'   up the primary key by putting TRUE in the column. The join row indicates if
 #'   the table is a child table joined by the column.
 #'
-#' @format ## `location` 
+#' @format ## `location`
 #' A data frame with columns:
 #' \describe{
 #'   \item{location_id}{Location name for  the camera}
@@ -25,7 +25,7 @@
 #'   \item{longitude}{Longitude of camera location}
 #' }
 #'
-#' @format ## `event` 
+#' @format ## `event`
 #' A data frame with columns:
 #' \describe{
 #'   \item{location_id}{Location name for  the camera}

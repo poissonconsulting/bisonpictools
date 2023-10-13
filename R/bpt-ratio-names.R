@@ -1,16 +1,16 @@
-#Copyright 2023 Province of Alberta
+# Copyright 2023 Province of Alberta
 
-#Licensed under the Apache License, Version 2.0 (the "License");
-#you may not use this file except in compliance with the License.
-#You may obtain a copy of the License at
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
 
-#http://www.apache.org/licenses/LICENSE-2.0
+# http://www.apache.org/licenses/LICENSE-2.0
 
-#Unless required by applicable law or agreed to in writing, software
-#distributed under the License is distributed on an "AS IS" BASIS,
-#WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-#See the License for the specific language governing permissions and
-#limitations under the License.
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
 
 #' Names of common ratios
 #'
@@ -18,8 +18,8 @@
 #' @param denominator a character vector of sex-age codes to go in the denominator of the ratio
 #'
 #' @return character vector of common ratio name or "Ratio"
-#' @export 
-#' 
+#' @export
+#'
 #' @examples
 #' # Common ratio
 #' bpt_ratio_names(c("f0", "u0", "m0"), "fa")
@@ -28,7 +28,7 @@
 bpt_ratio_names <- function(numerator, denominator) {
   chk::chk_character(numerator)
   chk::chk_character(denominator)
-  
+
   names <- dplyr::tribble(
     ~numerator, ~denominator, ~name,
     "fa", "ma", "adult cow:(bull + cow)",
@@ -46,11 +46,13 @@ bpt_ratio_names <- function(numerator, denominator) {
     c("f0", "m0", "u0"), "fa", "calf:(cow + calf)",
     c("f0", "m0", "u0"), "ma", "calf:(bull + calf)",
   )
-  
+
   match <- sapply(names$numerator, \(x) identical(sort(numerator), x)) &
     sapply(names$denominator, \(x) identical(sort(denominator), x))
-  
-  if (any(match)) return(names$name[match])
-  
+
+  if (any(match)) {
+    return(names$name[match])
+  }
+
   "Ratio"
 }

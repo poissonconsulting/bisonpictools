@@ -26,5 +26,5 @@
 #'   \item{u0}{Number of calves of unknown sex}
 #'   \item{uu}{Number of individuals of unknown age and unknown sex}
 #' }
-#' 
+#'
 "bpt_event_data"
