@@ -15,15 +15,17 @@ Description: This package facilitates the manipulation, exploration, and analysi
 License: Apache License (>= 2)
 Imports: 
     chk,
+    chktemplate,
     dplyr,
     dttr2,
     forcats,
     lifecycle,
     ggplot2,
     rlang,
+    sf,
     stringr,
     tidyr,
-    chktemplate
+    units
 Suggests: 
     testthat (>= 3.0.0),
     readxl
