@@ -1,7 +1,9 @@
 #' @import chk
 #' @import dttr2
 #' @import dplyr
+#' @import forcats
 #' @import ggplot2
-#' @import stringr
 #' @importFrom rlang .data
+#' @import stringr
+#' @import tidyr
 NULL

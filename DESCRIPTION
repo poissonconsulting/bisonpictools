@@ -17,10 +17,12 @@ Imports:
     chk,
     dplyr,
     dttr2,
+    forcats,
     lifecycle,
     ggplot2,
     rlang,
     stringr,
+    tidyr,
     chktemplate
 Suggests: 
     testthat (>= 3.0.0),

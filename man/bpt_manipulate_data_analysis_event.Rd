@@ -10,11 +10,11 @@ bpt_manipulate_data_analysis_event(event_data)
 \item{event_data}{a tibble of templated event data}
 }
 \value{
-a tibble of manipulated event data
+a tibble of manipulated event data ready for analysis
 }
 \description{
 Prepare Event Data for Analysis
 }
 \examples{
-bpt_manipulate_data_analysis_event(bpt_event_data)
+bpt_manipulate_data_analysis_event(event_data = bpt_event_data)
 }
