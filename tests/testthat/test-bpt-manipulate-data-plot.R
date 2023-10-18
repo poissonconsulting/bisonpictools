@@ -16,7 +16,7 @@ test_that("errors with numeric location_id column", {
   expect_chk_error(
     bpt_manipulate_data_plot(
       event_data = bpt_event_data |>
-        dplyr::mutate(location_id = 1:nrow(bpt_event_data)),
+        dplyr::mutate(location_id = seq_len(nrow(bpt_event_data))),
       location_data = bpt_location_data
     ),
     "All 'location_id' values in the event table must be in the location table. The following rows\\(s\\) in the event table are causing the issue: 1, 2, 3, 4, 5, 6, 7."
@@ -36,7 +36,7 @@ test_that("letters in 'f0' column produces error", {
   expect_chk_error(
     bpt_manipulate_data_plot(
       event_data = bpt_event_data |>
-        dplyr::mutate(f0 = letters[1:nrow(bpt_event_data)]),
+        dplyr::mutate(f0 = letters[seq_len(nrow(bpt_event_data))]),
       location_data = bpt_location_data
     ),
     "The following values in column 'f0' should be a integer: 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', ... and 'l'."
@@ -49,7 +49,7 @@ test_that("errors with numeric location_id column", {
     bpt_manipulate_data_plot(
       event_data = bpt_event_data,
       location_data = bpt_location_data |>
-        dplyr::mutate(location_id = 1:nrow(bpt_location_data))
+        dplyr::mutate(location_id = seq_len(nrow(bpt_location_data)))
     ),
     "All 'location_id' values in the event table must be in the location table. The following rows\\(s\\) in the event table are causing the issue: 1, 2, 3, 4, 5, 6, 7."
   )
@@ -111,9 +111,10 @@ test_that("all count columns are integers", {
   expect_true(is.integer(x$fu))
   expect_true(is.integer(x$ma))
   expect_true(is.integer(x$m3))
-  expect_true(is.integer(x$m1))
+  expect_true(is.integer(x$m2))
   expect_true(is.integer(x$m1))
   expect_true(is.integer(x$m0))
+  expect_true(is.integer(x$mu))
   expect_true(is.integer(x$ua))
   expect_true(is.integer(x$u1))
   expect_true(is.integer(x$u0))
@@ -128,9 +129,10 @@ test_that("all count columns are positive", {
   expect_true(all(x$fu >= 0))
   expect_true(all(x$ma >= 0))
   expect_true(all(x$m3 >= 0))
-  expect_true(all(x$m1 >= 0))
+  expect_true(all(x$m2 >= 0))
   expect_true(all(x$m1 >= 0))
   expect_true(all(x$m0 >= 0))
+  expect_true(all(x$mu >= 0))
   expect_true(all(x$ua >= 0))
   expect_true(all(x$u1 >= 0))
   expect_true(all(x$u0 >= 0))
