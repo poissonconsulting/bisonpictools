@@ -18,9 +18,11 @@ bpt_plot_ratios(
 
 \item{location_data}{a tibble of templated location data}
 
-\item{numerator}{a character vector of sex-age codes to go in the numerator of the ratio}
+\item{numerator}{a character vector of sex-age codes to go in the numerator
+of the ratio}
 
-\item{denominator}{a character vector of sex-age codes to go in the denominator of the ratio}
+\item{denominator}{a character vector of sex-age codes to go in the
+denominator of the ratio}
 
 \item{study_years}{a character vector of study years to include in the plot}
 
@@ -30,7 +32,10 @@ bpt_plot_ratios(
 a \code{ggplot} object
 }
 \description{
-Generates bubble plot of ratio of the sex-age classes supplied to \code{numerator} and \code{denominator}. The ratio is given as \verb{numerator:(denominator + numerator))} to avoid infinite values when \verb{numerator ≥ 1} and \code{denominator = 0}. Each point represents an event. The size of the point represents the total group size, and the colour of the point represents the value of the ratio.
+Generates bubble plot of ratio of the sex-age classes supplied to \code{numerator}
+and \code{denominator}. The ratio is given as \verb{numerator:(denominator + numerator))} to avoid infinite values when \verb{numerator ≥ 1} and \code{denominator = 0}. Each point represents an event. The size of the point represents the
+total group size, and the colour of the point represents the value of the
+ratio.
 }
 \examples{
 # Plot calf:(cow + calf) ratio

@@ -14,15 +14,22 @@
 
 #' Manipulate Ratios
 #'
-#' Takes output from `bpt_manipulate_data_plot()` and calculates ratio of interest for plotting. Ratio of interest is calculated as numerator:(denominator + numerator) to avoid infinite values.
+#' Takes output from `bpt_manipulate_data_plot()` and calculates ratio of
+#' interest for plotting. Ratio of interest is calculated as
+#' numerator:(denominator + numerator) to avoid infinite values.
 #'
-#' @param data a tibble of manipulated event and location data, with factor columns `year`, `location_id`, and integer columns c(`fa`, `f1`, `f0`, `fu`, `ma`, `m3`, `m2`, `m1`, `m0`, `mu`, `ua`, `u1`, `u0`, and `uu`)
-#' @param numerator a character vector of sex-age codes to go in the numerator of the ratio
-#' @param denominator a character vector of sex-age codes to go in the denominator of the ratio
+#' @param data a tibble of manipulated event and location data, with factor
+#'   columns `year`, `location_id`, and integer columns c(`fa`, `f1`, `f0`,
+#'   `fu`, `ma`, `m3`, `m2`, `m1`, `m0`, `mu`, `ua`, `u1`, `u0`, and `uu`)
+#' @param numerator a character vector of sex-age codes to go in the numerator
+#'   of the ratio
+#' @param denominator a character vector of sex-age codes to go in the
+#'   denominator of the ratio
 #' @param study_years a character vector of study years to include in the plot
 #' @param locations a character vector of location_ids to include in the plot
 #'
-#' @return the original tibble, with additional columns `numerator`, `denominator`, and `ratio`
+#' @return the original tibble, with additional columns `numerator`,
+#'   `denominator`, and `ratio`
 #' @export
 #'
 #' @examples
@@ -33,14 +40,20 @@
 #'   study_years = "2020-2021",
 #'   locations = "LOCID1"
 #' )
-bpt_manipulate_ratios <- function(data, numerator, denominator, study_years = unique(data$study_year), locations = unique(data$location_id)) {
-  chk::chk_data(data)
-  chk::chk_character(numerator)
-  chk::chk_character(denominator)
-  chk::chk_character_or_factor(study_years)
-  chk::chk_character_or_factor(locations)
-  chk::chk_subset(study_years, data$study_year)
-  chk::chk_subset(locations, data$location_id)
+bpt_manipulate_ratios <-function(
+    data,
+    numerator,
+    denominator,
+    study_years = unique(data$study_year),
+    locations = unique(data$location_id)
+) {
+    chk::chk_data(data)
+    chk::chk_character(numerator)
+    chk::chk_character(denominator)
+    chk::chk_character_or_factor(study_years)
+    chk::chk_character_or_factor(locations)
+    chk::chk_subset(study_years, data$study_year)
+    chk::chk_subset(locations, data$location_id)
 
   class_numerator <- all(
     numerator %in%

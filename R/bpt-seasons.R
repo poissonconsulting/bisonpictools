@@ -14,7 +14,9 @@
 
 #' Generate Seasons Data
 #'
-#' Generates a table of the dates of different seasons relevant to Ronald Wood Bison movement patterns: calving, summer/fall, and winter. Start and end dates of each season are based in the study year 1972-1973.
+#' Generates a table of the dates of different seasons relevant to Ronald Wood
+#' Bison movement patterns: calving, summer/fall, and winter. Start and end
+#' dates of each season are based in the study year 1972-1973.
 #'
 #' @return A tibble
 #' @export
@@ -28,7 +30,7 @@ bpt_seasons <- function() {
     "Summer/Fall", "1972-07-01 00:00:00", "1972-11-30 23:59:59",
     "Winter", "1972-12-01 00:00:00", "1973-03-31 23:59:59"
   ) |>
-    dplyr::mutate(
-      dplyr::across(c("start_dayte", "end_dayte"), \(x) dttr2::dtt_date_time(x)),
-    )
+  dplyr::mutate(
+    dplyr::across(c("start_dayte", "end_dayte"), \(x) dttr2::dtt_date_time(x)),
+  )
 }

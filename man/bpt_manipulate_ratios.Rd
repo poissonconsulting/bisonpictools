@@ -13,21 +13,28 @@ bpt_manipulate_ratios(
 )
 }
 \arguments{
-\item{data}{a tibble of manipulated event and location data, with factor columns \code{year}, \code{location_id}, and integer columns c(\code{fa}, \code{f1}, \code{f0}, \code{fu}, \code{ma}, \code{m3}, \code{m2}, \code{m1}, \code{m0}, \code{mu}, \code{ua}, \code{u1}, \code{u0}, and \code{uu})}
+\item{data}{a tibble of manipulated event and location data, with factor
+columns \code{year}, \code{location_id}, and integer columns c(\code{fa}, \code{f1}, \code{f0},
+\code{fu}, \code{ma}, \code{m3}, \code{m2}, \code{m1}, \code{m0}, \code{mu}, \code{ua}, \code{u1}, \code{u0}, and \code{uu})}
 
-\item{numerator}{a character vector of sex-age codes to go in the numerator of the ratio}
+\item{numerator}{a character vector of sex-age codes to go in the numerator
+of the ratio}
 
-\item{denominator}{a character vector of sex-age codes to go in the denominator of the ratio}
+\item{denominator}{a character vector of sex-age codes to go in the
+denominator of the ratio}
 
 \item{study_years}{a character vector of study years to include in the plot}
 
 \item{locations}{a character vector of location_ids to include in the plot}
 }
 \value{
-the original tibble, with additional columns \code{numerator}, \code{denominator}, and \code{ratio}
+the original tibble, with additional columns \code{numerator},
+\code{denominator}, and \code{ratio}
 }
 \description{
-Takes output from \code{bpt_manipulate_data_plot()} and calculates ratio of interest for plotting. Ratio of interest is calculated as numerator:(denominator + numerator) to avoid infinite values.
+Takes output from \code{bpt_manipulate_data_plot()} and calculates ratio of
+interest for plotting. Ratio of interest is calculated as
+numerator:(denominator + numerator) to avoid infinite values.
 }
 \examples{
 bpt_manipulate_ratios(

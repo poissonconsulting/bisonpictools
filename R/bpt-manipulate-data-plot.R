@@ -48,12 +48,12 @@ bpt_manipulate_data_plot <- function(event_data, location_data) {
       year = dttr2::dtt_year(.data$datetime_start),
       study_year = dttr2::dtt_study_year(.data$datetime_start, 4L),
       month = dttr2::dtt_month(.data$datetime_start),
-      across(
+      dplyr::across(
         c(
           "fa", "f1", "f0", "fu", "ma", "m3", "m2", "m1", "m0", "mu", "ua",
           "u1", "u0", "uu", "groupsize"
         ),
-        \(x) as.integer(x)
+        \(x) base::as.integer(x)
       )
     ) |>
     dplyr::mutate(
