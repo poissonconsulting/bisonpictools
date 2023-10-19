@@ -1,15 +1,25 @@
-#' Prepare Event Data for Analysis
+#' Prepare Data for Analysis
+#' 
+#' Checks that data is in the correct format and manipulates it for analysis.
 #'
 #' @param event_data a tibble of templated event data
+#' @param location_data a tibble of templated location data
 #'
-#' @return a tibble of manipulated event data ready for analysis
+#' @return a tibble of manipulated data ready for analysis
 #' @export
 #'
 #' @examples
-#' bpt_manipulate_data_analysis_event(event_data = bpt_event_data)
-bpt_manipulate_data_analysis_event <- function(event_data) {
-  data <- bpt_check_data(event = event_data)$event
-
+#' bpt_manipulate_data_analysis(
+#'   event_data = bpt_event_data,
+#'   location_data = bpt_location_data
+#' )
+bpt_manipulate_data_analysis <- function(event_data, location_data) {
+  data <- bpt_check_data(
+    event = event_data, 
+    location = location_data, 
+    complete = TRUE
+  )
+  
   seasons_long <-
     bpt_seasons() |>
     dplyr::group_by(.data$season) |>
@@ -20,7 +30,7 @@ bpt_manipulate_data_analysis_event <- function(event_data) {
     dplyr::mutate(dayte = dttr2::dtt_dayte(.data$dayte))
 
   data <-
-    data |>
+    data$event |>
     dplyr::mutate(
       groupsize_total = .data$fa + .data$f1 + .data$f0 + .data$fu + .data$ma +
         .data$m3 + .data$m2 + .data$m1 + .data$m0 + .data$mu + .data$ua +
@@ -36,7 +46,11 @@ bpt_manipulate_data_analysis_event <- function(event_data) {
         minute = .data$start_minute
       ),
       year = dttr2::dtt_year(.data$datetime_start),
-      annual = dttr2::dtt_study_year(.data$datetime_start, start = 4L, full = TRUE),
+      annual = dttr2::dtt_study_year(
+        .data$datetime_start, 
+        start = 4L, 
+        full = TRUE
+      ),
       dayte = dttr2::dtt_dayte(.data$datetime_start),
       day = base::as.integer(dttr2::dtt_date(.data$datetime_start)),
       day = .data$day - base::min(.data$day),
