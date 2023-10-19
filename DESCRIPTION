@@ -18,9 +18,12 @@ Imports:
     chktemplate,
     dplyr,
     dttr2,
+    embr,
     forcats,
-    lifecycle,
     ggplot2,
+    lifecycle,
+    newdata,
+    readr,
     rlang,
     sf,
     stringr,
@@ -33,7 +36,7 @@ Remotes:
     poissonconsulting/chktemplate,
     poissonconsulting/dttr2
 Depends: 
-    R (>= 2.10)
+    R (>= 3.4.0)
 LazyData: true
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
