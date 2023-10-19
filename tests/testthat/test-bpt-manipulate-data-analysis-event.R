@@ -1,39 +1,55 @@
 # Wrong input type
-test_that("errors with null input", {
+test_that("errors with null input in location_data", {
   expect_chk_error(
-    bpt_manipulate_data_analysis_event(NULL),
-    "The names of the data supplied in the `...` argument do not match the
-      template names."
+    bpt_manipulate_data_analysis(bpt_event_data, NULL),
+    "The `complete = TRUE` argument was provided but not all data sets were
+        supplied. Either change `complete = FALSE` or supply all the data in the
+        `...` argument."
   )
 })
 
+test_that("errors with null input in event_data", {
+  expect_chk_error(
+    bpt_manipulate_data_analysis(NULL, bpt_location_data),
+    "The `complete = TRUE` argument was provided but not all data sets were
+        supplied. Either change `complete = FALSE` or supply all the data in the
+        `...` argument."
+  )
+})
+
+
 test_that("errors with vector inputs", {
   expect_chk_error(
-    bpt_manipulate_data_analysis_event(c(1, 2, 3)),
+    bpt_manipulate_data_analysis(c(1, 2, 3), c(1, 2, 3)),
     "Column names in data must include 'f0', 'f1', 'fa', 'fu', 'location_id', 'm0', 'm1', 'm2', ... and 'uu'."
   )
 })
 
 test_that("coerces to integer with character f0 column", {
-  x <- bpt_manipulate_data_analysis_event(
+  x <- bpt_manipulate_data_analysis(
     event_data = bpt_event_data |>
-      dplyr::mutate(f0 = as.numeric(.data$f0))
+      dplyr::mutate(f0 = as.numeric(.data$f0)),
+    location_data = bpt_location_data
   )
   expect_true(is.integer(x$f0))
 })
 
 test_that("non-coercable characters in 'f0' column produces error", {
   expect_chk_error(
-    bpt_manipulate_data_analysis_event(
+    bpt_manipulate_data_analysis(
       event_data = bpt_event_data |>
-        dplyr::mutate(f0 = letters[seq_len(nrow(bpt_event_data))])
+        dplyr::mutate(f0 = letters[seq_len(nrow(bpt_event_data))]),
+      location_data = bpt_location_data
     ),
     "The following values in column 'f0' should be a integer: 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', ... and 'l'."
   )
 })
 
 # Expected outputs
-x <- bpt_manipulate_data_analysis_event(event_data = bpt_event_data)
+x <- bpt_manipulate_data_analysis(
+  event_data = bpt_event_data,
+  location_data = bpt_location_data
+)
 
 test_that("returns tibble", {
   expect_true(all(attributes(x)$class == c("tbl_df", "tbl", "data.frame")))

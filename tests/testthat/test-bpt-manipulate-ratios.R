@@ -103,6 +103,6 @@ test_that("expected output column types", {
   expect_true(is.integer(x$u0))
   expect_true(is.integer(x$uu))
   expect_true(is.factor(x$study_year))
-  expect_true(is.POSIXct(x$date_time))
+  expect_true(dttr2::is.POSIXct(x$date_time))
   expect_true(is.factor(x$year))
 })
