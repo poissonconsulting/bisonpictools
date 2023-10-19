@@ -29,9 +29,14 @@ locations:
 
 ``` r
 library(bisonpictools)
+```
+
+    ## Loading required namespace: V8
+
+``` r
 bpt_plot_ratios(
-  bpt_event_data, 
-  bpt_location_data, 
+  bpt_event_data,
+  bpt_location_data,
   numerator = "fa",
   denominator = "ma"
 )
@@ -44,8 +49,8 @@ trap locations and/or study years:
 
 ``` r
 bpt_plot_ratios(
-  bpt_event_data, 
-  bpt_location_data, 
+  bpt_event_data,
+  bpt_location_data,
   numerator = "fa",
   denominator = "ma",
   study_years = "2019-2020",
@@ -60,8 +65,8 @@ example, this plots the calf:(cow + calf) ratio:
 
 ``` r
 bpt_plot_ratios(
-  bpt_event_data, 
-  bpt_location_data, 
+  bpt_event_data,
+  bpt_location_data,
   numerator = c("f0", "m0", "u0"),
   denominator = c("fa")
 )
@@ -70,3 +75,123 @@ bpt_plot_ratios(
 ![](README_files/figure-gfm/unnamed-chunk-4-1.png)<!-- -->
 
 ## Data Analysis
+
+Launch the local data analysis app
+
+``` r
+# Launch app
+```
+
+Install Stan
+
+``` r
+# Install correct version of Stan
+install.packages("rstan")
+```
+
+Run the analysis:
+
+- `nthin` controls the thinning of the MCMC samples;
+
+  - `nthin = 1L` saves all samples
+  - increase `nthin` if model is not converging
+
+- `event_data` is the camera trap event data frame saved from the first
+  app
+
+- `location_data` is the location data frame saved from the first app
+
+- `census` is the number of bison in the herd from census counts
+
+- `census_cv` is the coefficient of variation of the census counts
+  (standard deviation / estimate)
+
+- `census_study_year` is the study year of the census counts (study year
+  starts on Apr. 1)
+
+- `census_day_of_year` is the day of the year of the census counts
+  (first day of year is Apr. 1).
+
+  - E.g. if the census was on the last day of March in 2023,
+  - `census_study_year` = “2022-2023”
+  - `census_day_of_year` = 365L
+
+- `proportion_calf` is the proportion of calves in the herd
+
+- `proportion_calf_cv` is the coefficient of variation of the proportion
+  of calves in the herd
+
+- `proportion_calf_study_year` is the study year of the proportion of
+  calves in the herd (study year starts on Apr. 1)
+
+- `proportion_calf_day_of_year` is the day of the year of the proportion
+  of calves in the herd (first day of year is Apr. 1).
+
+  - E.g. if the proportion of calves was estimated on the last day of
+    March in 2022,
+  - `proportion_calf_study_year` = “2021-2022”
+  - `proportion_calf_day_of_year` = 365L
+
+``` r
+analysis <- bpt_analyse(
+  nthin = 1L,
+  event_data = bpt_event_data,
+  location_data = bpt_location_data,
+  census = 272L,
+  census_cv = 20 / 272L,
+  census_study_year = "2020-2021",
+  census_day_of_year = 365L,
+  proportion_calf = c(0.195, 0.151),
+  proportion_calf_cv = c(0.5, 0.5),
+  proportion_calf_study_year = c("2020-2021", "2021-2022"),
+  proportion_calf_day_of_year = c(365L, 365L)
+)
+```
+
+    ## # A tibble: 1 × 8
+    ##       n     K nchains niters nthin   ess  rhat converged
+    ##   <int> <int>   <int>  <int> <int> <int> <dbl> <lgl>    
+    ## 1    11    49       3    500     1   934  1.00 TRUE
+
+``` r
+# Save analysis object
+saveRDS(analysis, file = "analysis.RDS")
+# Load one too
+```
+
+## Plot predictions
+
+``` r
+# Plot predicted abundances by class
+bpt_plot_predictions(analysis, prediction = "abundance-class")
+```
+
+![](README_files/figure-gfm/unnamed-chunk-9-1.png)<!-- -->
+
+``` r
+# Plot total abundance
+bpt_plot_predictions(analysis, prediction = "abundance-total")
+```
+
+![](README_files/figure-gfm/unnamed-chunk-10-1.png)<!-- -->
+
+``` r
+# Plot survival rates
+bpt_plot_predictions(analysis, prediction = "survival")
+```
+
+![](README_files/figure-gfm/unnamed-chunk-11-1.png)<!-- -->
+
+``` r
+# Plot fecundity rates
+bpt_plot_predictions(analysis, prediction = "fecundity")
+```
+
+![](README_files/figure-gfm/unnamed-chunk-12-1.png)<!-- -->
+
+``` r
+# Plot ratios
+bpt_plot_predictions(analysis, prediction = "ratios")
+```
+
+![](README_files/figure-gfm/unnamed-chunk-13-1.png)<!-- -->
