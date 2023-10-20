@@ -1,6 +1,7 @@
 path <- system.file(package = "bisonpictools", "test-objects/analysis.RDS")
 # Remove file extension from path (to be added in by bpt_load_analysis)
-path_no_ext <- strsplit(path, "\\.")[[1]][1]
+# path_no_ext <- strsplit(path, "\\.")[[1]][1]
+path_no_ext <- tools::file_path_sans_ext(path)
 
 analysis <- bpt_load_analysis(
   file = path_no_ext
