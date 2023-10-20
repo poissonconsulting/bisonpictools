@@ -16,6 +16,9 @@
 #'   study years
 #' @param proportion_calf_day_of_year integer vector of proportion of calf days
 #'   of year
+#' @param analysis_mode character string of analysis mode, either "debug", 
+#' "check", or "report". Run firstin "debug" mode to ensure that the model 
+#' samples. Next, run in "report" mode to sample the full number of iterations. 
 #'
 #' @return an `smb.analysis` object
 #' @export
@@ -23,7 +26,6 @@
 #' @examples 
 #' \dontrun{
 #' bpt_analyse(
-#'   nthin = 1L,
 #'   event_data = bpt_event_data,
 #'   location_data = bpt_location_data,
 #'   census = 200L,
@@ -33,11 +35,12 @@
 #'   proportion_calf = c(0.201, 0.168),
 #'   proportion_calf_cv = c(0.5, 0.5),
 #'   proportion_calf_study_year = c("2020-2021", "2021-2022"),
-#'   proportion_calf_day_of_year = c(365L, 365L)
+#'   proportion_calf_day_of_year = c(365L, 365L),
+#'   nthin = 1L,
+#'   analysis_mode = "quick"
 #'   )
 #' }
 bpt_analyse <- function(
-    nthin = 1L,
     event_data, 
     location_data,
     census,
@@ -47,13 +50,19 @@ bpt_analyse <- function(
     proportion_calf,
     proportion_calf_cv,
     proportion_calf_study_year,
-    proportion_calf_day_of_year
+    proportion_calf_day_of_year,
+    nthin = 1L,
+    analysis_mode = "report"
 ) {
+  
+  chk::chk_integer(nthin)
+  chk::chk_gte(nthin, 1L)
+  chk::chk_subset(analysis_mode, c("report", "quick", "debug"))
+  
   data <- bpt_manipulate_data_analysis(event_data, location_data)
   levels_annual <- levels(data$annual)
   
   model <- embr::model(
-    # code = readr::read_file("inst/stan/model.stan"),
     code = readr::read_file(
       system.file(package = "bisonpictools", "stan/model.stan")
     ),
@@ -133,7 +142,7 @@ bpt_analyse <- function(
   )
   )
   
-  embr::set_analysis_mode("report")
+  embr::set_analysis_mode(analysis_mode)
   analysis <- embr::analyse(model, data = data, nthin = nthin)
   
   analysis
