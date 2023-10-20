@@ -89,6 +89,17 @@ Install Stan
 install.packages("rstan")
 ```
 
+Read in data saved from the hosted app
+
+``` r
+# Change this directory to the folder where you have saved the data
+dir <- "myfilepath"
+event_data <- readr::read_csv(file.path(dir, "event_data.csv"))
+location_data <- readr::read_csv(file.path(dir, "location_data.csv"))
+```
+
+# Put this in the vignette
+
 Run the analysis:
 
 - `nthin` controls the thinning of the MCMC samples;
@@ -134,7 +145,6 @@ Run the analysis:
 
 ``` r
 analysis <- bpt_analyse(
-  nthin = 1L,
   event_data = bpt_event_data,
   location_data = bpt_location_data,
   census = 272L,
@@ -144,18 +154,15 @@ analysis <- bpt_analyse(
   proportion_calf = c(0.195, 0.151),
   proportion_calf_cv = c(0.5, 0.5),
   proportion_calf_study_year = c("2020-2021", "2021-2022"),
-  proportion_calf_day_of_year = c(365L, 365L)
+  proportion_calf_day_of_year = c(365L, 365L),
+  nthin = 1L,
+  analysis_mode = "quick"
 )
 ```
 
-    ## # A tibble: 1 × 8
-    ##       n     K nchains niters nthin   ess  rhat converged
-    ##   <int> <int>   <int>  <int> <int> <int> <dbl> <lgl>    
-    ## 1    11    49       3    500     1   934  1.00 TRUE
-
 ``` r
 # Save analysis object
-saveRDS(analysis, file = "analysis.RDS")
+bpt_save_analysis(analysis, file = "analysis")
 # Load one too
 ```
 
@@ -166,32 +173,32 @@ saveRDS(analysis, file = "analysis.RDS")
 bpt_plot_predictions(analysis, prediction = "abundance-class")
 ```
 
-![](README_files/figure-gfm/unnamed-chunk-9-1.png)<!-- -->
+![](README_files/figure-gfm/unnamed-chunk-11-1.png)<!-- -->
 
 ``` r
 # Plot total abundance
 bpt_plot_predictions(analysis, prediction = "abundance-total")
 ```
 
-![](README_files/figure-gfm/unnamed-chunk-10-1.png)<!-- -->
+![](README_files/figure-gfm/unnamed-chunk-12-1.png)<!-- -->
 
 ``` r
 # Plot survival rates
 bpt_plot_predictions(analysis, prediction = "survival")
 ```
 
-![](README_files/figure-gfm/unnamed-chunk-11-1.png)<!-- -->
+![](README_files/figure-gfm/unnamed-chunk-13-1.png)<!-- -->
 
 ``` r
 # Plot fecundity rates
 bpt_plot_predictions(analysis, prediction = "fecundity")
 ```
 
-![](README_files/figure-gfm/unnamed-chunk-12-1.png)<!-- -->
+![](README_files/figure-gfm/unnamed-chunk-14-1.png)<!-- -->
 
 ``` r
 # Plot ratios
 bpt_plot_predictions(analysis, prediction = "ratios")
 ```
 
-![](README_files/figure-gfm/unnamed-chunk-13-1.png)<!-- -->
+![](README_files/figure-gfm/unnamed-chunk-15-1.png)<!-- -->

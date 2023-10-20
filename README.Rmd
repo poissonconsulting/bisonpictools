@@ -24,7 +24,7 @@ remotes::install_github("poissonconsulting/bisonpictools")
 The ratio plotted by `bpt_plot_ratios` is `numerator:(denominator:numerator)`.
 
 For example, the adult cow:(bull + cow) ratio plotted over all years and locations:
-``` {r}
+``` {r, fig.dim = c(12, 8)}
 library(bisonpictools)
 bpt_plot_ratios(
   bpt_event_data,
@@ -36,7 +36,7 @@ bpt_plot_ratios(
 
 It is also possible to subset the data to include one or more camera trap locations and/or study years:
 
-``` {r}
+``` {r, fig.dim = c(12, 8)}
 bpt_plot_ratios(
   bpt_event_data,
   bpt_location_data,
@@ -51,7 +51,7 @@ bpt_plot_ratios(
 Several age/sex classes can be combined to plot ratios of interest.
 For example, this plots the calf:(cow + calf) ratio:
 
-```{r}
+```{r, fig.dim = c(12, 8)}
 bpt_plot_ratios(
   bpt_event_data,
   bpt_location_data,
@@ -75,6 +75,17 @@ Install Stan
 install.packages("rstan")
 ```
 
+Read in data saved from the hosted app 
+
+```{r, eval = FALSE}
+# Change this directory to the folder where you have saved the data
+dir <- "myfilepath"
+event_data <- readr::read_csv(file.path(dir, "event_data.csv"))
+location_data <- readr::read_csv(file.path(dir, "location_data.csv"))
+```
+
+
+# Put this in the vignette
 Run the analysis:
 
 - `nthin` controls the thinning of the MCMC samples; 
@@ -99,9 +110,8 @@ Run the analysis:
   - `proportion_calf_study_year` = "2021-2022"
   - `proportion_calf_day_of_year` = 365L
 
-```{r}
+```{r, eval = FALSE}
 analysis <- bpt_analyse(
-  nthin = 1L,
   event_data = bpt_event_data,
   location_data = bpt_location_data,
   census = 272L,
@@ -111,13 +121,21 @@ analysis <- bpt_analyse(
   proportion_calf = c(0.195, 0.151),
   proportion_calf_cv = c(0.5, 0.5),
   proportion_calf_study_year = c("2020-2021", "2021-2022"),
-  proportion_calf_day_of_year = c(365L, 365L)
+  proportion_calf_day_of_year = c(365L, 365L),
+  nthin = 1L,
+  analysis_mode = "quick"
 )
 ```
+```{r, echo = FALSE}
+analysis <- readRDS(file = system.file(package = "bisonpictools", "test-objects/analysis.RDS"))
+```
+
+
 ```{r, eval = FALSE}
 # Save analysis object
-saveRDS(analysis, file = "analysis.RDS")
+bpt_save_analysis(analysis, file = "analysis")
 # Load one too
+
 ```
 
 ## Plot predictions
@@ -142,7 +160,7 @@ bpt_plot_predictions(analysis, prediction = "survival")
 bpt_plot_predictions(analysis, prediction = "fecundity")
 ```
 
-```{r}
+```{r, fig.dim = c(7, 6)}
 # Plot ratios
 bpt_plot_predictions(analysis, prediction = "ratios")
 ```
