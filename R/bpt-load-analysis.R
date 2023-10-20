@@ -4,7 +4,7 @@
 #'
 #' @param file path to file (excluding extension)
 #'
-#' @return
+#' @return the analysis object
 #' @export
 #'
 #' @examples
