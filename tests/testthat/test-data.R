@@ -25,7 +25,7 @@ test_that("confirm raw data is the same as the excel file", {
   sheets <- readxl::excel_sheets(path)
   data_excel <- lapply(sheets, function(x) readxl::read_excel(path, x))
   names(data_excel) <- sheets
-  
+
   expect_identical(data_excel$location, bpt_location_data)
   expect_identical(data_excel$event, bpt_event_data)
 })

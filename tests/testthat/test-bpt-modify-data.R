@@ -99,14 +99,14 @@ test_that("prop_calf is the same number provided", {
 
 test_that("census sd is census_cv * census", {
   expect_equal(
-    as.numeric(modified_data$sCensus), 
+    as.numeric(modified_data$sCensus),
     given_census_cv * given_census
   )
 })
 
 test_that("prop_calf sd is prop_calf_cv * prop_calf", {
   expect_equal(
-    as.numeric(modified_data$sPropCalf), 
+    as.numeric(modified_data$sPropCalf),
     c(given_proportion_calf_cv * given_proportion_calf)
   )
 })
@@ -114,7 +114,7 @@ test_that("prop_calf sd is prop_calf_cv * prop_calf", {
 test_that("annual_census is the appropriate integer", {
   expect_true(is.integer(modified_data$annual_census))
   expect_equal(
-    as.integer(modified_data$annual_census), 
+    as.integer(modified_data$annual_census),
     which(levels_annual == given_census_study_year)
   )
 })
@@ -123,7 +123,7 @@ test_that("annual_census is the appropriate integer", {
 test_that("annual_prop_calf is the appropriate integer", {
   expect_true(is.integer(modified_data$annual_prop_calf))
   expect_equal(
-    as.integer(modified_data$annual_prop_calf), 
+    as.integer(modified_data$annual_prop_calf),
     which(levels_annual == given_proportion_calf_study_year)
   )
 })
@@ -131,7 +131,7 @@ test_that("annual_prop_calf is the appropriate integer", {
 test_that("doy_census is the same number provided", {
   expect_true(is.integer(modified_data$doy_census))
   expect_equal(
-    as.integer(modified_data$doy_census), 
+    as.integer(modified_data$doy_census),
     given_census_day_of_year
   )
 })
@@ -139,7 +139,7 @@ test_that("doy_census is the same number provided", {
 test_that("doy_prop_calf is the same number provided", {
   expect_true(is.integer(modified_data$doy_prop_calf))
   expect_equal(
-    as.integer(modified_data$doy_prop_calf), 
+    as.integer(modified_data$doy_prop_calf),
     given_proportion_calf_day_of_year
   )
 })

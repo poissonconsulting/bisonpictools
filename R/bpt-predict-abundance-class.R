@@ -14,29 +14,29 @@
 #' bpt_predict_abundance_class(analysis)
 #' }
 bpt_predict_abundance_class <- function(analysis) {
-  abundance_F0 <- embr::predict(analysis, "annual", term = "eAbundanceF0") |> 
+  abundance_F0 <- embr::predict(analysis, "annual", term = "eAbundanceF0") |>
     dplyr::mutate(class = "F0")
-  abundance_F1 <- embr::predict(analysis, "annual", term = "eAbundanceF1") |> 
+  abundance_F1 <- embr::predict(analysis, "annual", term = "eAbundanceF1") |>
     dplyr::mutate(class = "F1")
   abundance_FA <- embr::predict(analysis, "annual", term = "eAbundanceFA") |>
     dplyr::mutate(class = "FA")
-  abundance_M0 <- embr::predict(analysis, "annual", term = "eAbundanceM0") |> 
+  abundance_M0 <- embr::predict(analysis, "annual", term = "eAbundanceM0") |>
     dplyr::mutate(class = "M0")
-  abundance_M1 <- embr::predict(analysis, "annual", term = "eAbundanceM1") |> 
+  abundance_M1 <- embr::predict(analysis, "annual", term = "eAbundanceM1") |>
     dplyr::mutate(class = "M1")
-  abundance_M2 <- embr::predict(analysis, "annual", term = "eAbundanceM2") |> 
+  abundance_M2 <- embr::predict(analysis, "annual", term = "eAbundanceM2") |>
     dplyr::mutate(class = "M2")
-  abundance_M3 <- embr::predict(analysis, "annual", term = "eAbundanceM3") |> 
+  abundance_M3 <- embr::predict(analysis, "annual", term = "eAbundanceM3") |>
     dplyr::mutate(class = "M3")
-  abundance_MA <- embr::predict(analysis, "annual", term = "eAbundanceMA") |> 
+  abundance_MA <- embr::predict(analysis, "annual", term = "eAbundanceMA") |>
     dplyr::mutate(class = "MA")
-  
-  abundance <- 
+
+  abundance <-
     dplyr::bind_rows(
-      abundance_F0, abundance_F1, abundance_FA, 
+      abundance_F0, abundance_F1, abundance_FA,
       abundance_M0, abundance_M1, abundance_M2, abundance_M3, abundance_MA
-    ) |> 
+    ) |>
     dplyr::select("annual", "class", "estimate", "lower", "upper")
-  
+
   abundance
 }

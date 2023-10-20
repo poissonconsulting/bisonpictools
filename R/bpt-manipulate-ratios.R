@@ -40,20 +40,19 @@
 #'   study_years = "2020-2021",
 #'   locations = "LOCID1"
 #' )
-bpt_manipulate_ratios <-function(
+bpt_manipulate_ratios <- function(
     data,
     numerator,
     denominator,
     study_years = unique(data$study_year),
-    locations = unique(data$location_id)
-) {
-    chk::chk_data(data)
-    chk::chk_character(numerator)
-    chk::chk_character(denominator)
-    chk::chk_character_or_factor(study_years)
-    chk::chk_character_or_factor(locations)
-    chk::chk_subset(study_years, data$study_year)
-    chk::chk_subset(locations, data$location_id)
+    locations = unique(data$location_id)) {
+  chk::chk_data(data)
+  chk::chk_character(numerator)
+  chk::chk_character(denominator)
+  chk::chk_character_or_factor(study_years)
+  chk::chk_character_or_factor(locations)
+  chk::chk_subset(study_years, data$study_year)
+  chk::chk_subset(locations, data$location_id)
 
   class_numerator <- all(
     numerator %in%

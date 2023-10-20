@@ -123,9 +123,9 @@ bpt_predict_abundance_total(analysis)
 ```{r, eval = FALSE}
 # Can predict other values using the following functions
 bpt_predict_abundance_class(analysis) # Predicts abundance by class
-bpt_predict_survival(analysis)        # Predicts survival rates
-bpt_predict_fecundity(analysis)       # Predicts fecundity rate and proportion of reproductive cows
-bpt_predict_ratios(analysis)          # Predicts population ratios
+bpt_predict_survival(analysis) # Predicts survival rates
+bpt_predict_fecundity(analysis) # Predicts fecundity rate and proportion of reproductive cows
+bpt_predict_ratios(analysis) # Predicts population ratios
 ```
 
 

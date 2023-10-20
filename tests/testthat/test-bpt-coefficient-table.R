@@ -26,4 +26,3 @@ test_that("lower CI is less that estimate", {
 test_that("upper CI is greater than estimate", {
   expect_true(all(coef_table$upper >= coef_table$estimate))
 })
-

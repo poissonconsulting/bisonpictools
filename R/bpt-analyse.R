@@ -16,14 +16,14 @@
 #'   study years
 #' @param proportion_calf_day_of_year integer vector of proportion of calf days
 #'   of year
-#' @param analysis_mode character string of analysis mode, either "debug", 
-#' "check", or "report". Run firstin "debug" mode to ensure that the model 
-#' samples. Next, run in "report" mode to sample the full number of iterations. 
+#' @param analysis_mode character string of analysis mode, either "debug",
+#' "check", or "report". Run firstin "debug" mode to ensure that the model
+#' samples. Next, run in "report" mode to sample the full number of iterations.
 #'
 #' @return an `smb.analysis` object
 #' @export
 #'
-#' @examples 
+#' @examples
 #' \dontrun{
 #' bpt_analyse(
 #'   event_data = bpt_event_data,
@@ -38,10 +38,10 @@
 #'   proportion_calf_day_of_year = c(365L, 365L),
 #'   nthin = 1L,
 #'   analysis_mode = "quick"
-#'   )
+#' )
 #' }
 bpt_analyse <- function(
-    event_data, 
+    event_data,
     location_data,
     census,
     census_cv,
@@ -52,16 +52,14 @@ bpt_analyse <- function(
     proportion_calf_study_year,
     proportion_calf_day_of_year,
     nthin = 1L,
-    analysis_mode = "report"
-) {
-  
+    analysis_mode = "report") {
   chk::chk_integer(nthin)
   chk::chk_gte(nthin, 1L)
   chk::chk_subset(analysis_mode, c("report", "quick", "debug"))
-  
+
   data <- bpt_manipulate_data_analysis(event_data, location_data)
   levels_annual <- levels(data$annual)
-  
+
   model <- embr::model(
     code = readr::read_file(
       system.file(package = "bisonpictools", "stan/model.stan")
@@ -70,7 +68,7 @@ bpt_analyse <- function(
       data$nclass <- 8L
       data$nannual_minus_1 <- data$nannual - 1
       data <- bpt_modify_data(
-        data = data, 
+        data = data,
         levels_annual = levels_annual,
         census = census,
         census_cv = census_cv,
@@ -93,9 +91,9 @@ bpt_analyse <- function(
       eAbundanceM2[i] <- bPopulationAnnual[6, annual[i]]
       eAbundanceM3[i] <- bPopulationAnnual[7, annual[i]]
       eAbundanceMA[i] <- bPopulationAnnual[8, annual[i]]
-  
+
       eAbundance[i] <- eAbundanceF0[i] + eAbundanceF1[i] + eAbundanceFA[i] + eAbundanceM1[i] + eAbundanceM2[i] + eAbundanceM3[i] + eAbundanceMA[i]
-  
+
       m0_f0[i] <- bPropVecMar31[annual[i], 4] / bPropVecMar31[annual[i], 1]
       m1_f1[i] <- bPropVecMar31[annual[i], 5] / bPropVecMar31[annual[i], 2]
       calf_fa[i] <- (bPropVecMar31[annual[i], 1] + bPropVecMar31[annual[i], 4]) / bPropVecMar31[annual[i], 3]
@@ -103,11 +101,11 @@ bpt_analyse <- function(
       m2_fa[i] <- bPropVecMar31[annual[i], 6] / bPropVecMar31[annual[i], 3]
       m3_fa[i] <- bPropVecMar31[annual[i], 7] / bPropVecMar31[annual[i], 3]
       ma_fa[i] <- bPropVecMar31[annual[i], 8] / bPropVecMar31[annual[i], 3]
-  
+
       PredFecundityReproductiveFA[i] <- inv_logit(bFecundityReproductiveFA)
       ePropReproductiveFA[i] <- bPropReproductiveFA
       eInitialMortalityCalf[i] <- inv_logit(bInitialMortalityCalfAnnual[annual[i]])
-      
+
       PredSurvF0Annual[i] <- inv_logit(bSurvF0Annual[annual[i]]) * (1 - eInitialMortalityCalf[i])
       PredSurvM0Annual[i] <- inv_logit(bSurvM0Annual[annual[i]]) * (1 - eInitialMortalityCalf[i])
       PredSurvF1Annual[i] <- inv_logit(bSurvF1Annual[annual[i]])
@@ -115,35 +113,35 @@ bpt_analyse <- function(
       PredSurvFAAnnual[i] <- inv_logit(bSurvFAAnnual[annual[i]])
       PredSurvBullAnnual[i] <- inv_logit(bSurvBullAnnual[annual[i]])
       eMAPresence[i] <- bMAPresence[season[i]]
-  
+
       m0f0_doy[i] <- bPropVecDoy[id[i], 4] / bPropVecDoy[id[i], 1]
-  
+
       # prop calf
       prop_calf[i] <- bPropVecAnnual[annual[i], 1] + bPropVecAnnual[annual[i], 4]
   }",
-  new_expr_vec = TRUE,
-  select_data = list(
-    id = factor(),
-    f0 = 1L,
-    m0 = 1L,
-    calf = 1L,
-    f1 = 1L,
-    m1 = 1L,
-    yearling = 1L,
-    fa = 1L,
-    m2 = 1L,
-    m3 = 1L,
-    ma = 1L,
-    adult = 1L,
-    doy = c(1L, 365L),
-    groupsize_total = 1L,
-    annual = factor(),
-    season = factor()
+    new_expr_vec = TRUE,
+    select_data = list(
+      id = factor(),
+      f0 = 1L,
+      m0 = 1L,
+      calf = 1L,
+      f1 = 1L,
+      m1 = 1L,
+      yearling = 1L,
+      fa = 1L,
+      m2 = 1L,
+      m3 = 1L,
+      ma = 1L,
+      adult = 1L,
+      doy = c(1L, 365L),
+      groupsize_total = 1L,
+      annual = factor(),
+      season = factor()
+    )
   )
-  )
-  
+
   embr::set_analysis_mode(analysis_mode)
   analysis <- embr::analyse(model, data = data, nthin = nthin)
-  
+
   analysis
 }

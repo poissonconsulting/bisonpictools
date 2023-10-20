@@ -18,7 +18,7 @@ test_that("prediction has nannual * nclass rows", {
 
 test_that("prediction has correct columns", {
   expect_equal(
-    colnames(preds), 
+    colnames(preds),
     c("annual", "class", "estimate", "lower", "upper")
   )
 })

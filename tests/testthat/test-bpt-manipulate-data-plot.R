@@ -59,7 +59,7 @@ test_that("errors with character latitude column", {
   expect_chk_error(
     bpt_manipulate_data_plot(
       event_data = bpt_event_data,
-      location_data = bpt_location_data |> 
+      location_data = bpt_location_data |>
         dplyr::mutate(latitude = letters[seq_len(nrow(bpt_location_data))])
     ),
     "The following values in column 'latitude' should be a number: 'a', 'b', 'c' and 'd'."
@@ -70,7 +70,7 @@ test_that("errors with character longitude column", {
   expect_chk_error(
     bpt_manipulate_data_plot(
       event_data = bpt_event_data,
-      location_data = bpt_location_data |> 
+      location_data = bpt_location_data |>
         dplyr::mutate(longitude = letters[seq_len(nrow(bpt_location_data))])
     ),
     "The following values in column 'longitude' should be a number: 'a', 'b', 'c' and 'd'."

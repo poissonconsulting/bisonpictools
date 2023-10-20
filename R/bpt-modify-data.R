@@ -1,6 +1,6 @@
 #' Modify data for plot
 #'
-#' @param data data in list form 
+#' @param data data in list form
 #' @param levels_annual levels of the annual factor in data
 #' @param census integer vector of census values
 #' @param census_cv numeric vector of census coefficients of variation
@@ -20,7 +20,7 @@
 #' \dontrun{
 #' bpt_modify_data(
 #'   data = list(
-#'    annual = factor(c("2021-2022", "2022-2023"))
+#'     annual = factor(c("2021-2022", "2022-2023"))
 #'   ),
 #'   levels_annual = c("2021-2022", "2022-2023"),
 #'   census = 272L,
@@ -43,25 +43,24 @@ bpt_modify_data <- function(
     proportion_calf,
     proportion_calf_cv,
     proportion_calf_study_year,
-    proportion_calf_day_of_year = rep(365L, length(proportion_calf))
-) {
+    proportion_calf_day_of_year = rep(365L, length(proportion_calf))) {
   chk::chk_list(data)
   df <- base::is.data.frame(data)
   if (df) stop("Data must be in a list format as passed through embr::analyse()")
-  
+
   chk::chk_compatible_lengths(
-    census, 
-    census_cv, 
-    census_study_year, 
+    census,
+    census_cv,
+    census_study_year,
     census_day_of_year
   )
   chk::chk_compatible_lengths(
-    proportion_calf, 
-    proportion_calf_cv, 
-    proportion_calf_study_year, 
+    proportion_calf,
+    proportion_calf_cv,
+    proportion_calf_study_year,
     proportion_calf_day_of_year
   )
-  
+
   chk::chk_integer(census)
   chk::chk_numeric(census_cv)
   chk::chk_gt(census_cv, 0)
@@ -77,41 +76,41 @@ bpt_modify_data <- function(
   chk::chk_subset(proportion_calf_study_year, levels_annual)
   chk::chk_integer(proportion_calf_day_of_year)
   chk::chk_subset(proportion_calf_day_of_year, 1:365)
-  
+
   ncensus <- base::length(census)
   nprop_calf <- base::length(proportion_calf)
-  
+
   sCensus <- census_cv * census
   sPropCalf <- proportion_calf_cv * proportion_calf
-  
+
   annual_census <- base::array(
     base::as.integer(
       base::factor(
-        census_study_year, 
+        census_study_year,
         levels = levels_annual
       )
-    ), 
+    ),
     dim = ncensus
   )
-  
+
   annual_prop_calf <- base::array(
     base::as.integer(
       base::factor(
-        proportion_calf_study_year, 
+        proportion_calf_study_year,
         levels = levels_annual
       )
-    ), 
+    ),
     dim = nprop_calf
   )
-  
+
   census <- base::array(census, dim = ncensus)
   sCensus <- base::array(sCensus, dim = ncensus)
   doy_census <- base::array(census_day_of_year, dim = ncensus)
-  
+
   proportion_calf <- base::array(proportion_calf, dim = nprop_calf)
   sPropCalf <- base::array(sPropCalf, dim = nprop_calf)
   doy_prop_calf <- base::array(proportion_calf_day_of_year, dim = nprop_calf)
-  
+
   data$ncensus <- ncensus
   data$census <- census
   data$sCensus <- sCensus
@@ -122,6 +121,6 @@ bpt_modify_data <- function(
   data$sPropCalf <- sPropCalf
   data$annual_prop_calf <- annual_prop_calf
   data$doy_prop_calf <- doy_prop_calf
-  
+
   data
 }

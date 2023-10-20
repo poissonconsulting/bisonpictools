@@ -1,5 +1,5 @@
 #' Save analysis object
-#' 
+#'
 #' Saves analysis object to the file location specified by `file`.
 #'
 #' @param analysis analysis object from `bpt_analyse()`
@@ -7,7 +7,7 @@
 #'
 #' @export
 #'
-#' @examples 
+#' @examples
 #' \dontrun{
 #' bpt_save_analysis(analysis, "output/analysis")
 #' }

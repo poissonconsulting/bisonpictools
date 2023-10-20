@@ -3,7 +3,7 @@
 #'
 #' @param analysis the analysis object from `bpt_analyse()`
 #'
-#' @return a tibble of coefficients with columns: 
+#' @return a tibble of coefficients with columns:
 #'  - `term` the name of the term
 #'  - `estimate` the median posterior estimate
 #'  - `lower` the lower 95% credible interval
@@ -12,11 +12,11 @@
 #'    - an s-value of 4.32 bits is equivalent to a p-value of 0.05
 #' @export
 #'
-#' @examples 
+#' @examples
 #' \dontrun{
 #' bpt_coefficient_table(analysis)
 #' }
 bpt_coefficient_table <- function(analysis) {
-  coef <- coef(analysis, simplify = TRUE) 
+  coef <- coef(analysis, simplify = TRUE)
   coef
 }

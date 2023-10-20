@@ -18,7 +18,7 @@ test_that("prediction has correct number of rows", {
 
 test_that("prediction has correct columns", {
   expect_equal(
-    colnames(preds), 
+    colnames(preds),
     c("rate", "estimate", "lower", "upper")
   )
 })

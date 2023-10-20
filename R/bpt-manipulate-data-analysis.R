@@ -1,5 +1,5 @@
 #' Prepare Data for Analysis
-#' 
+#'
 #' Checks that data is in the correct format and manipulates it for analysis.
 #'
 #' @param event_data a tibble of templated event data
@@ -15,11 +15,11 @@
 #' )
 bpt_manipulate_data_analysis <- function(event_data, location_data) {
   data <- bpt_check_data(
-    event = event_data, 
-    location = location_data, 
+    event = event_data,
+    location = location_data,
     complete = TRUE
   )
-  
+
   seasons_long <-
     bpt_seasons() |>
     dplyr::group_by(.data$season) |>
@@ -47,8 +47,8 @@ bpt_manipulate_data_analysis <- function(event_data, location_data) {
       ),
       year = dttr2::dtt_year(.data$datetime_start),
       annual = dttr2::dtt_study_year(
-        .data$datetime_start, 
-        start = 4L, 
+        .data$datetime_start,
+        start = 4L,
         full = TRUE
       ),
       dayte = dttr2::dtt_dayte(.data$datetime_start),
