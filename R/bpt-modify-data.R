@@ -45,6 +45,10 @@ bpt_modify_data <- function(
     proportion_calf_study_year,
     proportion_calf_day_of_year = rep(365L, length(proportion_calf))
 ) {
+  chk::chk_list(data)
+  df <- base::is.data.frame(data)
+  if (df) stop("Data must be in a list format as passed through embr::analyse()")
+  
   chk::chk_compatible_lengths(
     census, 
     census_cv, 
