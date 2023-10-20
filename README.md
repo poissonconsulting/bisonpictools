@@ -98,50 +98,7 @@ event_data <- readr::read_csv(file.path(dir, "event_data.csv"))
 location_data <- readr::read_csv(file.path(dir, "location_data.csv"))
 ```
 
-# Put this in the vignette
-
-Run the analysis:
-
-- `nthin` controls the thinning of the MCMC samples;
-
-  - `nthin = 1L` saves all samples
-  - increase `nthin` if model is not converging
-
-- `event_data` is the camera trap event data frame saved from the first
-  app
-
-- `location_data` is the location data frame saved from the first app
-
-- `census` is the number of bison in the herd from census counts
-
-- `census_cv` is the coefficient of variation of the census counts
-  (standard deviation / estimate)
-
-- `census_study_year` is the study year of the census counts (study year
-  starts on Apr. 1)
-
-- `census_day_of_year` is the day of the year of the census counts
-  (first day of year is Apr. 1).
-
-  - E.g. if the census was on the last day of March in 2023,
-  - `census_study_year` = “2022-2023”
-  - `census_day_of_year` = 365L
-
-- `proportion_calf` is the proportion of calves in the herd
-
-- `proportion_calf_cv` is the coefficient of variation of the proportion
-  of calves in the herd
-
-- `proportion_calf_study_year` is the study year of the proportion of
-  calves in the herd (study year starts on Apr. 1)
-
-- `proportion_calf_day_of_year` is the day of the year of the proportion
-  of calves in the herd (first day of year is Apr. 1).
-
-  - E.g. if the proportion of calves was estimated on the last day of
-    March in 2022,
-  - `proportion_calf_study_year` = “2021-2022”
-  - `proportion_calf_day_of_year` = 365L
+Run the analysis
 
 ``` r
 analysis <- bpt_analyse(
@@ -156,49 +113,74 @@ analysis <- bpt_analyse(
   proportion_calf_study_year = c("2020-2021", "2021-2022"),
   proportion_calf_day_of_year = c(365L, 365L),
   nthin = 1L,
-  analysis_mode = "quick"
+  analysis_mode = "report"
 )
 ```
 
 ``` r
 # Save analysis object
-bpt_save_analysis(analysis, file = "analysis")
-# Load one too
+bpt_save_analysis(analysis, file = "file_path/analysis")
 ```
 
-## Plot predictions
+``` r
+# Predict total abundance
+bpt_predict_abundance_total(analysis)
+```
+
+    ## # A tibble: 4 × 4
+    ##   annual    estimate lower upper
+    ##   <fct>        <dbl> <dbl> <dbl>
+    ## 1 2018-2019     218.  176.  241.
+    ## 2 2019-2020     244.  187.  275.
+    ## 3 2020-2021     269.  205.  304.
+    ## 4 2021-2022     277.  207.  312.
+
+``` r
+# Can predict other values using the following functions
+bpt_predict_abundance_class(analysis) # Predicts abundance by class
+bpt_predict_survival(analysis)        # Predicts survival rates
+bpt_predict_fecundity(analysis)       # Predicts fecundity rate and proportion of reproductive cows
+bpt_predict_ratios(analysis)          # Predicts population ratios
+```
+
+## Plot Predictions
+
+``` r
+# Load analysis object
+bpt_load_analysis("file_path/analysis")
+```
 
 ``` r
 # Plot predicted abundances by class
 bpt_plot_predictions(analysis, prediction = "abundance-class")
 ```
 
-![](README_files/figure-gfm/unnamed-chunk-11-1.png)<!-- -->
+![](README_files/figure-gfm/unnamed-chunk-14-1.png)<!-- -->
 
 ``` r
 # Plot total abundance
 bpt_plot_predictions(analysis, prediction = "abundance-total")
 ```
 
-![](README_files/figure-gfm/unnamed-chunk-12-1.png)<!-- -->
+![](README_files/figure-gfm/unnamed-chunk-15-1.png)<!-- -->
 
 ``` r
 # Plot survival rates
 bpt_plot_predictions(analysis, prediction = "survival")
 ```
 
-![](README_files/figure-gfm/unnamed-chunk-13-1.png)<!-- -->
+![](README_files/figure-gfm/unnamed-chunk-16-1.png)<!-- -->
 
 ``` r
 # Plot fecundity rates
 bpt_plot_predictions(analysis, prediction = "fecundity")
 ```
 
-![](README_files/figure-gfm/unnamed-chunk-14-1.png)<!-- -->
+![](README_files/figure-gfm/unnamed-chunk-17-1.png)<!-- -->
 
 ``` r
 # Plot ratios
 bpt_plot_predictions(analysis, prediction = "ratios")
 ```
 
-![](README_files/figure-gfm/unnamed-chunk-15-1.png)<!-- -->
+![](README_files/figure-gfm/unnamed-chunk-18-1.png)<!-- -->

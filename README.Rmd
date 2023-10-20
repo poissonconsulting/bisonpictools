@@ -78,37 +78,13 @@ install.packages("rstan")
 Read in data saved from the hosted app 
 
 ```{r, eval = FALSE}
-# Change this directory to the folder where you have saved the data
+# Change `dir` to the folder where you have saved the data
 dir <- "myfilepath"
 event_data <- readr::read_csv(file.path(dir, "event_data.csv"))
 location_data <- readr::read_csv(file.path(dir, "location_data.csv"))
 ```
 
-
-# Put this in the vignette
-Run the analysis:
-
-- `nthin` controls the thinning of the MCMC samples; 
-  - `nthin = 1L` saves all samples
-  - increase `nthin` if model is not converging
-  
-- `event_data` is the camera trap event data frame saved from the first app
-- `location_data` is the location data frame saved from the first app
-
-- `census` is the number of bison in the herd from census counts
-- `census_cv` is the coefficient of variation of the census counts (standard deviation / estimate)
-- `census_study_year` is the study year of the census counts (study year starts on Apr. 1)
-- `census_day_of_year` is the day of the year of the census counts (first day of year is Apr. 1). 
-  - E.g. if the census was on the last day of March in 2023,
-  - `census_study_year` = "2022-2023"
-  - `census_day_of_year` = 365L
-- `proportion_calf` is the proportion of calves in the herd
-- `proportion_calf_cv` is the coefficient of variation of the proportion of calves in the herd
-- `proportion_calf_study_year` is the study year of the proportion of calves in the herd (study year starts on Apr. 1)
-- `proportion_calf_day_of_year` is the day of the year of the proportion of calves in the herd (first day of year is Apr. 1). 
-  - E.g. if the proportion of calves was estimated on the last day of March in 2022,
-  - `proportion_calf_study_year` = "2021-2022"
-  - `proportion_calf_day_of_year` = 365L
+Run the analysis
 
 ```{r, eval = FALSE}
 analysis <- bpt_analyse(
@@ -123,22 +99,42 @@ analysis <- bpt_analyse(
   proportion_calf_study_year = c("2020-2021", "2021-2022"),
   proportion_calf_day_of_year = c(365L, 365L),
   nthin = 1L,
-  analysis_mode = "quick"
+  analysis_mode = "report"
 )
 ```
 ```{r, echo = FALSE}
 analysis <- readRDS(file = system.file(package = "bisonpictools", "test-objects/analysis.RDS"))
 ```
 
+Save the analysis object
 
 ```{r, eval = FALSE}
 # Save analysis object
-bpt_save_analysis(analysis, file = "analysis")
-# Load one too
-
+bpt_save_analysis(analysis, file = "file_path/analysis")
 ```
 
-## Plot predictions
+Make predictions 
+
+```{r}
+# Predict total abundance
+bpt_predict_abundance_total(analysis)
+```
+
+```{r, eval = FALSE}
+# Can predict other values using the following functions
+bpt_predict_abundance_class(analysis) # Predicts abundance by class
+bpt_predict_survival(analysis)        # Predicts survival rates
+bpt_predict_fecundity(analysis)       # Predicts fecundity rate and proportion of reproductive cows
+bpt_predict_ratios(analysis)          # Predicts population ratios
+```
+
+
+## Plot Predictions
+
+```{r, eval = FALSE}
+# Load analysis object
+bpt_load_analysis("file_path/analysis")
+```
 
 ```{r}
 # Plot predicted abundances by class
