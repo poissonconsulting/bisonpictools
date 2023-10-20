@@ -92,7 +92,7 @@ install.packages("rstan")
 Read in data saved from the hosted app
 
 ``` r
-# Change this directory to the folder where you have saved the data
+# Change `dir` to the folder where you have saved the data
 dir <- "myfilepath"
 event_data <- readr::read_csv(file.path(dir, "event_data.csv"))
 location_data <- readr::read_csv(file.path(dir, "location_data.csv"))
@@ -117,10 +117,14 @@ analysis <- bpt_analyse(
 )
 ```
 
+Save the analysis object
+
 ``` r
 # Save analysis object
 bpt_save_analysis(analysis, file = "file_path/analysis")
 ```
+
+Make predictions
 
 ``` r
 # Predict total abundance
