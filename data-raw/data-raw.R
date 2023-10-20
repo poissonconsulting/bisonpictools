@@ -1,7 +1,7 @@
 ## code to prepare `bpt_event_data` dataset goes here
 path <- system.file(
   package = "bisonpictools",
-  "data-raw/data-raw.xlsx"
+  "example-data/data-raw.xlsx"
 )
 
 sheets <- readxl::excel_sheets(path)
