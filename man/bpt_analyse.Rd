@@ -70,6 +70,6 @@ bpt_analyse(
   proportion_calf_day_of_year = c(365L, 365L),
   nthin = 1L,
   analysis_mode = "quick"
-  )
+)
 }
 }

@@ -51,7 +51,7 @@ Modify data for plot
 \dontrun{
 bpt_modify_data(
   data = list(
-   annual = factor(c("2021-2022", "2022-2023"))
+    annual = factor(c("2021-2022", "2022-2023"))
   ),
   levels_annual = c("2021-2022", "2022-2023"),
   census = 272L,

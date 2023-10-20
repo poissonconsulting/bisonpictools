@@ -45,7 +45,7 @@ bpt_plot_ratios(
   numerator = c("f0", "m0", "u0"),
   denominator = c("fa")
 )
-# Plot ratio of female:(male + female) of yearlings in 2021 at site RBLH007 only
+# Plot ratio of female:(male + female) of yearlings in 2021 at site RBLH007
 bpt_plot_ratios(
   event_data = bpt_event_data,
   location_data = bpt_location_data,
