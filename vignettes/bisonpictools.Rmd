@@ -1,0 +1,44 @@
+---
+title: "bisonpictools"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{bisonpictools}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(bisonpictools)
+```
+
+
+## Analysis
+
+- `nthin` controls the thinning of the MCMC samples; 
+  - `nthin = 1L` saves all samples
+  - increase `nthin` if model is not converging
+  
+- `event_data` is the camera trap event data frame saved from the first app
+- `location_data` is the location data frame saved from the first app
+
+- `census` is the number of bison in the herd from census counts
+- `census_cv` is the coefficient of variation of the census counts (standard deviation / estimate)
+- `census_study_year` is the study year of the census counts (study year starts on Apr. 1)
+- `census_day_of_year` is the day of the year of the census counts (first day of year is Apr. 1). 
+  - E.g. if the census was on the last day of March in 2023,
+  - `census_study_year` = "2022-2023"
+  - `census_day_of_year` = 365L
+- `proportion_calf` is the proportion of calves in the herd
+- `proportion_calf_cv` is the coefficient of variation of the proportion of calves in the herd
+- `proportion_calf_study_year` is the study year of the proportion of calves in the herd (study year starts on Apr. 1)
+- `proportion_calf_day_of_year` is the day of the year of the proportion of calves in the herd (first day of year is Apr. 1). 
+  - E.g. if the proportion of calves was estimated on the last day of March in 2022,
+  - `proportion_calf_study_year` = "2021-2022"
+  - `proportion_calf_day_of_year` = 365L
