@@ -26,6 +26,7 @@ Imports:
     readr,
     rlang,
     sf,
+    smbr,
     stringr,
     tidyr,
     units
@@ -37,8 +38,9 @@ Remotes:
     poissonconsulting/dttr2,
     poissonconsulting/embr,
     poissonconsulting/newdata
+    poissonconsulting/smbr
 Depends: 
-    R (>= 3.4.0)
+    R (>= 3.5.0)
 LazyData: true
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
