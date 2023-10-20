@@ -5,7 +5,6 @@
 \title{Fit Integrated Population Model}
 \usage{
 bpt_analyse(
-  nthin = 1L,
   event_data,
   location_data,
   census,
@@ -15,12 +14,12 @@ bpt_analyse(
   proportion_calf,
   proportion_calf_cv,
   proportion_calf_study_year,
-  proportion_calf_day_of_year
+  proportion_calf_day_of_year,
+  nthin = 1L,
+  analysis_mode = "report"
 )
 }
 \arguments{
-\item{nthin}{thinning rate}
-
 \item{event_data}{tibble of templated event data}
 
 \item{location_data}{tibble of templated location data}
@@ -43,6 +42,12 @@ study years}
 
 \item{proportion_calf_day_of_year}{integer vector of proportion of calf days
 of year}
+
+\item{nthin}{thinning rate}
+
+\item{analysis_mode}{character string of analysis mode, either "debug",
+"check", or "report". Run firstin "debug" mode to ensure that the model
+samples. Next, run in "report" mode to sample the full number of iterations.}
 }
 \value{
 an \code{smb.analysis} object
@@ -53,7 +58,6 @@ Fits the integrated population model to data
 \examples{
 \dontrun{
 bpt_analyse(
-  nthin = 1L,
   event_data = bpt_event_data,
   location_data = bpt_location_data,
   census = 200L,
@@ -63,7 +67,9 @@ bpt_analyse(
   proportion_calf = c(0.201, 0.168),
   proportion_calf_cv = c(0.5, 0.5),
   proportion_calf_study_year = c("2020-2021", "2021-2022"),
-  proportion_calf_day_of_year = c(365L, 365L)
+  proportion_calf_day_of_year = c(365L, 365L),
+  nthin = 1L,
+  analysis_mode = "quick"
   )
 }
 }
