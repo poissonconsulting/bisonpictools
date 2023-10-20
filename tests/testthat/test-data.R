@@ -16,3 +16,24 @@ test_that("confirm template is a list with two data frames in it", {
   expect_s3_class(template[[1]], c("tbl_df", "tbl", "data.frame"))
   expect_s3_class(template[[2]], c("tbl_df", "tbl", "data.frame"))
 })
+
+test_that("confirm raw data is the same as the excel file", {
+  path <- system.file(
+    package = "bisonpictools",
+    "example-data/data-raw.xlsx"
+  )
+  sheets <- readxl::excel_sheets(path)
+  data_excel <- lapply(sheets, function(x) readxl::read_excel(path, x))
+  names(data_excel) <- sheets
+  
+  expect_identical(data_excel$location, bpt_location_data)
+  expect_identical(data_excel$event, bpt_event_data)
+})
+
+test_that("confirm bpt_event_data is a tibble", {
+  expect_s3_class(bpt_event_data, c("tbl_df", "tbl", "data.frame"))
+})
+
+test_that("confirm bpt_location_data is a tibble", {
+  expect_s3_class(bpt_location_data, c("tbl_df", "tbl", "data.frame"))
+})
