@@ -17,7 +17,7 @@
 #' @param proportion_calf_day_of_year integer vector of proportion of calf days
 #'   of year
 #' @param analysis_mode character string of analysis mode, either "debug",
-#' "check", or "report". Run firstin "debug" mode to ensure that the model
+#' "check", or "report". Run first in "debug" mode to ensure that the model
 #' samples. Next, run in "report" mode to sample the full number of iterations.
 #'
 #' @return an `smb.analysis` object
