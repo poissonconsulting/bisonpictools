@@ -1,5 +1,5 @@
 analysis <- readRDS(
-  file = system.file(package = "bisonpictools", "test-objects/analysis.rds")
+  file = system.file(package = "bisonpictools", "test-objects/analysis.RDS")
 )
 
 test_that("plot predicted total abundances", {
