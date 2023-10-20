@@ -6,6 +6,15 @@ test_that("plot ratios cow:bull", {
     denominator = "ma"
   )
   expect_s3_class(plot, "ggplot")
+})
+
+test_that("plot ratios cow:bull", {
+  plot <- bpt_plot_ratios(
+    event_data = bpt_event_data,
+    location_data = bpt_location_data,
+    numerator = "fa",
+    denominator = "ma"
+  )
   expect_snapshot_plot(plot, "plot_cow_bull")
 })
 
