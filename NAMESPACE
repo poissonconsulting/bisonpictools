@@ -3,6 +3,7 @@
 export(bpt_analyse)
 export(bpt_check_data)
 export(bpt_coefficient_table)
+export(bpt_load_analysis)
 export(bpt_location_matrix)
 export(bpt_manipulate_data_analysis)
 export(bpt_manipulate_data_plot)
