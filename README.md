@@ -32,8 +32,6 @@ library(bisonpictools)
 bpt_plot_ratios(
   bpt_event_data,
   bpt_location_data,
-  bpt_census_data,
-  bpt_proportion_calf_data,
   numerator = "fa",
   denominator = "ma"
 )
@@ -48,8 +46,6 @@ trap locations and/or study years:
 bpt_plot_ratios(
   bpt_event_data,
   bpt_location_data,
-  bpt_census_data,
-  bpt_proportion_calf_data,
   numerator = "fa",
   denominator = "ma",
   study_years = "2019-2020",
@@ -66,8 +62,6 @@ example, this plots the calf:(cow + calf) ratio:
 bpt_plot_ratios(
   bpt_event_data,
   bpt_location_data,
-  bpt_census_data,
-  bpt_proportion_calf_data,
   numerator = c("f0", "m0", "u0"),
   denominator = c("fa")
 )
