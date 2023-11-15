@@ -3,7 +3,8 @@
 #' Saves analysis object to the file location specified by `file`.
 #'
 #' @param analysis analysis object from `bpt_analyse()`
-#' @param file name of the file where the analysis object is saved to
+#' @param file file path to save analysis object to (file extension added 
+#' automatically)
 #'
 #' @export
 #'
