@@ -11,5 +11,5 @@
 #'   \item{census}{Estimated census count}
 #'   \item{census_cv}{Coefficient of variation (standard deviation / estimate) of census estimate}
 #' }
-#' 
+#'
 "bpt_census_data"

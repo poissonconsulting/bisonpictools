@@ -15,7 +15,7 @@ test_that("NULL inputs throw error", {
 
 
 test_that("error thrown if study years of census data don't match those of event data", {
-  census_data <- bpt_census_data |> 
+  census_data <- bpt_census_data |>
     dplyr::mutate(census_year = c(2030, 2031))
   expect_chk_error(
     bpt_check_study_year(bpt_event_data, census_data, bpt_proportion_calf_data),
@@ -24,7 +24,7 @@ test_that("error thrown if study years of census data don't match those of event
 })
 
 test_that("error thrown if study years of census data don't match those of event data", {
-  prop_calf_data <- bpt_proportion_calf_data |> 
+  prop_calf_data <- bpt_proportion_calf_data |>
     dplyr::mutate(proportion_calf_year = c(2030, 2031))
   expect_chk_error(
     bpt_check_study_year(bpt_event_data, bpt_census_data, prop_calf_data),

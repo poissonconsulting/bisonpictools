@@ -1,5 +1,5 @@
 #' Sample Data for calf proportion data
-#' 
+#'
 #' A data set of invented calf proportion data
 #'
 #' @format
@@ -11,5 +11,5 @@
 #'   \item{proportion_calf}{Estimated calf proportion}
 #'   \item{proportion_calf_cv}{Coefficient of variation (standard deviation / estimate) of calf proportion estimate}
 #' }
-#' 
+#'
 "bpt_proportion_calf_data"

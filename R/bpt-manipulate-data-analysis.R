@@ -18,11 +18,10 @@
 #'   proportion_calf_data = bpt_proportion_calf_data
 #' )
 bpt_manipulate_data_analysis <- function(
-    event_data, 
+    event_data,
     location_data,
     census_data,
-    proportion_calf_data
-) {
+    proportion_calf_data) {
   data <- bpt_check_data(
     event = event_data,
     location = location_data,
@@ -32,8 +31,8 @@ bpt_manipulate_data_analysis <- function(
     join = TRUE,
     check_study_years = TRUE
   )
-  
-  census_data <- data$census |> 
+
+  census_data <- data$census |>
     dplyr::mutate(
       date = dttr2::dtt_date_from_ints(
         year = .data$census_year,
@@ -45,16 +44,16 @@ bpt_manipulate_data_analysis <- function(
         dttr2::dtt_doy(dttr2::dtt_date("2019-04-01")),
       doy = dplyr::if_else(.data$doy < 0, .data$doy + 365, .data$doy),
       census_doy = base::as.integer(.data$doy),
-    ) |> 
+    ) |>
     dplyr::select(
       "census", "census_cv", "census_study_year", "census_doy"
     )
-  
-  prop_calf_data <- data$proportion_calf |> 
+
+  prop_calf_data <- data$proportion_calf |>
     dplyr::rename(
       prop_calf = "proportion_calf",
       prop_calf_cv = "proportion_calf_cv",
-    ) |> 
+    ) |>
     dplyr::mutate(
       date = dttr2::dtt_date_from_ints(
         year = .data$proportion_calf_year,
@@ -66,7 +65,7 @@ bpt_manipulate_data_analysis <- function(
         dttr2::dtt_doy(dttr2::dtt_date("2019-04-01")),
       doy = dplyr::if_else(.data$doy < 0, .data$doy + 365, .data$doy),
       prop_calf_doy = base::as.integer(.data$doy),
-    ) |> 
+    ) |>
     dplyr::select(
       "prop_calf", "prop_calf_cv", "prop_calf_study_year", "prop_calf_doy"
     )
@@ -155,7 +154,7 @@ bpt_manipulate_data_analysis <- function(
     )
 
   chk::chk_not_any_na(data)
-  
+
   chk::chk_all(
     c(census_data$census_study_year, prop_calf_data$prop_calf_study_year),
     chk_fun = chk::chk_subset,
@@ -167,6 +166,6 @@ bpt_manipulate_data_analysis <- function(
     census_data = census_data,
     prop_calf_data = prop_calf_data
   )
-  
+
   data_list
 }

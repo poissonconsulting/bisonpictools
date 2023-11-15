@@ -14,7 +14,7 @@ bpt_study_years <- function(data) {
   event <- try(bpt_check_data(event = data), silent = TRUE)
   census <- try(bpt_check_data(census = data), silent = TRUE)
   proportion_calf <- try(bpt_check_data(proportion_calf = data), silent = TRUE)
-  
+
   if (!inherits(event, "try-error")) {
     event <- event$event
     event$datetime_start <- dttr2::dtt_date_time_from_ints(

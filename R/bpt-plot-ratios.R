@@ -56,10 +56,9 @@ bpt_plot_ratios <- function(
     numerator,
     denominator,
     study_years = bpt_study_years(event_data),
-    locations = unique(location_data$location_id)
-) {
+    locations = unique(location_data$location_id)) {
   data <- bpt_manipulate_data_plot(
-    event_data, 
+    event_data,
     location_data
   )
 

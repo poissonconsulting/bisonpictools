@@ -125,9 +125,9 @@ test_that("census table only passed", {
     census = c(200L, 140L),
     census_cv = c(0.2, 0.1)
   )
-  
+
   census <- bpt_check_data(census = census_data, complete = FALSE)
-  
+
   expect_type(census, "list")
   expect_identical(census$census, census_data)
 })
@@ -140,7 +140,7 @@ test_that("census table only errors as complete set to TRUE", {
     census = c(200L, 140L),
     census_cv = c(0.2, 0.1)
   )
-  
+
   expect_error(
     bpt_check_data(census = census_data, complete = TRUE),
     regexp = "The `complete = TRUE` argument was provided but not all data sets were
@@ -157,9 +157,9 @@ test_that("calf proportion table only passed", {
     proportion_calf = c(0.2, 0.05),
     proportion_calf_cv = c(0.05, 0.1)
   )
-  
+
   proportion_calf <- bpt_check_data(proportion_calf = proportion_calf_data, complete = FALSE)
-  
+
   expect_type(proportion_calf, "list")
   expect_identical(proportion_calf$proportion_calf, proportion_calf_data)
 })
@@ -172,7 +172,7 @@ test_that("calf proportion table only errors as complete set to TRUE", {
     proportion_calf = c(0.2, 0.05),
     proportion_calf_cv = c(0.05, 0.1)
   )
-  
+
   expect_error(
     bpt_check_data(proportion_calf = proportion_calf_data, complete = TRUE),
     regexp = "The `complete = TRUE` argument was provided but not all data sets were
@@ -218,7 +218,7 @@ test_that("all tables passed with joins and study years checked", {
     census = c(200L),
     census_cv = c(0.2)
   )
-  
+
   proportion_calf_data <- dplyr::tibble(
     proportion_calf_year = c(2022L),
     proportion_calf_month = c(3L),
@@ -226,13 +226,13 @@ test_that("all tables passed with joins and study years checked", {
     proportion_calf = c(0.2),
     proportion_calf_cv = c(0.05)
   )
-  
+
   data <- bpt_check_data(
-    event = event_data, 
-    location = location_data, 
+    event = event_data,
+    location = location_data,
     census = census_data,
     proportion_calf = proportion_calf_data,
-    complete = TRUE, 
+    complete = TRUE,
     join = TRUE,
     check_study_years = TRUE
   )
@@ -273,7 +273,7 @@ test_that("errors as sites between tables don't match", {
     latitude = c(57.555, 56.444),
     longitude = c(-111.757, -111.444)
   )
-  
+
   census_data <- dplyr::tibble(
     census_year = c(2021L, 2022L),
     census_month = c(3L, 3L),
@@ -281,7 +281,7 @@ test_that("errors as sites between tables don't match", {
     census = c(200L, 140L),
     census_cv = c(0.2, 0.1)
   )
-  
+
   proportion_calf_data <- dplyr::tibble(
     proportion_calf_year = c(2021L, 2022L),
     proportion_calf_month = c(3L, 3L),
@@ -289,11 +289,11 @@ test_that("errors as sites between tables don't match", {
     proportion_calf = c(0.2, 0.05),
     proportion_calf_cv = c(0.05, 0.1)
   )
-  
+
   expect_error(
     bpt_check_data(
-      event = event_data, 
-      location = location_data, 
+      event = event_data,
+      location = location_data,
       census = census_data,
       proportion_calf = proportion_calf_data,
       complete = TRUE,
@@ -330,13 +330,13 @@ test_that("errors as dates in census and calf proportion tables are not within t
     u0 = c(1L),
     uu = c(1L)
   )
-  
+
   location_data <- dplyr::tibble(
     location_id = c("SiteZ"),
     latitude = c(57.555),
     longitude = c(-111.757)
   )
-  
+
   census_data <- dplyr::tibble(
     census_year = c(2021L, 2022L),
     census_month = c(3L, 3L),
@@ -344,7 +344,7 @@ test_that("errors as dates in census and calf proportion tables are not within t
     census = c(200L, 140L),
     census_cv = c(0.2, 0.1)
   )
-  
+
   proportion_calf_data <- dplyr::tibble(
     proportion_calf_year = c(2021L, 2022L),
     proportion_calf_month = c(3L, 3L),
@@ -352,11 +352,11 @@ test_that("errors as dates in census and calf proportion tables are not within t
     proportion_calf = c(0.2, 0.05),
     proportion_calf_cv = c(0.05, 0.1)
   )
-  
+
   expect_error(
     bpt_check_data(
-      event = event_data, 
-      location = location_data, 
+      event = event_data,
+      location = location_data,
       census = census_data,
       proportion_calf = proportion_calf_data,
       complete = TRUE,
@@ -369,4 +369,3 @@ test_that("errors as dates in census and calf proportion tables are not within t
     )
   )
 })
-

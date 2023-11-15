@@ -49,7 +49,7 @@
 #'   \item{u0}{Count of unknown calves}
 #'   \item{uu}{Count of unknown unknowns}
 #' }
-#' 
+#'
 #' @format ## `census`
 #' A data frame with columns:
 #' \describe{
@@ -59,7 +59,7 @@
 #'   \item{census}{Estimated census count}
 #'   \item{census_cv}{Coefficient of variation (standard deviation / estimate) of census estimate}
 #' }
-#' 
+#'
 #' @format ## `proportion_calf`
 #' A data frame with columns:
 #' \describe{

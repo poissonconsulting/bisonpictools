@@ -49,4 +49,3 @@ test_that("confirm bpt_census_data is a tibble", {
 test_that("confirm bpt_proportion_calf_data is a tibble", {
   expect_s3_class(bpt_proportion_calf_data, c("tbl_df", "tbl", "data.frame"))
 })
-

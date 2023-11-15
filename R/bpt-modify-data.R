@@ -43,8 +43,7 @@ bpt_modify_data <- function(
     proportion_calf,
     proportion_calf_cv,
     proportion_calf_study_year,
-    proportion_calf_day_of_year
-) {
+    proportion_calf_day_of_year) {
   chk::chk_list(data)
   df <- base::is.data.frame(data)
   if (df) stop("Data must be in a list format as passed through embr::analyse()")

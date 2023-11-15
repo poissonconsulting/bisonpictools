@@ -26,4 +26,3 @@ test_that("Errors if the data provided does not match the format of census, calf
     regexp = "Data is not a compatible tibble\\. Ensure columns match the formatting for one of the `event`, `census`, or `proportion_calf` tables in the template\\: see `\\?template`\\."
   )
 })
-

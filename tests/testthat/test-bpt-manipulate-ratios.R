@@ -2,7 +2,7 @@ test_that("errors with unknown numerator class", {
   expect_error(
     bpt_manipulate_ratios(
       data = bpt_manipulate_data_plot(
-        bpt_event_data, 
+        bpt_event_data,
         bpt_location_data
       ),
       numerator = "f6",
@@ -16,7 +16,7 @@ test_that("errors with unknown denominator class", {
   expect_error(
     bpt_manipulate_ratios(
       data = bpt_manipulate_data_plot(
-        bpt_event_data, 
+        bpt_event_data,
         bpt_location_data
       ),
       numerator = "f0",
@@ -29,7 +29,7 @@ test_that("errors with unknown denominator class", {
 test_that("same number of rows as event_data without filtering", {
   x <- bpt_manipulate_ratios(
     data = bpt_manipulate_data_plot(
-      bpt_event_data, 
+      bpt_event_data,
       bpt_location_data
     ),
     numerator = "f0",
@@ -45,7 +45,7 @@ test_that("filters out years", {
     nrow(
       bpt_manipulate_ratios(
         data = bpt_manipulate_data_plot(
-          bpt_event_data, 
+          bpt_event_data,
           bpt_location_data
         ),
         numerator = "f0",
@@ -58,7 +58,7 @@ test_that("filters out years", {
     nrow(
       bpt_manipulate_ratios(
         data = bpt_manipulate_data_plot(
-          bpt_event_data, 
+          bpt_event_data,
           bpt_location_data
         ),
         numerator = "f0",
@@ -72,7 +72,7 @@ test_that("filters out years", {
     nrow(
       bpt_manipulate_ratios(
         data = bpt_manipulate_data_plot(
-          bpt_event_data, 
+          bpt_event_data,
           bpt_location_data
         ),
         numerator = "f0",
@@ -88,7 +88,7 @@ test_that("filters out years", {
 test_that("all ratios are ≤ 1", {
   x <- bpt_manipulate_ratios(
     data = bpt_manipulate_data_plot(
-      bpt_event_data, 
+      bpt_event_data,
       bpt_location_data
     ),
     numerator = "f1",
@@ -100,7 +100,7 @@ test_that("all ratios are ≤ 1", {
 test_that("all ratios are ≥ 0", {
   x <- bpt_manipulate_ratios(
     data = bpt_manipulate_data_plot(
-      bpt_event_data, 
+      bpt_event_data,
       bpt_location_data
     ),
     numerator = "f1",
@@ -112,7 +112,7 @@ test_that("all ratios are ≥ 0", {
 test_that("returns tibble", {
   x <- bpt_manipulate_ratios(
     data = bpt_manipulate_data_plot(
-      bpt_event_data, 
+      bpt_event_data,
       bpt_location_data
     ),
     numerator = "f1",
@@ -126,7 +126,7 @@ test_that("returns tibble", {
 test_that("expected output column types", {
   x <- bpt_manipulate_ratios(
     data = bpt_manipulate_data_plot(
-      bpt_event_data, 
+      bpt_event_data,
       bpt_location_data
     ),
     numerator = "f1",

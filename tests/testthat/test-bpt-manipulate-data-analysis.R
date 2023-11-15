@@ -53,7 +53,7 @@ test_that("errors if census date is outside of range of study years in event_dat
     bpt_manipulate_data_analysis(
       bpt_event_data,
       bpt_location_data,
-      bpt_census_data |> 
+      bpt_census_data |>
         dplyr::mutate(census_year = c(2030, 2031)),
       bpt_proportion_calf_data
     ),
@@ -298,4 +298,3 @@ test_that("prop_calf_doy column is an integer between 1 and 365", {
   expect_true(all(x$prop_calf_data$prop_calf_doy >= 1 & x$prop_calf_data$prop_calf_doy <= 365))
   expect_true(all(is.integer(x$prop_calf_data$prop_calf_doy)))
 })
-

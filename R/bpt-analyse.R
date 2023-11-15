@@ -31,14 +31,13 @@ bpt_analyse <- function(
     census_data,
     proportion_calf_data,
     nthin = 1L,
-    analysis_mode = "report"
-) {
+    analysis_mode = "report") {
   chk::chk_integer(nthin)
   chk::chk_gte(nthin, 1L)
   chk::chk_subset(analysis_mode, c("report", "quick", "debug"))
 
   data_list <- bpt_manipulate_data_analysis(
-    event_data, 
+    event_data,
     location_data,
     census_data,
     proportion_calf_data
@@ -46,7 +45,7 @@ bpt_analyse <- function(
   data <- data_list$data
   census_data <- data_list$census_data
   prop_calf_data <- data_list$prop_calf_data
-  
+
   levels_annual <- levels(data$annual)
 
   model <- embr::model(
