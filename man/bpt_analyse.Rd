@@ -7,14 +7,8 @@
 bpt_analyse(
   event_data,
   location_data,
-  census,
-  census_cv,
-  census_study_year,
-  census_day_of_year,
-  proportion_calf,
-  proportion_calf_cv,
-  proportion_calf_study_year,
-  proportion_calf_day_of_year,
+  census_data,
+  proportion_calf_data,
   nthin = 1L,
   analysis_mode = "report"
 )
@@ -24,29 +18,14 @@ bpt_analyse(
 
 \item{location_data}{tibble of templated location data}
 
-\item{census}{integer vector of census values}
+\item{census_data}{a tibble of census data}
 
-\item{census_cv}{numeric vector of census coefficients of variation}
-
-\item{census_study_year}{character vector of census study years}
-
-\item{census_day_of_year}{integer vector of census days of year}
-
-\item{proportion_calf}{numeric vector of proportion of calf values}
-
-\item{proportion_calf_cv}{numeric vector of proportion of calf coefficients
-of variation}
-
-\item{proportion_calf_study_year}{character vector of proportion of calf
-study years}
-
-\item{proportion_calf_day_of_year}{integer vector of proportion of calf days
-of year}
+\item{proportion_calf_data}{a tibble of proportion calf data}
 
 \item{nthin}{thinning rate}
 
 \item{analysis_mode}{character string of analysis mode, either "debug",
-"check", or "report". Run firstin "debug" mode to ensure that the model
+"check", or "report". Run first in "debug" mode to ensure that the model
 samples. Next, run in "report" mode to sample the full number of iterations.}
 }
 \value{
@@ -60,14 +39,8 @@ Fits the integrated population model to data
 bpt_analyse(
   event_data = bpt_event_data,
   location_data = bpt_location_data,
-  census = 200L,
-  census_cv = 0.1,
-  census_study_year = "2021-2022",
-  census_day_of_year = 365L,
-  proportion_calf = c(0.201, 0.168),
-  proportion_calf_cv = c(0.5, 0.5),
-  proportion_calf_study_year = c("2020-2021", "2021-2022"),
-  proportion_calf_day_of_year = c(365L, 365L),
+  census_data = bpt_census_data,
+  proportion_calf_data = bpt_proportion_calf_data,
   nthin = 1L,
   analysis_mode = "quick"
 )

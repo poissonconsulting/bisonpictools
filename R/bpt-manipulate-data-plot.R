@@ -16,16 +16,30 @@
 #'
 #' @param event_data a tibble of templated event data
 #' @param location_data a tibble of templated location data
+#' @param census_data a tibble of census data
+#' @param proportion_calf_data a tibble of proportion calf data
 #'
 #' @return A tibble of data prepared for plotting.
 #' @export
 #'
 #' @examples
-#' bpt_manipulate_data_plot(bpt_event_data, bpt_location_data)
-bpt_manipulate_data_plot <- function(event_data, location_data) {
+#' bpt_manipulate_data_plot(
+#'  bpt_event_data, 
+#'  bpt_location_data, 
+#'  bpt_census_data, 
+#'  bpt_proportion_calf_data
+#' )
+bpt_manipulate_data_plot <- function(
+    event_data, 
+    location_data,
+    census_data,
+    proportion_calf_data
+) {
   data <- bpt_check_data(
     location = location_data,
     event = event_data,
+    census = census_data,
+    proportion_calf = proportion_calf_data,
     complete = TRUE
   )
 

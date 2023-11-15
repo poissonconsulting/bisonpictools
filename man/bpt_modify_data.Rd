@@ -10,11 +10,11 @@ bpt_modify_data(
   census,
   census_cv,
   census_study_year,
-  census_day_of_year = rep(365L, length(census)),
+  census_day_of_year,
   proportion_calf,
   proportion_calf_cv,
   proportion_calf_study_year,
-  proportion_calf_day_of_year = rep(365L, length(proportion_calf))
+  proportion_calf_day_of_year
 )
 }
 \arguments{

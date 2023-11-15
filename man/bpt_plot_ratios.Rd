@@ -7,6 +7,8 @@
 bpt_plot_ratios(
   event_data,
   location_data,
+  census_data,
+  proportion_calf_data,
   numerator,
   denominator,
   study_years = bpt_study_years(event_data),
@@ -17,6 +19,10 @@ bpt_plot_ratios(
 \item{event_data}{a tibble of templated event data}
 
 \item{location_data}{a tibble of templated location data}
+
+\item{census_data}{a tibble of templated census data}
+
+\item{proportion_calf_data}{a tibble of templated proportion calf data}
 
 \item{numerator}{a character vector of sex-age codes to go in the numerator
 of the ratio}
@@ -42,6 +48,8 @@ ratio.
 bpt_plot_ratios(
   event_data = bpt_event_data,
   location_data = bpt_location_data,
+  census_data = bpt_census_data,
+  proportion_calf_data = bpt_proportion_calf_data,
   numerator = c("f0", "m0", "u0"),
   denominator = c("fa")
 )
@@ -49,6 +57,8 @@ bpt_plot_ratios(
 bpt_plot_ratios(
   event_data = bpt_event_data,
   location_data = bpt_location_data,
+  census_data = bpt_census_data,
+  proportion_calf_data = bpt_proportion_calf_data,
   numerator = "f1",
   denominator = "m1",
   study_years = "2020-2021",

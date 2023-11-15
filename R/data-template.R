@@ -49,6 +49,26 @@
 #'   \item{u0}{Count of unknown calves}
 #'   \item{uu}{Count of unknown unknowns}
 #' }
+#' 
+#' @format ## `census`
+#' A data frame with columns:
+#' \describe{
+#'   \item{census_year}{The year of the census survey}
+#'   \item{census_month}{The month of the census survey}
+#'   \item{census_day}{The day of the census survey}
+#'   \item{census}{Estimated census count}
+#'   \item{census_cv}{Coefficient of variation (standard deviation / estimate) of census estimate}
+#' }
+#' 
+#' @format ## `proportion_calf`
+#' A data frame with columns:
+#' \describe{
+#'   \item{calf_proportion_year}{The year of the calf proportion survey}
+#'   \item{calf_proportion_month}{The month of the calf proportion survey}
+#'   \item{calf_proportion_day}{The day of the calf proportion survey}
+#'   \item{calf_proportion}{Estimated calf proportion}
+#'   \item{calf_proportion_cv}{Coefficient of variation (standard deviation / estimate) of calf proportion estimate}
+#' }
 #' @examples
 #' template
 "template"

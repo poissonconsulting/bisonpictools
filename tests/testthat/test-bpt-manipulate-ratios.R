@@ -1,7 +1,12 @@
 test_that("errors with unknown numerator class", {
   expect_error(
     bpt_manipulate_ratios(
-      data = bpt_manipulate_data_plot(bpt_event_data, bpt_location_data),
+      data = bpt_manipulate_data_plot(
+        bpt_event_data, 
+        bpt_location_data, 
+        bpt_census_data, 
+        bpt_proportion_calf_data
+      ),
       numerator = "f6",
       denominator = "f1"
     ),
@@ -12,7 +17,12 @@ test_that("errors with unknown numerator class", {
 test_that("errors with unknown denominator class", {
   expect_error(
     bpt_manipulate_ratios(
-      data = bpt_manipulate_data_plot(bpt_event_data, bpt_location_data),
+      data = bpt_manipulate_data_plot(
+        bpt_event_data, 
+        bpt_location_data, 
+        bpt_census_data, 
+        bpt_proportion_calf_data
+      ),
       numerator = "f0",
       denominator = "f5"
     ),
@@ -22,7 +32,12 @@ test_that("errors with unknown denominator class", {
 
 test_that("same number of rows as event_data without filtering", {
   x <- bpt_manipulate_ratios(
-    data = bpt_manipulate_data_plot(bpt_event_data, bpt_location_data),
+    data = bpt_manipulate_data_plot(
+      bpt_event_data, 
+      bpt_location_data, 
+      bpt_census_data, 
+      bpt_proportion_calf_data
+    ),
     numerator = "f0",
     denominator = "f1"
   )
@@ -35,7 +50,12 @@ test_that("filters out years", {
   expect_equal(
     nrow(
       bpt_manipulate_ratios(
-        data = bpt_manipulate_data_plot(bpt_event_data, bpt_location_data),
+        data = bpt_manipulate_data_plot(
+          bpt_event_data, 
+          bpt_location_data, 
+          bpt_census_data, 
+          bpt_proportion_calf_data
+        ),
         numerator = "f0",
         denominator = "m0"
       )
@@ -45,7 +65,12 @@ test_that("filters out years", {
   expect_equal(
     nrow(
       bpt_manipulate_ratios(
-        data = bpt_manipulate_data_plot(bpt_event_data, bpt_location_data),
+        data = bpt_manipulate_data_plot(
+          bpt_event_data, 
+          bpt_location_data, 
+          bpt_census_data, 
+          bpt_proportion_calf_data
+        ),
         numerator = "f0",
         denominator = "m0",
         study_years = "2021-2022"
@@ -56,7 +81,12 @@ test_that("filters out years", {
   expect_equal(
     nrow(
       bpt_manipulate_ratios(
-        data = bpt_manipulate_data_plot(bpt_event_data, bpt_location_data),
+        data = bpt_manipulate_data_plot(
+          bpt_event_data, 
+          bpt_location_data, 
+          bpt_census_data, 
+          bpt_proportion_calf_data
+        ),
         numerator = "f0",
         denominator = "m0",
         study_years = "2020-2021"
@@ -68,7 +98,12 @@ test_that("filters out years", {
 
 # Output
 x <- bpt_manipulate_ratios(
-  data = bpt_manipulate_data_plot(bpt_event_data, bpt_location_data),
+  data = bpt_manipulate_data_plot(
+    bpt_event_data, 
+    bpt_location_data, 
+    bpt_census_data, 
+    bpt_proportion_calf_data
+  ),
   numerator = "f1",
   denominator = "f0"
 )
@@ -81,8 +116,10 @@ test_that("all ratios are ≥ 0", {
   expect_true(min(x$ratio) >= 0)
 })
 
-test_that("output is a tibble", {
-  expect_true(all(attributes(x)$class == c("tbl_df", "tbl", "data.frame")))
+test_that("returns tibble", {
+  expect_true(attributes(x)$class[1] == "tbl_df")
+  expect_true(attributes(x)$class[2] == "tbl")
+  expect_true(attributes(x)$class[3] == "data.frame")
 })
 
 test_that("expected output column types", {

@@ -18,9 +18,8 @@
 #' interest for plotting. Ratio of interest is calculated as
 #' numerator:(denominator + numerator) to avoid infinite values.
 #'
-#' @param data a tibble of manipulated event and location data, with factor
-#'   columns `year`, `location_id`, and integer columns c(`fa`, `f1`, `f0`,
-#'   `fu`, `ma`, `m3`, `m2`, `m1`, `m0`, `mu`, `ua`, `u1`, `u0`, and `uu`)
+#' @param data a tibble of manipulated event, location, census, and calf 
+#'   proportion data
 #' @param numerator a character vector of sex-age codes to go in the numerator
 #'   of the ratio
 #' @param denominator a character vector of sex-age codes to go in the
@@ -34,7 +33,12 @@
 #'
 #' @examples
 #' bpt_manipulate_ratios(
-#'   data = bpt_manipulate_data_plot(bpt_event_data, bpt_location_data),
+#'   data = bpt_manipulate_data_plot(
+#'     bpt_event_data, 
+#'     bpt_location_data,
+#'     bpt_census_data, 
+#'     bpt_proportion_calf_data
+#'   ),
 #'   numerator = "fa",
 #'   denominator = "ma",
 #'   study_years = "2020-2021",

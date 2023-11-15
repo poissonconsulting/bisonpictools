@@ -4,15 +4,24 @@
 \alias{bpt_manipulate_data_analysis}
 \title{Prepare Data for Analysis}
 \usage{
-bpt_manipulate_data_analysis(event_data, location_data)
+bpt_manipulate_data_analysis(
+  event_data,
+  location_data,
+  census_data,
+  proportion_calf_data
+)
 }
 \arguments{
 \item{event_data}{a tibble of templated event data}
 
 \item{location_data}{a tibble of templated location data}
+
+\item{census_data}{a tibble of templated census data}
+
+\item{proportion_calf_data}{a tibble of templated proportion of calf data}
 }
 \value{
-a tibble of manipulated data ready for analysis
+a list of manipulated data ready for analysis
 }
 \description{
 Checks that data is in the correct format and manipulates it for analysis.
@@ -20,6 +29,8 @@ Checks that data is in the correct format and manipulates it for analysis.
 \examples{
 bpt_manipulate_data_analysis(
   event_data = bpt_event_data,
-  location_data = bpt_location_data
+  location_data = bpt_location_data,
+  census_data = bpt_census_data,
+  proportion_calf_data = bpt_proportion_calf_data
 )
 }

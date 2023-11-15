@@ -29,14 +29,11 @@ locations:
 
 ``` r
 library(bisonpictools)
-```
-
-    ## Loading required namespace: V8
-
-``` r
 bpt_plot_ratios(
   bpt_event_data,
   bpt_location_data,
+  bpt_census_data,
+  bpt_proportion_calf_data,
   numerator = "fa",
   denominator = "ma"
 )
@@ -51,6 +48,8 @@ trap locations and/or study years:
 bpt_plot_ratios(
   bpt_event_data,
   bpt_location_data,
+  bpt_census_data,
+  bpt_proportion_calf_data,
   numerator = "fa",
   denominator = "ma",
   study_years = "2019-2020",
@@ -67,6 +66,8 @@ example, this plots the calf:(cow + calf) ratio:
 bpt_plot_ratios(
   bpt_event_data,
   bpt_location_data,
+  bpt_census_data,
+  bpt_proportion_calf_data,
   numerator = c("f0", "m0", "u0"),
   denominator = c("fa")
 )
@@ -96,6 +97,8 @@ Read in data saved from the hosted app
 dir <- "myfilepath"
 event_data <- readr::read_csv(file.path(dir, "event_data.csv"))
 location_data <- readr::read_csv(file.path(dir, "location_data.csv"))
+census_data <- readr::read_csv(file.path(dir, "census_data.csv"))
+proportion_calf_data <- readr::read_csv(file.path(dir, "proportion_calf_data.csv"))
 ```
 
 Run the analysis
@@ -104,14 +107,8 @@ Run the analysis
 analysis <- bpt_analyse(
   event_data = bpt_event_data,
   location_data = bpt_location_data,
-  census = 272L,
-  census_cv = 20 / 272L,
-  census_study_year = "2020-2021",
-  census_day_of_year = 365L,
-  proportion_calf = c(0.195, 0.151),
-  proportion_calf_cv = c(0.5, 0.5),
-  proportion_calf_study_year = c("2020-2021", "2021-2022"),
-  proportion_calf_day_of_year = c(365L, 365L),
+  census_data = bpt_census_data,
+  proportion_calf_data = bpt_proportion_calf_data,
   nthin = 1L,
   analysis_mode = "report"
 )
@@ -134,10 +131,10 @@ bpt_predict_abundance_total(analysis)
     ## # A tibble: 4 × 4
     ##   annual    estimate lower upper
     ##   <fct>        <dbl> <dbl> <dbl>
-    ## 1 2018-2019     218.  176.  241.
-    ## 2 2019-2020     244.  187.  275.
-    ## 3 2020-2021     269.  205.  304.
-    ## 4 2021-2022     277.  207.  312.
+    ## 1 2018-2019     243.  213.  280.
+    ## 2 2019-2020     249.  226.  273.
+    ## 3 2020-2021     268.  253.  291.
+    ## 4 2021-2022     295.  283.  312.
 
 ``` r
 # Can predict other values using the following functions
