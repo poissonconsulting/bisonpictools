@@ -4,21 +4,12 @@
 \alias{bpt_manipulate_data_plot}
 \title{Manipulate Data for Plot}
 \usage{
-bpt_manipulate_data_plot(
-  event_data,
-  location_data,
-  census_data,
-  proportion_calf_data
-)
+bpt_manipulate_data_plot(event_data, location_data)
 }
 \arguments{
 \item{event_data}{a tibble of templated event data}
 
 \item{location_data}{a tibble of templated location data}
-
-\item{census_data}{a tibble of census data}
-
-\item{proportion_calf_data}{a tibble of proportion calf data}
 }
 \value{
 A tibble of data prepared for plotting.
@@ -29,8 +20,6 @@ Manipulate Data for Plot
 \examples{
 bpt_manipulate_data_plot(
  bpt_event_data, 
- bpt_location_data, 
- bpt_census_data, 
- bpt_proportion_calf_data
+ bpt_location_data
 )
 }

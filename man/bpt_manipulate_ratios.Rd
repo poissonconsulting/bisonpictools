@@ -13,9 +13,8 @@ bpt_manipulate_ratios(
 )
 }
 \arguments{
-\item{data}{a tibble of manipulated event and location data, with factor
-columns \code{year}, \code{location_id}, and integer columns c(\code{fa}, \code{f1}, \code{f0},
-\code{fu}, \code{ma}, \code{m3}, \code{m2}, \code{m1}, \code{m0}, \code{mu}, \code{ua}, \code{u1}, \code{u0}, and \code{uu})}
+\item{data}{a tibble of manipulated event, location, census, and calf
+proportion data}
 
 \item{numerator}{a character vector of sex-age codes to go in the numerator
 of the ratio}
@@ -40,9 +39,7 @@ numerator:(denominator + numerator) to avoid infinite values.
 bpt_manipulate_ratios(
   data = bpt_manipulate_data_plot(
     bpt_event_data, 
-    bpt_location_data,
-    bpt_census_data, 
-    bpt_proportion_calf_data
+    bpt_location_data
   ),
   numerator = "fa",
   denominator = "ma",

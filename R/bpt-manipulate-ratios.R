@@ -35,9 +35,7 @@
 #' bpt_manipulate_ratios(
 #'   data = bpt_manipulate_data_plot(
 #'     bpt_event_data, 
-#'     bpt_location_data,
-#'     bpt_census_data, 
-#'     bpt_proportion_calf_data
+#'     bpt_location_data
 #'   ),
 #'   numerator = "fa",
 #'   denominator = "ma",
