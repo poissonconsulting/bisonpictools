@@ -4,17 +4,17 @@
 \alias{bpt_study_years}
 \title{Calculate Study Years}
 \usage{
-bpt_study_years(event_data)
+bpt_study_years(data)
 }
 \arguments{
-\item{event_data}{a tibble of templated event data}
+\item{data}{a tibble of templated data}
 }
 \value{
 a character vector of unique study years
 }
 \description{
 Calculate the unique set of study years beginning on Apr. 1 of each year of a
-templated \code{event_data} tibble.
+templated \code{event_data}, \code{census_data}, or \code{proportion_calf_data} tibble
 }
 \examples{
 bpt_study_years(bpt_event_data)
