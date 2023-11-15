@@ -2,16 +2,16 @@
 % Please edit documentation in R/bpt-check-data.R
 \name{bpt_check_data}
 \alias{bpt_check_data}
-\title{Data Checks based on the Template Confirms the columns types match the
-template, the values follow the allowed ranges of the template and tables can
-be joined appropriately.}
+\title{Data Checks based on the Template}
 \usage{
 bpt_check_data(
   event = NULL,
   location = NULL,
   census = NULL,
   proportion_calf = NULL,
-  complete = FALSE
+  complete = FALSE,
+  join = FALSE,
+  check_study_years = FALSE
 )
 }
 \arguments{
@@ -24,12 +24,18 @@ bpt_check_data(
 \item{proportion_calf}{A data frame of calf proportion data.}
 
 \item{complete}{A flag indicating if all data frames need to be supplied.}
+
+\item{join}{A flag indicating if joins should be checked.}
+
+\item{check_study_years}{A flag indicating if study years should be checked
+(census and calf proportion data must be within the same study years as the
+event data)}
 }
 \value{
 List of data frames
 }
 \description{
-Data Checks based on the Template Confirms the columns types match the
+Confirms the columns types match the
 template, the values follow the allowed ranges of the template and tables can
 be joined appropriately.
 }
@@ -41,7 +47,9 @@ data <- bpt_check_data(
   location = bpt_location_data, 
   census = bpt_census_data,
   proportion_calf = bpt_proportion_calf_data,
-  complete = TRUE
+  complete = TRUE,
+  join = TRUE,
+  check_study_years = TRUE
 )
 event_data <- data$event
 location_data <- data$location
