@@ -28,7 +28,9 @@ bpt_manipulate_data_analysis <- function(
     location = location_data,
     census = census_data,
     proportion_calf = proportion_calf_data,
-    complete = TRUE
+    complete = TRUE,
+    join = TRUE,
+    check_study_years = TRUE
   )
   
   census_data <- data$census |> 

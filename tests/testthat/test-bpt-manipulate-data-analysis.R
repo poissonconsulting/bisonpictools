@@ -57,7 +57,7 @@ test_that("errors if census date is outside of range of study years in event_dat
         dplyr::mutate(census_year = c(2030, 2031)),
       bpt_proportion_calf_data
     ),
-    "not '2029-2030'."
+    "Census data must include only dates that are within the study years of the event data."
   )
 })
 
