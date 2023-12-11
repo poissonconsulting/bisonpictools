@@ -62,24 +62,35 @@ test_that("errors if census date is outside of range of study years in event_dat
 })
 
 # Expected outputs
-x <- bpt_manipulate_data_analysis(
-  event_data = bpt_event_data,
-  location_data = bpt_location_data,
-  census_data = bpt_census_data,
-  proportion_calf_data = bpt_proportion_calf_data
-)
-
 test_that("returns list", {
+  x <- bpt_manipulate_data_analysis(
+    event_data = bpt_event_data,
+    location_data = bpt_location_data,
+    census_data = bpt_census_data,
+    proportion_calf_data = bpt_proportion_calf_data
+  )
   expect_true(is.list(x))
 })
 
 test_that("list elements have correct names", {
+  x <- bpt_manipulate_data_analysis(
+    event_data = bpt_event_data,
+    location_data = bpt_location_data,
+    census_data = bpt_census_data,
+    proportion_calf_data = bpt_proportion_calf_data
+  )
   expect_equal(names(x)[1], "data")
   expect_equal(names(x)[2], "census_data")
   expect_equal(names(x)[3], "prop_calf_data")
 })
 
 test_that("list elements are data frames", {
+  x <- bpt_manipulate_data_analysis(
+    event_data = bpt_event_data,
+    location_data = bpt_location_data,
+    census_data = bpt_census_data,
+    proportion_calf_data = bpt_proportion_calf_data
+  )
   expect_true(is.data.frame(x$data))
   expect_true(is.data.frame(x$census_data))
   expect_true(is.data.frame(x$prop_calf_data))
@@ -87,14 +98,32 @@ test_that("list elements are data frames", {
 
 # Analysis data (x$data)
 test_that("number output rows less than or equal to number of input rows", {
+  x <- bpt_manipulate_data_analysis(
+    event_data = bpt_event_data,
+    location_data = bpt_location_data,
+    census_data = bpt_census_data,
+    proportion_calf_data = bpt_proportion_calf_data
+  )
   expect_true(nrow(x$data) <= nrow(bpt_event_data))
 })
 
 test_that("annual column is a factor", {
+  x <- bpt_manipulate_data_analysis(
+    event_data = bpt_event_data,
+    location_data = bpt_location_data,
+    census_data = bpt_census_data,
+    proportion_calf_data = bpt_proportion_calf_data
+  )
   expect_true(is.factor(x$data$annual))
 })
 
 test_that("annual column has correct levels", {
+  x <- bpt_manipulate_data_analysis(
+    event_data = bpt_event_data,
+    location_data = bpt_location_data,
+    census_data = bpt_census_data,
+    proportion_calf_data = bpt_proportion_calf_data
+  )
   expect_true(
     all(
       levels(x$data$annual) ==
@@ -104,15 +133,33 @@ test_that("annual column has correct levels", {
 })
 
 test_that("week column is an integer", {
+  x <- bpt_manipulate_data_analysis(
+    event_data = bpt_event_data,
+    location_data = bpt_location_data,
+    census_data = bpt_census_data,
+    proportion_calf_data = bpt_proportion_calf_data
+  )
   expect_true(is.integer(x$data$week))
 })
 
 test_that("week_fac column is a factor", {
+  x <- bpt_manipulate_data_analysis(
+    event_data = bpt_event_data,
+    location_data = bpt_location_data,
+    census_data = bpt_census_data,
+    proportion_calf_data = bpt_proportion_calf_data
+  )
   expect_true(is.factor(x$data$weekfac))
 })
 
 
 test_that("week_fac column has correct levels", {
+  x <- bpt_manipulate_data_analysis(
+    event_data = bpt_event_data,
+    location_data = bpt_location_data,
+    census_data = bpt_census_data,
+    proportion_calf_data = bpt_proportion_calf_data
+  )
   expect_true(
     all(
       levels(x$data$weekfac) ==
@@ -122,10 +169,22 @@ test_that("week_fac column has correct levels", {
 })
 
 test_that("season column is a factor", {
+  x <- bpt_manipulate_data_analysis(
+    event_data = bpt_event_data,
+    location_data = bpt_location_data,
+    census_data = bpt_census_data,
+    proportion_calf_data = bpt_proportion_calf_data
+  )
   expect_true(is.factor(x$data$season))
 })
 
 test_that("season column has correct levels", {
+  x <- bpt_manipulate_data_analysis(
+    event_data = bpt_event_data,
+    location_data = bpt_location_data,
+    census_data = bpt_census_data,
+    proportion_calf_data = bpt_proportion_calf_data
+  )
   expect_true(
     all(
       levels(x$data$season) ==
@@ -135,10 +194,22 @@ test_that("season column has correct levels", {
 })
 
 test_that("season_annual column is a factor", {
+  x <- bpt_manipulate_data_analysis(
+    event_data = bpt_event_data,
+    location_data = bpt_location_data,
+    census_data = bpt_census_data,
+    proportion_calf_data = bpt_proportion_calf_data
+  )
   expect_true(is.factor(x$data$season_annual))
 })
 
 test_that("season_annual column has correct levels", {
+  x <- bpt_manipulate_data_analysis(
+    event_data = bpt_event_data,
+    location_data = bpt_location_data,
+    census_data = bpt_census_data,
+    proportion_calf_data = bpt_proportion_calf_data
+  )
   expect_true(
     all(
       levels(x$data$season_annual) ==
@@ -152,18 +223,36 @@ test_that("season_annual column has correct levels", {
 })
 
 test_that("doy column is an integer", {
+  x <- bpt_manipulate_data_analysis(
+    event_data = bpt_event_data,
+    location_data = bpt_location_data,
+    census_data = bpt_census_data,
+    proportion_calf_data = bpt_proportion_calf_data
+  )
   expect_true(
     is.integer(x$data$doy)
   )
 })
 
 test_that("doy_fac column is a factor", {
+  x <- bpt_manipulate_data_analysis(
+    event_data = bpt_event_data,
+    location_data = bpt_location_data,
+    census_data = bpt_census_data,
+    proportion_calf_data = bpt_proportion_calf_data
+  )
   expect_true(
     is.factor(x$data$doy_fac)
   )
 })
 
 test_that("doy_fac column has correct levels", {
+  x <- bpt_manipulate_data_analysis(
+    event_data = bpt_event_data,
+    location_data = bpt_location_data,
+    census_data = bpt_census_data,
+    proportion_calf_data = bpt_proportion_calf_data
+  )
   expect_true(
     all(
       levels(x$data$doy_fac) ==
@@ -176,10 +265,22 @@ test_that("doy_fac column has correct levels", {
 })
 
 test_that("location column is a factor", {
+  x <- bpt_manipulate_data_analysis(
+    event_data = bpt_event_data,
+    location_data = bpt_location_data,
+    census_data = bpt_census_data,
+    proportion_calf_data = bpt_proportion_calf_data
+  )
   expect_true(is.factor(x$data$location))
 })
 
 test_that("location column has correct levels", {
+  x <- bpt_manipulate_data_analysis(
+    event_data = bpt_event_data,
+    location_data = bpt_location_data,
+    census_data = bpt_census_data,
+    proportion_calf_data = bpt_proportion_calf_data
+  )
   expect_true(
     all(
       levels(x$data$location) ==
@@ -189,10 +290,22 @@ test_that("location column has correct levels", {
 })
 
 test_that("location_weekfac column is a factor", {
+  x <- bpt_manipulate_data_analysis(
+    event_data = bpt_event_data,
+    location_data = bpt_location_data,
+    census_data = bpt_census_data,
+    proportion_calf_data = bpt_proportion_calf_data
+  )
   expect_true(is.factor(x$data$location))
 })
 
 test_that("location_weekfac column has correct levels", {
+  x <- bpt_manipulate_data_analysis(
+    event_data = bpt_event_data,
+    location_data = bpt_location_data,
+    census_data = bpt_census_data,
+    proportion_calf_data = bpt_proportion_calf_data
+  )
   expect_true(
     all(
       levels(x$data$location_weekfac) ==
@@ -206,10 +319,22 @@ test_that("location_weekfac column has correct levels", {
 })
 
 test_that("id column is a factor", {
+  x <- bpt_manipulate_data_analysis(
+    event_data = bpt_event_data,
+    location_data = bpt_location_data,
+    census_data = bpt_census_data,
+    proportion_calf_data = bpt_proportion_calf_data
+  )
   expect_true(is.factor(x$data$id))
 })
 
 test_that("id column has expected levels", {
+  x <- bpt_manipulate_data_analysis(
+    event_data = bpt_event_data,
+    location_data = bpt_location_data,
+    census_data = bpt_census_data,
+    proportion_calf_data = bpt_proportion_calf_data
+  )
   expect_true(
     all(
       levels(x$data$id) ==
@@ -219,10 +344,22 @@ test_that("id column has expected levels", {
 })
 
 test_that("id column has same number of levels as output has rows", {
+  x <- bpt_manipulate_data_analysis(
+    event_data = bpt_event_data,
+    location_data = bpt_location_data,
+    census_data = bpt_census_data,
+    proportion_calf_data = bpt_proportion_calf_data
+  )
   expect_true(all(levels(x$data$id) == seq_len(nrow(x$data))))
 })
 
 test_that("count columns are integers", {
+  x <- bpt_manipulate_data_analysis(
+    event_data = bpt_event_data,
+    location_data = bpt_location_data,
+    census_data = bpt_census_data,
+    proportion_calf_data = bpt_proportion_calf_data
+  )
   expect_true(is.integer(x$data$fa))
   expect_true(is.integer(x$data$f1))
   expect_true(is.integer(x$data$f0))
@@ -241,6 +378,12 @@ test_that("count columns are integers", {
 })
 
 test_that("count columns are positive", {
+  x <- bpt_manipulate_data_analysis(
+    event_data = bpt_event_data,
+    location_data = bpt_location_data,
+    census_data = bpt_census_data,
+    proportion_calf_data = bpt_proportion_calf_data
+  )
   expect_true(all(x$data$fa >= 0))
   expect_true(all(x$data$f1 >= 0))
   expect_true(all(x$data$f0 >= 0))
@@ -261,40 +404,88 @@ test_that("count columns are positive", {
 # Extra data
 # Census (x$census_data)
 test_that("census column is positive integer", {
+  x <- bpt_manipulate_data_analysis(
+    event_data = bpt_event_data,
+    location_data = bpt_location_data,
+    census_data = bpt_census_data,
+    proportion_calf_data = bpt_proportion_calf_data
+  )
   expect_true(all(x$census_data$census >= 0))
   expect_true(all(is.integer(x$census_data$census)))
 })
 
 test_that("census_cv column is a number greater than 0", {
+  x <- bpt_manipulate_data_analysis(
+    event_data = bpt_event_data,
+    location_data = bpt_location_data,
+    census_data = bpt_census_data,
+    proportion_calf_data = bpt_proportion_calf_data
+  )
   expect_true(all(x$census_data$census_cv > 0))
   expect_true(all(is.numeric(x$census_data$census_cv)))
 })
 
 test_that("census_study_year is within the levels of `annual` in data", {
+  x <- bpt_manipulate_data_analysis(
+    event_data = bpt_event_data,
+    location_data = bpt_location_data,
+    census_data = bpt_census_data,
+    proportion_calf_data = bpt_proportion_calf_data
+  )
   expect_true(all(x$census_data$census_study_year %in% x$data$annual))
 })
 
 test_that("census_doy column is an integer between 1 and 365", {
+  x <- bpt_manipulate_data_analysis(
+    event_data = bpt_event_data,
+    location_data = bpt_location_data,
+    census_data = bpt_census_data,
+    proportion_calf_data = bpt_proportion_calf_data
+  )
   expect_true(all(x$census_data$census_doy >= 1 & x$census_data$census_doy <= 365))
   expect_true(all(is.integer(x$census_data$census_doy)))
 })
 
 # Prop calf (x$prop_calf_data)
 test_that("prop_calf column is a probability", {
+  x <- bpt_manipulate_data_analysis(
+    event_data = bpt_event_data,
+    location_data = bpt_location_data,
+    census_data = bpt_census_data,
+    proportion_calf_data = bpt_proportion_calf_data
+  )
   expect_true(all(x$prop_calf_data$prop_calf >= 0 & x$prop_calf_data$prop_calf <= 1))
   expect_true(all(is.numeric(x$prop_calf_data$prop_calf)))
 })
 
 test_that("prop_calf_cv column is a number greater than 0", {
+  x <- bpt_manipulate_data_analysis(
+    event_data = bpt_event_data,
+    location_data = bpt_location_data,
+    census_data = bpt_census_data,
+    proportion_calf_data = bpt_proportion_calf_data
+  )
   expect_true(all(x$prop_calf_data$prop_calf_cv > 0))
   expect_true(all(is.numeric(x$prop_calf_data$prop_calf_cv)))
 })
 
 test_that("prop_calf_study_year is within the levels of `annual` in data", {
+  x <- bpt_manipulate_data_analysis(
+    event_data = bpt_event_data,
+    location_data = bpt_location_data,
+    census_data = bpt_census_data,
+    proportion_calf_data = bpt_proportion_calf_data
+  )
   expect_true(all(x$prop_calf_data$prop_calf_study_year %in% x$data$annual))
 })
 
 test_that("prop_calf_doy column is an integer between 1 and 365", {
+  x <- bpt_manipulate_data_analysis(
+    event_data = bpt_event_data,
+    location_data = bpt_location_data,
+    census_data = bpt_census_data,
+    proportion_calf_data = bpt_proportion_calf_data
+  )
   expect_true(all(x$prop_calf_data$prop_calf_doy >= 1 & x$prop_calf_data$prop_calf_doy <= 365))
   expect_true(all(is.integer(x$prop_calf_data$prop_calf_doy)))
 })
