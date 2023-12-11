@@ -56,8 +56,19 @@ bpt_check_data <- function(
     complete = complete,
     join = join
   )
+  if (!is.null(location)) {
+    groups <- 
+      location |> 
+      dplyr::group_by(.data$latitude, .data$longitude) |> 
+      dplyr::n_groups()
+    if (groups < nrow(location)) {
+      warning(
+        "Location data contains duplicate coordinates."
+      )
+    }
+  }
   if (check_study_years) {
-    bisonpictools::bpt_check_study_year(
+    check_study_year(
       event_data = event,
       census_data = census,
       proportion_calf_data = proportion_calf
