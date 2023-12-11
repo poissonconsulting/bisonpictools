@@ -37,7 +37,6 @@ Suggests:
     rmarkdown
 Remotes: 
     poissonconsulting/chktemplate,
-    poissonconsulting/dttr2,
     poissonconsulting/embr,
     poissonconsulting/newdata,
     poissonconsulting/smbr
