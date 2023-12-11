@@ -48,17 +48,17 @@ bpt_modify_data <- function(
   df <- base::is.data.frame(data)
   if (df) stop("Data must be in a list format as passed through embr::analyse()")
 
-  chk::chk_equal(
-    length(census),
-    length(census_cv),
-    length(census_study_year),
-    length(census_day_of_year)
+  # Inputs for each type must have the same length (not strictly recyclable)
+  chk::chk_true(
+    length(census) == length(census_cv) &
+    length(census) == length(census_study_year) &
+    length(census) == length(census_day_of_year) 
   )
-  chk::chk_equal(
-    length(proportion_calf),
-    length(proportion_calf_cv),
-    length(proportion_calf_study_year),
-    length(proportion_calf_day_of_year)
+  
+  chk::chk_true(
+    length(proportion_calf) == length(proportion_calf_cv) &
+    length(proportion_calf) == length(proportion_calf_study_year) &
+    length(proportion_calf) == length(proportion_calf_day_of_year) 
   )
 
   chk::chk_integer(census)
