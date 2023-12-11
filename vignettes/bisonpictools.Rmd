@@ -29,7 +29,7 @@ remotes::install_github("poissonconsulting/bisonpictools")
 
 ## Data Visualization
 
-The ratio plotted by `bpt_plot_ratios` is `numerator:(denominator:numerator)`.
+The ratio plotted by `bpt_plot_ratios()` is `numerator:(denominator:numerator)`.
 
 For example, the adult cow:(bull + cow) ratio plotted over all years and locations:
 ``` {r, fig.dim = c(10, 6)}
@@ -99,6 +99,7 @@ Run the analysis
 - `event_data` is the camera trap event data frame saved from the first app
 - `location_data` is the location data frame saved from the first app
 
+#FIXME
 <!-- - `census` is the number of bison in the herd from census counts -->
 <!-- - `census_cv` is the coefficient of variation of the census counts (standard deviation / estimate) -->
 <!-- - `census_study_year` is the study year of the census counts (study year starts on Apr. 1) -->
@@ -115,9 +116,9 @@ Run the analysis
 <!--   - `proportion_calf_day_of_year` = 365L -->
 
 - `analysis_mode` controls the number of iterations and chains in the model run
-  - `"report"` is the default and is used for the full analysis
-  - `"debug"` is used for checking for errors if the model does not sample
+  - `"debug"` is used for printing out the errors if the model does not sample
   - `"quick"` is used for running through a quick run of the model for demonstration purposes
+  - `"report"` is the default and is used for the full analysis
 
 - `nthin` controls the thinning of the MCMC samples; 
   - `nthin = 1L` saves all samples and is the default
