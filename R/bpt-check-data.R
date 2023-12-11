@@ -37,7 +37,7 @@
 #' data_3 <- bpt_check_data(census = bpt_census_data)
 #' data_4 <- bpt_check_data(proportion_calf = bpt_proportion_calf_data)
 #' # Should error, as `complete = TRUE` requires that all 4 data sets be provided
-#' event <- bpt_check_data(event = bpt_event_data, complete = TRUE)
+#' try(event <- bpt_check_data(event = bpt_event_data, complete = TRUE))
 #' }
 bpt_check_data <- function(
     event = NULL,
