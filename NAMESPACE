@@ -2,7 +2,6 @@
 
 export(bpt_analyse)
 export(bpt_check_data)
-export(bpt_check_study_year)
 export(bpt_coefficient_table)
 export(bpt_load_analysis)
 export(bpt_location_matrix)

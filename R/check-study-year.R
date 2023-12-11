@@ -8,15 +8,15 @@
 #' @param proportion_calf_data a tibble of templated calf proportion data
 #'
 #' @return Throws an error if the study years do not match
-#' @export
+#' @noRd
 #'
 #' @examples
-#' bpt_check_study_year(
+#' check_study_year(
 #'   bpt_event_data,
 #'   bpt_census_data,
 #'   bpt_proportion_calf_data
 #' )
-bpt_check_study_year <- function(
+check_study_year <- function(
     event_data,
     census_data,
     proportion_calf_data) {
@@ -31,4 +31,6 @@ bpt_check_study_year <- function(
   if (!chk::vld_subset(sy_prop_calf, sy_event)) {
     chk::abort_chk("Calf proportion data must include only dates that are within the study years of the event data.")
   }
+  
+  invisible(TRUE)
 }
