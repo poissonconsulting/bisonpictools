@@ -235,7 +235,7 @@ test_that("errors if proportion_calf_day_of_year is not an integer", {
       proportion_calf = given_proportion_calf,
       proportion_calf_cv = given_proportion_calf_cv,
       proportion_calf_study_year = given_proportion_calf_study_year,
-      proportion_calf_day_of_year = 1.5
+      proportion_calf_day_of_year = c(1.5, 1L)
     ),
     "`proportion_calf_day_of_year` must be integer."
   )
@@ -271,9 +271,12 @@ test_that("errors if proportion_calf_day_of_year is not between 1 and 365", {
       proportion_calf = given_proportion_calf,
       proportion_calf_cv = given_proportion_calf_cv,
       proportion_calf_study_year = given_proportion_calf_study_year,
-      proportion_calf_day_of_year = 0L
+      proportion_calf_day_of_year = c(0L, 10L)
     ),
-    "`proportion_calf_day_of_year` must match 1, 2, 3, 4, 5, 6, 7, 8, ... or 365, not 0."
+    regexp = paste0(
+      "`proportion_calf_day_of_year` must have values matching ",
+      "1, 2, 3, 4, 5, 6, 7, 8, ... or 365."
+    )
   )
 })
 
@@ -341,10 +344,10 @@ test_that("errors if proportion_calf cv is less than 0", {
       census_study_year = given_census_study_year,
       census_day_of_year = given_census_day_of_year,
       proportion_calf = given_proportion_calf,
-      proportion_calf_cv = -0.1,
+      proportion_calf_cv = c(-0.1, 0.2),
       proportion_calf_study_year = given_proportion_calf_study_year,
       proportion_calf_day_of_year = given_proportion_calf_day_of_year
     ),
-    "`proportion_calf_cv` must be greater than 0, not -0.1."
+    "`proportion_calf_cv` must have values greater than 0."
   )
 })
