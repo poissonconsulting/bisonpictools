@@ -5,9 +5,9 @@
 #'
 #' @inheritParams params
 #'
-#' @return a tibble of predicted survival rates for each study year, including
+#' @return A tibble of predicted survival rates for each study year, including
 #'   the median posterior value (estimate) and lower and upper 95% credible
-#'   intervals
+#'   intervals.
 #' @export
 #'
 #' @examples

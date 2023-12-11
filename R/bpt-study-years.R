@@ -3,7 +3,7 @@
 #' Calculate the unique set of study years beginning on Apr. 1 of each year of a
 #' templated `event_data`, `census_data`, or `proportion_calf_data` tibble
 #'
-#' @param data a tibble of templated data
+#' @param data A tibble of templated data.
 #'
 #' @return a character vector of unique study years
 #' @export

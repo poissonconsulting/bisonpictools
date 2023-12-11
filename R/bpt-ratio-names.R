@@ -16,7 +16,7 @@
 #'
 #' @inheritParams params
 #'
-#' @return character vector of common ratio name or "Ratio"
+#' @return A character vector of the common ratio name or "Ratio".
 #' @export
 #'
 #' @examples

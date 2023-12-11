@@ -9,18 +9,18 @@ bpt_plot_predictions(analysis, prediction = "abundance-total")
 \arguments{
 \item{analysis}{Analysis object from \code{bpt_analyse()}.}
 
-\item{prediction}{one of:
+\item{prediction}{One of the following:
 \itemize{
-\item "abundance-class": plots abundances by class and study year
-\item "abundance-total": plots total herd abundance by study year
+\item "abundance-class": plots abundances by class and study year.
+\item "abundance-total": plots total herd abundance by study year.
 \item "survival": plots survival rates by class and study year (bull rate
-includes M2, M3, MA)
-\item "fecundity": plots fecundity rate and proportion of reproductive cows
-\item "ratios": plots ratios by study year
+includes M2, M3, MA).
+\item "fecundity": plots fecundity rate and proportion of reproductive cows.
+\item "ratios": plots ratios by study year.
 }}
 }
 \value{
-a \code{ggplot2} object
+A \code{ggplot2} object.
 }
 \description{
 Generates a plot of the specified prediction

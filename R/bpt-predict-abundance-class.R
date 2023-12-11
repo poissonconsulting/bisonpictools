@@ -4,9 +4,9 @@
 #'
 #' @inheritParams params
 #'
-#' @return a tibble of predicted abundances for each class and year, including
+#' @return A tibble of predicted abundances for each class and year, including
 #'   the median posterior value (estimate) and lower and upper 95% credible
-#'   intervals
+#'   intervals.
 #' @export
 #'
 #' @examples

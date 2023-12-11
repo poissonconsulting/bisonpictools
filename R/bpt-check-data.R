@@ -14,7 +14,7 @@
 #' (census and calf proportion data must be within the same study years as the
 #' event data)
 #'
-#' @return List of data frames
+#' @return A list of data frames.
 #' @export
 #'
 #' @examples

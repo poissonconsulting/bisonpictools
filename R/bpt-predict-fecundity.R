@@ -4,9 +4,9 @@
 #'
 #' @inheritParams params
 #'
-#' @return a tibble of predicted fecundity rate and proportion of reproductive
+#' @return A tibble of predicted fecundity rate and proportion of reproductive
 #'   cows, including the median posterior value (estimate) and lower and upper
-#'   95% credible intervals
+#'   95% credible intervals.
 #' @export
 #'
 #' @examples

@@ -14,7 +14,7 @@ of the ratio.}
 denominator of the ratio.}
 }
 \value{
-character vector of common ratio name or "Ratio"
+A character vector of the common ratio name or "Ratio".
 }
 \description{
 Names of common ratios

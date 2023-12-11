@@ -5,11 +5,8 @@
 #' full number of iterations.
 #'
 #' @inheritParams params
-#' @param analysis_mode Character string of analysis mode, either "debug",
-#' "check", or "report".
-#' @param nthin Thinning rate, takes default of 1.
 #'
-#' @return an `smb.analysis` object
+#' @return An `smb.analysis` object.
 #' @export
 #'
 #' @examples

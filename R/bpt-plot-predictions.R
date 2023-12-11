@@ -3,15 +3,8 @@
 #' Generates a plot of the specified prediction
 #'
 #' @inheritParams params
-#' @param prediction one of:
-#'  - "abundance-class": plots abundances by class and study year
-#'  - "abundance-total": plots total herd abundance by study year
-#'  - "survival": plots survival rates by class and study year (bull rate
-#'  includes M2, M3, MA)
-#'  - "fecundity": plots fecundity rate and proportion of reproductive cows
-#'  - "ratios": plots ratios by study year
 #'
-#' @return a `ggplot2` object
+#' @return A `ggplot2` object.
 #' @export
 #'
 #' @examples

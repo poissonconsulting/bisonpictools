@@ -26,6 +26,29 @@
 #' of the ratio.
 #' @param denominator A character vector of sex-age codes to go in the
 #' denominator of the ratio.
-
+#' @param study_years A character vector of study years to include in the plot.
+#' @param locations A character vector of location_ids to include in the plot.
+#' @param analysis_mode Character string of analysis mode, either "debug",
+#' "check", or "report".
+#' @param nthin Thinning rate, takes default of 1.
+#' @param levels_annual Levels of the annual factor in data.
+#' @param census Integer vector of census values.
+#' @param census_cv Numeric vector of census coefficients of variation.
+#' @param census_study_year Character vector of census study years.
+#' @param census_day_of_year Integer vector of census days of year.
+#' @param proportion_calf Numeric vector of proportion of calf values.
+#' @param proportion_calf_cv Numeric vector of proportion of calf coefficients
+#'   of variation.
+#' @param proportion_calf_study_year Character vector of proportion of calf
+#'   study years.
+#' @param proportion_calf_day_of_year Integer vector of proportion of calf days
+#'   of year.
+#' @param prediction One of the following:
+#'  - "abundance-class": plots abundances by class and study year.
+#'  - "abundance-total": plots total herd abundance by study year.
+#'  - "survival": plots survival rates by class and study year (bull rate
+#'  includes M2, M3, MA).
+#'  - "fecundity": plots fecundity rate and proportion of reproductive cows.
+#'  - "ratios": plots ratios by study year.
 #' @name params
 NULL

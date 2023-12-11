@@ -7,7 +7,7 @@
 bpt_study_years(data)
 }
 \arguments{
-\item{data}{a tibble of templated data}
+\item{data}{A tibble of templated data.}
 }
 \value{
 a character vector of unique study years

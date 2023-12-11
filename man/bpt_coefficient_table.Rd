@@ -11,15 +11,15 @@ bpt_coefficient_table(analysis)
 \item{analysis}{Analysis object from \code{bpt_analyse()}.}
 }
 \value{
-a tibble of coefficients with columns:
+A tibble of coefficients with the following columns:
 \itemize{
-\item \code{term} the name of the term
-\item \code{estimate} the median posterior estimate
-\item \code{lower} the lower 95\% credible interval
-\item \code{upper} the upper 95\% credible interval
-\item \code{svalue} a measure of directionality with respect to zero
+\item \code{term} the name of the term,
+\item \code{estimate} the median posterior estimate,
+\item \code{lower} the lower 95\% credible interval,
+\item \code{upper} the upper 95\% credible interval,
+\item \code{svalue} a measure of directionality with respect to zero,
 \itemize{
-\item an s-value of 4.32 bits is equivalent to a p-value of 0.05
+\item an s-value of 4.32 bits is equivalent to a p-value of 0.05.
 }
 }
 }

@@ -19,6 +19,46 @@ of the ratio.}
 
 \item{denominator}{A character vector of sex-age codes to go in the
 denominator of the ratio.}
+
+\item{study_years}{A character vector of study years to include in the plot.}
+
+\item{locations}{A character vector of location_ids to include in the plot.}
+
+\item{analysis_mode}{Character string of analysis mode, either "debug",
+"check", or "report".}
+
+\item{nthin}{Thinning rate, takes default of 1.}
+
+\item{levels_annual}{Levels of the annual factor in data.}
+
+\item{census}{Integer vector of census values.}
+
+\item{census_cv}{Numeric vector of census coefficients of variation.}
+
+\item{census_study_year}{Character vector of census study years.}
+
+\item{census_day_of_year}{Integer vector of census days of year.}
+
+\item{proportion_calf}{Numeric vector of proportion of calf values.}
+
+\item{proportion_calf_cv}{Numeric vector of proportion of calf coefficients
+of variation.}
+
+\item{proportion_calf_study_year}{Character vector of proportion of calf
+study years.}
+
+\item{proportion_calf_day_of_year}{Integer vector of proportion of calf days
+of year.}
+
+\item{prediction}{One of the following:
+\itemize{
+\item "abundance-class": plots abundances by class and study year.
+\item "abundance-total": plots total herd abundance by study year.
+\item "survival": plots survival rates by class and study year (bull rate
+includes M2, M3, MA).
+\item "fecundity": plots fecundity rate and proportion of reproductive cows.
+\item "ratios": plots ratios by study year.
+}}
 }
 \description{
 Descriptions of the parameters for functions

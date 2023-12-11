@@ -22,10 +22,8 @@
 #' ratio.
 #'
 #' @inheritParams params
-#' @param study_years a character vector of study years to include in the plot
-#' @param locations a character vector of location_ids to include in the plot
 #'
-#' @return a `ggplot` object
+#' @return A `ggplot` object.
 #' @export
 #'
 #' @examples

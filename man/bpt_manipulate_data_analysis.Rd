@@ -21,7 +21,7 @@ bpt_manipulate_data_analysis(
 \item{proportion_calf_data}{Tibble of proportion calf data.}
 }
 \value{
-a list of manipulated data ready for analysis
+A list of manipulated data ready for analysis.
 }
 \description{
 Checks that data is in the correct format and manipulates it for analysis.

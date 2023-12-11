@@ -5,7 +5,8 @@
 #'
 #' @inheritParams params
 #'
-#' @return Throws an error if the study years do not match
+#' @return Throws an error if the study years do not match, otherwise invisibly
+#' returns TRUE.
 #' @noRd
 #'
 #' @examples

@@ -18,31 +18,31 @@ bpt_modify_data(
 )
 }
 \arguments{
-\item{data}{data in list form}
+\item{data}{Data in list form as passed through embr::analyse().}
 
-\item{levels_annual}{levels of the annual factor in data}
+\item{levels_annual}{Levels of the annual factor in data.}
 
-\item{census}{integer vector of census values}
+\item{census}{Integer vector of census values.}
 
-\item{census_cv}{numeric vector of census coefficients of variation}
+\item{census_cv}{Numeric vector of census coefficients of variation.}
 
-\item{census_study_year}{character vector of census study years}
+\item{census_study_year}{Character vector of census study years.}
 
-\item{census_day_of_year}{integer vector of census days of year}
+\item{census_day_of_year}{Integer vector of census days of year.}
 
-\item{proportion_calf}{numeric vector of proportion of calf values}
+\item{proportion_calf}{Numeric vector of proportion of calf values.}
 
-\item{proportion_calf_cv}{numeric vector of proportion of calf coefficients
-of variation}
+\item{proportion_calf_cv}{Numeric vector of proportion of calf coefficients
+of variation.}
 
-\item{proportion_calf_study_year}{character vector of proportion of calf
-study years}
+\item{proportion_calf_study_year}{Character vector of proportion of calf
+study years.}
 
-\item{proportion_calf_day_of_year}{integer vector of proportion of calf days
-of year}
+\item{proportion_calf_day_of_year}{Integer vector of proportion of calf days
+of year.}
 }
 \value{
-data in list form with the new data added
+Data in list form with the new data added.
 }
 \description{
 Modify data for plot

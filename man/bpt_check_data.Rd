@@ -32,7 +32,7 @@ bpt_check_data(
 event data)}
 }
 \value{
-List of data frames
+A list of data frames.
 }
 \description{
 Confirms the columns types match the

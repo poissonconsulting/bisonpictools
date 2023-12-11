@@ -10,9 +10,9 @@ bpt_predict_survival(analysis)
 \item{analysis}{Analysis object from \code{bpt_analyse()}.}
 }
 \value{
-a tibble of predicted survival rates for each study year, including
+A tibble of predicted survival rates for each study year, including
 the median posterior value (estimate) and lower and upper 95\% credible
-intervals
+intervals.
 }
 \description{
 Predicts the survival rates for each class for each study

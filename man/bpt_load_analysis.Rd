@@ -11,7 +11,7 @@ bpt_load_analysis(file)
 extension).}
 }
 \value{
-the analysis object
+An smb_analysis object.
 }
 \description{
 Loads analysis object from file path where it has been saved

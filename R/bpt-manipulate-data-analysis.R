@@ -4,7 +4,7 @@
 #'
 #' @inheritParams params
 #'
-#' @return a list of manipulated data ready for analysis
+#' @return A list of manipulated data ready for analysis.
 #' @export
 #'
 #' @examples

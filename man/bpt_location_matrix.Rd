@@ -10,7 +10,7 @@ bpt_location_matrix(location_data)
 \item{location_data}{Tibble of templated location data.}
 }
 \value{
-a matrix of distances between locations in kilometers
+A matrix of distances between locations in kilometers.
 }
 \description{
 Prepare Location Distance Matrix for Analysis

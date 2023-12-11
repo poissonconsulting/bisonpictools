@@ -1,20 +1,9 @@
 #' Modify data for plot
 #'
-#' @param data data in list form
-#' @param levels_annual levels of the annual factor in data
-#' @param census integer vector of census values
-#' @param census_cv numeric vector of census coefficients of variation
-#' @param census_study_year character vector of census study years
-#' @param census_day_of_year integer vector of census days of year
-#' @param proportion_calf numeric vector of proportion of calf values
-#' @param proportion_calf_cv numeric vector of proportion of calf coefficients
-#'   of variation
-#' @param proportion_calf_study_year character vector of proportion of calf
-#'   study years
-#' @param proportion_calf_day_of_year integer vector of proportion of calf days
-#'   of year
+#' @inheritParams params
+#' @param data Data in list form as passed through embr::analyse().
 #'
-#' @return data in list form with the new data added
+#' @return Data in list form with the new data added.
 #'
 #' @examples
 #' \dontrun{

@@ -18,7 +18,7 @@
 #' Bison movement patterns: calving, summer/fall, and winter. Start and end
 #' dates of each season are based in the study year 1972-1973.
 #'
-#' @return A tibble
+#' @return A tibble.
 #' @export
 #'
 #' @examples

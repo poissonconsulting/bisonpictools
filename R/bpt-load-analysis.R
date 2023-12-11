@@ -5,7 +5,7 @@
 #' @param file Path to file where analysis object is saved (excluding file
 #' extension).
 #'
-#' @return the analysis object
+#' @return An smb_analysis object.
 #' @export
 #'
 #' @examples

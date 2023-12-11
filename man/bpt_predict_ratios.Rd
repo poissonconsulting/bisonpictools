@@ -10,9 +10,9 @@ bpt_predict_ratios(analysis)
 \item{analysis}{Analysis object from \code{bpt_analyse()}.}
 }
 \value{
-a tibble of predicted ratios for each study year, including the
+A tibble of predicted ratios for each study year, including the
 median posterior value (estimate) and lower and upper 95\% credible
-intervals
+intervals.
 }
 \description{
 Predicts the following ratios for each study year: M0:F0, M1:F1, Calf:FA,

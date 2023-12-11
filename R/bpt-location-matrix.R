@@ -2,7 +2,7 @@
 #'
 #' @inheritParams params
 #'
-#' @return a matrix of distances between locations in kilometers
+#' @return A matrix of distances between locations in kilometers.
 #' @export
 #'
 #' @examples

@@ -28,7 +28,7 @@ bpt_analyse(
 "check", or "report".}
 }
 \value{
-an \code{smb.analysis} object
+An \code{smb.analysis} object.
 }
 \description{
 Fits the integrated population model to data. Run first in "debug" mode to

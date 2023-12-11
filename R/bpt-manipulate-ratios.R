@@ -18,16 +18,11 @@
 #' interest for plotting. Ratio of interest is calculated as
 #' numerator:(denominator + numerator) to avoid infinite values.
 #'
-#' @param data a tibble of manipulated event, and location data
-#' @param numerator a character vector of sex-age codes to go in the numerator
-#'   of the ratio
-#' @param denominator a character vector of sex-age codes to go in the
-#'   denominator of the ratio
-#' @param study_years a character vector of study years to include in the plot
-#' @param locations a character vector of location_ids to include in the plot
+#' @inheritParams params
+#' @param data A tibble of manipulated event, and location data.
 #'
-#' @return the original tibble, with additional columns `numerator`,
-#'   `denominator`, and `ratio`
+#' @return The original tibble, with additional columns `numerator`,
+#'   `denominator`, and `ratio`.
 #' @export
 #'
 #' @examples
