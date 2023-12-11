@@ -7,7 +7,7 @@
 bpt_predict_ratios(analysis)
 }
 \arguments{
-\item{analysis}{the analysis object from \code{bpt_analyse()}}
+\item{analysis}{Analysis object from \code{bpt_analyse()}.}
 }
 \value{
 a tibble of predicted ratios for each study year, including the

@@ -18,8 +18,7 @@
 #' interest for plotting. Ratio of interest is calculated as
 #' numerator:(denominator + numerator) to avoid infinite values.
 #'
-#' @param data a tibble of manipulated event, location, census, and calf
-#'   proportion data
+#' @param data a tibble of manipulated event, and location data
 #' @param numerator a character vector of sex-age codes to go in the numerator
 #'   of the ratio
 #' @param denominator a character vector of sex-age codes to go in the

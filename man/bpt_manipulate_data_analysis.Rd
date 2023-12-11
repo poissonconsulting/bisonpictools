@@ -12,13 +12,13 @@ bpt_manipulate_data_analysis(
 )
 }
 \arguments{
-\item{event_data}{a tibble of templated event data}
+\item{event_data}{Tibble of templated event data.}
 
-\item{location_data}{a tibble of templated location data}
+\item{location_data}{Tibble of templated location data.}
 
-\item{census_data}{a tibble of templated census data}
+\item{census_data}{Tibble of census data.}
 
-\item{proportion_calf_data}{a tibble of templated proportion of calf data}
+\item{proportion_calf_data}{Tibble of proportion calf data.}
 }
 \value{
 a list of manipulated data ready for analysis

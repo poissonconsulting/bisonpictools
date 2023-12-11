@@ -3,7 +3,7 @@
 #' Predicts the following ratios for each study year: M0:F0, M1:F1, Calf:FA,
 #' Yearling:FA, M2:FA, M3:FA, MA:FA
 #'
-#' @param analysis the analysis object from `bpt_analyse()`
+#' @inheritParams params
 #'
 #' @return a tibble of predicted ratios for each study year, including the
 #'   median posterior value (estimate) and lower and upper 95% credible

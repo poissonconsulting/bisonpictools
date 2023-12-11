@@ -14,25 +14,26 @@ bpt_analyse(
 )
 }
 \arguments{
-\item{event_data}{tibble of templated event data}
+\item{event_data}{Tibble of templated event data.}
 
-\item{location_data}{tibble of templated location data}
+\item{location_data}{Tibble of templated location data.}
 
-\item{census_data}{a tibble of census data}
+\item{census_data}{Tibble of census data.}
 
-\item{proportion_calf_data}{a tibble of proportion calf data}
+\item{proportion_calf_data}{Tibble of proportion calf data.}
 
-\item{nthin}{thinning rate}
+\item{nthin}{Thinning rate, takes default of 1.}
 
-\item{analysis_mode}{character string of analysis mode, either "debug",
-"check", or "report". Run first in "debug" mode to ensure that the model
-samples. Next, run in "report" mode to sample the full number of iterations.}
+\item{analysis_mode}{Character string of analysis mode, either "debug",
+"check", or "report".}
 }
 \value{
 an \code{smb.analysis} object
 }
 \description{
-Fits the integrated population model to data
+Fits the integrated population model to data. Run first in "debug" mode to
+ensure that the model samples. Next, run in "report" mode to sample the
+full number of iterations.
 }
 \examples{
 \dontrun{

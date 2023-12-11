@@ -7,7 +7,7 @@
 bpt_predict_abundance_class(analysis)
 }
 \arguments{
-\item{analysis}{the analysis object from \code{bpt_analyse()}}
+\item{analysis}{Analysis object from \code{bpt_analyse()}.}
 }
 \value{
 a tibble of predicted abundances for each class and year, including

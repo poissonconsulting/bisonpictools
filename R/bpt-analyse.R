@@ -1,15 +1,13 @@
 #' Fit Integrated Population Model
 #'
-#' Fits the integrated population model to data
+#' Fits the integrated population model to data. Run first in "debug" mode to 
+#' ensure that the model samples. Next, run in "report" mode to sample the 
+#' full number of iterations.
 #'
-#' @param nthin thinning rate
-#' @param event_data tibble of templated event data
-#' @param location_data tibble of templated location data
-#' @param census_data a tibble of census data
-#' @param proportion_calf_data a tibble of proportion calf data
-#' @param analysis_mode character string of analysis mode, either "debug",
-#' "check", or "report". Run first in "debug" mode to ensure that the model
-#' samples. Next, run in "report" mode to sample the full number of iterations.
+#' @inheritParams params
+#' @param analysis_mode Character string of analysis mode, either "debug",
+#' "check", or "report".
+#' @param nthin Thinning rate, takes default of 1.
 #'
 #' @return an `smb.analysis` object
 #' @export

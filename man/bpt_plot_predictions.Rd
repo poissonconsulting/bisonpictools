@@ -7,7 +7,7 @@
 bpt_plot_predictions(analysis, prediction = "abundance-total")
 }
 \arguments{
-\item{analysis}{analysis objects from \code{bpt_analyse()}}
+\item{analysis}{Analysis object from \code{bpt_analyse()}.}
 
 \item{prediction}{one of:
 \itemize{

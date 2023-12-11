@@ -2,10 +2,7 @@
 #'
 #' Checks that data is in the correct format and manipulates it for analysis.
 #'
-#' @param event_data a tibble of templated event data
-#' @param location_data a tibble of templated location data
-#' @param census_data a tibble of templated census data
-#' @param proportion_calf_data a tibble of templated proportion of calf data
+#' @inheritParams params
 #'
 #' @return a list of manipulated data ready for analysis
 #' @export

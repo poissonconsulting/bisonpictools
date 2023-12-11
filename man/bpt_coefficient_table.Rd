@@ -8,7 +8,7 @@ Extracts the coefficient table from the analysis object.}
 bpt_coefficient_table(analysis)
 }
 \arguments{
-\item{analysis}{the analysis object from \code{bpt_analyse()}}
+\item{analysis}{Analysis object from \code{bpt_analyse()}.}
 }
 \value{
 a tibble of coefficients with columns:

@@ -17,7 +17,15 @@
 #' Descriptions of the parameters for functions
 #'
 #' @keywords internal
+#' @param analysis Analysis object from `bpt_analyse()`.
+#' @param event_data Tibble of templated event data.
+#' @param location_data Tibble of templated location data.
+#' @param census_data Tibble of census data.
+#' @param proportion_calf_data Tibble of proportion calf data.
+#' @param numerator A character vector of sex-age codes to go in the numerator
+#' of the ratio.
+#' @param denominator A character vector of sex-age codes to go in the
+#' denominator of the ratio.
+
 #' @name params
-#'
-#'
 NULL

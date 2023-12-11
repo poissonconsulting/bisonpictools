@@ -13,8 +13,7 @@ bpt_manipulate_ratios(
 )
 }
 \arguments{
-\item{data}{a tibble of manipulated event, location, census, and calf
-proportion data}
+\item{data}{a tibble of manipulated event, and location data}
 
 \item{numerator}{a character vector of sex-age codes to go in the numerator
 of the ratio}

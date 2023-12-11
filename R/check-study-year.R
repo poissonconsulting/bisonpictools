@@ -3,9 +3,7 @@
 #' Checks that the dates provided in the census and calf proportion data are
 #' within the study years of the event data.
 #'
-#' @param event_data a tibble of templated event data
-#' @param census_data a tibble of templated census data
-#' @param proportion_calf_data a tibble of templated calf proportion data
+#' @inheritParams params
 #'
 #' @return Throws an error if the study years do not match
 #' @noRd

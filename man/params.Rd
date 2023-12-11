@@ -3,6 +3,23 @@
 \name{params}
 \alias{params}
 \title{Parameters for functions}
+\arguments{
+\item{analysis}{Analysis object from \code{bpt_analyse()}.}
+
+\item{event_data}{Tibble of templated event data.}
+
+\item{location_data}{Tibble of templated location data.}
+
+\item{census_data}{Tibble of census data.}
+
+\item{proportion_calf_data}{Tibble of proportion calf data.}
+
+\item{numerator}{A character vector of sex-age codes to go in the numerator
+of the ratio.}
+
+\item{denominator}{A character vector of sex-age codes to go in the
+denominator of the ratio.}
+}
 \description{
 Descriptions of the parameters for functions
 }

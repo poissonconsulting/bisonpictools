@@ -7,7 +7,7 @@
 bpt_location_matrix(location_data)
 }
 \arguments{
-\item{location_data}{a tibble of templated location data}
+\item{location_data}{Tibble of templated location data.}
 }
 \value{
 a matrix of distances between locations in kilometers

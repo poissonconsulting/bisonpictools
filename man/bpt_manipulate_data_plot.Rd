@@ -7,9 +7,9 @@
 bpt_manipulate_data_plot(event_data, location_data)
 }
 \arguments{
-\item{event_data}{a tibble of templated event data}
+\item{event_data}{Tibble of templated event data.}
 
-\item{location_data}{a tibble of templated location data}
+\item{location_data}{Tibble of templated location data.}
 }
 \value{
 A tibble of data prepared for plotting.

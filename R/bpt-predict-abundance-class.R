@@ -2,7 +2,7 @@
 #'
 #' Predicts abundances of each class for each study year.
 #'
-#' @param analysis the analysis object from `bpt_analyse()`
+#' @inheritParams params
 #'
 #' @return a tibble of predicted abundances for each class and year, including
 #'   the median posterior value (estimate) and lower and upper 95% credible

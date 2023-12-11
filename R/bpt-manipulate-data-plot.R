@@ -14,8 +14,7 @@
 
 #' Manipulate Data for Plot
 #'
-#' @param event_data a tibble of templated event data
-#' @param location_data a tibble of templated location data
+#' @inheritParams params
 #'
 #' @return A tibble of data prepared for plotting.
 #' @export

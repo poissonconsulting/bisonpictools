@@ -2,7 +2,8 @@
 #'
 #' Loads analysis object from file path where it has been saved
 #'
-#' @param file path to file (excluding extension)
+#' @param file Path to file where analysis object is saved (excluding file
+#' extension).
 #'
 #' @return the analysis object
 #' @export

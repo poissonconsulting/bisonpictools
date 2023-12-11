@@ -14,15 +14,15 @@ bpt_plot_ratios(
 )
 }
 \arguments{
-\item{event_data}{a tibble of templated event data}
+\item{event_data}{Tibble of templated event data.}
 
-\item{location_data}{a tibble of templated location data}
+\item{location_data}{Tibble of templated location data.}
 
-\item{numerator}{a character vector of sex-age codes to go in the numerator
-of the ratio}
+\item{numerator}{A character vector of sex-age codes to go in the numerator
+of the ratio.}
 
-\item{denominator}{a character vector of sex-age codes to go in the
-denominator of the ratio}
+\item{denominator}{A character vector of sex-age codes to go in the
+denominator of the ratio.}
 
 \item{study_years}{a character vector of study years to include in the plot}
 

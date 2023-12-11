@@ -2,7 +2,7 @@
 #'
 #' Generates a plot of the specified prediction
 #'
-#' @param analysis analysis objects from `bpt_analyse()`
+#' @inheritParams params
 #' @param prediction one of:
 #'  - "abundance-class": plots abundances by class and study year
 #'  - "abundance-total": plots total herd abundance by study year

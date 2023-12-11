@@ -1,7 +1,7 @@
 #' Extract Coefficient Table
 #' Extracts the coefficient table from the analysis object.
 #'
-#' @param analysis the analysis object from `bpt_analyse()`
+#' @inheritParams params
 #'
 #' @return a tibble of coefficients with columns:
 #'  - `term` the name of the term
