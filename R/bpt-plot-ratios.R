@@ -62,8 +62,6 @@ bpt_plot_ratios <- function(
     location_data
   )
 
-  max_groupsize <- max(data$groupsize)
-
   data <- bpt_manipulate_ratios(
     data = data,
     numerator = numerator,
