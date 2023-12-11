@@ -84,18 +84,7 @@ Install Stan
 install.packages("rstan")
 ```
 
-Read in data saved from the hosted app
-
-``` r
-# Change `dir` to the folder where you have saved the data
-dir <- "myfilepath"
-event_data <- readr::read_csv(file.path(dir, "event_data.csv"))
-location_data <- readr::read_csv(file.path(dir, "location_data.csv"))
-census_data <- readr::read_csv(file.path(dir, "census_data.csv"))
-proportion_calf_data <- readr::read_csv(file.path(dir, "proportion_calf_data.csv"))
-```
-
-Run the analysis
+Run the analysis. The following example uses the built-in example data.
 
 ``` r
 analysis <- bpt_analyse(
@@ -104,7 +93,7 @@ analysis <- bpt_analyse(
   census_data = bpt_census_data,
   proportion_calf_data = bpt_proportion_calf_data,
   nthin = 1L,
-  analysis_mode = "report"
+  analysis_mode = "quick"
 )
 ```
 
@@ -150,32 +139,32 @@ bpt_load_analysis("file_path/analysis")
 bpt_plot_predictions(analysis, prediction = "abundance-class")
 ```
 
-![](README_files/figure-gfm/unnamed-chunk-14-1.png)<!-- -->
+![](README_files/figure-gfm/unnamed-chunk-13-1.png)<!-- -->
 
 ``` r
 # Plot total abundance
 bpt_plot_predictions(analysis, prediction = "abundance-total")
 ```
 
-![](README_files/figure-gfm/unnamed-chunk-15-1.png)<!-- -->
+![](README_files/figure-gfm/unnamed-chunk-14-1.png)<!-- -->
 
 ``` r
 # Plot survival rates
 bpt_plot_predictions(analysis, prediction = "survival")
 ```
 
-![](README_files/figure-gfm/unnamed-chunk-16-1.png)<!-- -->
+![](README_files/figure-gfm/unnamed-chunk-15-1.png)<!-- -->
 
 ``` r
 # Plot fecundity rates
 bpt_plot_predictions(analysis, prediction = "fecundity")
 ```
 
-![](README_files/figure-gfm/unnamed-chunk-17-1.png)<!-- -->
+![](README_files/figure-gfm/unnamed-chunk-16-1.png)<!-- -->
 
 ``` r
 # Plot ratios
 bpt_plot_predictions(analysis, prediction = "ratios")
 ```
 
-![](README_files/figure-gfm/unnamed-chunk-18-1.png)<!-- -->
+![](README_files/figure-gfm/unnamed-chunk-17-1.png)<!-- -->
