@@ -21,8 +21,8 @@ test_that("Correct study years outputted for calf proportion data", {
 
 test_that("Passes if non-sequential years included calf proportion data", {
   expect_identical(
-    bpt_proportion_calf_data |> 
-      dplyr::mutate(proportion_calf_year = c(2020, 2022)) |> 
+    bpt_proportion_calf_data |>
+      dplyr::mutate(proportion_calf_year = c(2020, 2022)) |>
       bpt_study_years(),
     c("2019-2020", "2021-2022")
   )

@@ -57,9 +57,9 @@ bpt_check_data <- function(
     join = join
   )
   if (!is.null(location)) {
-    groups <- 
-      location |> 
-      dplyr::group_by(.data$latitude, .data$longitude) |> 
+    groups <-
+      location |>
+      dplyr::group_by(.data$latitude, .data$longitude) |>
       dplyr::n_groups()
     if (groups < nrow(location)) {
       warning(

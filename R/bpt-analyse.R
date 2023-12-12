@@ -1,7 +1,7 @@
 #' Fit Integrated Population Model
 #'
-#' Fits the integrated population model to data. Run first in "debug" mode to 
-#' ensure that the model samples. Next, run in "report" mode to sample the 
+#' Fits the integrated population model to data. Run first in "debug" mode to
+#' ensure that the model samples. Next, run in "report" mode to sample the
 #' full number of iterations.
 #'
 #' @inheritParams params

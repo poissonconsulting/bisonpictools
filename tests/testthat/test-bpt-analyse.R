@@ -7,7 +7,7 @@ test_that("analysis runs producing an .smb_analysis object with correct thinning
     nthin = 1L,
     analysis_mode = "quick"
   )
-  
+
   expect_equal(class(analysis), c("smb_analysis", "mb_analysis"))
   expect_true(analysis$nthin == 1L)
 })

@@ -15,12 +15,12 @@ bpt_study_years <- function(data) {
   census <- try(bpt_check_data(census = data), silent = TRUE)
   proportion_calf <- try(bpt_check_data(proportion_calf = data), silent = TRUE)
 
-  if (inherits(event, "try-error") & 
-      inherits(census, "try-error") & 
-      inherits(proportion_calf, "try-error")) {
+  if (inherits(event, "try-error") &
+    inherits(census, "try-error") &
+    inherits(proportion_calf, "try-error")) {
     chk::abort_chk("Data is not a compatible tibble. Ensure columns match the formatting for one of the `event`, `census`, or `proportion_calf` tables in the template: see `?template`.")
   }
-  
+
   if (!inherits(event, "try-error")) {
     event <- event$event
     event$datetime_start <- dttr2::dtt_date_time_from_ints(
@@ -56,5 +56,5 @@ bpt_study_years <- function(data) {
     proportion_calf$study_year <- as.factor(proportion_calf$study_year)
     x <- as.character(unique(proportion_calf$study_year))
     return(x)
-  } 
+  }
 }

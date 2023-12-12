@@ -3,7 +3,7 @@
 #' Saves analysis object to the file location specified by `file`.
 #'
 #' @inheritParams params
-#' 
+#'
 #' @param file File path to save analysis object to (file extension added
 #' automatically).
 #'

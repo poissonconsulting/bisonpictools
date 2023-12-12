@@ -30,6 +30,6 @@ check_study_year <- function(
   if (!chk::vld_subset(sy_prop_calf, sy_event)) {
     chk::abort_chk("Calf proportion data must include only dates that are within the study years of the event data.")
   }
-  
+
   invisible(TRUE)
 }
