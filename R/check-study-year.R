@@ -24,11 +24,21 @@ check_study_year <- function(
   sy_prop_calf <- bpt_study_years(proportion_calf_data)
 
   if (!chk::vld_subset(sy_census, sy_event)) {
-    chk::abort_chk("Census data must include only dates that are within the study years of the event data.")
+    chk::abort_chk(
+      paste0(
+        "Census data must include only dates that are within the study years ",
+        "of the event data."
+      )
+    )
   }
 
   if (!chk::vld_subset(sy_prop_calf, sy_event)) {
-    chk::abort_chk("Calf proportion data must include only dates that are within the study years of the event data.")
+    chk::abort_chk(
+      paste0(
+        "Calf proportion data must include only dates that are within the ",
+        "study years of the event data."
+      )
+    )
   }
 
   invisible(TRUE)

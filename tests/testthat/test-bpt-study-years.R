@@ -29,9 +29,20 @@ test_that("Passes if non-sequential years included calf proportion data", {
 })
 
 
-test_that("Errors if the data provided does not match the format of census, calf proportion, or event data", {
-  expect_chk_error(
-    bpt_study_years(bpt_location_data),
-    regexp = "Data is not a compatible tibble\\. Ensure columns match the formatting for one of the `event`, `census`, or `proportion_calf` tables in the template\\: see `\\?template`\\."
-  )
-})
+test_that(
+  paste0(
+    "Errors if the data provided does not match the format of census, ",
+    "calf proportion, or event data"
+  ),
+  {
+    expect_chk_error(
+      bpt_study_years(bpt_location_data),
+      regexp = paste0(
+        "Data is not a compatible tibble\\. Ensure columns match the ",
+        "formatting ",
+        "for one of the `event`, `census`, or `proportion_calf` tables in the ",
+        "template\\: see `\\?template`\\."
+      )
+    )
+  }
+)

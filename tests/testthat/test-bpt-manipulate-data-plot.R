@@ -1,13 +1,25 @@
 # Unusual inputs
 test_that("errors with null input", {
-  expect_error(bpt_manipulate_data_plot(NULL), "argument \"location_data\" is missing, with no default")
-  expect_error(bpt_manipulate_data_plot(bpt_event_data, NULL), "The pkey values in the parent table must match the columns listed in the child table in the join row")
+  expect_error(
+    bpt_manipulate_data_plot(NULL),
+    "argument \"location_data\" is missing, with no default"
+  )
+  expect_error(
+    bpt_manipulate_data_plot(bpt_event_data, NULL),
+    regexp = paste0(
+      "The pkey values in the parent table must match the columns listed ",
+      "in the child table in the join row"
+    )
+  )
 })
 
 test_that("errors with vector inputs", {
   expect_chk_error(
     bpt_manipulate_data_plot(c(1, 2, 3), c(1, 2, 3)),
-    "Column names in data must include 'f0', 'f1', 'fa', 'fu', 'location_id', 'm0', 'm1', 'm2', ... and 'uu'."
+    regexp = paste0(
+      "Column names in data must include 'f0', 'f1', 'fa', 'fu', ",
+      "'location_id', 'm0', 'm1', 'm2', ... and 'uu'."
+    )
   )
 })
 
@@ -20,7 +32,11 @@ test_that("errors with numeric location_id column", {
         dplyr::mutate(location_id = seq_len(nrow(bpt_event_data))),
       location_data = bpt_location_data
     ),
-    "All 'location_id' values in the event table must be in the location table. The following rows\\(s\\) in the event table are causing the issue: 1, 2, 3, 4, 5, 6, 7."
+    regexp = paste0(
+      "All 'location_id' values in the event table must be in the location ",
+      "table. The following rows\\(s\\) in the event table are causing the ",
+      "issue: 1, 2, 3, 4, 5, 6, 7."
+    )
   )
 })
 
@@ -40,7 +56,10 @@ test_that("letters in 'f0' column produces error", {
         dplyr::mutate(f0 = letters[seq_len(nrow(bpt_event_data))]),
       location_data = bpt_location_data
     ),
-    "The following values in column 'f0' should be a integer: 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', ... and 'l'."
+    regexp = paste0(
+      "The following values in column 'f0' should be a integer: 'a', 'b', ",
+      "'c', 'd', 'e', 'f', 'g', 'h', ... and 'l'."
+    )
   )
 })
 
@@ -52,7 +71,11 @@ test_that("errors with numeric location_id column", {
       location_data = bpt_location_data |>
         dplyr::mutate(location_id = seq_len(nrow(bpt_location_data)))
     ),
-    "All 'location_id' values in the event table must be in the location table. The following rows\\(s\\) in the event table are causing the issue: 1, 2, 3, 4, 5, 6, 7."
+    regexp = paste0(
+      "All 'location_id' values in the event table must be in the location ",
+      "table. The following rows\\(s\\) in the event table are causing the ",
+      "issue: 1, 2, 3, 4, 5, 6, 7."
+    )
   )
 })
 
@@ -63,7 +86,10 @@ test_that("errors with character latitude column", {
       location_data = bpt_location_data |>
         dplyr::mutate(latitude = letters[seq_len(nrow(bpt_location_data))])
     ),
-    "The following values in column 'latitude' should be a number: 'a', 'b', 'c' and 'd'."
+    regexp = paste0(
+      "The following values in column 'latitude' should be a number: ",
+      "'a', 'b', 'c' and 'd'."
+    )
   )
 })
 
@@ -74,36 +100,57 @@ test_that("errors with character longitude column", {
       location_data = bpt_location_data |>
         dplyr::mutate(longitude = letters[seq_len(nrow(bpt_location_data))])
     ),
-    "The following values in column 'longitude' should be a number: 'a', 'b', 'c' and 'd'."
+    regexp = paste0(
+      "The following values in column 'longitude' should be a number: ",
+      "'a', 'b', 'c' and 'd'."
+    )
   )
 })
 
 # Join error
-test_that("errors if `event_data` has location_id's that are not present in `location_data`", {
-  expect_chk_error(
-    bpt_manipulate_data_plot(
-      event_data = bpt_event_data |>
-        dplyr::mutate(
-          location_id = c(
-            rep("LOCID10", nrow(bpt_event_data))
-          )
-        ),
-      location_data = bpt_location_data
-    ),
-    "All 'location_id' values in the event table must be in the location table. The following rows\\(s\\) in the event table are causing the issue: 1, 2, 3, 4, 5, 6, 7, 8, ..., 12."
-  )
+test_that(
+  paste0(
+    "errors if `event_data` has location_id's that are not present in ",
+    "`location_data`"
+  ),
+  {
+    expect_chk_error(
+      bpt_manipulate_data_plot(
+        event_data = bpt_event_data |>
+          dplyr::mutate(
+            location_id = c(
+              rep("LOCID10", nrow(bpt_event_data))
+            )
+          ),
+        location_data = bpt_location_data
+      ),
+      regexp = paste0(
+        "All 'location_id' values in the event table must be in the location ",
+        "table. The following rows\\(s\\) in the event table are causing the ",
+        "issue: 1, 2, 3, 4, 5, 6, 7, 8, ..., 12."
+      )
+    )
 
-  expect_chk_error(
-    bpt_manipulate_data_plot(
-      event_data = bpt_event_data |>
-        dplyr::mutate(
-          location_id = dplyr::if_else(location_id == "LOCID1", "LOCID10", location_id)
-        ),
-      location_data = bpt_location_data
-    ),
-    "All 'location_id' values in the event table must be in the location table. The following rows\\(s\\) in the event table are causing the issue: 1, 2, 3."
-  )
-})
+    expect_chk_error(
+      bpt_manipulate_data_plot(
+        event_data = bpt_event_data |>
+          dplyr::mutate(
+            location_id = dplyr::if_else(
+              location_id == "LOCID1",
+              "LOCID10",
+              location_id
+            )
+          ),
+        location_data = bpt_location_data
+      ),
+      regexp = paste0(
+        "All 'location_id' values in the event table must be in the location ",
+        "table. The following rows\\(s\\) in the event table are causing the ",
+        "issue: 1, 2, 3."
+      )
+    )
+  }
+)
 
 # Expected outputs
 test_that("returns tibble", {

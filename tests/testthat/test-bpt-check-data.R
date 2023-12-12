@@ -66,7 +66,10 @@ test_that("calf proportion table only passed", {
     proportion_calf_cv = c(0.05, 0.1)
   )
 
-  proportion_calf <- bpt_check_data(proportion_calf = proportion_calf_data, complete = FALSE)
+  proportion_calf <- bpt_check_data(
+    proportion_calf = proportion_calf_data,
+    complete = FALSE
+  )
 
   expect_type(proportion_calf, "list")
   expect_identical(proportion_calf$proportion_calf, proportion_calf_data)
@@ -285,8 +288,11 @@ test_that("errors if sites in event table don't match ocation table", {
   )
 })
 
-test_that("errors as dates in census and calf proportion tables are not
-          within the event_data study years", {
+test_that(
+  paste0(
+    "errors as dates in census and calf proportion tables are not within the ",
+    "event_data study years"
+  ), {
   event_data <- dplyr::tibble(
     location_id = c("SiteZ"),
     start_year = c(2021L),
@@ -771,7 +777,10 @@ test_that("Errors if day provided as a string", {
 
   expect_error(
     bpt_check_data(event = event_data),
-    "The following values in column 'start_day' should be a integer: 'thirteen'."
+    regexp = paste0(
+      "The following values in column 'start_day' should be a integer: ",
+      "'thirteen'."
+    )
   )
 })
 
@@ -2778,7 +2787,7 @@ test_that("Errors if UTM-type values provided in latitude column", {
   )
 })
 
-test_that("Errors if values provided below allowable range in latitude column", {
+test_that("Errors if values provided below range in latitude column", {
   location_data <- dplyr::tibble(
     location_id = c("Site1", "Site2"),
     latitude = c(-111.575, -111.233),
@@ -2834,7 +2843,7 @@ test_that("Errors if UTM-type values provided in longitude column", {
   )
 })
 
-test_that("Errors if values provided below allowable range in longitude column", {
+test_that("Errors if values provided below range in longitude column", {
   location_data <- dplyr::tibble(
     location_id = c("Site1", "Site2"),
     latitude = c(57.222, 57.636),

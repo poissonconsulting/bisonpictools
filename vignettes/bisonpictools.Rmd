@@ -88,10 +88,18 @@ Read in data saved from the hosted app
 ```{r, eval = FALSE}
 # Change `dir` to the folder where you have saved the data
 dir <- "myfilepath"
-event_data <- readr::read_csv(file.path(dir, "event_data.csv"))
-location_data <- readr::read_csv(file.path(dir, "location_data.csv"))
-census_data <- readr::read_csv(file.path(dir, "census_data.csv"))
-proportion_calf_data <- readr::read_csv(file.path(dir, "proportion_calf_data.csv"))
+event_data <- readr::read_csv(
+  file.path(dir, "event_data.csv")
+)
+location_data <- readr::read_csv(
+  file.path(dir, "location_data.csv")
+)
+census_data <- readr::read_csv(
+  file.path(dir, "census_data.csv")
+)
+proportion_calf_data <- readr::read_csv(
+  file.path(dir, "proportion_calf_data.csv")
+)
 ```
 
 Run the analysis
@@ -136,7 +144,9 @@ analysis <- bpt_analyse(
 ```
 
 ```{r, echo = FALSE}
-analysis <- readRDS(file = system.file(package = "bisonpictools", "test-objects/analysis.RDS"))
+analysis <- readRDS(
+  file = system.file(package = "bisonpictools", "test-objects/analysis.RDS")
+)
 ```
 
 Save the analysis object
@@ -155,10 +165,14 @@ bpt_predict_abundance_total(analysis)
 
 ```{r, eval = FALSE}
 # Can predict other values using the following functions
-bpt_predict_abundance_class(analysis) # Predicts abundance by class
-bpt_predict_survival(analysis) # Predicts survival rates
-bpt_predict_fecundity(analysis) # Predicts fecundity rate and proportion of reproductive cows
-bpt_predict_ratios(analysis) # Predicts population ratios
+# Predicts abundance by class:
+bpt_predict_abundance_class(analysis) 
+# Predicts survival rates:
+bpt_predict_survival(analysis)
+# Predicts fecundity rate and proportion of reproductive cows:
+bpt_predict_fecundity(analysis) 
+# Predicts population ratios:
+bpt_predict_ratios(analysis)
 ```
 
 

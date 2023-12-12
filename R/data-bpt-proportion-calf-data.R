@@ -9,7 +9,8 @@
 #'   \item{proportion_calf_month}{The month of the calf proportion survey}
 #'   \item{proportion_calf_day}{The day of the calf proportion survey}
 #'   \item{proportion_calf}{Estimated calf proportion}
-#'   \item{proportion_calf_cv}{Coefficient of variation (standard deviation / estimate) of calf proportion estimate}
+#'   \item{proportion_calf_cv}{Coefficient of variation (standard deviation /
+#'   estimate) of calf proportion estimate}
 #' }
 #'
 "bpt_proportion_calf_data"

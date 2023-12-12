@@ -35,7 +35,9 @@ bpt_modify_data <- function(
     proportion_calf_day_of_year) {
   chk::chk_list(data)
   df <- base::is.data.frame(data)
-  if (df) stop("Data must be in a list format as passed through embr::analyse()")
+  if (df) {
+    stop("Data must be in a list format as passed through embr::analyse()")
+  }
 
   # Inputs for each type must have the same length (not strictly recyclable)
   chk::chk_true(

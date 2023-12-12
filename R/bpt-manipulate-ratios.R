@@ -57,7 +57,11 @@ bpt_manipulate_ratios <- function(
         "u1", "u0", "uu"
       )
   )
-  if (!class_numerator) stop("Numerator is not a compatible class. Ensure all elements are in: c('fa', 'f1', f0', 'fu', 'ma', 'm3', 'm2', 'm1', 'm0', 'mu', 'ua', 'u1', 'u0', 'uu').")
+  if (!class_numerator) stop(paste0(
+    "Numerator is not a compatible class. Ensure all elements are in: ",
+    "c('fa', 'f1', f0', 'fu', 'ma', 'm3', 'm2', 'm1', 'm0', 'mu', 'ua', 'u1', ",
+    "'u0', 'uu')."
+  ))
 
   class_denominator <- all(
     denominator %in%
@@ -66,7 +70,11 @@ bpt_manipulate_ratios <- function(
         "u0", "uu"
       )
   )
-  if (!class_denominator) stop("Denominator is not a compatible class. Ensure all elements are in: c('fa', 'f1', f0', 'fu', 'ma', 'm3', 'm2', 'm1', 'm0', 'mu', 'ua', 'u1', 'u0', 'uu').")
+  if (!class_denominator) stop(paste0(
+    "Denominator is not a compatible class. Ensure all elements are in: ",
+    "c('fa', 'f1', f0', 'fu', 'ma', 'm3', 'm2', 'm1', 'm0', 'mu', 'ua', 'u1', ",
+    "'u0', 'uu')."
+  ))
 
   data$numerator <- rowSums(data[, numerator])
   data$denominator <- rowSums(data[, denominator])

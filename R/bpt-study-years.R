@@ -15,10 +15,15 @@ bpt_study_years <- function(data) {
   census <- try(bpt_check_data(census = data), silent = TRUE)
   proportion_calf <- try(bpt_check_data(proportion_calf = data), silent = TRUE)
 
-  if (inherits(event, "try-error") &
-    inherits(census, "try-error") &
+  if (inherits(event, "try-error") && inherits(census, "try-error") &&
     inherits(proportion_calf, "try-error")) {
-    chk::abort_chk("Data is not a compatible tibble. Ensure columns match the formatting for one of the `event`, `census`, or `proportion_calf` tables in the template: see `?template`.")
+    chk::abort_chk(
+      paste0(
+        "Data is not a compatible tibble. Ensure columns match the formatting ",
+        "for one of the `event`, `census`, or `proportion_calf` tables in the ",
+        "template: see `?template`."
+      )
+    )
   }
 
   if (!inherits(event, "try-error")) {
@@ -52,7 +57,10 @@ bpt_study_years <- function(data) {
       month = proportion_calf$proportion_calf_month,
       day = proportion_calf$proportion_calf_day
     )
-    proportion_calf$study_year <- dttr2::dtt_study_year(proportion_calf$date, 4L)
+    proportion_calf$study_year <- dttr2::dtt_study_year(
+      proportion_calf$date,
+      4L
+    )
     proportion_calf$study_year <- as.factor(proportion_calf$study_year)
     x <- as.character(unique(proportion_calf$study_year))
     return(x)

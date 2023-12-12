@@ -19,8 +19,11 @@ test_that("errors with null input in event_data", {
 
 test_that("errors with vector inputs", {
   expect_chk_error(
-    bpt_manipulate_data_analysis(c(1, 2, 3), c(1, 2, 3), c(1, 2, 3), c(1, 2, 3)),
-    "Column names in data must include 'f0', 'f1', 'fa', 'fu', 'location_id', 'm0', 'm1', 'm2', ... and 'uu'."
+    bpt_manipulate_data_analysis(c(1, 2), c(1, 2), c(1, 2), c(1, 2)),
+    regexp = paste0(
+      "Column names in data must include 'f0', 'f1', 'fa', 'fu', ",
+      "'location_id', 'm0', 'm1', 'm2', ... and 'uu'."
+    )
   )
 })
 
@@ -44,11 +47,15 @@ test_that("non-coercable characters in 'f0' column produces error", {
       census_data = bpt_census_data,
       proportion_calf_data = bpt_proportion_calf_data
     ),
-    "The following values in column 'f0' should be a integer: 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', ... and 'l'."
+    regexp = paste0(
+      "The following values in column 'f0' should be a integer: 'a', 'b', ",
+      "'c', 'd', 'e', 'f', 'g', 'h', ... and 'l'."
+    )
   )
 })
 
-test_that("errors if census date is outside of range of study years in event_data", {
+test_that(
+  "errors if census date is outside of range of study years in event_data", {
   expect_chk_error(
     bpt_manipulate_data_analysis(
       bpt_event_data,
@@ -57,7 +64,10 @@ test_that("errors if census date is outside of range of study years in event_dat
         dplyr::mutate(census_year = c(2030, 2031)),
       bpt_proportion_calf_data
     ),
-    "Census data must include only dates that are within the study years of the event data."
+    regexp = paste0(
+      "Census data must include only dates that are within the study years ",
+      "of the event data."
+    )
   )
 })
 
@@ -163,7 +173,8 @@ test_that("week_fac column has correct levels", {
   expect_true(
     all(
       levels(x$data$weekfac) ==
-        c("1", "22", "35", "42", "49", "51", "79", "92", "100", "111", "130", "148")
+        c("1", "22", "35", "42", "49", "51", "79", "92", "100", "111", "130", 
+          "148")
     )
   )
 })
@@ -442,7 +453,9 @@ test_that("census_doy column is an integer between 1 and 365", {
     census_data = bpt_census_data,
     proportion_calf_data = bpt_proportion_calf_data
   )
-  expect_true(all(x$census_data$census_doy >= 1 & x$census_data$census_doy <= 365))
+  expect_true(
+    all(x$census_data$census_doy >= 1 & x$census_data$census_doy <= 365)
+  )
   expect_true(all(is.integer(x$census_data$census_doy)))
 })
 
@@ -454,7 +467,9 @@ test_that("prop_calf column is a probability", {
     census_data = bpt_census_data,
     proportion_calf_data = bpt_proportion_calf_data
   )
-  expect_true(all(x$prop_calf_data$prop_calf >= 0 & x$prop_calf_data$prop_calf <= 1))
+  expect_true(
+    all(x$prop_calf_data$prop_calf >= 0 & x$prop_calf_data$prop_calf <= 1)
+  )
   expect_true(all(is.numeric(x$prop_calf_data$prop_calf)))
 })
 
@@ -486,6 +501,9 @@ test_that("prop_calf_doy column is an integer between 1 and 365", {
     census_data = bpt_census_data,
     proportion_calf_data = bpt_proportion_calf_data
   )
-  expect_true(all(x$prop_calf_data$prop_calf_doy >= 1 & x$prop_calf_data$prop_calf_doy <= 365))
+  expect_true(
+    all(x$prop_calf_data$prop_calf_doy >= 1 & 
+          x$prop_calf_data$prop_calf_doy <= 365)
+  )
   expect_true(all(is.integer(x$prop_calf_data$prop_calf_doy)))
 })

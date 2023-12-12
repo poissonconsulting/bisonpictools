@@ -8,7 +8,11 @@ test_that("errors with unknown numerator class", {
       numerator = "f6",
       denominator = "f1"
     ),
-    "Numerator is not a compatible class. Ensure all elements are in: c\\('fa', 'f1', f0', 'fu', 'ma', 'm3', 'm2', 'm1', 'm0', 'mu', 'ua', 'u1', 'u0', 'uu'\\)."
+    regexp = paste0(
+      "Numerator is not a compatible class. Ensure all elements are in: ",
+      "c\\('fa', 'f1', f0', 'fu', 'ma', 'm3', 'm2', 'm1', 'm0', 'mu', 'ua', ",
+      "'u1', 'u0', 'uu'\\)."
+    )
   )
 })
 
@@ -22,7 +26,11 @@ test_that("errors with unknown denominator class", {
       numerator = "f0",
       denominator = "f5"
     ),
-    "Denominator is not a compatible class. Ensure all elements are in: c\\('fa', 'f1', f0', 'fu', 'ma', 'm3', 'm2', 'm1', 'm0', 'mu', 'ua', 'u1', 'u0', 'uu'\\)."
+    regexp = paste0(
+      "Denominator is not a compatible class. Ensure all elements are in: ",
+      "c\\('fa', 'f1', f0', 'fu', 'ma', 'm3', 'm2', 'm1', 'm0', 'mu', 'ua', ",
+      "'u1', 'u0', 'uu'\\)."
+    )
   )
 })
 

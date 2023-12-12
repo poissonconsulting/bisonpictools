@@ -71,7 +71,14 @@ bpt_plot_ratios <- function(
 
   data$sqrt_groupsize <- sqrt(data$groupsize)
 
-  if (nrow(data) == 0L) stop("There are 0 individuals in the selection for numerator and denominator. Ratio not plotted.")
+  if (nrow(data) == 0L) {
+    stop(
+      paste0(
+        "There are 0 individuals in the selection for numerator and ",
+        "denominator. Ratio not plotted."
+      )
+    )
+  }
 
   gp <- ggplot2::ggplot() +
     ggplot2::geom_rect(
@@ -133,8 +140,14 @@ bpt_seasons_plot <- function(study_year_start) {
   bpt_seasons() |>
     dplyr::cross_join(x) |>
     dplyr::mutate(
-      start_date_time = dttr2::dtt_add_years(.data$start_dayte, .data$year_diff),
-      end_date_time = dttr2::dtt_add_years(.data$end_dayte, .data$year_diff),
+      start_date_time = dttr2::dtt_add_years(
+        .data$start_dayte,
+        .data$year_diff
+      ),
+      end_date_time = dttr2::dtt_add_years(
+        .data$end_dayte,
+        .data$year_diff
+      ),
       study_year = stringr::str_c(
         as.character(.data$year),
         "-",

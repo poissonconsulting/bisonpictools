@@ -9,7 +9,8 @@
 #'   \item{census_month}{The month of the census survey}
 #'   \item{census_day}{The day of the census survey}
 #'   \item{census}{Estimated census count}
-#'   \item{census_cv}{Coefficient of variation (standard deviation / estimate) of census estimate}
+#'   \item{census_cv}{Coefficient of variation (standard deviation / estimate)
+#'   of census estimate}
 #' }
 #'
 "bpt_census_data"

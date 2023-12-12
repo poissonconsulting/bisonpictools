@@ -31,6 +31,9 @@ bpt_seasons <- function() {
     "Winter", "1972-12-01 00:00:00", "1973-03-31 23:59:59"
   ) |>
     dplyr::mutate(
-      dplyr::across(c("start_dayte", "end_dayte"), \(x) dttr2::dtt_date_time(x)),
+      dplyr::across(
+        c("start_dayte", "end_dayte"),
+        \(x) dttr2::dtt_date_time(x)
+      )
     )
 }
