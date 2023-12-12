@@ -58,7 +58,7 @@ data_1 <- bpt_check_data(location = bpt_location_data)
 data_2 <- bpt_check_data(event = bpt_event_data)
 data_3 <- bpt_check_data(census = bpt_census_data)
 data_4 <- bpt_check_data(proportion_calf = bpt_proportion_calf_data)
-# Should error, as `complete = TRUE` requires that all 4 data sets be provided
+# Should error, as `complete = TRUE` requires all 4 data sets be provided
 try(event <- bpt_check_data(event = bpt_event_data, complete = TRUE))
 }
 }

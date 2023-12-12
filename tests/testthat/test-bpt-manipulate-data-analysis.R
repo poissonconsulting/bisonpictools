@@ -55,21 +55,23 @@ test_that("non-coercable characters in 'f0' column produces error", {
 })
 
 test_that(
-  "errors if census date is outside of range of study years in event_data", {
-  expect_chk_error(
-    bpt_manipulate_data_analysis(
-      bpt_event_data,
-      bpt_location_data,
-      bpt_census_data |>
-        dplyr::mutate(census_year = c(2030, 2031)),
-      bpt_proportion_calf_data
-    ),
-    regexp = paste0(
-      "Census data must include only dates that are within the study years ",
-      "of the event data."
+  "errors if census date is outside of range of study years in event_data",
+  {
+    expect_chk_error(
+      bpt_manipulate_data_analysis(
+        bpt_event_data,
+        bpt_location_data,
+        bpt_census_data |>
+          dplyr::mutate(census_year = c(2030, 2031)),
+        bpt_proportion_calf_data
+      ),
+      regexp = paste0(
+        "Census data must include only dates that are within the study years ",
+        "of the event data."
+      )
     )
-  )
-})
+  }
+)
 
 # Expected outputs
 test_that("returns list", {
@@ -173,8 +175,10 @@ test_that("week_fac column has correct levels", {
   expect_true(
     all(
       levels(x$data$weekfac) ==
-        c("1", "22", "35", "42", "49", "51", "79", "92", "100", "111", "130", 
-          "148")
+        c(
+          "1", "22", "35", "42", "49", "51", "79", "92", "100", "111", "130",
+          "148"
+        )
     )
   )
 })
@@ -502,8 +506,8 @@ test_that("prop_calf_doy column is an integer between 1 and 365", {
     proportion_calf_data = bpt_proportion_calf_data
   )
   expect_true(
-    all(x$prop_calf_data$prop_calf_doy >= 1 & 
-          x$prop_calf_data$prop_calf_doy <= 365)
+    all(x$prop_calf_data$prop_calf_doy >= 1 &
+      x$prop_calf_data$prop_calf_doy <= 365)
   )
   expect_true(all(is.integer(x$prop_calf_data$prop_calf_doy)))
 })

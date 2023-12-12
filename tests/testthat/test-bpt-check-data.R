@@ -292,68 +292,70 @@ test_that(
   paste0(
     "errors as dates in census and calf proportion tables are not within the ",
     "event_data study years"
-  ), {
-  event_data <- dplyr::tibble(
-    location_id = c("SiteZ"),
-    start_year = c(2021L),
-    start_month = c(4L),
-    start_day = c(12L),
-    start_hour = c(13L),
-    start_minute = c(50L),
-    fa = c(1L),
-    f1 = c(1L),
-    f0 = c(2L),
-    fu = c(0L),
-    ma = c(1L),
-    m3 = c(0L),
-    m2 = c(0L),
-    m1 = c(1L),
-    m0 = c(1L),
-    mu = c(0L),
-    ua = c(0L),
-    u1 = c(1L),
-    u0 = c(1L),
-    uu = c(1L)
-  )
-
-  location_data <- dplyr::tibble(
-    location_id = c("SiteZ"),
-    latitude = c(57.555),
-    longitude = c(-111.757)
-  )
-
-  census_data <- dplyr::tibble(
-    census_year = c(2021L, 2022L),
-    census_month = c(3L, 3L),
-    census_day = c(31L, 31L),
-    census = c(200L, 140L),
-    census_cv = c(0.2, 0.1)
-  )
-
-  proportion_calf_data <- dplyr::tibble(
-    proportion_calf_year = c(2021L, 2022L),
-    proportion_calf_month = c(3L, 3L),
-    proportion_calf_day = c(31L, 31L),
-    proportion_calf = c(0.2, 0.05),
-    proportion_calf_cv = c(0.05, 0.1)
-  )
-
-  expect_error(
-    bpt_check_data(
-      event = event_data,
-      location = location_data,
-      census = census_data,
-      proportion_calf = proportion_calf_data,
-      complete = TRUE,
-      join = TRUE,
-      check_study_years = TRUE
-    ),
-    regexp = paste(
-      "Census data must include only dates that are within the study years of",
-      "the event data\\."
+  ),
+  {
+    event_data <- dplyr::tibble(
+      location_id = c("SiteZ"),
+      start_year = c(2021L),
+      start_month = c(4L),
+      start_day = c(12L),
+      start_hour = c(13L),
+      start_minute = c(50L),
+      fa = c(1L),
+      f1 = c(1L),
+      f0 = c(2L),
+      fu = c(0L),
+      ma = c(1L),
+      m3 = c(0L),
+      m2 = c(0L),
+      m1 = c(1L),
+      m0 = c(1L),
+      mu = c(0L),
+      ua = c(0L),
+      u1 = c(1L),
+      u0 = c(1L),
+      uu = c(1L)
     )
-  )
-})
+
+    location_data <- dplyr::tibble(
+      location_id = c("SiteZ"),
+      latitude = c(57.555),
+      longitude = c(-111.757)
+    )
+
+    census_data <- dplyr::tibble(
+      census_year = c(2021L, 2022L),
+      census_month = c(3L, 3L),
+      census_day = c(31L, 31L),
+      census = c(200L, 140L),
+      census_cv = c(0.2, 0.1)
+    )
+
+    proportion_calf_data <- dplyr::tibble(
+      proportion_calf_year = c(2021L, 2022L),
+      proportion_calf_month = c(3L, 3L),
+      proportion_calf_day = c(31L, 31L),
+      proportion_calf = c(0.2, 0.05),
+      proportion_calf_cv = c(0.05, 0.1)
+    )
+
+    expect_error(
+      bpt_check_data(
+        event = event_data,
+        location = location_data,
+        census = census_data,
+        proportion_calf = proportion_calf_data,
+        complete = TRUE,
+        join = TRUE,
+        check_study_years = TRUE
+      ),
+      regexp = paste(
+        "Census data must include only dates that are within the study years of",
+        "the event data\\."
+      )
+    )
+  }
+)
 
 ## Tests on event_data template
 test_that("event data coerces real to integer", {
