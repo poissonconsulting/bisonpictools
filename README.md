@@ -21,7 +21,7 @@ remotes::install_github("poissonconsulting/bisonpictools")
 
 ## Data Visualization
 
-The ratio plotted by `bpt_plot_ratios` is
+The ratio plotted by `bpt_plot_ratios()` is
 `numerator:(denominator:numerator)`.
 
 For example, the adult cow:(bull + cow) ratio plotted over all years and
