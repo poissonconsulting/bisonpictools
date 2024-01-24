@@ -31,6 +31,7 @@ Imports:
     tidyr,
     units
 Suggests: 
+    BH,
     testthat (>= 3.0.0),
     readxl,
     knitr,
