@@ -82,7 +82,7 @@ bpt_plot_predictions <- function(analysis, prediction = "abundance-total") {
     ) +
     ggplot2::expand_limits(y = c(expand_lims[1], expand_lims[2])) +
     ggplot2::xlab(xlab) +
-    ggplot2::ylab(ylab) +
+    ggplot2::ylab(ylab) + 
     NULL
   
   if (!is.na(facets)) {
@@ -90,7 +90,8 @@ bpt_plot_predictions <- function(analysis, prediction = "abundance-total") {
       ggplot2::facet_wrap(
         facets = facets,
         scales = scales
-      )
+      ) + 
+      ggplot2::guides(x = ggplot2::guide_axis(angle = 45))
   }
 
   gp
