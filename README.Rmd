@@ -10,7 +10,7 @@ output: github_document
 [![codecov](https://codecov.io/gh/poissonconsulting/bisonpictools/graph/badge.svg?token=znqSXiltZo)](https://codecov.io/gh/poissonconsulting/bisonpictools)
 <!-- badges: end -->
 
-The goal of bisonpictools is to facilitate the visualization and analysis of camera trap data from the Ronald Wood Bison herd.
+The goal of bisonpictools is to facilitate the visualization and analysis of camera trap data from the Ronald Wood Bison herd. 
 
 ## Installation
 
