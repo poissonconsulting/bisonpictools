@@ -18,23 +18,19 @@
 #' interest for plotting. Ratio of interest is calculated as
 #' numerator:(denominator + numerator) to avoid infinite values.
 #'
-#' @param data a tibble of manipulated event and location data, with factor
-#'   columns `year`, `location_id`, and integer columns c(`fa`, `f1`, `f0`,
-#'   `fu`, `ma`, `m3`, `m2`, `m1`, `m0`, `mu`, `ua`, `u1`, `u0`, and `uu`)
-#' @param numerator a character vector of sex-age codes to go in the numerator
-#'   of the ratio
-#' @param denominator a character vector of sex-age codes to go in the
-#'   denominator of the ratio
-#' @param study_years a character vector of study years to include in the plot
-#' @param locations a character vector of location_ids to include in the plot
+#' @inheritParams params
+#' @param data A tibble of manipulated event, and location data.
 #'
-#' @return the original tibble, with additional columns `numerator`,
-#'   `denominator`, and `ratio`
+#' @return The original tibble, with additional columns `numerator`,
+#'   `denominator`, and `ratio`.
 #' @export
 #'
 #' @examples
 #' bpt_manipulate_ratios(
-#'   data = bpt_manipulate_data_plot(bpt_event_data, bpt_location_data),
+#'   data = bpt_manipulate_data_plot(
+#'     bpt_event_data,
+#'     bpt_location_data
+#'   ),
 #'   numerator = "fa",
 #'   denominator = "ma",
 #'   study_years = "2020-2021",
@@ -61,7 +57,11 @@ bpt_manipulate_ratios <- function(
         "u1", "u0", "uu"
       )
   )
-  if (!class_numerator) stop("Numerator is not a compatible class. Ensure all elements are in: c('fa', 'f1', f0', 'fu', 'ma', 'm3', 'm2', 'm1', 'm0', 'mu', 'ua', 'u1', 'u0', 'uu').")
+  if (!class_numerator) stop(paste0(
+    "Numerator is not a compatible class. Ensure all elements are in: ",
+    "c('fa', 'f1', f0', 'fu', 'ma', 'm3', 'm2', 'm1', 'm0', 'mu', 'ua', 'u1', ",
+    "'u0', 'uu')."
+  ))
 
   class_denominator <- all(
     denominator %in%
@@ -70,7 +70,11 @@ bpt_manipulate_ratios <- function(
         "u0", "uu"
       )
   )
-  if (!class_denominator) stop("Denominator is not a compatible class. Ensure all elements are in: c('fa', 'f1', f0', 'fu', 'ma', 'm3', 'm2', 'm1', 'm0', 'mu', 'ua', 'u1', 'u0', 'uu').")
+  if (!class_denominator) stop(paste0(
+    "Denominator is not a compatible class. Ensure all elements are in: ",
+    "c('fa', 'f1', f0', 'fu', 'ma', 'm3', 'm2', 'm1', 'm0', 'mu', 'ua', 'u1', ",
+    "'u0', 'uu')."
+  ))
 
   data$numerator <- rowSums(data[, numerator])
   data$denominator <- rowSums(data[, denominator])

@@ -14,12 +14,9 @@
 
 #' Names of common ratios
 #'
-#' @param numerator a character vector of sex-age codes to go in the numerator
-#' of the ratio
-#' @param denominator a character vector of sex-age codes to go in the
-#' denominator of the ratio
+#' @inheritParams params
 #'
-#' @return character vector of common ratio name or "Ratio"
+#' @return A character vector of the common ratio name or "Ratio".
 #' @export
 #'
 #' @examples

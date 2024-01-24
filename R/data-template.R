@@ -1,6 +1,6 @@
 #' Raw Template for Bison Location and Event Data
 #'
-#' A list containing two data frames. Each data frame describes the required
+#' A list containing four data frames. Each data frame describes the required
 #' format for each data set. This is the raw non human readable version of the
 #' template used by the package developers.
 #'
@@ -17,7 +17,12 @@
 #'   up the primary key by putting TRUE in the column. The join row indicates if
 #'   the table is a child table joined by the column.
 #'
-#' @format ## `location`
+#'   For more details see the package vignette.
+#'
+#' @format ##
+#' A list of the following four data frames:
+#'
+#' @format ### 1. `location`
 #' A data frame with columns:
 #' \describe{
 #'   \item{location_id}{Location name for  the camera}
@@ -25,29 +30,37 @@
 #'   \item{longitude}{Longitude of camera location}
 #' }
 #'
-#' @format ## `event`
+#' @format ### 2. `event`
 #' A data frame with columns:
 #' \describe{
 #'   \item{location_id}{Location name for  the camera}
-#'   \item{start_year}{The year when the event started}
-#'   \item{start_month}{The month when the event started}
-#'   \item{start_day}{The day when the event started}
-#'   \item{start_hour}{The hour the event started}
-#'   \item{start_minute}{The minute the event started}
-#'   \item{fa}{Count of female adults}
-#'   \item{f1}{Count of female yearlings}
-#'   \item{f0}{Count of female calves}
-#'   \item{fu}{Count of female unkowns}
-#'   \item{ma}{Count of male adults}
-#'   \item{m3}{Count of male three year olds}
-#'   \item{m2}{Count of male two year olds}
-#'   \item{m1}{Count of male yearlings}
-#'   \item{m0}{Count of male calves}
-#'   \item{mu}{Count of male unknowns}
-#'   \item{ua}{Count of unknown adults}
-#'   \item{u1}{Count of unknown yearlings}
-#'   \item{u0}{Count of unknown calves}
-#'   \item{uu}{Count of unknown unknowns}
+#'   \item{start_year, start_month, start_day, start_hour, start_minute}{Date
+#'   and time when the event started}
+#'   \item{fa, f1, f0, fu}{Count of female adults, yearlings, calves, and
+#'   unknown ages}
+#'   \item{ma, m3, m2, m1, m0, mu}{Count of male adults, 3-year-olds,
+#'   2-year-olds, yearlings, calves, and unknown ages}
+#'   \item{ua, u1, u0, uu}{Count of unknown sex adults, yearlings, calves, and
+#'   unknown ages}
+#' }
+#'
+#' @format ### 3. `census`
+#' A data frame with columns:
+#' \describe{
+#'   \item{census_year, census_month, census_day}{Date of the census}
+#'   \item{census}{Estimated census count}
+#'   \item{census_cv}{Coefficient of variation (standard deviation / estimate)
+#'   of census estimate}
+#' }
+#'
+#' @format ### 4. `proportion_calf`
+#' A data frame with columns:
+#' \describe{
+#'   \item{calf_proportion_year, calf_proportion_month, calf_proportion_day}{
+#'   Date of the calf proportion survey}
+#'   \item{calf_proportion}{Estimated calf proportion}
+#'   \item{calf_proportion_cv}{Coefficient of variation (standard deviation /
+#'   estimate) of calf proportion estimate}
 #' }
 #' @examples
 #' template

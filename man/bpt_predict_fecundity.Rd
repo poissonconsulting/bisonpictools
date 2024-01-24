@@ -7,12 +7,12 @@
 bpt_predict_fecundity(analysis)
 }
 \arguments{
-\item{analysis}{the analysis object from \code{bpt_analyse()}}
+\item{analysis}{Analysis object from \code{bpt_analyse()}.}
 }
 \value{
-a tibble of predicted fecundity rate and proportion of reproductive
+A tibble of predicted fecundity rate and proportion of reproductive
 cows, including the median posterior value (estimate) and lower and upper
-95\% credible intervals
+95\% credible intervals.
 }
 \description{
 Predicts the fecundity rate and proportion of reproductive cows

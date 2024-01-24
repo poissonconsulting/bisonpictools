@@ -7,14 +7,14 @@
 bpt_ratio_names(numerator, denominator)
 }
 \arguments{
-\item{numerator}{a character vector of sex-age codes to go in the numerator
-of the ratio}
+\item{numerator}{A character vector of sex-age codes to go in the numerator
+of the ratio.}
 
-\item{denominator}{a character vector of sex-age codes to go in the
-denominator of the ratio}
+\item{denominator}{A character vector of sex-age codes to go in the
+denominator of the ratio.}
 }
 \value{
-character vector of common ratio name or "Ratio"
+A character vector of the common ratio name or "Ratio".
 }
 \description{
 Names of common ratios

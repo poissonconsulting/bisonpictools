@@ -1,8 +1,8 @@
 #' Prepare Location Distance Matrix for Analysis
 #'
-#' @param location_data a tibble of templated location data
+#' @inheritParams params
 #'
-#' @return a matrix of distances between locations in kilometers
+#' @return A matrix of distances between locations in kilometers.
 #' @export
 #'
 #' @examples

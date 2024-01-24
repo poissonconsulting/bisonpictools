@@ -1,20 +1,9 @@
 #' Modify data for plot
 #'
-#' @param data data in list form
-#' @param levels_annual levels of the annual factor in data
-#' @param census integer vector of census values
-#' @param census_cv numeric vector of census coefficients of variation
-#' @param census_study_year character vector of census study years
-#' @param census_day_of_year integer vector of census days of year
-#' @param proportion_calf numeric vector of proportion of calf values
-#' @param proportion_calf_cv numeric vector of proportion of calf coefficients
-#'   of variation
-#' @param proportion_calf_study_year character vector of proportion of calf
-#'   study years
-#' @param proportion_calf_day_of_year integer vector of proportion of calf days
-#'   of year
+#' @inheritParams params
+#' @param data Data in list form as passed through embr::analyse().
 #'
-#' @return data in list form with the new data added
+#' @return Data in list form with the new data added.
 #'
 #' @examples
 #' \dontrun{
@@ -39,26 +28,28 @@ bpt_modify_data <- function(
     census,
     census_cv,
     census_study_year,
-    census_day_of_year = rep(365L, length(census)),
+    census_day_of_year,
     proportion_calf,
     proportion_calf_cv,
     proportion_calf_study_year,
-    proportion_calf_day_of_year = rep(365L, length(proportion_calf))) {
+    proportion_calf_day_of_year) {
   chk::chk_list(data)
   df <- base::is.data.frame(data)
-  if (df) stop("Data must be in a list format as passed through embr::analyse()")
+  if (df) {
+    stop("Data must be in a list format as passed through embr::analyse()")
+  }
 
-  chk::chk_compatible_lengths(
-    census,
-    census_cv,
-    census_study_year,
-    census_day_of_year
+  # Inputs for each type must have the same length (not strictly recyclable)
+  chk::chk_true(
+    length(census) == length(census_cv) &
+      length(census) == length(census_study_year) &
+      length(census) == length(census_day_of_year)
   )
-  chk::chk_compatible_lengths(
-    proportion_calf,
-    proportion_calf_cv,
-    proportion_calf_study_year,
-    proportion_calf_day_of_year
+
+  chk::chk_true(
+    length(proportion_calf) == length(proportion_calf_cv) &
+      length(proportion_calf) == length(proportion_calf_study_year) &
+      length(proportion_calf) == length(proportion_calf_day_of_year)
   )
 
   chk::chk_integer(census)

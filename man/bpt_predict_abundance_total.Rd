@@ -7,12 +7,12 @@
 bpt_predict_abundance_total(analysis)
 }
 \arguments{
-\item{analysis}{the analysis object from \code{bpt_analyse()}}
+\item{analysis}{Analysis object from \code{bpt_analyse()}.}
 }
 \value{
-a tibble of total abundances for each study year, including the
+A tibble of total abundances for each study year, including the
 median posterior value (estimate) and lower and upper 95\% credible
-intervals
+intervals.
 }
 \description{
 Predicts the total herd abundance for each study year, as the sum of the

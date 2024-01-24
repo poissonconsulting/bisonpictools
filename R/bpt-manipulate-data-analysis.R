@@ -2,23 +2,70 @@
 #'
 #' Checks that data is in the correct format and manipulates it for analysis.
 #'
-#' @param event_data a tibble of templated event data
-#' @param location_data a tibble of templated location data
+#' @inheritParams params
 #'
-#' @return a tibble of manipulated data ready for analysis
+#' @return A list of manipulated data ready for analysis.
 #' @export
 #'
 #' @examples
 #' bpt_manipulate_data_analysis(
 #'   event_data = bpt_event_data,
-#'   location_data = bpt_location_data
+#'   location_data = bpt_location_data,
+#'   census_data = bpt_census_data,
+#'   proportion_calf_data = bpt_proportion_calf_data
 #' )
-bpt_manipulate_data_analysis <- function(event_data, location_data) {
+bpt_manipulate_data_analysis <- function(
+    event_data,
+    location_data,
+    census_data,
+    proportion_calf_data) {
   data <- bpt_check_data(
     event = event_data,
     location = location_data,
-    complete = TRUE
+    census = census_data,
+    proportion_calf = proportion_calf_data,
+    complete = TRUE,
+    join = TRUE,
+    check_study_years = TRUE
   )
+
+  census_data <- data$census |>
+    dplyr::mutate(
+      date = dttr2::dtt_date_from_ints(
+        year = .data$census_year,
+        month = .data$census_month,
+        day = .data$census_day
+      ),
+      census_study_year = dttr2::dtt_study_year(date, start = 4L),
+      doy = dttr2::dtt_doy(.data$date) -
+        dttr2::dtt_doy(dttr2::dtt_date("2019-04-01")),
+      doy = dplyr::if_else(.data$doy < 0, .data$doy + 365, .data$doy),
+      census_doy = base::as.integer(.data$doy),
+    ) |>
+    dplyr::select(
+      "census", "census_cv", "census_study_year", "census_doy"
+    )
+
+  prop_calf_data <- data$proportion_calf |>
+    dplyr::rename(
+      prop_calf = "proportion_calf",
+      prop_calf_cv = "proportion_calf_cv",
+    ) |>
+    dplyr::mutate(
+      date = dttr2::dtt_date_from_ints(
+        year = .data$proportion_calf_year,
+        month = .data$proportion_calf_month,
+        day = .data$proportion_calf_day
+      ),
+      prop_calf_study_year = dttr2::dtt_study_year(date, start = 4L),
+      doy = dttr2::dtt_doy(.data$date) -
+        dttr2::dtt_doy(dttr2::dtt_date("2019-04-01")),
+      doy = dplyr::if_else(.data$doy < 0, .data$doy + 365, .data$doy),
+      prop_calf_doy = base::as.integer(.data$doy),
+    ) |>
+    dplyr::select(
+      "prop_calf", "prop_calf_cv", "prop_calf_study_year", "prop_calf_doy"
+    )
 
   seasons_long <-
     bpt_seasons() |>
@@ -105,5 +152,17 @@ bpt_manipulate_data_analysis <- function(event_data, location_data) {
 
   chk::chk_not_any_na(data)
 
-  data
+  chk::chk_all(
+    c(census_data$census_study_year, prop_calf_data$prop_calf_study_year),
+    chk_fun = chk::chk_subset,
+    values = base::levels(data$annual)
+  )
+
+  data_list <- base::list(
+    data = data,
+    census_data = census_data,
+    prop_calf_data = prop_calf_data
+  )
+
+  data_list
 }

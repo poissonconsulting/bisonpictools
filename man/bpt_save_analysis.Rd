@@ -7,9 +7,10 @@
 bpt_save_analysis(analysis, file)
 }
 \arguments{
-\item{analysis}{analysis object from \code{bpt_analyse()}}
+\item{analysis}{Analysis object from \code{bpt_analyse()}.}
 
-\item{file}{name of the file where the analysis object is saved to}
+\item{file}{File path to save analysis object to (file extension added
+automatically).}
 }
 \description{
 Saves analysis object to the file location specified by \code{file}.

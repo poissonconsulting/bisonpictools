@@ -3,11 +3,11 @@
 #' Predicts the total herd abundance for each study year, as the sum of the
 #' predicted abundances for each class.
 #'
-#' @param analysis the analysis object from `bpt_analyse()`
+#' @inheritParams params
 #'
-#' @return a tibble of total abundances for each study year, including the
+#' @return A tibble of total abundances for each study year, including the
 #'   median posterior value (estimate) and lower and upper 95% credible
-#'   intervals
+#'   intervals.
 #' @export
 #'
 #' @examples

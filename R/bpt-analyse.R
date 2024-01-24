@@ -1,26 +1,12 @@
 #' Fit Integrated Population Model
 #'
-#' Fits the integrated population model to data
+#' Fits the integrated population model to data. Run first in "debug" mode to
+#' ensure that the model samples. Next, run in "report" mode to sample the
+#' full number of iterations.
 #'
-#' @param nthin thinning rate
-#' @param event_data tibble of templated event data
-#' @param location_data tibble of templated location data
-#' @param census integer vector of census values
-#' @param census_cv numeric vector of census coefficients of variation
-#' @param census_study_year character vector of census study years
-#' @param census_day_of_year integer vector of census days of year
-#' @param proportion_calf numeric vector of proportion of calf values
-#' @param proportion_calf_cv numeric vector of proportion of calf coefficients
-#'   of variation
-#' @param proportion_calf_study_year character vector of proportion of calf
-#'   study years
-#' @param proportion_calf_day_of_year integer vector of proportion of calf days
-#'   of year
-#' @param analysis_mode character string of analysis mode, either "debug",
-#' "check", or "report". Run first in "debug" mode to ensure that the model
-#' samples. Next, run in "report" mode to sample the full number of iterations.
+#' @inheritParams params
 #'
-#' @return an `smb.analysis` object
+#' @return An `smb.analysis` object.
 #' @export
 #'
 #' @examples
@@ -28,14 +14,8 @@
 #' bpt_analyse(
 #'   event_data = bpt_event_data,
 #'   location_data = bpt_location_data,
-#'   census = 200L,
-#'   census_cv = 0.1,
-#'   census_study_year = "2021-2022",
-#'   census_day_of_year = 365L,
-#'   proportion_calf = c(0.201, 0.168),
-#'   proportion_calf_cv = c(0.5, 0.5),
-#'   proportion_calf_study_year = c("2020-2021", "2021-2022"),
-#'   proportion_calf_day_of_year = c(365L, 365L),
+#'   census_data = bpt_census_data,
+#'   proportion_calf_data = bpt_proportion_calf_data,
 #'   nthin = 1L,
 #'   analysis_mode = "quick"
 #' )
@@ -43,21 +23,24 @@
 bpt_analyse <- function(
     event_data,
     location_data,
-    census,
-    census_cv,
-    census_study_year,
-    census_day_of_year,
-    proportion_calf,
-    proportion_calf_cv,
-    proportion_calf_study_year,
-    proportion_calf_day_of_year,
+    census_data,
+    proportion_calf_data,
     nthin = 1L,
     analysis_mode = "report") {
   chk::chk_integer(nthin)
   chk::chk_gte(nthin, 1L)
   chk::chk_subset(analysis_mode, c("report", "quick", "debug"))
 
-  data <- bpt_manipulate_data_analysis(event_data, location_data)
+  data_list <- bpt_manipulate_data_analysis(
+    event_data,
+    location_data,
+    census_data,
+    proportion_calf_data
+  )
+  data <- data_list$data
+  census_data <- data_list$census_data
+  prop_calf_data <- data_list$prop_calf_data
+
   levels_annual <- levels(data$annual)
 
   model <- embr::model(
@@ -70,14 +53,14 @@ bpt_analyse <- function(
       data <- bpt_modify_data(
         data = data,
         levels_annual = levels_annual,
-        census = census,
-        census_cv = census_cv,
-        census_study_year = census_study_year,
-        census_day_of_year = census_day_of_year,
-        proportion_calf = proportion_calf,
-        proportion_calf_cv = proportion_calf_cv,
-        proportion_calf_study_year = proportion_calf_study_year,
-        proportion_calf_day_of_year = proportion_calf_day_of_year
+        census = census_data$census,
+        census_cv = census_data$census_cv,
+        census_study_year = census_data$census_study_year,
+        census_day_of_year = census_data$census_doy,
+        proportion_calf = prop_calf_data$prop_calf,
+        proportion_calf_cv = prop_calf_data$prop_calf_cv,
+        proportion_calf_study_year = prop_calf_data$prop_calf_study_year,
+        proportion_calf_day_of_year = prop_calf_data$prop_calf_doy
       )
       data
     },
@@ -120,6 +103,7 @@ bpt_analyse <- function(
       prop_calf[i] <- bPropVecAnnual[annual[i], 1] + bPropVecAnnual[annual[i], 4]
   }",
     new_expr_vec = TRUE,
+    derived = c("bPropVecMar31", "bPopulationAnnual", "bPropVecDoy"),
     select_data = list(
       id = factor(),
       f0 = 1L,

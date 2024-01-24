@@ -134,7 +134,11 @@ test_that("plot unknown class errors denominator", {
       denominator = "f5",
       study_years = "2021-2022"
     ),
-    "Denominator is not a compatible class. Ensure all elements are in: c\\('fa', 'f1', f0', 'fu', 'ma', 'm3', 'm2', 'm1', 'm0', 'mu', 'ua', 'u1', 'u0', 'uu'\\)."
+    regexp = paste0(
+      "Denominator is not a compatible class. Ensure all elements are in: ",
+      "c\\('fa', 'f1', f0', 'fu', 'ma', 'm3', 'm2', 'm1', 'm0', 'mu', 'ua', ",
+      "'u1', 'u0', 'uu'\\)."
+    )
   )
 })
 
@@ -147,7 +151,11 @@ test_that("plot unknown class errors numerator", {
       denominator = "f1",
       study_years = "2021-2022"
     ),
-    "Numerator is not a compatible class. Ensure all elements are in: c\\('fa', 'f1', f0', 'fu', 'ma', 'm3', 'm2', 'm1', 'm0', 'mu', 'ua', 'u1', 'u0', 'uu'\\)."
+    regexp = paste0(
+      "Numerator is not a compatible class. Ensure all elements are in: ",
+      "c\\('fa', 'f1', f0', 'fu', 'ma', 'm3', 'm2', 'm1', 'm0', 'mu', 'ua', ",
+      "'u1', 'u0', 'uu'\\)."
+    )
   )
 })
 
@@ -161,6 +169,9 @@ test_that("plot with 0 individuals in ratio", {
       study_years = "2018-2019",
       locations = "LOCID1"
     ),
-    "There are 0 individuals in the selection for numerator and denominator. Ratio not plotted."
+    regexp = paste0(
+      "There are 0 individuals in the selection for numerator and ",
+      "denominator. Ratio not plotted."
+    )
   )
 })

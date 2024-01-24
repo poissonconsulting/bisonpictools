@@ -21,16 +21,9 @@
 #' total group size, and the colour of the point represents the value of the
 #' ratio.
 #'
-#' @param event_data a tibble of templated event data
-#' @param location_data a tibble of templated location data
-#' @param numerator a character vector of sex-age codes to go in the numerator
-#'   of the ratio
-#' @param denominator a character vector of sex-age codes to go in the
-#'   denominator of the ratio
-#' @param study_years a character vector of study years to include in the plot
-#' @param locations a character vector of location_ids to include in the plot
+#' @inheritParams params
 #'
-#' @return a `ggplot` object
+#' @return A `ggplot` object.
 #' @export
 #'
 #' @examples
@@ -57,9 +50,10 @@ bpt_plot_ratios <- function(
     denominator,
     study_years = bpt_study_years(event_data),
     locations = unique(location_data$location_id)) {
-  data <- bpt_manipulate_data_plot(event_data, location_data)
-
-  max_groupsize <- max(data$groupsize)
+  data <- bpt_manipulate_data_plot(
+    event_data,
+    location_data
+  )
 
   data <- bpt_manipulate_ratios(
     data = data,
@@ -77,7 +71,14 @@ bpt_plot_ratios <- function(
 
   data$sqrt_groupsize <- sqrt(data$groupsize)
 
-  if (nrow(data) == 0L) stop("There are 0 individuals in the selection for numerator and denominator. Ratio not plotted.")
+  if (nrow(data) == 0L) {
+    stop(
+      paste0(
+        "There are 0 individuals in the selection for numerator and ",
+        "denominator. Ratio not plotted."
+      )
+    )
+  }
 
   gp <- ggplot2::ggplot() +
     ggplot2::geom_rect(
@@ -139,8 +140,14 @@ bpt_seasons_plot <- function(study_year_start) {
   bpt_seasons() |>
     dplyr::cross_join(x) |>
     dplyr::mutate(
-      start_date_time = dttr2::dtt_add_years(.data$start_dayte, .data$year_diff),
-      end_date_time = dttr2::dtt_add_years(.data$end_dayte, .data$year_diff),
+      start_date_time = dttr2::dtt_add_years(
+        .data$start_dayte,
+        .data$year_diff
+      ),
+      end_date_time = dttr2::dtt_add_years(
+        .data$end_dayte,
+        .data$year_diff
+      ),
       study_year = stringr::str_c(
         as.character(.data$year),
         "-",

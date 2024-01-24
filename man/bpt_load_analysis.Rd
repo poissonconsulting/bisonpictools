@@ -7,10 +7,11 @@
 bpt_load_analysis(file)
 }
 \arguments{
-\item{file}{path to file (excluding extension)}
+\item{file}{Path to file where analysis object is saved (excluding file
+extension).}
 }
 \value{
-the analysis object
+An smb_analysis object.
 }
 \description{
 Loads analysis object from file path where it has been saved

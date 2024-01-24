@@ -31,13 +31,14 @@ Imports:
     tidyr,
     units
 Suggests: 
+    BH,
     testthat (>= 3.0.0),
     readxl,
     knitr,
+    RcppEigen,
     rmarkdown
 Remotes: 
     poissonconsulting/chktemplate,
-    poissonconsulting/dttr2,
     poissonconsulting/embr,
     poissonconsulting/newdata,
     poissonconsulting/smbr

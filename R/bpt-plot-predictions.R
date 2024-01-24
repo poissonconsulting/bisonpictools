@@ -2,16 +2,9 @@
 #'
 #' Generates a plot of the specified prediction
 #'
-#' @param analysis analysis objects from `bpt_analyse()`
-#' @param prediction one of:
-#'  - "abundance-class": plots abundances by class and study year
-#'  - "abundance-total": plots total herd abundance by study year
-#'  - "survival": plots survival rates by class and study year (bull rate
-#'  includes M2, M3, MA)
-#'  - "fecundity": plots fecundity rate and proportion of reproductive cows
-#'  - "ratios": plots ratios by study year
+#' @inheritParams params
 #'
-#' @return a `ggplot2` object
+#' @return A `ggplot2` object.
 #' @export
 #'
 #' @examples
@@ -42,7 +35,9 @@ bpt_plot_predictions <- function(analysis, prediction = "abundance-total") {
   facets <- base::switch(prediction,
     "abundance-class" = "class",
     "survival" = "class",
-    "ratios" = "ratio"
+    "ratios" = "ratio",
+    "fecundity" = NA_character_,
+    "abundance-total" = NA_character_
   )
 
   scales <- base::switch(prediction,
@@ -85,14 +80,19 @@ bpt_plot_predictions <- function(analysis, prediction = "abundance-total") {
         ymax = .data$upper
       )
     ) +
-    ggplot2::facet_grid(
-      rows = facets,
-      scales = scales
-    ) +
     ggplot2::expand_limits(y = c(expand_lims[1], expand_lims[2])) +
     ggplot2::xlab(xlab) +
     ggplot2::ylab(ylab) +
     NULL
+
+  if (!is.na(facets)) {
+    gp <- gp +
+      ggplot2::facet_wrap(
+        facets = facets,
+        scales = scales
+      ) +
+      ggplot2::guides(x = ggplot2::guide_axis(angle = 45))
+  }
 
   gp
 }

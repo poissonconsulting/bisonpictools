@@ -7,7 +7,7 @@
 bpt_seasons()
 }
 \value{
-A tibble
+A tibble.
 }
 \description{
 Generates a table of the dates of different seasons relevant to Ronald Wood

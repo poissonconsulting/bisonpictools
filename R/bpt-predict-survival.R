@@ -3,11 +3,11 @@
 #' Predicts the survival rates for each class for each study
 #' year. Bull survival corresponds to the M2, M3, and MA classes
 #'
-#' @param analysis the analysis object from `bpt_analyse()`
+#' @inheritParams params
 #'
-#' @return a tibble of predicted survival rates for each study year, including
+#' @return A tibble of predicted survival rates for each study year, including
 #'   the median posterior value (estimate) and lower and upper 95% credible
-#'   intervals
+#'   intervals.
 #' @export
 #'
 #' @examples
