@@ -39,7 +39,7 @@ Remotes:
     poissonconsulting/chktemplate,
     poissonconsulting/embr,
     poissonconsulting/newdata,
-    poissonconsulting/smbr
+    poissonconsulting/smbr (>= 0.0.1.9010)
 Depends: 
     R (>= 3.5.0)
 LazyData: true
