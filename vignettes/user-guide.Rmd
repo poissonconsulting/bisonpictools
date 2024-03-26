@@ -428,6 +428,8 @@ knitr::include_graphics("figures/runbisonpic-model-tab.png")
      - The app and RStudio must be left open until the run is completed which means the computer cannot be turned off or set to sleep. 
    - **(E)** The run is complete when the Outbox is populated with a table.
    - If there is an issue a pop-up box will appear indicating something is not valid, this must be fixed, and the run button will need to be pressed again to restart the model run.
+     - The pop-up box may indicate the issue or it may direct you to the RStudio Console pane where further errors are displayed.
+     - The data may need to be changed and loaded again to resolve the error during the next run of the model.
    - The app has crashed and needs to be restarted if any of the following occur:
       - The screen goes grey. 
       - A box appears in the bottom left corner saying disconnected.
