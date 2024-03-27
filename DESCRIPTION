@@ -37,17 +37,21 @@ Suggests:
     readxl,
     knitr,
     RcppEigen,
-    rmarkdown
+    rmarkdown,
+    runbisonpic,
+    shinybisonpic
 Remotes: 
     poissonconsulting/chktemplate,
     poissonconsulting/embr,
     poissonconsulting/newdata,
+    poissonconsulting/runbisonpic,
+    poissonconsulting/shinybisonpic,
     poissonconsulting/smbr
 Depends: 
     R (>= 3.5.0)
 LazyData: true
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.2.3
+RoxygenNote: 7.3.1
 Config/testthat/edition: 3
 VignetteBuilder: knitr
