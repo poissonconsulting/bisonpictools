@@ -3,8 +3,9 @@ test_that(
     "quick mode produces an .smb_analysis object with ",
     "correct thinning rate, names, and expected coefficients"
   ), {
-    withr::with_seed(
-      101, 
+    # withr::with_seed(
+      # 101, 
+      set.seed(101)
       analysis <- bpt_analyse(
         event_data = bpt_event_data,
         location_data = bpt_location_data,
@@ -13,7 +14,7 @@ test_that(
         nthin = 1L,
         analysis_mode = "quick"
       )
-    )
+    # )
     expect_equal(class(analysis), c("smb_analysis", "mb_analysis"))
     expect_equal(analysis$nthin, 1L)
     expect_equal(
@@ -99,8 +100,9 @@ test_that(
 
 test_that(
   "report mode runs", {
-    withr::with_seed(
-      101, {
+    # withr::with_seed(
+      # 101, {
+    set.seed(101)
         analysis <- bpt_analyse(
           event_data = bpt_event_data,
           location_data = bpt_location_data,
@@ -109,8 +111,8 @@ test_that(
           nthin = 1L,
           analysis_mode = "report"
         )
-      }
-    )
+      # }
+    # )
     expect_snapshot(
       print(
         embr::glance(analysis),
@@ -193,6 +195,7 @@ test_that(
 test_that(
   "analysis has warning messages with debug analysis mode, and debug snapshots",
   {
+    set.seed(101)
     expect_warning(
       expect_warning(
         expect_warning(
@@ -202,8 +205,8 @@ test_that(
                 expect_warning(
                   expect_warning(
                     expect_warning(
-                      withr::with_seed(
-                        101,
+                      # withr::with_seed(
+                        # 101,
                         analysis <- bpt_analyse(
                           event_data = bpt_event_data,
                           location_data = bpt_location_data,
@@ -211,8 +214,8 @@ test_that(
                           proportion_calf_data = bpt_proportion_calf_data,
                           nthin = 1L,
                           analysis_mode = "debug"
-                        )
-                      ),
+                        ),
+                      # ),
                       "The largest R-hat is 2.12, indicating chains have not mixed"
                     ),
                     "Bulk Effective Samples Size"
