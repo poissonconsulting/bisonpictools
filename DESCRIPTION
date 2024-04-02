@@ -33,11 +33,12 @@ Imports:
     units
 Suggests: 
     BH,
-    testthat (>= 3.0.0),
-    readxl,
     knitr,
     RcppEigen,
-    rmarkdown
+    readxl,
+    rmarkdown,
+    testthat (>= 3.0.0),
+    withr
 Remotes: 
     poissonconsulting/chktemplate,
     poissonconsulting/embr,
@@ -48,6 +49,6 @@ Depends:
 LazyData: true
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.2.3
+RoxygenNote: 7.3.1
 Config/testthat/edition: 3
 VignetteBuilder: knitr
