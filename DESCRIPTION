@@ -36,13 +36,17 @@ Suggests:
     knitr,
     RcppEigen,
     readxl,
-    rmarkdown,
     testthat (>= 3.0.0),
     withr
+    rmarkdown,
+    runbisonpic,
+    shinybisonpic
 Remotes: 
     poissonconsulting/chktemplate,
     poissonconsulting/embr,
     poissonconsulting/newdata,
+    poissonconsulting/runbisonpic,
+    poissonconsulting/shinybisonpic,
     poissonconsulting/smbr
 Depends: 
     R (>= 3.5.0)
