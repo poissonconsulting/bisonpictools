@@ -66,21 +66,33 @@ test_that(
         eZWinYearling = c("location", "weekfac")
       )
     )
-    expect_snapshot_data(
-      embr::glance(analysis),
-      "quick_glance"
+    expect_snapshot(
+      print(
+        embr::glance(analysis),
+        n = 100,
+        width = 100
+      )
     )
-    expect_snapshot_data(
-      embr::coef(analysis, simplify = TRUE, param_type = "fixed"),
-      "quick_fixed_coef"
+    expect_snapshot(
+      print(
+        embr::coef(analysis, simplify = TRUE, param_type = "fixed"),
+        n = 100,
+        width = 100
+      )
     )
-    expect_snapshot_data(
-      embr::coef(analysis, simplify = TRUE, param_type = "random"),
-      "quick_random_coef"
+    expect_snapshot(
+      print(
+        embr::coef(analysis, simplify = TRUE, param_type = "random"),
+        n = 100,
+        width = 100
+      )
     )
-    expect_snapshot_data(
-      embr::coef(analysis, simplify = TRUE, param_type = "derived"),
-      "quick_derived_coef"
+    expect_snapshot(
+      print(
+        embr::coef(analysis, simplify = TRUE, param_type = "derived"),
+        n = 100,
+        width = 100
+      )
     )
   }
 )
@@ -99,21 +111,33 @@ test_that(
         )
       }
     )
-    expect_snapshot_data(
-      embr::glance(analysis),
-      "report_glance"
+    expect_snapshot(
+      print(
+        embr::glance(analysis),
+        n = 100,
+        width = 100
+      )
     )
-    expect_snapshot_data(
-      embr::coef(analysis, simplify = TRUE, param_type = "fixed"),
-      "report_fixed_coef"
+    expect_snapshot(
+      print(
+        embr::coef(analysis, simplify = TRUE, param_type = "fixed"),
+        n = 100,
+        width = 100
+      )
     )
-    expect_snapshot_data(
-      embr::coef(analysis, simplify = TRUE, param_type = "random"),
-      "report_random_coef"
+    expect_snapshot(
+      print(
+        embr::coef(analysis, simplify = TRUE, param_type = "random"),
+        n = 100,
+        width = 100
+      )
     )
-    expect_snapshot_data(
-      embr::coef(analysis, simplify = TRUE, param_type = "derived"),
-      "report_derived_coef"
+    expect_snapshot(
+      print(
+        embr::coef(analysis, simplify = TRUE, param_type = "derived"),
+        n = 100, 
+        width = 100
+      )
     )
   }
 )
@@ -207,21 +231,33 @@ test_that(
       ),
       "Tail Effective Samples Size"
     )
-    expect_snapshot_data(
-      embr::glance(analysis),
-      "debug_glance"
+    expect_snapshot(
+      print(
+        embr::glance(analysis),
+        n = 100,
+        width = 100
+      )
     )
-    expect_snapshot_data(
-      embr::coef(analysis, simplify = TRUE, param_type = "fixed"),
-      "debug_fixed_coef"
+    expect_snapshot(
+      print(
+        embr::coef(analysis, simplify = TRUE, param_type = "fixed"),
+        n = 100,
+        width = 100
+      )
     )
-    expect_snapshot_data(
-      embr::coef(analysis, simplify = TRUE, param_type = "random"),
-      "debug_random_coef"
+    expect_snapshot(
+      print(
+        embr::coef(analysis, simplify = TRUE, param_type = "random"),
+        n = 100,
+        width = 100
+      )
     )
-    expect_snapshot_data(
-      embr::coef(analysis, simplify = TRUE, param_type = "derived"),
-      "debug_derived_coef"
+    expect_snapshot(
+      print(
+        embr::coef(analysis, simplify = TRUE, param_type = "derived"),
+        n = 100, 
+        width = 100
+      )
     )
   }
 )
