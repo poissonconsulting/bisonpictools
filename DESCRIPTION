@@ -36,11 +36,11 @@ Suggests:
     knitr,
     RcppEigen,
     readxl,
-    testthat (>= 3.0.0),
-    withr
     rmarkdown,
     runbisonpic,
-    shinybisonpic
+    shinybisonpic,
+    testthat (>= 3.0.0),
+    withr
 Remotes: 
     poissonconsulting/chktemplate,
     poissonconsulting/embr,
