@@ -58,7 +58,7 @@ bpt_modify_data <- function(
   chk::chk_character(census_study_year)
   chk::chk_subset(census_study_year, levels_annual)
   chk::chk_integer(census_day_of_year)
-  chk::chk_subset(census_day_of_year, 1:365)
+  chk::chk_subset(census_day_of_year, 1:366)
   chk::chk_numeric(proportion_calf)
   chk::chk_range(proportion_calf, range = c(0, 1), inclusive = TRUE)
   chk::chk_numeric(proportion_calf_cv)
@@ -66,7 +66,7 @@ bpt_modify_data <- function(
   chk::chk_character(proportion_calf_study_year)
   chk::chk_subset(proportion_calf_study_year, levels_annual)
   chk::chk_integer(proportion_calf_day_of_year)
-  chk::chk_subset(proportion_calf_day_of_year, 1:365)
+  chk::chk_subset(proportion_calf_day_of_year, 1:366)
 
   ncensus <- base::length(census)
   nprop_calf <- base::length(proportion_calf)
