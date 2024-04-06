@@ -1,4 +1,4 @@
-# analysis has warning messages with debug analysis mode, and debug snapshots
+# debug mode produces an .smb_analysis object with correct thinning rate, names, and expected coefficients
 
     Code
       print(embr::glance(analysis), n = 100, width = 100)

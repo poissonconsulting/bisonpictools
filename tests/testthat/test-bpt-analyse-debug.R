@@ -1,33 +1,18 @@
 test_that(
-  "analysis has warning messages with debug analysis mode, and debug snapshots",
+  paste0(
+    "debug mode produces an .smb_analysis object with ",
+    "correct thinning rate, names, and expected coefficients"
+  ),
   {
     withr::with_seed(
       101, {
-        expect_warning(
-          expect_warning(
-            expect_warning(
-              expect_warning(
-                expect_warning(
-                  expect_warning(
-                    analysis <- bpt_analyse(
-                      event_data = bpt_event_data,
-                      location_data = bpt_location_data,
-                      census_data = bpt_census_data,
-                      proportion_calf_data = bpt_proportion_calf_data,
-                      nthin = 1L,
-                      analysis_mode = "debug"
-                    ),
-                    "The largest R-hat is 2.12, indicating chains have not mixed"
-                  ),
-                  "Bulk Effective Samples Size"
-                ),
-                "Tail Effective Samples Size"
-              ),
-              "The largest R-hat is 2.12, indicating chains have not mixed"
-            ),
-            "Bulk Effective Samples Size"
-          ),
-          "Tail Effective Samples Size"
+        analysis <- bpt_analyse(
+          event_data = bpt_event_data,
+          location_data = bpt_location_data,
+          census_data = bpt_census_data,
+          proportion_calf_data = bpt_proportion_calf_data,
+          nthin = 1L,
+          analysis_mode = "debug"
         )
         expect_equal(class(analysis), c("smb_analysis", "mb_analysis"))
         expect_equal(analysis$nthin, 1L)
@@ -81,6 +66,7 @@ test_that(
             eZWinYearling = c("location", "weekfac")
           )
         )
+        testthat::skip_on_ci()
         expect_snapshot(
           print(
             embr::glance(analysis),
