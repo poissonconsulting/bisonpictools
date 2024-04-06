@@ -10,18 +10,25 @@ output: github_document
 [![codecov](https://codecov.io/gh/poissonconsulting/bisonpictools/graph/badge.svg?token=znqSXiltZo)](https://codecov.io/gh/poissonconsulting/bisonpictools)
 <!-- badges: end -->
 
-The goal of bisonpictools is to facilitate the visualization and analysis of camera trap data from the Ronald Wood Bison herd. 
+The goal of `bisonpictools` is to facilitate the visualization and analysis of camera trap data from the Ronald Wood Bison herd. 
 
 ## Installation
 
+To install the latest development version:
+
 ```{r, eval = FALSE}
-# install.packages("remotes")
-remotes::install_github("poissonconsulting/bisonpictools")
+# install.packages("pak")
+pak::pak("poissonconsulting/bisonpictools")
 ```
+
+## Data
+
+`bisonpictools` accepts data according to a specific template.
 
 ## Data Visualization
 
-The ratio plotted by `bpt_plot_ratios()` is `numerator:(denominator:numerator)`.
+Use the `bpt_plot_ratios()` function to plot 
+The ratio plotted `numerator:(denominator:numerator)` to avoid numerical problems.
 
 For example, the adult cow:(bull + cow) ratio plotted over all years and locations:
 ``` {r, fig.dim = c(12, 8)}
@@ -62,20 +69,14 @@ bpt_plot_ratios(
 
 ## Data Analysis
 
-Launch the local data analysis app 
+Launch the local data analysis app to upload the data, run the analysis, and plot predictions in a user-friendly way.
 
 ```{r, eval = FALSE}
 # Launch app
+runbisonpic::launch_runbisonpic()
 ```
 
-Install Stan
-
-```{r, eval = FALSE}
-# Install correct version of Stan
-install.packages("rstan")
-```
-
-Run the analysis. 
+Behind the scene, the `runbisonpic` uses the `bpt_analyse()` function from `bisonpictools` to run the analysis.
 The following example uses the built-in example data.
 
 ```{r, eval = FALSE}
@@ -147,6 +148,12 @@ bpt_plot_predictions(analysis, prediction = "fecundity")
 bpt_plot_predictions(analysis, prediction = "ratios")
 ```
 
+## Contribution
 
+Please report any [issues](https://github.com/poissonconsulting/bisonpictools/issues)
 
+## Code of Conduct
+
+Please note that the `bisonpictools` project is released with a [Contributor Code of Conduct](https://www.contributor-covenant.org/version/2/1/code_of_conduct/).
+By contributing to this project, you agree to abide by its terms.
 

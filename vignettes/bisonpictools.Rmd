@@ -14,22 +14,45 @@ knitr::opts_chunk$set(
 )
 ```
 
-```{r setup}
+```{r setup, echo = FALSE}
 library(bisonpictools)
 ```
 
-The goal of bisonpictools is to facilitate the visualization and analysis of camera trap data from the Ronald Wood Bison herd.
+The goal of `bisonpictools` is to facilitate the visualization and analysis of camera trap data from the Ronald Wood Bison herd.
 
 ## Installation
 
+To install the latest development version:
+
 ```{r, eval = FALSE}
-# install.packages("remotes")
-remotes::install_github("poissonconsulting/bisonpictools")
+# install.packages("pak")
+pak::pak("poissonconsulting/bisonpictools")
 ```
+
+## bisonpic Suite
+
+`bisonpictools` is part of the bisonpic suite of tools. 
+
+Other packages in this suite include:
+
+- [`shinybisonpic`](https://github.com/poissonconsulting/shinybisonpic)
+- [`runbisonpic`](https://github.com/poissonconsulting/runbisonpic)
+
+`bisonpictools` provides the underlying visualization and analysis functionality; `shinybisonpic` is a web-based Shiny app to aid data visualization and exploration, and `runbisonpic` is a local-based Shiny app to analyze a complex custom Bayesian model to estimate total and sex-age class abundances, fecundity and survival rates, and various ratios of sex-age classes.
+
+```{r, echo = FALSE, out.width = '70%'}
+knitr::include_graphics("figures/bisonpic_suite.png")
+```
+
+## Data 
 
 ## Data Visualization
 
-The ratio plotted by `bpt_plot_ratios()` is `numerator:(denominator:numerator)`.
+Use the `shinybisonpic` Shiny app to explore the locations of camera traps and the the ratios of different classes of wood bison in camera trap observations.
+Refer to the [user guide](insert link here) for more information on how to use the `shinybisonpic` app.
+
+If desired, functions from `bisonpictools` can be run in the RStudio console.
+Please note that the ratio plotted by `bpt_plot_ratios()` is `numerator:(denominator:numerator)`.
 
 For example, the adult cow:(bull + cow) ratio plotted over all years and locations:
 ``` {r, fig.dim = c(10, 6)}
@@ -55,7 +78,6 @@ bpt_plot_ratios(
 )
 ```
 
-
 Several age/sex classes can be combined to plot ratios of interest.
 For example, this plots the calf:(cow + calf) ratio:
 
@@ -70,39 +92,35 @@ bpt_plot_ratios(
 
 ## Data Analysis
 
-Launch the local data analysis app 
+### `runbisonpic`
+
+Launch the local data analysis app by running the following line of code in the RStudio console.
 
 ```{r, eval = FALSE}
-# Launch app
+# Launch local app
+runbisonpic::launch_runbisonpic()
 ```
 
-Install Stan
+Proceed by uploading the data into the app using the template. 
+See the [user guide](insert link here) for more guidance on how to use the `runbisonpic` app.
+
+### Using the RStudio Console
+
+If desired, the steps that occur behind the scenes in the `runbisonpic` app can be executed in an R script in RStudio, by following these steps:
+
+#### (1) Read in data from the populated excel template
 
 ```{r, eval = FALSE}
-# Install correct version of Stan
-install.packages("rstan")
+# Change `dir` to the file path of the populated excel template on your computer
+dir <- "myfilepath.xlsx"
+# Read each sheet into R
+location_data <- readxl::read_xlsx(dir, sheet = "location")
+event_data <- readxl::read_xlsx(dir, sheet = "event")
+census_data <- readxl::read_xlsx(dir, sheet = "census")
+proportion_calf_data <- readxl::read_xlsx(dir, sheet = "proportion_calf")
 ```
 
-Read in data saved from the hosted app 
-
-```{r, eval = FALSE}
-# Change `dir` to the folder where you have saved the data
-dir <- "myfilepath"
-event_data <- readr::read_csv(
-  file.path(dir, "event_data.csv")
-)
-location_data <- readr::read_csv(
-  file.path(dir, "location_data.csv")
-)
-census_data <- readr::read_csv(
-  file.path(dir, "census_data.csv")
-)
-proportion_calf_data <- readr::read_csv(
-  file.path(dir, "proportion_calf_data.csv")
-)
-```
-
-Run the analysis
+#### (2) Run the analysis using the `bpt_analyse()` function, which has the following arguments:
 
 - `event_data` contains the camera trap event data
 - `location_data` contains the coordinates of the camera traps
@@ -110,15 +128,38 @@ Run the analysis
 - `proportion_calf_data` contains estimates of the proportion of calves in the population from aerial surveys
 
 - `analysis_mode` controls the number of iterations and chains in the model run
-  - `"debug"` is used for printing out the errors if the model does not sample
-  - `"quick"` is used for running through a quick run of the model for demonstration purposes
-  - `"report"` is the default and is used for the full analysis
+  - `"debug"` is used for printing out the errors if the model does not sample (10 iterations from 2 chains)
+  - `"quick"` is used for running through a quick run of the model for demonstration purposes (10 iterations from 2 chains)
+  - `"report"` is the default and is used for the full analysis (500 iterations from 3 chains)
 
 - `nthin` controls the thinning of the MCMC samples
-  - `nthin = 1L` saves all samples and is the default
+  - `nthin = 1L` saves every sample and is the default; use this for `"debug"` and `"quick"` modes.
+  - `nthin = 10L` saves every $10^{th}$ sample; use this for `"report"` mode.
   - increase `nthin` if model is not converging
 
 ```{r, eval = FALSE}
+# Start by running once on "quick" mode, with a thinning rate of 1
+analysis <- bpt_analyse(
+  event_data = bpt_event_data,
+  location_data = bpt_location_data,
+  census_data = bpt_census_data,
+  proportion_calf_data = bpt_proportion_calf_data,
+  nthin = 1L,
+  analysis_mode = "quick"
+)
+
+# If no errors appear, run the model on "report" mode, with a thinning rate of 10
+analysis <- bpt_analyse(
+  event_data = bpt_event_data,
+  location_data = bpt_location_data,
+  census_data = bpt_census_data,
+  proportion_calf_data = bpt_proportion_calf_data,
+  nthin = 10L,
+  analysis_mode = "report"
+)
+
+# If errors do appear, run the model on "debug" mode, which will provide 
+# informative error messages
 analysis <- bpt_analyse(
   event_data = bpt_event_data,
   location_data = bpt_location_data,
@@ -129,20 +170,49 @@ analysis <- bpt_analyse(
 )
 ```
 
+#### (3) Check that the model converged
+
+In `"quick"` or `"debug"` mode, convergence is not expected.
+In `"report"` mode, convergence is expected. 
+See the `converged` column in the table printed after `bpt_analyse()` is run to assess whether or not the analysis converged.
+If it says `TRUE`, the model converged. 
+If it says `FALSE`, the model did not converge.
+If the model did not converge in `"report"` mode, increase the thinning rate by `5`, and re-run the model; repeat until the model converges.
+
+For example,
+
+```{r, echo = FALSE}
+glance <- readRDS(
+  file = system.file(package = "bisonpictools", "test-objects/glance.RDS")
+)
+print(glance)
+```
+
+
 ```{r, echo = FALSE}
 analysis <- readRDS(
   file = system.file(package = "bisonpictools", "test-objects/analysis.RDS")
 )
 ```
 
-Save the analysis object
+#### (3) Coefficient table
+
+Use the `bpt_coefficient_table()` function to print out the coefficients of the analysis.
+
+```{r}
+coef <- bpt_coefficient_table(analysis)
+print(coef)
+```
+
+#### (4) Save the analysis object
 
 ```{r, eval = FALSE}
-# Save analysis object
+# Save analysis the anlaysis object. 
+# Change the file path to the desired directory (without a file extension)
 bpt_save_analysis(analysis, file = "file_path/analysis")
 ```
 
-Make predictions 
+#### (5) Make predictions 
 
 ```{r}
 # Predict total abundance
@@ -153,7 +223,7 @@ bpt_predict_abundance_total(analysis)
 # Can predict other values using the following functions
 # Predicts abundance by class:
 bpt_predict_abundance_class(analysis)
-# Predicts survival rates:
+# Predicts survival rates by class:
 bpt_predict_survival(analysis)
 # Predicts fecundity rate and proportion of reproductive cows:
 bpt_predict_fecundity(analysis)
@@ -161,11 +231,11 @@ bpt_predict_fecundity(analysis)
 bpt_predict_ratios(analysis)
 ```
 
-
-## Plot Predictions
+#### (6) Plot Predictions
 
 ```{r, eval = FALSE}
-# Load analysis object
+# Load analysis object if not still in the environment, using the same file path
+# it was saved to in step (4) above.
 analysis <- bpt_load_analysis("file_path/analysis")
 ```
 
@@ -193,3 +263,8 @@ bpt_plot_predictions(analysis, prediction = "fecundity")
 # Plot ratios
 bpt_plot_predictions(analysis, prediction = "ratios")
 ```
+
+#### (7) Beyond bisonpictools
+
+Other plots can be plotted, other derived parameters, etc. in the RStudio console.
+See ____ for guidance.
