@@ -7,17 +7,9 @@ vignette: >
   %\VignetteEncoding{UTF-8}
 bibliography: bibliography.bib
 ---
-```{r, include = FALSE}
-knitr::opts_chunk$set(
-  collapse = TRUE,
-  comment = "#>"
-)
-```
 
-```{r setup, echo = FALSE}
-library(bisonpictools)
-library(knitr)
-```
+
+
 
 ## Introduction to the Study System
 
@@ -29,31 +21,28 @@ The camera traps collect data year-round, recording photographs upon the detecti
 Researchers are able to classify the individuals in the photographs captured during a camera trap "event", here defined as a series of photographs of the same group of wood bison in front of the same camera, into classes by age and sex, as shown in Table 1. 
 In the text to follow, "bull(s)" will refer to the set of $M2$, $M3$, and $MA$ individuals.
 
-```{r table_1, echo=FALSE}
-classes <- data.frame(
-  Class = c("$F0$","$F1$","FA","M0","M1","M2","M3","MA","U0","U1","UA","FU","MU","UU"),
-  Description = c(
-    "Female calves",
-    "Female yearlings",
-    "Female adults (includes 2+year-olds)",
-    "Male calves",
-    "Male yearlings",
-    "Male 2-year-olds",
-    "Male 3-year-olds",
-    "Male 4+year-olds",
-    "Unknown sex calves",
-    "Unknown sex yearlings",
-    "Unknown sex adults",
-    "Unknown age females",
-    "Unknown age males",
-    "Individuals of unknown age and sex"
-  )
-)
-knitr::kable(
-  classes,
-  caption = "Table 1. Classification of Wood Bison individuals from camera trap events."
-)
-```
+
+
+Table: Table 1. Classification of Wood Bison individuals from camera trap events.
+
+|Class |Description                          |
+|:-----|:------------------------------------|
+|$F0$  |Female calves                        |
+|$F1$  |Female yearlings                     |
+|FA    |Female adults (includes 2+year-olds) |
+|M0    |Male calves                          |
+|M1    |Male yearlings                       |
+|M2    |Male 2-year-olds                     |
+|M3    |Male 3-year-olds                     |
+|MA    |Male 4+year-olds                     |
+|U0    |Unknown sex calves                   |
+|U1    |Unknown sex yearlings                |
+|UA    |Unknown sex adults                   |
+|FU    |Unknown age females                  |
+|MU    |Unknown age males                    |
+|UU    |Individuals of unknown age and sex   |
+
+
 
 ## Modelling approach
 
@@ -84,10 +73,7 @@ The abundances of each stage during the $t^{th}$ study year can be described by 
 \end{bmatrix}
 \]
 
-```{r, echo = FALSE}
-# Insert diagram of stages?
-# need license for the software..
-```
+
 
 To ease model formulation, the population projection matrix can be broken up into subprocess matrices [@newman_modelling_2014].
 Each subprocess has a separate matrix: in this model, the $\mathbf{B}$ matrix describes the stochastic birth process, the $\mathbf{A}$ matrix describes the deterministic age incrementation process, and the $\mathbf{S}$ matrix describes the stochastic survival process.
