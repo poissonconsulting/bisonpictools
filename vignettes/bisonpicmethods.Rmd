@@ -1,6 +1,6 @@
 ---
 title: Analytic Methods for Estimating Wood Bison Ratios, Survival and Fecundity Rates,
-  and Abundance Estimates
+  and Abundance
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{bisonpicmethod}
@@ -25,12 +25,12 @@ library(knitr)
 Alberta Environment and Parks wishes to monitor the status of the Ronald Lake wood bison herd in northern Alberta, Canada.
 A combination of annual aerial surveys and camera traps along the herd's migration corridor have been used to collect data on the status of the herd.
 The aerial surveys take place once a year, usually near the end of March.
-These surveys produce estimates of the total herd size, as well as the proportion of the herd that are calves.
-The camera traps collect data year-round, recording photograph**(s?)** upon the detection of nearby movement.
-Researchers are able to classify the individuals in the photographs captured during a camera trap "event", here defined as a **short-term series of photographs of the same group on the same day, into classes by age and sex**, as shown in Table 1. 
+These surveys produce estimates of the total herd size, as well as the proportion of calves in the herd. 
+The camera traps collect data year-round, recording photographs upon the detection of nearby movement.
+Researchers are able to classify the individuals in the photographs captured during a camera trap "event", here defined as a series of photographs of the same group of wood bison in front of the same camera, into classes by age and sex, as shown in Table 1. 
 In the text to follow, "bull(s)" will refer to the set of $M2$, $M3$, and $MA$ individuals.
 
-```{r, echo = FALSE, caption = "Description of the classification of Wood Bison individuals from camera trap events"}
+```{r, echo=FALSE, caption="Classification of Wood Bison individuals from camera trap events"}
 classes <- data.frame(
   Class = c("F0","F1","FA","M0","M1","M2","M3","MA","U0","U1","UA","FU","MU","UU"),
   Description = c(
@@ -57,7 +57,7 @@ knitr::kable(classes)
 
 ### Integrated Population Model
 
-An integrated population model (IPM) was chosen to combine stage-structured population projection matrix models with multiple sources of data into a unified framework, allowing for estimates of age- and sex-class ratios, population vital rates, and abundances, while maintaining the correct propagation of uncertainty [@schaub_integrated_2022]. 
+An integrated population model (IPM) was chosen to combine stage-structured population projection matrix models with multiple sources of data into a unified framework, allowing for estimates of age-sex class ratios, population vital rates, and abundances, while maintaining the correct propagation of uncertainty [@schaub_integrated_2022]. 
 The sources of data used in this model include the classified counts from the camera trap events, and two estimates derived from aerial surveys of the herd: a "census" estimate of the entire herd size and an estimate of the proportion of calves in the entire herd.
 
 ### BAS matrix model
@@ -65,8 +65,8 @@ The sources of data used in this model include the classified counts from the ca
 Population projection matrices provide a simple way to model population dynamics through time [@newman_modelling_2014].
 The population projection matrix summarizes the probabilities of transitioning from each stage to every other stage, using vital rates from demographic processes such as births, age incrementation, and survival.
 
-In this system, there are 8 stages, corresponding to the first 8 rows in table 1.
-The other classes in table 1 do not represent true stages, rather the individuals' sexes and/or ages are simply unknown.
+In this system, there are 8 stages, corresponding to the first 8 rows in Table 1.
+The other classes in Table 1 do not represent true stages, rather the individuals' sexes and/or ages are simply unknown.
 The abundances of each stage during the $t^{th}$ study year can be described by a vector, $\mathbf{n}_t$, which is composed of the numbers of individuals in each of the stages during that study year ($F0_t$, $F1_t$, etc.).
 
 \[\mathbf{n_t} = 
@@ -83,17 +83,19 @@ The abundances of each stage during the $t^{th}$ study year can be described by 
 \]
 
 ```{r, echo = FALSE}
-# Insert diagram of stages!!
+# Insert diagram of stages?
 # need license for the software..
 ```
 
 To ease model formulation, the population projection matrix can be broken up into subprocess matrices [@newman_modelling_2014].
 Each subprocess has a separate matrix: in this model, the $\mathbf{B}$ matrix describes the stochastic birth process, the $\mathbf{A}$ matrix describes the deterministic age incrementation process, and the $\mathbf{S}$ matrix describes the stochastic survival process.
 
-To get the vector of stage-wise abundances in the next year, $\mathbf{n}_{t+1}$, we multiply the subprocess matrices together in reverse chronological order, and then by the vector of stage-wise abundances in the current year, $\mathbf{n}_{t}$. 
-In this model, we assume that survival occurs first, then age incrementation, and finally births, resulting in the $\mathbf{BAS}$ multiplication order:
+To get the vector of stage-wise abundances in the next study year, $\mathbf{n}_{t+1}$, we multiply the subprocess matrices together in reverse chronological order, and then by the vector of stage-wise abundances in the current study year, $\mathbf{n}_{t}$. 
+In this model, we assume that survival occurs first, then age incrementation, and finally births, resulting in the $\mathbf{BAS}$ multiplication order.
+We also assume that the fecundity rate is fixed and that the survival rates vary by study year.
 
-\[\mathbf{n}_{t+1} = \mathbf{BAS}\mathbf{n}_{t}\]
+
+\[\mathbf{n}_{t+1} = \mathbf{BAS}_{t}\mathbf{n}_{t}\]
 
 With the full population abundance vectors and subprocess matrices, we arrive at the following:
 
@@ -132,14 +134,14 @@ With the full population abundance vectors and subprocess matrices, we arrive at
 \end{bmatrix} 
 \times
 \begin{bmatrix}
-    \phi_{F0}&0&0&0&0&0&0&0 \\
-    0 & \phi_{F1} & 0 & 0 & 0 & 0 & 0 & 0 \\
-    0 & 0 & \phi_{FA} & 0 & 0 & 0 & 0 & 0 \\
-    0 & 0 & 0 & \phi_{M0} & 0 & 0 & 0 & 0 \\
-    0 & 0 & 0 & 0 & \phi_{M1} & 0 & 0 & 0 \\
-    0 & 0 & 0 & 0 & 0 & \phi_{Bull} & 0 & 0 \\
-    0 & 0 & 0 & 0 & 0 & 0 & \phi_{Bull} & 0 \\
-    0 & 0 & 0 & 0 & 0 & 0 & 0 & \phi_{Bull} \\
+    \phi_{F0_t}&0&0&0&0&0&0&0 \\
+    0 & \phi_{F1_t} & 0 & 0 & 0 & 0 & 0 & 0 \\
+    0 & 0 & \phi_{FA_t} & 0 & 0 & 0 & 0 & 0 \\
+    0 & 0 & 0 & \phi_{M0_t} & 0 & 0 & 0 & 0 \\
+    0 & 0 & 0 & 0 & \phi_{M1_t} & 0 & 0 & 0 \\
+    0 & 0 & 0 & 0 & 0 & \phi_{Bull_t} & 0 & 0 \\
+    0 & 0 & 0 & 0 & 0 & 0 & \phi_{Bull_t} & 0 \\
+    0 & 0 & 0 & 0 & 0 & 0 & 0 & \phi_{Bull_t} \\
 \end{bmatrix} 
 \times
 \begin{bmatrix}
@@ -154,21 +156,22 @@ With the full population abundance vectors and subprocess matrices, we arrive at
 \end{bmatrix}
 \]
 
-where $f$ represents the fecundity rate, $p_f$ represents the proportion of fecund $FA$ individuals, and each of the $\phi$ terms represent the annual survival rate of their respective stage.
+where $f$ represents the fecundity rate, $p_f$ represents the proportion of fecund $FA$ individuals, and each of the $\phi_t$ terms represent the annual survival rate of their respective stage.
 $M2$s, $M3$s, and $MA$s all share a survival rate, $\phi_{Bull}$.
-Each of the $\mathbf{n}_t$ stage-wise abundance vectors represent the *expected* number of individuals in each stage in that year. 
+The $\mathbf{n}_t$ stage-wise abundance vectors represent the *expected* number of individuals in each stage in the $t^{th}$ study year. 
 
-Diffuse priors were used to provide the model with stage-wise abundances in the initial year as a starting point.
-From there, the population projection matrix was used to update the stage-wise abundances in each subsequent year.
-The calving season for the wood bison herd occurs between April and June, so the study year was set to begin on April 1 of each year.
-As such, the above process occurs at midnight on March 31 of each study year.
+Diffuse priors were used to provide the model with stage-wise abundances in the initial study year as a starting point.
+From there, the population projection matrix was used to update the stage-wise abundances in each subsequent study year.
+The study year was set to begin on April 1 of each year because that marks the beginning of the calving season.
+As such, the above process occurs at midnight on March 31 of each year.
 
 Observations from camera traps occur throughout the study year, but the above stage-wise abundance and proportion vectors are the expected values on April 1.
-To ensure the correct abundances and proportions were used to model this continuous data, the expected abundances and proportions were calculated for the day of the year of each camera trap event, using an exponential relationship as function of the day of the study year of the $i^{th}$ camera trap event, $d_i$:
+To ensure the correct abundances and proportions were used to model this continuous data, the expected abundances and proportions were calculated for the day of the study year of each camera trap event.
+This involved using an exponential relationship between the expected annual survival rate for the $j^{th}$ class, $\phi_{j,t}$, and the day of the study year of the $i^{th}$ camera trap event, $d_i$, to calculate the expected survival rates for the $j^{th}$ class on day of the $i^{th}$ event, $\phi_{i,j}$:
 
 \[\phi_{j,i} = (\phi_{j,t})^\frac{d_i}{365.25}\]
 
-The abundances were updated for each camera trap event using a calculation similar to the projection matrix above:
+These survival rates were used to update the abundances for each camera trap event using a calculation similar to the projection matrix above:
 
 \[\mathbf{n_i} = \mathbf{S_in_t}\]
 
@@ -200,24 +203,27 @@ By rule, each vector of $\mathbf{p}_i$ values sums to 1.
 
 Each camera trap event represents a random draw from the entire population, with the same expected proportions in the small mixed groups captured in the cameras as in the overall population.
 
-Camera trap observations that occur during the calving season are excluded from the analysis to avoid bias associated with **_____.**
-To ensure that the survival rates of the calves, $\phi_{F0}$ and $\phi_{M0}$, represent the true annual survival rates, a probability of initial mortality of calves was incorporated. **make active voice**
-This allows ___ (reason) **source.**
+Several components of the model include seasonal variation.
+The three seasons chosen for this herd are the calving season (April-June), the summer/fall (July-November), and the winter (December-March).
 
-$MA$ individuals are known to go off on their own or form small bachelor groups **source**.
-This was accounted for in the model by assuming that only a proportion of MAs are present in the mixed groups, and that this proportion varies seasonally.
+Camera trap observations that occur during the calving season are excluded from the analysis to avoid bias associated with uncertainty in the transition period during which the calves start being classified as yearlings, and because the herd migrates northward during the calving season, away from the set of camera traps.
+To ensure that the survival rates of the calves, $\phi_{F0}$ and $\phi_{M0}$, represent the true annual survival rates, an additional probability of initial mortality of calves was incorporated.
+This allows the calves to undergo higher mortality when first born compared to the rest of the study year, which is more biologically realistic.
+
+$MA$ individuals are known to go off on their own or form small bachelor groups [@komers_search_1992].
+This was accounted for in the model by assuming that only a proportion of $MA$s are present in the mixed groups, and that this proportion varies seasonally.
 This proportion will be denoted by $r_s$ for the $s^{th}$ season.
-The $MA$s are expected to spend more time with the other members of the herd in __ (season) than __ (other season) **source**.
+The $MA$s are expected to spend more time with the other members of the herd in the summer/fall than the winter [@komers_search_1992].
 Camera trap events that detect only bulls are excluded from the analysis, because they do not represent a random draw of individuals from the total population.
 
-An ideal way to model the camera trap data would be to use a multinomial distribution to model the probabilities that the individuals captured during a camera trap belong to each of the stages.
+An ideal way to model the camera trap data would be to use a multinomial distribution to model the probabilities that the individuals captured during a camera trap event belong to each of the stages.
 However, a considerable percentage of individuals (~20%) were not sexed, and were only classified as unknown calf ($U0$), unknown yearling ($U1$), or unknown adult ($UA$).
-Instead, a combination of count and ratio data was used, in order to incorporate the valuable information contained in these semi-classified individuals.
+A series of binomial distributions were used instead to model the count data (including the unsexed individuals) and ratio data (excluding the unsexed individuals) in order to incorporate the valuable information contained in these semi-classified individuals.
 The individuals that were sexed but not aged ($FU$, $MU$; ~0.01%), or neither sexed nor aged ($UU$; ~6%), were excluded from the analysis.
 
 #### Counts
 
-The total group size observed during event $i$ will be referred to as $N_i$, excluding individuals with unknown age ($FU$, $MU$, and $UU$).
+The total group size observed during event $i$ will be referred to as $N_i$, excluding individuals with unknown ages.
 
 \[N_i = F0_i + F1_i + F2_i + M0_i + M1_i + M2_i + M3_i + MA_i + U0_i + U1_i + UA_i\]
 
@@ -259,7 +265,7 @@ These were the $FA$:Bull ratio, the $M2:M3$ ratio, and the $MA:FA$ ratio:
 
 #### Covariance Structure
 
-Wood bison often travel in groups across the landscape, particularly when migrating between their summer __ grounds and the northern calving grounds.
+Wood bison often travel in groups across the landscape.
 As such, the counts and ratios of the events can be expected to be correlated through time and space. 
 
 To account for this, a covariance structure was implemented into each of the binomial distributional statements above. 
@@ -268,9 +274,9 @@ The reader is referred to Chapter 14.5.1 of @mcelreath_statistical_2020 for more
 
 ### Census Data
 
-The census data required by this portion of the model include the census estimate and an associated coefficient of variation (CV), and the day, month, and year of the aerial survey used to inform the census estimate.
+The census data provided to the model includes the census estimate and an associated coefficient of variation (CV), and the day, month, and year of the aerial survey used to inform the census estimate.
 
-To ensure the model relates correctly to the day the census estimate was completed, a process identical to that described above for the camera trap event data was done to calculate the expected stage-wise abundances and proportions for the day of year of the $a^{th}$ aerial survey.
+To ensure the model relates correctly to the day the census estimate was completed, a process identical to that described above for the camera trap event data was done to calculate the expected stage-wise abundances and proportions for the day of the study year of the $a^{th}$ aerial survey.
 
 The census data was incorporated using a normal distribution as follows,
 
@@ -281,7 +287,7 @@ The normal distribution is lower-truncated at 0 to ensure that the abundance est
 
 ### Calf Proportion Data
 
-The data on the proportion of calves in the herd was incorporated similarly, using the expected 
+The data on the proportion of calves in the herd was incorporated similarly, 
 
 \[P_a \sim \text{Normal}(p_{F0,a} + p_{M0,a}, \sigma_{P_a}) \space T[0, 1]\]
 
@@ -290,20 +296,17 @@ The normal distribution is truncated at 0 and 1 to ensure that the estimates rem
 
 ### Model Fitting
 
-The model uses
-
-- reference to Stan, mbr, etc.?
-
-By default, `bisonpictools` uses "report" mode and a thinning rate of 10 to save 500 MCMC samples from each of three chains (after discarding the first halves). 
+The model is fitted in Stan [@carpenter_stan_2017]. 
+By default, [`bisonpictools`](https://github.com/poissonconsulting/bisonpictools) uses "report" mode and a thinning rate of 10 to save 500 MCMC samples from each of three chains (after discarding the first halves).
 To aid with debugging, other analysis modes ("debug" and "quick") can be set (see the [user guide](insert link here) for more detail).
 The user can increment the thinning rate as required to achieve convergence.
 The model-fitting process is automated in the [`runbisonpic`](https://github.com/poissonconsulting/runbisonpic) Shiny app.
 
 ### Predictions
 
-Shown during the stable point of the year: March 31.
-Show predictions of abundances, rates, ratios.
-Derived from posterior distributions.
+Predictions of the stage-wise and total abundances, survival and fecundity rates, and select ratios are derived from the posterior distributions of the estimated parameters.
+These predictions are shown on March 31 of each study year, which is a stable point right before the aging and birthing processes occur. 
+The [`runbisonpic`](https://github.com/poissonconsulting/runbisonpic) Shiny app also facilitates the visualization of these predictions.
 
 ### Assumptions and Limitations
 
@@ -319,8 +322,6 @@ Key assumptions of the integrated population model include:
 
 Key limitations of the integrated population model include:
 
-- A long run time; with ___ camera trap events, the model takes approximately __ hours to converge.
-- 
+- A long run time; with ~500 camera trap events, the model takes approximately 5 hours to converge.
 
 ## References
-
