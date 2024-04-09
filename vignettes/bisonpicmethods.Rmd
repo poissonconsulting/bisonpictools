@@ -31,7 +31,7 @@ In the text to follow, "bull(s)" will refer to the set of $M2$, $M3$, and $MA$ i
 
 ```{r table_1, echo=FALSE}
 classes <- data.frame(
-  Class = c("$F0$","$F1$","FA","M0","M1","M2","M3","MA","U0","U1","UA","FU","MU","UU"),
+  Class = c("$F0$", "$F1$", "$FA$", "$M0$", "$M1$", "$M2$", "$M3$", "$MA$", "$U0$", "$U1$", "$UA$", "$FU$", "$MU$", "$UU$"),
   Description = c(
     "Female calves",
     "Female yearlings",
@@ -51,18 +51,18 @@ classes <- data.frame(
 )
 knitr::kable(
   classes,
-  caption = "Table 1. Classification of Wood Bison individuals from camera trap events."
+  caption = "Table 1. Classification of wood bison individuals from camera trap events."
 )
 ```
 
-## Modelling approach
+## Modelling Approach
 
 ### Integrated Population Model
 
 An integrated population model (IPM) was chosen to combine stage-structured population projection matrix models with multiple sources of data into a unified framework, allowing for estimates of age-sex class ratios, population vital rates, and abundances, while maintaining the correct propagation of uncertainty [@schaub_integrated_2022]. 
 The sources of data used in this model include the classified counts from the camera trap events, and two estimates derived from aerial surveys of the herd: a "census" estimate of the entire herd size and an estimate of the proportion of calves in the entire herd.
 
-### BAS matrix model
+### BAS Matrix Model
 
 Population projection matrices provide a simple way to model population dynamics through time [@newman_modelling_2014].
 The population projection matrix summarizes the probabilities of transitioning from each stage to every other stage, using vital rates from demographic processes such as births, age incrementation, and survival.
@@ -102,6 +102,7 @@ We also assume that the fecundity rate is fixed and that the survival rates vary
 With the full population abundance vectors and subprocess matrices, we arrive at the following:
 
 \[
+\begin{split}
 \begin{bmatrix}
     F0_{t+1} \\
     F1_{t+1} \\
@@ -113,6 +114,7 @@ With the full population abundance vectors and subprocess matrices, we arrive at
     MA_{t+1} \\
 \end{bmatrix}
 = 
+&
 \begin{bmatrix}
     0 & 0 & \frac{fp_f}{2} & 0 & 0 & 0 & 0 & 0 \\
     0 & 1 & 0 & 0 & 0 & 0 & 0 & 0 \\
@@ -135,6 +137,8 @@ With the full population abundance vectors and subprocess matrices, we arrive at
     0 & 0 & 0 & 0 & 0 & 0 & 1 & 1 \\
 \end{bmatrix} 
 \times
+\\ 
+&
 \begin{bmatrix}
     \phi_{F0_t}&0&0&0&0&0&0&0 \\
     0 & \phi_{F1_t} & 0 & 0 & 0 & 0 & 0 & 0 \\
@@ -156,6 +160,7 @@ With the full population abundance vectors and subprocess matrices, we arrive at
     M3_{t} \\
     MA_{t} \\
 \end{bmatrix}
+\end{split}
 \]
 
 where $f$ represents the fecundity rate, $p_f$ represents the proportion of fecund $FA$ individuals, and each of the $\phi_t$ terms represent the annual survival rate of their respective stage.
@@ -193,7 +198,7 @@ where $\mathbf{n}_t$ is the stage-wise abundance vector in the study year of the
 \end{bmatrix} 
 \]
 
-By dividing the expected abundance of the $j^{th}$ stage on the date of the $i^{th}$ camera trap event, $\mathbf{n}_{j,i}$ by the total expected abundance on the day the $i^{th}$ event (i.e., the sum of the stage-wise abundances), we can derive the expected proportion of individuals in each stage on that day. The proportion of the population represented by the $j^{th}$ stage during the $i^{th}$ event, $p_{j,i}$ is:
+By dividing the expected abundance of the $j^{th}$ stage on the date of the $i^{th}$ camera trap event, $\mathbf{n}_{j,i}$ by the total expected abundance on the day of the $i^{th}$ event (i.e., the sum of the stage-wise abundances), we can derive the expected proportion of individuals in each stage on that day. The proportion of the population represented by the $j^{th}$ stage during the $i^{th}$ event, $p_{j,i}$ is:
 
 \[p_{j,i} = \frac{\mathbf{n}_{j,i}}{\sum_{j = 1}^J \mathbf{n}_{j,i}}\]
 
@@ -220,7 +225,7 @@ Camera trap events that detect only bulls are excluded from the analysis, becaus
 
 An ideal way to model the camera trap data would be to use a multinomial distribution to model the probabilities that the individuals captured during a camera trap event belong to each of the stages.
 However, a considerable percentage of individuals (~20%) were not sexed, and were only classified as unknown calf ($U0$), unknown yearling ($U1$), or unknown adult ($UA$).
-A series of binomial distributions were used instead to model the count data (including the unsexed individuals) and ratio data (excluding the unsexed individuals) in order to incorporate the valuable information contained in these semi-classified individuals.
+A series of binomial distributions were used instead to model the count information (including the unsexed individuals) and ratio information (excluding the unsexed individuals) separately, in order to incorporate the valuable information contained in these semi-classified individuals.
 The individuals that were sexed but not aged ($FU$, $MU$; ~0.01%), or neither sexed nor aged ($UU$; ~6%), were excluded from the analysis.
 
 #### Counts
@@ -282,7 +287,7 @@ To ensure the model relates correctly to the day the census estimate was complet
 
 The census data was incorporated using a normal distribution as follows,
 
-\[C_a \sim \text{Normal}\biggl(\sum_{j=1}^J \mathbf{n}_{j,a}, \sigma_{C_a}\biggr) \space T[0, ]\]
+\[C_a \sim \text{Normal} \biggl( \sum_{j=1}^J \mathbf{n}_{j,a}, \sigma_{C_a} \biggr) \space T[0, ]\]
 
 where $C_a$ is the census estimate in the $a^{th}$ aerial survey, $\sum_{j=1}^J \mathbf{n}_{j,a}$ is the total expected abundance on the day of the $a^{th}$ study year, and $\sigma_{C_a}$ is the standard deviation of the census estimate (calculated as the product of the census estimate $C_a$ and its associated CV).
 The normal distribution is lower-truncated at 0 to ensure that the abundance estimates remain positive.
@@ -317,7 +322,7 @@ Key assumptions of the integrated population model include:
 - The survival rates for each stage vary by study year.
 - The initial mortality rate of calves varies by study year.
 - The fecundity rate is fixed.
-- The proportion of MA individuals present with the mixed groups varies by season.
+- The proportion of $MA$ individuals present with the mixed groups varies by season.
 - There is no grouping structure beyond what is accounted for by the covariance.
 - Every stage is equally detectable during a camera trap event.
 - Small and large groups are equally detectable.
