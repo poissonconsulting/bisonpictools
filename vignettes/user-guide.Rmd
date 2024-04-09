@@ -438,7 +438,7 @@ knitr::include_graphics("figures/runbisonpic-model-tab.png")
 - **(B)** Select the thinning.
 - **(C)** Select the model mode.
 - **(D)** Press the run button.
-   - Model may take over 24 hours to run, be patient. 
+   - Model may take over 5 hours in report run to run, be patient.
      - The app and RStudio must be left open until the run is completed which means the computer cannot be turned off or set to sleep. 
    - **(E)** The run is complete when the Outbox is populated with a table.
    - If there is an issue a pop-up box will appear indicating something is not valid, this must be fixed, and the run button will need to be pressed again to restart the model run.
@@ -471,12 +471,13 @@ knitr::include_graphics("figures/runbisonpic-successful-model.png")
 
 **Thinning**
 
-- Allowed values are an integer between 1 and 10000.
+- Allowed values are integers between 1 and 10000.
 - Increase thinning if the model does not converge.
   - The model did not converge if the converged value is `FALSE`. 
 - As the thinning value increases the run time will also increase. 
   - Start with a small thinning value and increase as needed. 
-  - Thinning is often increased by various values try 1, 50, 100, 200, 500, 1000, etc.
+  - The suggested starting values are 1 for quick/debug mode and 10 for report mode.
+  - Thinning is often increased by various values try 10, 15, 20, 50, 100, 200, 500, 1000, etc.
 
 **Model Mode**
 
@@ -522,6 +523,7 @@ There are three model modes:
 - How much the chains should be thinned out before storing them.
   - Setting nthin = 1 corresponds to keeping all values.
   - A value of nthin = 100 would result in keeping every 100th value and discarding all other values.
+  - The suggested starting values are 1 for quick/debug mode and 10 for report mode.
 
 **ess**
 
