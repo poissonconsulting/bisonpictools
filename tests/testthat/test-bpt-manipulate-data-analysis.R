@@ -507,7 +507,7 @@ test_that("prop_calf_doy column is an integer between 1 and 366", {
   )
   expect_true(
     all(x$prop_calf_data$prop_calf_doy >= 1 &
-          x$prop_calf_data$prop_calf_doy <= 366)
+      x$prop_calf_data$prop_calf_doy <= 366)
   )
   expect_true(all(is.integer(x$prop_calf_data$prop_calf_doy)))
 })
