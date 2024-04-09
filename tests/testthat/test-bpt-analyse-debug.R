@@ -5,7 +5,8 @@ test_that(
   ),
   {
     withr::with_seed(
-      101, {
+      101,
+      {
         analysis <- bpt_analyse(
           event_data = bpt_event_data,
           location_data = bpt_location_data,

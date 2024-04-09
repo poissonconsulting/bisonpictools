@@ -2,10 +2,11 @@ test_that(
   paste0(
     "report mode produces an .smb_analysis object with ",
     "correct thinning rate, names, and expected coefficients"
-  ), 
+  ),
   {
     withr::with_seed(
-      101, {
+      101,
+      {
         analysis <- bpt_analyse(
           event_data = bpt_event_data,
           location_data = bpt_location_data,

@@ -1,5 +1,6 @@
 test_that(
-  "analysis fails with negative thinning rate", {
+  "analysis fails with negative thinning rate",
+  {
     expect_error(
       analysis <- bpt_analyse(
         event_data = bpt_event_data,
@@ -15,8 +16,9 @@ test_that(
 )
 
 test_that(
-  "analysis fails with unrecognized analysis mode", {
-   expect_error(
+  "analysis fails with unrecognized analysis mode",
+  {
+    expect_error(
       analysis <- bpt_analyse(
         event_data = bpt_event_data,
         location_data = bpt_location_data,
@@ -31,7 +33,8 @@ test_that(
 )
 
 test_that(
-  "analysis fails with decimal thinning rate", {
+  "analysis fails with decimal thinning rate",
+  {
     expect_error(
       analysis <- bpt_analyse(
         event_data = bpt_event_data,
@@ -47,7 +50,8 @@ test_that(
 )
 
 test_that(
-  "analysis fails with no inputs", {
+  "analysis fails with no inputs",
+  {
     expect_error(
       analysis <- bpt_analyse(),
       "argument \"event_data\" is missing, with no default"
@@ -56,7 +60,8 @@ test_that(
 )
 
 test_that(
-  "analysis fails missing event_data input", {
+  "analysis fails missing event_data input",
+  {
     expect_error(
       analysis <- bpt_analyse(
         location_data = bpt_location_data,
@@ -71,7 +76,8 @@ test_that(
 )
 
 test_that(
-  "analysis fails missing location_data input", {
+  "analysis fails missing location_data input",
+  {
     expect_error(
       analysis <- bpt_analyse(
         event_data = bpt_event_data,
@@ -86,7 +92,8 @@ test_that(
 )
 
 test_that(
-  "analysis fails missing census_data input", {
+  "analysis fails missing census_data input",
+  {
     expect_error(
       analysis <- bpt_analyse(
         event_data = bpt_event_data,
@@ -101,7 +108,8 @@ test_that(
 )
 
 test_that(
-  "analysis fails missing proportion_calf_data input", {
+  "analysis fails missing proportion_calf_data input",
+  {
     expect_error(
       analysis <- bpt_analyse(
         event_data = bpt_event_data,
@@ -116,7 +124,8 @@ test_that(
 )
 
 test_that(
-  "analysis fails providing wrong data", {
+  "analysis fails providing wrong data",
+  {
     expect_error(
       analysis <- bpt_analyse(
         event_data = bpt_event_data,
