@@ -41,6 +41,7 @@ library(bisonpictools)
 ### Data
 
 `bisonpictools` accepts data in a specific format for wood bison camera trap locations and events, as well as census and proportion of calf estimates from aerial surveys of the herd.
+There is a downloadable excel template in each of the Shiny apps that aids the user to populate their data appropriately.
 
 ```{r}
 # Example data for locations of camera traps
@@ -81,7 +82,7 @@ bpt_plot_ratios(
 ### Data Analysis
 
 The `bpt_analyse()` function runs the analysis.
-The following example uses the built-in example data.
+The following example uses the built-in example data in the demonstrative "quick" analysis mode.
 
 ```{r, eval = FALSE}
 analysis <- bpt_analyse(
@@ -129,7 +130,7 @@ Each of the above predictions can be plotted in a figure using the `bpt_plot_pre
 bpt_plot_predictions(analysis, prediction = "abundance-class")
 ```
 
-The other predictions can be plotted as follows: 
+The other predictions can be plotted by executing the following code:
 ```{r, eval = FALSE}
 # Plot total abundance
 bpt_plot_predictions(analysis, prediction = "abundance-total")
