@@ -25,7 +25,7 @@ bpt_analyse <- function(
     location_data,
     census_data,
     proportion_calf_data,
-    nthin = 1L,
+    nthin = 10L,
     analysis_mode = "report") {
   chk::chk_integer(nthin)
   chk::chk_gte(nthin, 1L)
