@@ -9,7 +9,7 @@ bpt_analyse(
   location_data,
   census_data,
   proportion_calf_data,
-  nthin = 1L,
+  nthin = 10L,
   analysis_mode = "report"
 )
 }
