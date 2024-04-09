@@ -3,7 +3,7 @@
 Thanks for using bisonpictools!
 Before filing an issue, there are a few places to explore and pieces to put together to make the process as smooth as possible.
 
-## Make sure its new
+## Make sure it's new
 
 Before opening a new issue, be sure to [search issues and pull requests](https://github.com//issues) to make sure the bug hasn't been reported and/or already fixed in the development version. 
 By default, the search will be pre-populated with `is:issue is:open`. 
