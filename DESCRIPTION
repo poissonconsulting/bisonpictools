@@ -11,7 +11,7 @@ Authors@R: c(
     person("Joe", "Thorley", , "joe@poissonconsulting.ca", role = "ctb",
            comment = c(ORCID = "0000-0002-7683-4592")),
     person("Troy", "Hegel", , "Troy.Hegel@gov.ab.ca", role = "ctb"),
-    person("Alberta Environment and Parks", role = "cph")
+    person("Province of Alberta", role = "cph")
   )
 Description: This package facilitates the manipulation, exploration, and 
   analysis of Ronald Wood Bison camera trap data.

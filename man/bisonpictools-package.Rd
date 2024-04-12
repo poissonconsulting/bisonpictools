@@ -17,7 +17,7 @@ Other contributors:
   \item Ayla Pearson \email{ayla@poissonconsulting.ca} (\href{https://orcid.org/0000-0001-7388-1222}{ORCID}) [contributor]
   \item Joe Thorley \email{joe@poissonconsulting.ca} (\href{https://orcid.org/0000-0002-7683-4592}{ORCID}) [contributor]
   \item Troy Hegel \email{Troy.Hegel@gov.ab.ca} [contributor]
-  \item Alberta Environment and Parks [copyright holder]
+  \item Province of Alberta [copyright holder]
 }
 
 }
