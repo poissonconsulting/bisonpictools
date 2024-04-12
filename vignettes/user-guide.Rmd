@@ -37,7 +37,7 @@ cat(format(Sys.time(), "%B %d, %Y"))
 
 ## Introduction
 
-Alberta Environment and Parks is piloting the use of remote game cameras to monitor the herd composition of wood bison. 
+Alberta Environment and Protected Areas is piloting the use of remote game cameras to monitor the herd composition of wood bison. 
 Three R packages have been developed to work together to achieve this goal. The underlying functionality is in [`bisonpictools`](https://github.com/poissonconsulting/bisonpictools), a package which has functions to clean, process, model, and visualize data. 
 The other two R packages are apps that provide a user friendly interface to [`bisonpictools`](https://github.com/poissonconsulting/bisonpictools). 
 The first app is [`shinybisonpic`](https://github.com/poissonconsulting/shinybisonpic) which allows users to explore the data by viewing the locations of cameras and the ratios of selected sex-age groups. 
