@@ -609,6 +609,9 @@ knitr::include_graphics("figures/runbisonpic-results.png")
 
 **Results**
 
+Each of the following results are reported for a single point in time for each study year (study years begin on April 1).
+This was chosen to be on March 31st, which represents a more stable point in the population, right before the start of the calving season.
+
 - Abundance Class
   - Predicts abundances of each class for each study year.
 - Abundance Total
