@@ -37,7 +37,7 @@
 #' )
 #' }
 bpt_modify_data <- function(
-    data, 
+    data,
     levels_annual,
     census,
     census_cv,
