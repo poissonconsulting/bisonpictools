@@ -39,7 +39,7 @@
 bpt_modify_data <- function(
     data,
     levels_annual,
-    census,
+    census, 
     census_cv,
     census_study_year,
     census_day_of_year,
