@@ -48,7 +48,7 @@
       29 bPropVecInit[8]                  0.183    0.0846    0.275   4.39 
       30 bRhoSummerFall                   0.646    0.0203    3.23    4.39 
       31 bRhoWin                          0.414    0.0413    1.81    4.39 
-      32 bSigmaSummerFall                 0.300    0.0310    0.819   4.39 
+      32 bSigmaSummerFall                 0.300    0.0310    0.820   4.39 
       33 bSigmaWin                        0.154    0.00510   0.391   4.39 
       34 bSurvBullAnnual[1]               2.18     1.36      3.24    4.39 
       35 bSurvBullAnnual[2]               2.20     1.39      3.36    4.39 
@@ -69,7 +69,7 @@
       50 bSurvM0Annual[1]                -0.246   -0.781     0.388   0.485
       51 bSurvM0Annual[2]                 0.433   -0.245     1.20    1.22 
       52 bSurvM0Annual[3]                 0.334   -0.665     0.814   1.22 
-      53 bSurvM0Annual[4]                -0.0341  -1.03      0.719   0    
+      53 bSurvM0Annual[4]                -0.0340  -1.03      0.719   0    
       54 bSurvM1Annual[1]                 1.64     0.871     2.57    4.39 
       55 bSurvM1Annual[2]                 1.90     1.30      2.56    4.39 
       56 bSurvM1Annual[3]                 1.62     0.946     2.93    4.39 
@@ -188,7 +188,7 @@
       102 eZWinCalf[3]              0.327   -0.731 1.43   0.485
       103 eZWinCalf[4]             -0.0822  -0.963 2.43   0.144
       104 eZWinCalf[5]              0.663   -0.583 1.39   1.58 
-      105 eZWinCalf[6]             -0.00352 -1.57  1.21   0    
+      105 eZWinCalf[6]             -0.00353 -1.57  1.21   0    
       106 eZWinCalf[7]             -0.419   -1.99  1.11   0.933
       107 eZWinCalf[8]             -1.01    -2.10  0.921  1.22 
       108 eZWinCalf[9]              0.282   -1.19  0.954  0.305
@@ -256,7 +256,7 @@
       170 eZWinYearling[5]         -0.820   -1.73  0.449  2.81 
       171 eZWinYearling[6]         -0.432   -1.98  1.27   0.933
       172 eZWinYearling[7]         -0.0264  -1.49  1.55   0    
-      173 eZWinYearling[8]         -0.0102  -1.06  1.42   0    
+      173 eZWinYearling[8]         -0.0103  -1.06  1.42   0    
       174 eZWinYearling[9]         -0.554   -1.77  0.494  0.933
       175 eZWinYearling[10]        -0.768   -2.17  0.264  2.81 
       176 eZWinYearling[11]        -0.265   -0.783 1.31   0.692
@@ -300,7 +300,7 @@
        28 bPopulationAnnual[4,4]    43.0       35.6     50.8       4.39 
        29 bPopulationAnnual[5,4]    23.9       14.7     27.4       4.39 
        30 bPopulationAnnual[6,4]    15.8        8.78    21.6       4.39 
-       31 bPopulationAnnual[7,4]    11.9        6.66    20.1       4.39 
+       31 bPopulationAnnual[7,4]    11.9        6.67    20.1       4.39 
        32 bPopulationAnnual[8,4]    64.8       51.6     77.1       4.39 
        33 bPropVecEvent[1,1]         0.0998     0.0823   0.120     4.39 
        34 bPropVecEvent[2,1]         0.116      0.103    0.136     4.39 
@@ -309,21 +309,21 @@
        37 bPropVecEvent[5,1]         0.107      0.0897   0.133     4.39 
        38 bPropVecEvent[6,1]         0.0823     0.0650   0.108     4.39 
        39 bPropVecEvent[7,1]         0.0754     0.0570   0.103     4.39 
-       40 bPropVecEvent[8,1]         0.104      0.0813   0.130     4.39 
+       40 bPropVecEvent[8,1]         0.104      0.0814   0.130     4.39 
        41 bPropVecEvent[9,1]         0.117      0.0725   0.180     4.39 
        42 bPropVecEvent[10,1]        0.0768     0.0587   0.104     4.39 
        43 bPropVecEvent[11,1]        0.0835     0.0638   0.112     4.39 
        44 bPropVecEvent[1,2]         0.0895     0.0523   0.135     4.39 
        45 bPropVecEvent[2,2]         0.0499     0.0373   0.0752    4.39 
-       46 bPropVecEvent[3,2]         0.0749     0.0547   0.0940    4.39 
-       47 bPropVecEvent[4,2]         0.0897     0.0521   0.136     4.39 
+       46 bPropVecEvent[3,2]         0.0749     0.0548   0.0940    4.39 
+       47 bPropVecEvent[4,2]         0.0898     0.0521   0.136     4.39 
        48 bPropVecEvent[5,2]         0.0486     0.0362   0.0758    4.39 
        49 bPropVecEvent[6,2]         0.0898     0.0520   0.137     4.39 
        50 bPropVecEvent[7,2]         0.0897     0.0512   0.138     4.39 
        51 bPropVecEvent[8,2]         0.0482     0.0355   0.0761    4.39 
        52 bPropVecEvent[9,2]         0.0595     0.0168   0.129     4.39 
        53 bPropVecEvent[10,2]        0.0897     0.0514   0.138     4.39 
-       54 bPropVecEvent[11,2]        0.0758     0.0545   0.0931    4.39 
+       54 bPropVecEvent[11,2]        0.0758     0.0546   0.0931    4.39 
        55 bPropVecEvent[1,3]         0.334      0.278    0.358     4.39 
        56 bPropVecEvent[2,3]         0.356      0.334    0.388     4.39 
        57 bPropVecEvent[3,3]         0.357      0.333    0.384     4.39 
@@ -340,7 +340,7 @@
        68 bPropVecEvent[3,4]         0.103      0.0763   0.117     4.39 
        69 bPropVecEvent[4,4]         0.0975     0.0697   0.125     4.39 
        70 bPropVecEvent[5,4]         0.107      0.0772   0.119     4.39 
-       71 bPropVecEvent[6,4]         0.0935     0.0641   0.121     4.39 
+       71 bPropVecEvent[6,4]         0.0936     0.0641   0.121     4.39 
        72 bPropVecEvent[7,4]         0.0885     0.0572   0.116     4.39 
        73 bPropVecEvent[8,4]         0.102      0.0676   0.115     4.39 
        74 bPropVecEvent[9,4]         0.0827     0.0453   0.134     4.39 
@@ -375,7 +375,7 @@
       103 bPropVecEvent[5,7]         0.0468     0.0326   0.0803    4.39 
       104 bPropVecEvent[6,7]         0.0285     0.0104   0.0514    4.39 
       105 bPropVecEvent[7,7]         0.0287     0.0104   0.0518    4.39 
-      106 bPropVecEvent[8,7]         0.0474     0.0330   0.0813    4.39 
+      106 bPropVecEvent[8,7]         0.0474     0.0330   0.0812    4.39 
       107 bPropVecEvent[9,7]         0.0698     0.0142   0.153     4.39 
       108 bPropVecEvent[10,7]        0.0286     0.0104   0.0517    4.39 
       109 bPropVecEvent[11,7]        0.0386     0.0210   0.0651    4.39 
@@ -441,7 +441,7 @@
       169 bSpaceTimeAdult[6,2]      -0.0765    -0.618    0.260     0.933
       170 bSpaceTimeAdult[7,2]      -0.0448    -0.620    0.224     0.144
       171 bSpaceTimeAdult[8,2]      -0.0681    -0.572    0.421     0.305
-      172 bSpaceTimeAdult[9,2]      -0.00459   -0.652    0.464     0    
+      172 bSpaceTimeAdult[9,2]      -0.00458   -0.652    0.464     0    
       173 bSpaceTimeAdult[10,2]     -0.0550    -0.558    0.196     0.485
       174 bSpaceTimeAdult[11,2]     -0.0272    -0.915    0.511     0.144
       175 bSpaceTimeCalf[1,1]       -0.00753   -0.605    0.423     0.305
@@ -520,7 +520,7 @@
       248 bSpaceTimeFABull[8,1]      0.000614  -1.48     0.590     0    
       249 bSpaceTimeFABull[9,1]      0.178     -1.49     0.924     0.305
       250 bSpaceTimeFABull[10,1]    -0.0838    -1.03     0.390     0.485
-      251 bSpaceTimeFABull[11,1]     0.0535    -0.946    0.738     0.144
+      251 bSpaceTimeFABull[11,1]     0.0535    -0.947    0.738     0.144
       252 bSpaceTimeFABull[1,2]     -0.0743    -1.29     0.797     0.692
       253 bSpaceTimeFABull[2,2]      0.228     -0.560    0.746     0.933
       254 bSpaceTimeFABull[3,2]     -0.0300    -0.548    0.575     0.305
@@ -591,11 +591,11 @@
       319 bSpaceTimeYearling[2,2]    0.00530   -0.537    0.822     0    
       320 bSpaceTimeYearling[3,2]    0.0245    -0.300    0.581     0.144
       321 bSpaceTimeYearling[4,2]   -0.0926    -0.961    0.407     0.933
-      322 bSpaceTimeYearling[5,2]   -0.220     -0.774    0.00984   2.81 
+      322 bSpaceTimeYearling[5,2]   -0.220     -0.774    0.00990   2.81 
       323 bSpaceTimeYearling[6,2]   -0.0936    -0.849    0.239     1.58 
       324 bSpaceTimeYearling[7,2]   -0.00459   -0.553    0.551     0    
-      325 bSpaceTimeYearling[8,2]    0.00530   -0.259    0.530     0    
-      326 bSpaceTimeYearling[9,2]   -0.155     -0.606    0.106     0.933
-      327 bSpaceTimeYearling[10,2]  -0.182     -0.684   -0.000517  2.81 
+      325 bSpaceTimeYearling[8,2]    0.00528   -0.259    0.530     0    
+      326 bSpaceTimeYearling[9,2]   -0.155     -0.606    0.107     0.933
+      327 bSpaceTimeYearling[10,2]  -0.182     -0.684   -0.000514  2.81 
       328 bSpaceTimeYearling[11,2]  -0.0134    -0.210    0.244     0.144
 
