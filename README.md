@@ -161,18 +161,18 @@ bpt_coefficient_table(analysis)
 ```
 
     ## # A tibble: 57 × 5
-    ##    term                           estimate   lower  upper svalue
-    ##    <term>                            <dbl>   <dbl>  <dbl>  <dbl>
-    ##  1 bEtaSummerFall                    0.305  0.0304  0.879  4.39 
-    ##  2 bEtaWin                           0.158  0.0211  0.399  4.39 
-    ##  3 bFecundityReproductiveFA          1.71   1.31    2.64   4.39 
-    ##  4 bInitialMortalityCalfAnnual[1]   -3.26  -5.76   -1.10   4.39 
-    ##  5 bInitialMortalityCalfAnnual[2]   -5.27  -8.17   -1.97   4.39 
-    ##  6 bInitialMortalityCalfAnnual[3]   -3.49  -6.99   -1.61   4.39 
-    ##  7 bInitialMortalityCalfAnnual[4]   -2.14  -5.43    1.64   0.933
-    ##  8 bKmWeekSummerFall                 1.57   0.323   3.32   4.39 
-    ##  9 bKmWeekWin                        2.37   1.59    3.55   4.39 
-    ## 10 bMAProportion[1]                  0.475  0.321   0.607  4.39 
+    ##    term                           estimate    lower  upper svalue
+    ##    <term>                            <dbl>    <dbl>  <dbl>  <dbl>
+    ##  1 bEtaSummerFall                    0.232  0.00955  0.753  4.39 
+    ##  2 bEtaWin                           0.101  0.00114  0.484  4.39 
+    ##  3 bFecundityReproductiveFA          1.94   1.63     2.69   4.39 
+    ##  4 bInitialMortalityCalfAnnual[1]   -3.75  -5.78    -2.12   4.39 
+    ##  5 bInitialMortalityCalfAnnual[2]   -4.56  -7.45    -2.35   4.39 
+    ##  6 bInitialMortalityCalfAnnual[3]   -2.87  -7.46    -1.60   4.39 
+    ##  7 bInitialMortalityCalfAnnual[4]   -1.09  -6.11     3.64   0.485
+    ##  8 bKmWeekSummerFall                 2.22   0.266    4.42   4.39 
+    ##  9 bKmWeekWin                        1.93   1.21     2.63   4.39 
+    ## 10 bMAProportion[1]                  0.440  0.258    0.582  4.39 
     ## # ℹ 47 more rows
 
 ### Make predictions
@@ -190,10 +190,10 @@ bpt_predict_abundance_total(analysis)
     ## # A tibble: 4 × 4
     ##   annual    estimate lower upper
     ##   <fct>        <dbl> <dbl> <dbl>
-    ## 1 2018-2019     217.  177.  247.
-    ## 2 2019-2020     229.  200.  250.
-    ## 3 2020-2021     259.  233.  278.
-    ## 4 2021-2022     297.  271.  314.
+    ## 1 2018-2019     211.  182.  244.
+    ## 2 2019-2020     225.  205.  252.
+    ## 3 2020-2021     254.  230.  280.
+    ## 4 2021-2022     295.  258.  311.
 
 ``` r
 # Can predict other values using the following functions
