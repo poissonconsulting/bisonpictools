@@ -1,3 +1,17 @@
+# Copyright 2023 Province of Alberta
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+# http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
 # Wrong input type
 test_that("errors with null input in location_data", {
   expect_chk_error(
@@ -450,7 +464,7 @@ test_that("census_study_year is within the levels of `annual` in data", {
   expect_true(all(x$census_data$census_study_year %in% x$data$annual))
 })
 
-test_that("census_doy column is an integer between 1 and 365", {
+test_that("census_doy column is an integer between 1 and 366", {
   x <- bpt_manipulate_data_analysis(
     event_data = bpt_event_data,
     location_data = bpt_location_data,
@@ -458,7 +472,7 @@ test_that("census_doy column is an integer between 1 and 365", {
     proportion_calf_data = bpt_proportion_calf_data
   )
   expect_true(
-    all(x$census_data$census_doy >= 1 & x$census_data$census_doy <= 365)
+    all(x$census_data$census_doy >= 1 & x$census_data$census_doy <= 366)
   )
   expect_true(all(is.integer(x$census_data$census_doy)))
 })
@@ -498,7 +512,7 @@ test_that("prop_calf_study_year is within the levels of `annual` in data", {
   expect_true(all(x$prop_calf_data$prop_calf_study_year %in% x$data$annual))
 })
 
-test_that("prop_calf_doy column is an integer between 1 and 365", {
+test_that("prop_calf_doy column is an integer between 1 and 366", {
   x <- bpt_manipulate_data_analysis(
     event_data = bpt_event_data,
     location_data = bpt_location_data,
@@ -507,7 +521,7 @@ test_that("prop_calf_doy column is an integer between 1 and 365", {
   )
   expect_true(
     all(x$prop_calf_data$prop_calf_doy >= 1 &
-      x$prop_calf_data$prop_calf_doy <= 365)
+      x$prop_calf_data$prop_calf_doy <= 366)
   )
   expect_true(all(is.integer(x$prop_calf_data$prop_calf_doy)))
 })

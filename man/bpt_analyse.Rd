@@ -9,7 +9,7 @@ bpt_analyse(
   location_data,
   census_data,
   proportion_calf_data,
-  nthin = 1L,
+  nthin = 10L,
   analysis_mode = "report"
 )
 }
@@ -22,7 +22,7 @@ bpt_analyse(
 
 \item{proportion_calf_data}{Tibble of proportion calf data.}
 
-\item{nthin}{Thinning rate, takes default of 1.}
+\item{nthin}{Thinning rate, takes default of 10.}
 
 \item{analysis_mode}{Character string of analysis mode, either "debug",
 "check", or "report".}

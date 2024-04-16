@@ -1,3 +1,17 @@
+# Copyright 2023 Province of Alberta
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+# http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
 #' Modify data for plot
 #'
 #' @inheritParams params
@@ -58,7 +72,7 @@ bpt_modify_data <- function(
   chk::chk_character(census_study_year)
   chk::chk_subset(census_study_year, levels_annual)
   chk::chk_integer(census_day_of_year)
-  chk::chk_subset(census_day_of_year, 1:365)
+  chk::chk_subset(census_day_of_year, 1:366)
   chk::chk_numeric(proportion_calf)
   chk::chk_range(proportion_calf, range = c(0, 1), inclusive = TRUE)
   chk::chk_numeric(proportion_calf_cv)
@@ -66,7 +80,7 @@ bpt_modify_data <- function(
   chk::chk_character(proportion_calf_study_year)
   chk::chk_subset(proportion_calf_study_year, levels_annual)
   chk::chk_integer(proportion_calf_day_of_year)
-  chk::chk_subset(proportion_calf_day_of_year, 1:365)
+  chk::chk_subset(proportion_calf_day_of_year, 1:366)
 
   ncensus <- base::length(census)
   nprop_calf <- base::length(proportion_calf)

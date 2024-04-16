@@ -1,3 +1,17 @@
+# Copyright 2023 Province of Alberta
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+# http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
 test_that("correct number of new objects added to data list", {
   data <- list(
     annual = as.factor(c("2021-2022", "2022-2023")),
@@ -572,7 +586,7 @@ test_that("errors if proportion_calf_day_of_year is not an integer", {
   )
 })
 
-test_that("errors if census_day_of_year is not between 1 and 365", {
+test_that("errors if census_day_of_year is not between 1 and 366", {
   expect_chk_error(
     bpt_modify_data(
       data = list(
@@ -591,13 +605,13 @@ test_that("errors if census_day_of_year is not between 1 and 365", {
       proportion_calf_day_of_year = c(365L, 365L)
     ),
     regexp = paste0(
-      "`census_day_of_year` must match 1, 2, 3, 4, 5, 6, 7, 8, ... or 365, ",
+      "`census_day_of_year` must match 1, 2, 3, 4, 5, 6, 7, 8, ... or 366, ",
       "not 400."
     )
   )
 })
 
-test_that("errors if proportion_calf_day_of_year is not between 1 and 365", {
+test_that("errors if proportion_calf_day_of_year is not between 1 and 366", {
   expect_chk_error(
     bpt_modify_data(
       data = list(
@@ -617,7 +631,7 @@ test_that("errors if proportion_calf_day_of_year is not between 1 and 365", {
     ),
     regexp = paste0(
       "`proportion_calf_day_of_year` must have values matching ",
-      "1, 2, 3, 4, 5, 6, 7, 8, ... or 365."
+      "1, 2, 3, 4, 5, 6, 7, 8, ... or 366."
     )
   )
 })

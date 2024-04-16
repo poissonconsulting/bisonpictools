@@ -8,6 +8,8 @@ Authors@R: c(
            comment = c(ORCID = "0000-0001-8047-3331")),
     person("Ayla", "Pearson", , "ayla@poissonconsulting.ca", role = "ctb",
            comment = c(ORCID = "0000-0001-7388-1222")),
+    person("Joe", "Thorley", , "joe@poissonconsulting.ca", role = "ctb",
+           comment = c(ORCID = "0000-0002-7683-4592")),
     person("Troy", "Hegel", , "Troy.Hegel@gov.ab.ca", role = "ctb"),
     person("Alberta Environment and Parks", role = "cph")
   )
@@ -33,13 +35,14 @@ Imports:
     units
 Suggests: 
     BH,
-    testthat (>= 3.0.0),
-    readxl,
     knitr,
     RcppEigen,
+    readxl,
     rmarkdown,
     runbisonpic,
-    shinybisonpic
+    shinybisonpic,
+    testthat (>= 3.0.0),
+    withr
 Remotes: 
     poissonconsulting/chktemplate,
     poissonconsulting/embr,

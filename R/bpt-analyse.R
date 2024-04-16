@@ -1,3 +1,17 @@
+# Copyright 2023 Province of Alberta
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+# http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
 #' Fit Integrated Population Model
 #'
 #' Fits the integrated population model to data. Run first in "debug" mode to
@@ -25,7 +39,7 @@ bpt_analyse <- function(
     location_data,
     census_data,
     proportion_calf_data,
-    nthin = 1L,
+    nthin = 10L,
     analysis_mode = "report") {
   chk::chk_integer(nthin)
   chk::chk_gte(nthin, 1L)
@@ -62,6 +76,13 @@ bpt_analyse <- function(
         proportion_calf_study_year = prop_calf_data$prop_calf_study_year,
         proportion_calf_day_of_year = prop_calf_data$prop_calf_doy
       )
+      data$location_distance <- bpt_location_matrix(location_data)
+      x <- as.data.frame(data[c("location_weekfac", "location", "week")]) |>
+        dplyr::distinct() |>
+        dplyr::arrange(.data$location_weekfac)
+      data$week <- NULL
+      data$lookup_location <- x$location
+      data$lookup_week <- x$week
       data
     },
     new_expr = "
@@ -95,17 +116,12 @@ bpt_analyse <- function(
       PredSurvM1Annual[i] <- inv_logit(bSurvM1Annual[annual[i]])
       PredSurvFAAnnual[i] <- inv_logit(bSurvFAAnnual[annual[i]])
       PredSurvBullAnnual[i] <- inv_logit(bSurvBullAnnual[annual[i]])
-      eMAPresence[i] <- bMAPresence[season[i]]
+      eMAProportion[i] <- bMAProportion[season[i]]
 
-      m0f0_doy[i] <- bPropVecDoy[id[i], 4] / bPropVecDoy[id[i], 1]
-
-      # prop calf
-      prop_calf[i] <- bPropVecAnnual[annual[i], 1] + bPropVecAnnual[annual[i], 4]
+      prop_calf[i] <- bPropVecMar31[annual[i], 1] + bPropVecMar31[annual[i], 4]
   }",
     new_expr_vec = TRUE,
-    derived = c("bPropVecMar31", "bPopulationAnnual", "bPropVecDoy"),
     select_data = list(
-      id = factor(),
       f0 = 1L,
       m0 = 1L,
       calf = 1L,
@@ -117,13 +133,51 @@ bpt_analyse <- function(
       m3 = 1L,
       ma = 1L,
       adult = 1L,
-      doy = c(1L, 365L),
+      doy = c(1L, 366L),
       groupsize_total = 1L,
       annual = factor(),
-      season = factor()
+      season = factor(),
+      season_annual = factor(),
+      week = c(0L, 500L),
+      location = factor(),
+      weekfac = factor(),
+      location_weekfac = factor(),
+      id = factor()
+    ),
+    derived = c(
+      "bPropVecMar31",
+      "bPopulationAnnual",
+      "bPropVecEvent",
+      "bSpaceTimeF0M0",
+      "bSpaceTimeF1M1",
+      "bSpaceTimeFABull",
+      "bSpaceTimeM2M3",
+      "bSpaceTimeMAFA",
+      "bSpaceTimeCalf",
+      "bSpaceTimeYearling",
+      "bSpaceTimeAdult"
+    ),
+    random_effects = list(
+      eZSummerFallF0M0 = c("location", "weekfac"),
+      eZSummerFallF1M1 = c("location", "weekfac"),
+      eZSummerFallFABull = c("location", "weekfac"),
+      eZSummerFallM2M3 = c("location", "weekfac"),
+      eZSummerFallMAFA = c("location", "weekfac"),
+      eZSummerFallCalf = c("location", "weekfac"),
+      eZSummerFallYearling = c("location", "weekfac"),
+      eZSummerFallAdult = c("location", "weekfac"),
+      eZWinF0M0 = c("location", "weekfac"),
+      eZWinF1M1 = c("location", "weekfac"),
+      eZWinFABull = c("location", "weekfac"),
+      eZWinM2M3 = c("location", "weekfac"),
+      eZWinMAFA = c("location", "weekfac"),
+      eZWinCalf = c("location", "weekfac"),
+      eZWinYearling = c("location", "weekfac"),
+      eZWinAdult = c("location", "weekfac")
     )
   )
 
+  on.exit(embr::set_analysis_mode(mode = "reset"))
   embr::set_analysis_mode(analysis_mode)
   analysis <- embr::analyse(model, data = data, nthin = nthin)
 

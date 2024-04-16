@@ -1,11 +1,11 @@
 # Copyright 2023 Province of Alberta
-
+#
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
 # You may obtain a copy of the License at
-
+#
 # http://www.apache.org/licenses/LICENSE-2.0
-
+#
 # Unless required by applicable law or agreed to in writing, software
 # distributed under the License is distributed on an "AS IS" BASIS,
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -25,4 +25,16 @@ expect_snapshot_plot <- function(x, name) {
   testthat::skip_on_ci()
   path <- save_png(x)
   testthat::expect_snapshot_file(path, paste0(name, ".png"))
+}
+
+save_csv <- function(x) {
+  path <- tempfile(fileext = ".csv")
+  readr::write_csv(x, path)
+  path
+}
+
+expect_snapshot_data <- function(x, name) {
+  testthat::skip_on_os("windows")
+  path <- save_csv(x)
+  testthat::expect_snapshot_file(path, paste0(name, ".csv"))
 }
