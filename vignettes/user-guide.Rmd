@@ -1,8 +1,8 @@
 ---
-title: "DRAFT - User Guide"
+title: "User Guide for shinybisonpic and runbisonpic Apps"
 output: pdf_document
 vignette: >
-  %\VignetteIndexEntry{User Guide}
+  %\VignetteIndexEntry{User Guide for shinybisonpic and runbisonpic Apps}
   %\VignetteEncoding{UTF-8}
   %\VignetteEngine{knitr::rmarkdown}
 ---
@@ -239,7 +239,6 @@ To restart R go to the menu and select Session > Restart R.
 
 The package only needs to be installed the first time you use it and any time there is any update to the package.
 You can see if there is a new version of the package by checking which version you have installed locally on your machine and comparing it to what is in the NEWS.md or DESCRIPTION file in [GitHub](https://github.com/poissonconsulting/runbisonpic).
-
 Also you can use the packages update button in RStudio to update the package. 
 
 2. There are two different ways the app can be launched:
