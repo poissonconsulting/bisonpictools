@@ -100,13 +100,8 @@ The abundances of each stage during the $t^{th}$ study year can be described by 
 \end{bmatrix}
 \]
 
-```{r, echo = FALSE}
-# Insert diagram of stages?
-# need license for the software..
-```
-
 To ease model formulation, the population projection matrix can be broken up into subprocess matrices [@newman_modelling_2014].
-Each subprocess has a separate matrix: in this model, the $\mathbf{B}$ matrix describes the stochastic birth process, the $\mathbf{A}$ matrix describes the deterministic age incrementation process, and the $\mathbf{S}$ matrix describes the stochastic survival process.
+Each subprocess has a separate matrix: in this model, the $\mathbf{B}$ matrix describes the stochastic birth process, the $\mathbf{A}$ matrix describes the deterministic age incrementation process, and the $\mathbf{S}$ matrix describes the stochastic survival process. 
 
 To get the vector of stage-wise abundances in the next study year, $\mathbf{n}_{t+1}$, we multiply the subprocess matrices together in reverse chronological order, and then by the vector of stage-wise abundances in the current study year, $\mathbf{n}_{t}$. 
 In this model, we assume that survival occurs first, then age incrementation, and finally births, resulting in the $\mathbf{BAS}$ multiplication order.
