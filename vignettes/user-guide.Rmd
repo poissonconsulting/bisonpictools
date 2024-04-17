@@ -234,16 +234,20 @@ This app must be launched locally from your computer.
 remotes::install_github("poissonconsulting/runbisonpic")
 ```
 
-Always restart your R after installing a new package.
-To restart R go to the menu and select Session > Restart R.
+Always restart R after installing a new package.
+To restart R, go to the menu and select Session > Restart R.
 
 The package only needs to be installed the first time you use it and any time there is any update to the package.
 You can see if there is a new version of the package by checking which version you have installed locally on your machine and comparing it to what is in the NEWS.md or DESCRIPTION file in [GitHub](https://github.com/poissonconsulting/runbisonpic).
-Also you can use the packages update button in RStudio to update the package. 
+Also, you can use the packages update system in RStudio to let you know if an update is available.
 
 2. There are two different ways the app can be launched:
 
-   - Run code that launches the script
+<ul>
+    <ul>
+        <li>Run code that launches the script</li>
+    </ul>
+</ul>
    
 ```{r, eval=FALSE}
 # Load the library
@@ -253,12 +257,16 @@ library(runbisonpic)
 launch_runbisonpic()
 ```
 
-   - Going to the Addins button and selecting **Start runbisonpic app**
-   
+<ul>
+    <ul>
+        <li>Going to the Addins button and selecting **Start runbisonpic app**</li>
+    </ul>
+</ul>
+
 ```{r out.width = '100%', echo = FALSE}
 knitr::include_graphics("figures/runbisonpic-addins-button.png")
 ```   
-*<font size="-1">Figure 9. How to launch runbisonpic using the Addins button.</font>*
+*<font size="-1">Figure 9. How to launch runbisonpic using the Addins button in RStudio.</font>*
 
 ### Overview
 
