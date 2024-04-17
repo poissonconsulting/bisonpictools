@@ -309,14 +309,14 @@ The data on the proportion of calves in the herd was incorporated similarly,
 
 \[P_a \sim \text{Normal}(p_{F0,a} + p_{M0,a}, \sigma_{P_a}) \space T[0, 1]\]
 
-where $P_a$ is the proportion of calves estimate in the $a^{th}$ aerial survey, $p_{F0,a} + p_{M0,a}$ is the expected proportion of calves in on the day of the $a^{th}$ aerial survey, and $\sigma_{P_a}$ is the standard deviation in the estimate of the proportion of calves (calculated as the product of the proportion of calves estimate $P_a$ and its associated CV).
+where $P_a$ is the proportion of calves estimate in the $a^{th}$ aerial survey, $p_{F0,a} + p_{M0,a}$ is the expected proportion of calves on the day of the $a^{th}$ aerial survey, and $\sigma_{P_a}$ is the standard deviation in the estimate of the proportion of calves (calculated as the product of the proportion of calves estimate $P_a$ and its associated CV).
 The normal distribution is truncated at 0 and 1 to ensure that the estimates remain on the probability scale.
 
 ### Model Fitting
 
 The model is fitted in Stan [@carpenter_stan_2017]. 
 By default, [`bisonpictools`](https://github.com/poissonconsulting/bisonpictools) uses "report" mode and a thinning rate of 10 to save 500 MCMC samples from each of three chains (after discarding the first halves).
-To aid with debugging, other analysis modes ("debug" and "quick") can be set (see the [user guide](insert link here) for more detail).
+To aid with debugging, other analysis modes ("debug" and "quick") can be set (see the [user guide](https://poissonconsulting.github.io/bisonpictools/user-guide.html) for more detail).
 The user can increment the thinning rate as required to achieve convergence.
 The model-fitting process is automated in the [`runbisonpic`](https://github.com/poissonconsulting/runbisonpic) Shiny app.
 
