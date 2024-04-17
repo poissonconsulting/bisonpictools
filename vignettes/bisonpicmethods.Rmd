@@ -78,7 +78,7 @@ knitr::kable(
 An integrated population model (IPM) was chosen to combine stage-structured population projection matrix models with multiple sources of data into a unified framework, allowing for estimates of age-sex class ratios, population vital rates, and abundances, while maintaining the correct propagation of uncertainty [@schaub_integrated_2022]. 
 The sources of data used in this model include the classified counts from the camera trap events, and two estimates derived from aerial surveys of the herd: a "census" estimate of the entire herd size and an estimate of the proportion of calves in the entire herd.
 
-### BAS Matrix Model
+### Birth-Age Incrementation-Survival (BAS) Population Projection Matrix Model
 
 Population projection matrices provide a simple way to model population dynamics through time [@newman_modelling_2014].
 The population projection matrix summarizes the probabilities of transitioning from each stage to every other stage, using vital rates from demographic processes such as births, age incrementation, and survival.
@@ -100,13 +100,8 @@ The abundances of each stage during the $t^{th}$ study year can be described by 
 \end{bmatrix}
 \]
 
-```{r, echo = FALSE}
-# Insert diagram of stages?
-# need license for the software..
-```
-
 To ease model formulation, the population projection matrix can be broken up into subprocess matrices [@newman_modelling_2014].
-Each subprocess has a separate matrix: in this model, the $\mathbf{B}$ matrix describes the stochastic birth process, the $\mathbf{A}$ matrix describes the deterministic age incrementation process, and the $\mathbf{S}$ matrix describes the stochastic survival process.
+Each subprocess has a separate matrix: in this model, the $\mathbf{B}$ matrix describes the stochastic birth process, the $\mathbf{A}$ matrix describes the deterministic age incrementation process, and the $\mathbf{S}$ matrix describes the stochastic survival process. 
 
 To get the vector of stage-wise abundances in the next study year, $\mathbf{n}_{t+1}$, we multiply the subprocess matrices together in reverse chronological order, and then by the vector of stage-wise abundances in the current study year, $\mathbf{n}_{t}$. 
 In this model, we assume that survival occurs first, then age incrementation, and finally births, resulting in the $\mathbf{BAS}$ multiplication order.
