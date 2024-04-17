@@ -75,6 +75,7 @@ Once the data is uploaded, you can explore the subsequent tabs in any order that
 #### Data Upload
 
 &nbsp;
+
 ```{r out.width = '100%', echo = FALSE}
 knitr::include_graphics("figures/shinybisonpic-data-upload.png")
 ```
@@ -173,34 +174,6 @@ There is no order to **(B)** or **(C)**, so these steps can be done in any order
 - Map is frozen.
   - Refresh your browser and upload the data again.
 
-&nbsp;
-
-&nbsp;
-
-&nbsp;
-
-&nbsp;
-
-&nbsp;
-
-&nbsp;
-
-&nbsp;
-
-&nbsp;
-
-&nbsp;
-
-&nbsp;
-
-&nbsp;
-
-&nbsp;
-
-&nbsp;
-
-&nbsp;
-
 #### Plot Data
 
 &nbsp;
@@ -252,50 +225,35 @@ New features or enhancements can also be requested through submitting an [Issue]
 
 ### Getting Started 
 
-This app must be launched locally from your laptop. 
+This app must be launched locally from your computer. 
 
-1. Open the runbisonpic project in RStudio
+1. Open RStudio and install the package
+
+```{r, eval=FALSE}
+# Install package 
+remotes::install_github("poissonconsulting/runbisonpic")
+```
+
+Always restart your R after installing a new package.
+To restart R go to the menu and select Session > Restart R.
+
+The package only needs to be installed the first time you use it and any time there is any update to the package.
+You can see if there is a new version of the package by checking which version you have installed locally on your machine and comparing it to what is in the NEWS.md or DESCRIPTION file in [GitHub](https://github.com/poissonconsulting/runbisonpic).
+
+Also you can use the packages update button in RStudio to update the package. 
+
 2. There are two different ways the app can be launched:
 
-   - Run *app.R* script by opening the file and running the two lines of code or
+   - Run code that launches the script
+   
+```{r, eval=FALSE}
+# Load the library
+library(runbisonpic)
 
-```{r out.width = '100%', echo = FALSE}
-knitr::include_graphics("figures/runbisonpic-app-script.png")
+# Launch the app
+launch_runbisonpic()
 ```
-*<font size="-1">Figure 8. How to launch runbisonpic using code.</font>*
-  
-&nbsp;
 
-&nbsp;
-
-&nbsp;
-
-&nbsp;
-
-&nbsp;
-
-&nbsp;
-
-&nbsp;
-
-&nbsp;
-
-&nbsp;
-
-&nbsp;
-
-&nbsp;
-
-&nbsp;
-
-&nbsp;
-
-&nbsp;
-
-&nbsp;
-
-&nbsp;
-  
    - Going to the Addins button and selecting **Start runbisonpic app**
    
 ```{r out.width = '100%', echo = FALSE}
@@ -314,18 +272,6 @@ The order of steps are required to be followed in this app, first data must be u
 Since this is a different app the data needs to be uploaded into this app again.
 The first step of filling in the template and uploading the data is the same in both apps.
 The templates and data format is the same so you can use the template file in both apps. 
-
-&nbsp;
-
-&nbsp;
-
-&nbsp;
-
-&nbsp;
-
-&nbsp;
-
-&nbsp;
 
 ### Detailed Steps 
 
@@ -394,36 +340,6 @@ knitr::include_graphics("figures/runbisonpic-data-upload-successful.png")
     - Increase the number of entries you can see in the table by changing the value in **Show entries**.
     - Sort by the column by clicking on the column name.
     - Search for values by typing in the **Search:** field.
-
-&nbsp;
-
-&nbsp;
-
-&nbsp;
-
-&nbsp;
-
-&nbsp;
-
-&nbsp;
-
-&nbsp;
-
-&nbsp;
-
-&nbsp;
-
-&nbsp;
-
-&nbsp;
-
-&nbsp;
-
-&nbsp;
-
-&nbsp;
-
-&nbsp;
 
 #### Run Model
 
@@ -567,26 +483,6 @@ After a successful run of the model two download buttons will appear in the top 
 #### Helpful Tips
 
 - If you set the thinning to 1 and model mode to quick you can get a quick run of the model. This can help to make sure there are no issues with the data before doing a report run that may take a day or more to run. 
-
-&nbsp;
-
-&nbsp;
-
-&nbsp;
-
-&nbsp;
-
-&nbsp;
-
-&nbsp;
-
-&nbsp;
-
-&nbsp;
-
-&nbsp;
-
-&nbsp;
 
 #### Results
 
