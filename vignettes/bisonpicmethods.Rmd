@@ -219,7 +219,7 @@ By rule, each vector of $\mathbf{p}_i$ values sums to 1.
 
 ### Camera Trap Event Data
 
-Each camera trap event represents a random draw from the entire population, with the same expected proportions in the small mixed groups captured in the cameras as in the overall population.
+We assume that each camera trap event represents a random draw from the entire population, with the same expected proportions in the small mixed groups captured in the cameras as in the overall population.
 
 Several components of the model include seasonal variation.
 The three seasons chosen for this herd are the calving season (April-June), the summer/fall (July-November), and the winter (December-March).
