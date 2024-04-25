@@ -19,3 +19,5 @@ PackageBuildArgs: --compact-vignettes=both
 PackageRoxygenize: rd,collate,namespace
 
 UseNativePipeOperator: Yes
+
+ZoteroLibraries: "Poisson"
