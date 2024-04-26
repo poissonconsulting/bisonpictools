@@ -20,4 +20,4 @@ PackageRoxygenize: rd,collate,namespace
 
 UseNativePipeOperator: Yes
 
-ZoteroLibraries: "Poisson"
+ZoteroLibraries: "My Library"
