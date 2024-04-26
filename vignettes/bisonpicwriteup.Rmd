@@ -17,11 +17,13 @@ In remote areas, estimates of herd size and composition are typically obtained f
 
 We present a method utilizing classified counts from wildlife cameras to evaluate herd demographics, using wood bison as an example. We modeled demographic ratios, survival and productivity using linked Bayesian models; one model describing the spatial and temporal correlation structure of the camera observations using a Gaussian process regression [@mcelreath2016], and a second population model describing demographic structure, states, and transitions. This novel approach requires an initial population estimate but does not require individual identification and could be applied non-invasively to a wide array of difficult to survey species to estimate the key parameters that drive population dynamics.
 
-![relationship diagram for package and app elements](figures/bisonpicwriteup-diagram.png "Figure 1. Overview of the bisonpic suite of tools.")
+![](figures/bisonpicwriteup-diagram.png "Figure 1. Overview of the bisonpic suite of tools.")
+
+*Figure 1. Overview of the bisonpic suite of tools.*
 
 This method is implemented using three connected R packages, bisonpictools provides underlying functionality to clean, process, model, and visualize data. The other two R packages are apps that provide a user-friendly interface to bisonpictools. The first app is shinybisonpic. This web-based app allows users to upload and explore the data by viewing the locations of cameras and the ratios of selected sex-age groups. The second app is runbisonpic which is run locally. This app allows users to run a model to calculate the abundance by class, total abundance, survival, fecundity, and various sex-age ratios. Bisonpictools, shinybisonpic and runbisonpic were developed for Alberta Environment and Parks to enable remote game cameras to monitor the herd composition of wood bison.
 
-## Features
+# Features
 
 Data Standardization
 
@@ -45,10 +47,12 @@ Documentation
 -   User Manual vignette that walks users through the detailed steps and options.
 -   Basic instructions are easily accessible within the app.
 
-## Limitations
+# Limitations
 
 The model is slow to run and can take over 24 hours to complete running.
 
-## Acknowledgements
+# Acknowledgements
 
 This work was funded by Alberta Environment and Protected Areas.
+
+# References
