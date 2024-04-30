@@ -49,7 +49,13 @@ This novel approach requires an initial population estimate but does not require
 
 *Figure 1. Overview of the bisonpic suite of tools.*
 
-This method is implemented using three connected R packages, bisonpictools provides underlying functionality to clean, process, model, and visualize data. The other two R packages are apps that provide a user-friendly interface to bisonpictools. The first app is shinybisonpic. This web-based app allows users to upload and explore the data by viewing the locations of cameras and the ratios of selected sex-age groups. The second app is runbisonpic which is run locally. This app allows users to run a model to calculate the abundance by class, total abundance, survival, fecundity, and various sex-age ratios. Bisonpictools, shinybisonpic and runbisonpic were developed for Alberta Environment and Parks to enable remote game cameras to monitor the herd composition of wood bison.
+This method is implemented using three connected R packages, bisonpictools provides underlying functionality to clean, process, model, and visualize data. 
+The other two R packages are apps that provide a user-friendly interface to bisonpictools. 
+The first app is shinybisonpic. 
+This web-based app allows users to upload and explore the data by viewing the locations of cameras and the ratios of selected sex-age groups. 
+The second app is runbisonpic which is run locally. 
+This app allows users to run a model to calculate the abundance by class, total abundance, survival, fecundity, and various sex-age ratios. 
+Bisonpictools, shinybisonpic and runbisonpic were developed for Alberta Environment and Parks to enable remote game cameras to monitor the herd composition of wood bison.
 
 # Features
 
