@@ -4,7 +4,7 @@ title: 'bisonpic Software: A suite of R packages to derive wildlife population p
 author: "Ayla Pearson, Nicole Hill, Joe Thorley, Andrea Kortello"
 date: "2024-04-25"
 output: html_document
-bibliography: references.bib
+bibliography: paper.bib
 ---
 
 # Statement of Need
