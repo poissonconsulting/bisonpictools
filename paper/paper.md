@@ -1,10 +1,28 @@
 ---
-title: 'bisonpic Software: A suite of R packages to derive wildlife population parameters
-  from remote camera image series.'
-author: "Ayla Pearson, Nicole Hill, Joe Thorley, Andrea Kortello"
-date: "2024-04-25"
-output: html_document
+title: 'bisonpic Software: A suite of R packages to derive wildlife population parameters from remote camera image series.'
+authors:
+- name: Ayla Pearson
+  orcid: 0000-0001-7388-1222
+  corresponding: true
+  affiliation: 1
+- name: Nicole Hill
+  orcid: 0000-0002-7623-2153
+  affiliation: 1
+- name: Joe Thorley
+  orcid: 0000-0002-7683-4592
+  affiliation: 1
+- name: Andrea Kortello
+  orcid: 0000-0001-8047-3331
+  affiliation: 1
+affiliations:
+- index: 1
+  name: Poisson Consulting, Canada
+date: 29 April 2024
 bibliography: paper.bib
+tags:
+  - bisonpictools
+  - camera
+  - R
 ---
 
 # Statement of Need
