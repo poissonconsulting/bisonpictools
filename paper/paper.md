@@ -27,15 +27,25 @@ tags:
 
 # Statement of Need
 
-Knowledge of population status and trend is integral to the effective conservation and management of wildlife populations. It is particularly advantageous to anticipate future trends. To this end, demographic ratios (i.e Calf:Cow ratios) are routinely used in wildlife management as a readily observable measure of productivity and for forecasting population trajectories [@fuller2007; @wittmer2005; @bender2006]. More complex state-space population modelling approaches [@buckland2004; @paterson2019; @mizuki2020; @newman2023] can be additionally used to derive estimates of survival and fecundity. Both approaches require classified (by age and sex) counts of individuals in a herd.
+Knowledge of population status and trend is integral to the effective conservation and management of wildlife populations. 
+It is particularly advantageous to anticipate future trends. 
+To this end, demographic ratios (i.e Calf:Cow ratios) are routinely used in wildlife management as a readily observable measure of productivity and for forecasting population trajectories [@fuller2007; @wittmer2005; @bender2006]. 
+More complex state-space population modelling approaches [@buckland2004; @paterson2019; @mizuki2020; @newman2023] can be additionally used to derive estimates of survival and fecundity. 
+Both approaches require classified (by age and sex) counts of individuals in a herd.
 
-In remote areas, estimates of herd size and composition are typically obtained from aerial surveys. However, distinguishing animal age and sex can be challenging, particularly in forested environments, if animals flee or hide from aircraft. Remote cameras present an alternative method for obtaining classified counts. Wildlife cameras have been utilized for purposes including species occupancy, density, behaviour, and to identify individuals through district markings [@magoun2011; @steenweg2016; @caravaggi2017; @green2020; @nakashima2020; @singh2022]. Although different age and sex classes can be readily distinguished in remote camera photos for many ungulate species [@laskin2020], we are not aware of any published studies or software using cameras to derive population parameters from classified counts of herds for animals without individual markings.
+In remote areas, estimates of herd size and composition are typically obtained from aerial surveys. 
+However, distinguishing animal age and sex can be challenging, particularly in forested environments, if animals flee or hide from aircraft. 
+Remote cameras present an alternative method for obtaining classified counts. 
+Wildlife cameras have been utilized for purposes including species occupancy, density, behaviour, and to identify individuals through district markings [@magoun2011; @steenweg2016; @caravaggi2017; @green2020; @nakashima2020; @singh2022]. 
+Although different age and sex classes can be readily distinguished in remote camera photos for many ungulate species [@laskin2020], we are not aware of any published studies or software using cameras to derive population parameters from classified counts of herds for animals without individual markings.
 
 # Summary
 
-We present a method utilizing classified counts from wildlife cameras to evaluate herd demographics, using wood bison as an example. We modeled demographic ratios, survival and productivity using linked Bayesian models; one model describing the spatial and temporal correlation structure of the camera observations using a Gaussian process regression [@mcelreath2016], and a second population model describing demographic structure, states, and transitions. This novel approach requires an initial population estimate but does not require individual identification and could be applied non-invasively to a wide array of difficult to survey species to estimate the key parameters that drive population dynamics.
+We present a method utilizing classified counts from wildlife cameras to evaluate herd demographics, using wood bison as an example. 
+We modeled demographic ratios, survival and productivity using linked Bayesian models; one model describing the spatial and temporal correlation structure of the camera observations using a Gaussian process regression [@mcelreath2016], and a second population model describing demographic structure, states, and transitions. 
+This novel approach requires an initial population estimate but does not require individual identification and could be applied non-invasively to a wide array of difficult to survey species to estimate the key parameters that drive population dynamics.
 
-![](figures/bisonpicwriteup-diagram.png "Figure 1. Overview of the bisonpic suite of tools.")
+![](bisonpicwriteup-diagram.png "Figure 1. Overview of the bisonpic suite of tools.")
 
 *Figure 1. Overview of the bisonpic suite of tools.*
 
