@@ -11,12 +11,17 @@ authors:
 - name: Joe Thorley
   orcid: 0000-0002-7683-4592
   affiliation: 1
+- name: John Boulanger
+  orcid: 0000-0001-8222-1445
+  affiliation: 2  
 - name: Andrea Kortello
   orcid: 0000-0001-8047-3331
   affiliation: 1
 affiliations:
 - index: 1
   name: Poisson Consulting, Canada
+- index: 2
+  name: Integrated Ecological Research, Canada  
 date: 29 April 2024
 bibliography: paper.bib
 tags:
