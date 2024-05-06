@@ -47,7 +47,7 @@ Although different age and sex classes can be readily distinguished in remote ca
 # Summary
 
 We present a method utilizing classified counts from wildlife cameras to evaluate herd demographics, using wood bison as an example. 
-We modeled demographic ratios, survival and productivity using linked Bayesian models; one model describing the spatial and temporal correlation structure of the camera observations using a Gaussian process regression [@mcelreath2016], and a second population model describing demographic structure, states, and transitions. 
+We modeled demographic ratios, survival and productivity using an integrated population model (IPM) to combine stage-structured information from multiple data sources to describe demographic states and transitions [@schaub_integrated_2022]. A Gaussian process regression [@mcelreath2016] accounted for the spatial and temporal correlation structure of the camera observations.
 This novel approach requires an initial population estimate but does not require individual identification and could be applied non-invasively to a wide array of difficult to survey species to estimate the key parameters that drive population dynamics.
 
 ![](bisonpicwriteup-diagram.png "Figure 1. Overview of the bisonpic suite of tools.")
@@ -88,7 +88,7 @@ Documentation
 
 # Limitations
 
-The model is slow to run and can take over 24 hours to complete running.
+The model is slow to run and can take over 5 hours to complete running.
 
 # Acknowledgements
 
