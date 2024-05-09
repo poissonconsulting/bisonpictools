@@ -14,6 +14,6 @@
 
 release_questions <- function() {
   c(
-    "Have you confirmed Apache 2.0 license at the top of all code files?",
+    "Have you confirmed Apache 2.0 license at the top of all code files?"
   )
 }
