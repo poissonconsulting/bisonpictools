@@ -16,6 +16,9 @@
 "_PACKAGE"
 
 ## usethis namespace: start
+#' @import chk
+#' @importFrom rlang .data
+#' @import smbr
 #' @importFrom lifecycle deprecated
 ## usethis namespace: end
 NULL
