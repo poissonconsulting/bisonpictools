@@ -13,9 +13,11 @@ Authors@R: c(
     person("Troy", "Hegel", , "Troy.Hegel@gov.ab.ca", role = "ctb"),
     person("Province of Alberta", role = "cph")
   )
-Description: This package facilitates the manipulation, exploration, and 
-  analysis of Ronald Wood Bison camera trap data.
+Description: This package facilitates the manipulation, exploration, and
+    analysis of Ronald Wood Bison camera trap data.
 License: Apache License (>= 2)
+Depends: 
+    R (>= 3.5.0)
 Imports: 
     chk,
     chktemplate,
@@ -43,6 +45,8 @@ Suggests:
     shinybisonpic,
     testthat (>= 3.0.0),
     withr
+VignetteBuilder: 
+    knitr
 Remotes: 
     poissonconsulting/chktemplate,
     poissonconsulting/embr,
@@ -50,11 +54,8 @@ Remotes:
     poissonconsulting/runbisonpic,
     poissonconsulting/shinybisonpic,
     poissonconsulting/smbr
-Depends: 
-    R (>= 3.5.0)
-LazyData: true
+Config/testthat/edition: 3
 Encoding: UTF-8
+LazyData: true
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.3.1
-Config/testthat/edition: 3
-VignetteBuilder: knitr
