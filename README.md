@@ -36,8 +36,8 @@ ratios of sex-age classes.
 To install the latest development version:
 
 ``` r
-install.packages("pak")
-pak::pak("poissonconsulting/bisonpictools")
+install.packages("remotes")
+remotes::install_github("poissonconsulting/bisonpictools")
 ```
 
 And to load the package into the current R session:

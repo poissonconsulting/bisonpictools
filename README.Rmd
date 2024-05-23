@@ -28,8 +28,8 @@ Other packages in this suite include:
 To install the latest development version:
 
 ```{r, eval = FALSE}
-install.packages("pak")
-pak::pak("poissonconsulting/bisonpictools")
+install.packages("remotes")
+remotes::install_github("poissonconsulting/bisonpictools")
 ```
 
 And to load the package into the current R session:

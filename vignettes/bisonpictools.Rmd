@@ -46,8 +46,8 @@ RStudio is a helpful user interface for R, and can be downloaded [here](https://
 To install the latest development version of `bisonpictools`, execute the following code in the RStudio console.
 
 ```{r, eval = FALSE}
-install.packages("pak")
-pak::pak("poissonconsulting/bisonpictools")
+install.packages("remotes")
+remotes::install_github("poissonconsulting/bisonpictools")
 ```
 
 ## bisonpic Suite
@@ -146,7 +146,7 @@ Launch the local data analysis app by running the following lines of code in the
 
 ```{r, eval = FALSE}
 # Install `runbisonpic`
-pak::pak("poissonconsulting/runbisonpic")
+remotes::install_github("poissonconsulting/runbisonpic")
 # Launch local app
 runbisonpic::launch_runbisonpic()
 ```
@@ -164,7 +164,7 @@ If desired, the steps that occur behind the scenes in the `runbisonpic` app can 
 # Change `dir` to the file path of the populated excel template on your computer
 dir <- "myfilepath.xlsx"
 # Install readxl to read the excel spreadsheet into R
-pak::pak("readxl")
+remotes::install_github("readxl")
 # Read each sheet into R
 location_data <- readxl::read_xlsx(dir, sheet = "location")
 event_data <- readxl::read_xlsx(dir, sheet = "event")
