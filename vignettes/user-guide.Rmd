@@ -595,3 +595,9 @@ cat(paste("runbisonpic:", packageVersion("runbisonpic")))
 
 cat(paste("bisonpictools:", packageVersion("bisonpictools")))
 ```
+
+<div id="refs"></div>
+
+```{r, results = "asis", echo = FALSE}
+cat(bpt_licensing_md())
+```

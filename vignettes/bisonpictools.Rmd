@@ -347,4 +347,10 @@ bpt_plot_predictions(analysis, prediction = "ratios")
 The analysis object is a list that contains the model code, mcmc samples (class `mcmcr`), and other meta-data used to fit the model.
 The user can interact directly with the mcmc samples using packages such as [`mcmcr`](https://github.com/poissonconsulting/mcmcr), [`mcmcderive`](https://github.com/poissonconsulting/mcmcderive) to derive other quantities of interest.
 
-### References
+## References
+
+<div id="refs"></div>
+
+```{r, results = "asis", echo = FALSE}
+cat(bpt_licensing_md())
+```
