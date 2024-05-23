@@ -4,9 +4,9 @@ Version: 0.0.0.9000
 Authors@R: c(
     person("Nicole", "Hill", , "nicole@poissonconsulting.ca", role = c("aut", "cre"),
            comment = c(ORCID = "0000-0002-7623-2153")),
-    person("Andrea", "Kortello", , "andrea@poissonconsulting.ca", role = "ctb",
+    person("Andrea", "Kortello", , "andrea@poissonconsulting.ca", role = "aut",
            comment = c(ORCID = "0000-0001-8047-3331")),
-    person("Ayla", "Pearson", , "ayla@poissonconsulting.ca", role = "ctb",
+    person("Ayla", "Pearson", , "ayla@poissonconsulting.ca", role = "aut",
            comment = c(ORCID = "0000-0001-7388-1222")),
     person("Joe", "Thorley", , "joe@poissonconsulting.ca", role = "ctb",
            comment = c(ORCID = "0000-0002-7683-4592")),
