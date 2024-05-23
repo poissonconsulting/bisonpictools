@@ -2,7 +2,7 @@
 % Please edit documentation in R/bpt-plot-ratios.R
 \name{bpt_plot_ratios}
 \alias{bpt_plot_ratios}
-\title{Plot Ratios of Ronald Wood Bison Camera Events}
+\title{Plot Ratios of Wood Bison Camera Events}
 \usage{
 bpt_plot_ratios(
   event_data,

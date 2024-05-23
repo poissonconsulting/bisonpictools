@@ -14,7 +14,7 @@
 
 #' Generate Seasons Data
 #'
-#' Generates a table of the dates of different seasons relevant to Ronald Wood
+#' Generates a table of the dates of different seasons relevant to Wood
 #' Bison movement patterns: calving, summer/fall, and winter. Start and end
 #' dates of each season are based in the study year 1972-1973.
 #'

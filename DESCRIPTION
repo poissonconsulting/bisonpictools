@@ -1,5 +1,5 @@
 Package: bisonpictools
-Title: Ronald Wood Bison Camera Trap Tools
+Title: Wood Bison Camera Trap Tools
 Version: 0.0.0.9000
 Authors@R: c(
     person("Nicole", "Hill", , "nicole@poissonconsulting.ca", role = c("aut", "cre"),
@@ -14,7 +14,7 @@ Authors@R: c(
     person("Province of Alberta", role = "cph")
   )
 Description: This package facilitates the manipulation, exploration, and
-    analysis of Ronald Wood Bison camera trap data.
+    analysis of Wood Bison camera trap data.
 License: Apache License (>= 2)
 Depends: 
     R (>= 3.5.0)

@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-#' Plot Ratios of Ronald Wood Bison Camera Events
+#' Plot Ratios of Wood Bison Camera Events
 #'
 #' Generates bubble plot of ratio of the sex-age classes supplied to `numerator`
 #' and `denominator`. The ratio is given as `numerator:(denominator +
