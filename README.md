@@ -118,7 +118,8 @@ bpt_proportion_calf_data
 
 Use the `bpt_plot_ratios()` function to visualize ratios in the
 classified counts from the camera trap events over time. The ratio
-plotted is `numerator:(denominator + numerator)`.
+plotted is `numerator:(denominator + numerator)` to avoid infinite
+values.
 
 For example, the adult cow:(bull + cow) ratio plotted over all years and
 locations:
