@@ -10,30 +10,30 @@ experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](h
 <!-- badges: end -->
 
 The goal of `bisonpictools` is to facilitate the visualization and
-analysis of camera trap data from the Ronald Wood Bison herd. The
-package includes functions to check the correct formatting of data,
-visualize the data, manipulate and analyse the data using a complex
-custom-built Bayesian model, and generate predictions of abundances,
-survival and fecundity rates, and population ratios.
+analysis of camera trap data for Wood Bison herds. The package includes
+functions to check the correct formatting of data, visualize the data,
+manipulate and analyse the data using a complex custom-built Bayesian
+model, and generate predictions of abundances, survival and fecundity
+rates, and population ratios.
 
 ## bisonpic Suite
 
-`bisonpictools` is part of the **bisonpic** suite of tools. Other
-packages in this suite include:
+`bisonpictools` is one of three packages in the **bisonpic** suite of
+tools:
 
+- [`bisonpictools`](https://github.com/poissonconsulting/bisonpictools)
 - [`shinybisonpic`](https://github.com/poissonconsulting/shinybisonpic)
 - [`runbisonpic`](https://github.com/poissonconsulting/runbisonpic)
 
 `bisonpictools` provides the underlying visualization and analysis
-functionality; `shinybisonpic` is a web-based Shiny app to aid data
-visualization and exploration, and `runbisonpic` is a local-based Shiny
-app to analyze a complex custom Bayesian model to estimate total and
-sex-age class abundances, fecundity and survival rates, and various
-ratios of sex-age classes.
+functionality; `shinybisonpic` is a web-based Shiny app that provides a
+Graphical User Interface to facilitate data visualization and
+exploration, and `runbisonpic` is a local-based Shiny app to set up and
+run an analysis.
 
 ## Installation
 
-To install the latest development version:
+To install the latest development version of `bisonpictools`:
 
 ``` r
 install.packages("remotes")
