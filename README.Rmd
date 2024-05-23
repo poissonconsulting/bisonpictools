@@ -13,7 +13,7 @@ output: github_document
 The goal of `bisonpictools` is to facilitate the visualization and analysis of camera trap data from the Ronald Wood Bison herd.
 The package includes functions to check the correct formatting of data, visualize the data, manipulate and analyse the data using a complex custom-built Bayesian model, and generate predictions of abundances, survival and fecundity rates, and population ratios.
 
-### bisonpic Suite
+## bisonpic Suite
 
 `bisonpictools` is part of the **bisonpic** suite of tools. 
 Other packages in this suite include:
@@ -23,7 +23,7 @@ Other packages in this suite include:
 
 `bisonpictools` provides the underlying visualization and analysis functionality; `shinybisonpic` is a web-based Shiny app to aid data visualization and exploration, and `runbisonpic` is a local-based Shiny app to analyze a complex custom Bayesian model to estimate total and sex-age class abundances, fecundity and survival rates, and various ratios of sex-age classes.
 
-### Installation
+## Installation
 
 To install the latest development version:
 
@@ -38,7 +38,7 @@ And to load the package into the current R session:
 library(bisonpictools)
 ```
 
-### Data
+## Data
 
 `bisonpictools` accepts data in a specific format for wood bison camera trap locations and events, as well as census and proportion of calf estimates from aerial surveys of the herd.
 There is a downloadable excel template in each of the Shiny apps that aids the user to populate their data appropriately.
@@ -63,7 +63,7 @@ bpt_census_data
 bpt_proportion_calf_data
 ```
 
-### Data Visualization
+## Data Visualization
 
 Use the `bpt_plot_ratios()` function to visualize ratios in the classified counts from the camera trap events over time.
 The ratio plotted is `numerator:(denominator + numerator)`.
@@ -79,7 +79,7 @@ bpt_plot_ratios(
 )
 ```
 
-### Data Analysis
+## Data Analysis
 
 The `bpt_analyse()` function runs the analysis.
 The following example uses the built-in example data in the demonstrative "quick" analysis mode.
@@ -97,7 +97,7 @@ analysis <- bpt_analyse(
 ```{r, echo = FALSE}
 analysis <- readRDS(file = system.file(package = "bisonpictools", "test-objects/analysis.RDS"))
 ```
-### View model estimates
+## View model estimates
 
 Use the `bpt_coefficient_table()` function to view the model estimates.
 
@@ -105,7 +105,7 @@ Use the `bpt_coefficient_table()` function to view the model estimates.
 bpt_coefficient_table(analysis)
 ```
 
-### Make predictions
+## Make predictions
 
 Predictions of the total and the class-wise abundances, the fecundity and survival rates, and several ratios of interest are derived from the posterior distribution of the estimated parameters.
 These can be visualized in tables using the functions with the `bpt_predict` prefix:
@@ -142,30 +142,20 @@ bpt_plot_predictions(analysis, prediction = "fecundity")
 bpt_plot_predictions(analysis, prediction = "ratios")
 ```
 
-### Information
+## Information
 
 Additional information is available from the [`bisonpictools` website](https://poissonconsulting.github.io/bisonpictools/).
 The [user guide](https://poissonconsulting.github.io/bisonpictools/user-guide.html), and the ["Getting Started"](https://poissonconsulting.github.io/bisonpictools/bisonpictools.html) and ["Analytical Methods"](https://poissonconsulting.github.io/bisonpictools/bisonpicmethods.html) vignettes may be particularly useful.
 
-### Contribution
+## Contribution
 
 Please report any [issues](https://github.com/poissonconsulting/bisonpictools/issues).
 
-### Code of Conduct
+## Code of Conduct
 
 Please note that the `bisonpictools` project is released with a [Contributor Code of Conduct](https://www.contributor-covenant.org/version/2/1/code_of_conduct/).
 By contributing to this project, you agree to abide by its terms.
 
-### License
-
-The code is released under the Apache License 2.0
-
-Copyright 2023 Province of Alberta
-
-Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License.
-You may obtain a copy of the License at
-
-http://www.apache.org/licenses/LICENSE-2.0
-
-Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and limitations under the License.
+```{r, results = "asis", echo = FALSE}
+cat(bpt_licensing_md())
+```

@@ -16,7 +16,7 @@ visualize the data, manipulate and analyse the data using a complex
 custom-built Bayesian model, and generate predictions of abundances,
 survival and fecundity rates, and population ratios.
 
-### bisonpic Suite
+## bisonpic Suite
 
 `bisonpictools` is part of the **bisonpic** suite of tools. Other
 packages in this suite include:
@@ -31,7 +31,7 @@ app to analyze a complex custom Bayesian model to estimate total and
 sex-age class abundances, fecundity and survival rates, and various
 ratios of sex-age classes.
 
-### Installation
+## Installation
 
 To install the latest development version:
 
@@ -46,7 +46,7 @@ And to load the package into the current R session:
 library(bisonpictools)
 ```
 
-### Data
+## Data
 
 `bisonpictools` accepts data in a specific format for wood bison camera
 trap locations and events, as well as census and proportion of calf
@@ -114,7 +114,7 @@ bpt_proportion_calf_data
     ## 2                 2022                     3                  31            0.15
     ## # ℹ 1 more variable: proportion_calf_cv <dbl>
 
-### Data Visualization
+## Data Visualization
 
 Use the `bpt_plot_ratios()` function to visualize ratios in the
 classified counts from the camera trap events over time. The ratio
@@ -135,7 +135,7 @@ bpt_plot_ratios(
 
 ![](README_files/figure-gfm/unnamed-chunk-7-1.png)<!-- -->
 
-### Data Analysis
+## Data Analysis
 
 The `bpt_analyse()` function runs the analysis. The following example
 uses the built-in example data in the demonstrative “quick” analysis
@@ -152,7 +152,7 @@ analysis <- bpt_analyse(
 )
 ```
 
-### View model estimates
+## View model estimates
 
 Use the `bpt_coefficient_table()` function to view the model estimates.
 
@@ -175,7 +175,7 @@ bpt_coefficient_table(analysis)
     ## 10 bMAProportion[1]                  0.440  0.258    0.582  4.39 
     ## # ℹ 47 more rows
 
-### Make predictions
+## Make predictions
 
 Predictions of the total and the class-wise abundances, the fecundity
 and survival rates, and several ratios of interest are derived from the
@@ -226,7 +226,7 @@ bpt_plot_predictions(analysis, prediction = "fecundity")
 bpt_plot_predictions(analysis, prediction = "ratios")
 ```
 
-### Information
+## Information
 
 Additional information is available from the [`bisonpictools`
 website](https://poissonconsulting.github.io/bisonpictools/). The [user
@@ -237,21 +237,19 @@ and [“Analytical
 Methods”](https://poissonconsulting.github.io/bisonpictools/bisonpicmethods.html)
 vignettes may be particularly useful.
 
-### Contribution
+## Contribution
 
 Please report any
 [issues](https://github.com/poissonconsulting/bisonpictools/issues).
 
-### Code of Conduct
+## Code of Conduct
 
 Please note that the `bisonpictools` project is released with a
 [Contributor Code of
 Conduct](https://www.contributor-covenant.org/version/2/1/code_of_conduct/).
 By contributing to this project, you agree to abide by its terms.
 
-### License
-
-The code is released under the Apache License 2.0
+## Licensing
 
 Copyright 2023 Province of Alberta
 
