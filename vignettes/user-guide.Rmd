@@ -1,6 +1,6 @@
 ---
 title: "User Guide for shinybisonpic and runbisonpic Apps"
-output: pdf_document
+output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{User Guide for shinybisonpic and runbisonpic Apps}
   %\VignetteEncoding{UTF-8}
@@ -599,5 +599,5 @@ cat(paste("bisonpictools:", packageVersion("bisonpictools")))
 <div id="refs"></div>
 
 ```{r, results = "asis", echo = FALSE}
-cat(bpt_licensing_md())
+cat(bisonpictools::bpt_licensing_md())
 ```
