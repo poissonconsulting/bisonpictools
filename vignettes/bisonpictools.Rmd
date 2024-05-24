@@ -52,13 +52,13 @@ remotes::install_github("poissonconsulting/bisonpictools")
 
 ## bisonpic Suite
 
-`bisonpictools` is part of the **bisonpic** suite of tools. 
-Other packages in this suite include:
+`bisonpictools` is one of three packages in the **bisonpic** suite of tools:
 
+- [`bisonpictools`](https://github.com/poissonconsulting/bisonpictools)
 - [`shinybisonpic`](https://github.com/poissonconsulting/shinybisonpic)
 - [`runbisonpic`](https://github.com/poissonconsulting/runbisonpic)
 
-`bisonpictools` provides the underlying visualization and analysis functionality; `shinybisonpic` is a web-based Shiny app to aid data visualization and exploration, and `runbisonpic` is a local-based Shiny app to analyze a complex custom Bayesian model to estimate total and sex-age class abundances, fecundity and survival rates, and various ratios of sex-age classes.
+`bisonpictools` provides the underlying visualization and analysis functionality; `shinybisonpic` is a web-based Shiny app that provides a Graphical User Interface to facilitate data visualization and exploration, and `runbisonpic` is a local-based Shiny app to set up and run an analysis.
 
 ```{r, echo = FALSE, out.width = '70%'}
 knitr::include_graphics("figures/bisonpic_suite.png")
@@ -70,7 +70,7 @@ To get additional information on a particular function just type `?` followed by
 
 For more information on using R the reader is referred to [R for Data Science](https://r4ds.had.co.nz/) [@wickham_r_2016].
 
-If you discover a bug in `bisonpictools` please file an issue with a reprex (reproducible example) at https://github.com/poissonconsulting/bisonpictools/issues.
+If you discover a bug in `bisonpictools` please file an [issue](https://github.com/poissonconsulting/bisonpictools/issues) with a [reprex](https://reprex.tidyverse.org/) (reproducible example).
 
 ## Data 
 
