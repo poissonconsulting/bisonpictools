@@ -92,15 +92,13 @@ We suggest downloading the template from one of the Shiny apps and populating it
 Use the [`shinybisonpic` Shiny app](https://poissonconsulting.shinyapps.io/shinybisonpic/) to explore the locations of camera traps and the the ratios of different classes of wood bison in camera trap observations.
 Refer to the [user guide](https://poissonconsulting.github.io/bisonpictools/user-guide.html) for more information on how to use the `shinybisonpic` app.
 
-\n
-
 If desired, functions from `bisonpictools` can be run in the RStudio console.
 The `bpt_plot_ratios()` function plots the ratios of various sex-age classes over time.
 The user needs to provide the event and location data, as well as vectors of classes to form the numerator and denominator of the ratio.
 Data checks are completed before the analysis is run to ensure they are in the correct format. 
 Please note that the ratio plotted by `bpt_plot_ratios()` is `numerator:(denominator + numerator)` to avoid plotting infinite values.
 In the plot, each point represents an event. 
-The size of the point represents the total group size, and the colour of the point represents the value of the ratio.
+The size (area) of the point indicates the ratio while the opacity of the point indicates the number of individuals in the group.
 
 For example, the adult cow:(bull + cow) ratio plotted over all years and locations from example data:
 ``` {r, fig.dim = c(8, 6)}
