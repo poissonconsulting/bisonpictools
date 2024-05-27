@@ -85,6 +85,6 @@ The model is slow to run and can take over 5 hours to complete running.
 # Acknowledgements
 
 This work was funded by Alberta Environment and Protected Areas.
-We thank Troy Hegel, Joe Thorley and John Boulanger for senior review.
+We thank Troy Hegel, Joe Thorley, and John Boulanger for senior review.
 
 # References
