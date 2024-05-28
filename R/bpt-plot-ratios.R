@@ -67,8 +67,6 @@ bpt_plot_ratios <- function(
 
   seasons <- bpt_seasons_plot(study_year_start)
 
-  ratio_name <- bpt_ratio_names(numerator, denominator)
-
   data$sqrt_groupsize <- sqrt(data$groupsize)
 
   if (nrow(data) == 0L) {
@@ -79,6 +77,8 @@ bpt_plot_ratios <- function(
       )
     )
   }
+  
+  ratio_name <- "Ratio"
 
   gp <- ggplot2::ggplot() +
     ggplot2::geom_rect(
