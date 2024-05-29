@@ -10,7 +10,8 @@ bpt_plot_ratios(
   numerator,
   denominator,
   study_years = bpt_study_years(event_data),
-  locations = unique(location_data$location_id)
+  locations = unique(location_data$location_id),
+  ratio_name = "Ratio"
 )
 }
 \arguments{
@@ -27,6 +28,9 @@ denominator of the ratio.}
 \item{study_years}{A character vector of study years to include in the plot.}
 
 \item{locations}{A character vector of location_ids to include in the plot.}
+
+\item{ratio_name}{An alternate name for the label for the value of the ratio
+on the plot legend. Defaults to "Ratio".}
 }
 \value{
 A \code{ggplot} object.

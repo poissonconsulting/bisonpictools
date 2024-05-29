@@ -107,7 +107,8 @@ test_that("plot ratios calf:cow LOCID2", {
     location_data = bpt_location_data,
     numerator = c("m0", "f0", "u0"),
     denominator = "fa",
-    locations = "LOCID2"
+    locations = "LOCID2",
+    ratio_name = "calf:(calf + cow)"
   )
   expect_s3_class(plot, "ggplot")
   expect_snapshot_plot(plot, "plot_calf_cow_LOCID2")

@@ -22,6 +22,8 @@
 #' ratio.
 #'
 #' @inheritParams params
+#' @param ratio_name An alternate name for the label for the value of the ratio
+#' on the plot legend. Defaults to "Ratio".
 #'
 #' @return A `ggplot` object.
 #' @export
@@ -49,7 +51,8 @@ bpt_plot_ratios <- function(
     numerator,
     denominator,
     study_years = bpt_study_years(event_data),
-    locations = unique(location_data$location_id)) {
+    locations = unique(location_data$location_id),
+    ratio_name = "Ratio") {
   data <- bpt_manipulate_data_plot(
     event_data,
     location_data
@@ -77,8 +80,6 @@ bpt_plot_ratios <- function(
       )
     )
   }
-  
-  ratio_name <- "Ratio"
 
   gp <- ggplot2::ggplot() +
     ggplot2::geom_rect(
