@@ -20,7 +20,7 @@
 #' @export
 #'
 #' @examples
-#' bpt_location_matrix(bpt_location_data)
+#' bpt_location_matrix(location_data)
 bpt_location_matrix <- function(location_data) {
   data <- bpt_check_data(location = location_data)$location
 

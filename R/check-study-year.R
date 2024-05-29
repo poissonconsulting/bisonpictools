@@ -25,9 +25,9 @@
 #'
 #' @examples
 #' check_study_year(
-#'   bpt_event_data,
-#'   bpt_census_data,
-#'   bpt_proportion_calf_data
+#'   event_data,
+#'   census_data,
+#'   proportion_calf_data
 #' )
 check_study_year <- function(
     event_data,

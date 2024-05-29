@@ -17,10 +17,10 @@ test_that(
   {
     expect_error(
       analysis <- bpt_analyse(
-        event_data = bpt_event_data,
-        location_data = bpt_location_data,
-        census_data = bpt_census_data,
-        proportion_calf_data = bpt_proportion_calf_data,
+        event_data = event_data,
+        location_data = location_data,
+        census_data = census_data,
+        proportion_calf_data = proportion_calf_data,
         nthin = -1L,
         analysis_mode = "quick"
       ),
@@ -34,10 +34,10 @@ test_that(
   {
     expect_error(
       analysis <- bpt_analyse(
-        event_data = bpt_event_data,
-        location_data = bpt_location_data,
-        census_data = bpt_census_data,
-        proportion_calf_data = bpt_proportion_calf_data,
+        event_data = event_data,
+        location_data = location_data,
+        census_data = census_data,
+        proportion_calf_data = proportion_calf_data,
         nthin = 1L,
         analysis_mode = "hurry"
       ),
@@ -51,10 +51,10 @@ test_that(
   {
     expect_error(
       analysis <- bpt_analyse(
-        event_data = bpt_event_data,
-        location_data = bpt_location_data,
-        census_data = bpt_census_data,
-        proportion_calf_data = bpt_proportion_calf_data,
+        event_data = event_data,
+        location_data = location_data,
+        census_data = census_data,
+        proportion_calf_data = proportion_calf_data,
         nthin = 0.1,
         analysis_mode = "quick"
       ),
@@ -78,9 +78,9 @@ test_that(
   {
     expect_error(
       analysis <- bpt_analyse(
-        location_data = bpt_location_data,
-        proportion_calf_data = bpt_proportion_calf_data,
-        census_data = bpt_census_data,
+        location_data = location_data,
+        proportion_calf_data = proportion_calf_data,
+        census_data = census_data,
         nthin = 1L,
         analysis_mode = "quick"
       ),
@@ -94,9 +94,9 @@ test_that(
   {
     expect_error(
       analysis <- bpt_analyse(
-        event_data = bpt_event_data,
-        proportion_calf_data = bpt_proportion_calf_data,
-        census_data = bpt_census_data,
+        event_data = event_data,
+        proportion_calf_data = proportion_calf_data,
+        census_data = census_data,
         nthin = 1L,
         analysis_mode = "quick"
       ),
@@ -110,9 +110,9 @@ test_that(
   {
     expect_error(
       analysis <- bpt_analyse(
-        event_data = bpt_event_data,
-        location_data = bpt_location_data,
-        proportion_calf_data = bpt_proportion_calf_data,
+        event_data = event_data,
+        location_data = location_data,
+        proportion_calf_data = proportion_calf_data,
         nthin = 1L,
         analysis_mode = "quick"
       ),
@@ -126,9 +126,9 @@ test_that(
   {
     expect_error(
       analysis <- bpt_analyse(
-        event_data = bpt_event_data,
-        location_data = bpt_location_data,
-        census_data = bpt_census_data,
+        event_data = event_data,
+        location_data = location_data,
+        census_data = census_data,
         nthin = 1L,
         analysis_mode = "quick"
       ),
@@ -142,10 +142,10 @@ test_that(
   {
     expect_error(
       analysis <- bpt_analyse(
-        event_data = bpt_event_data,
-        location_data = bpt_location_data,
-        census_data = bpt_census_data,
-        proportion_calf_data = bpt_census_data,
+        event_data = event_data,
+        location_data = location_data,
+        census_data = census_data,
+        proportion_calf_data = census_data,
         nthin = 1L,
         analysis_mode = "quick"
       ),

@@ -41,4 +41,4 @@
 #'   \item{uu}{Number of individuals of unknown age and unknown sex}
 #' }
 #'
-"bpt_event_data"
+"event_data"

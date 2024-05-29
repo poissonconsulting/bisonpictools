@@ -12,19 +12,19 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-#' Sample Data for calf proportion data
+#' Sample Data for census counts
 #'
-#' A data set of invented calf proportion data
+#' A data set of invented census data
 #'
 #' @format
 #' A tibble with 2 rows and 5 columns:
 #' \describe{
-#'   \item{proportion_calf_year}{The year of the calf proportion survey}
-#'   \item{proportion_calf_month}{The month of the calf proportion survey}
-#'   \item{proportion_calf_day}{The day of the calf proportion survey}
-#'   \item{proportion_calf}{Estimated calf proportion}
-#'   \item{proportion_calf_cv}{Coefficient of variation (standard deviation /
-#'   estimate) of calf proportion estimate}
+#'   \item{census_year}{The year of the census survey}
+#'   \item{census_month}{The month of the census survey}
+#'   \item{census_day}{The day of the census survey}
+#'   \item{census}{Estimated census count}
+#'   \item{census_cv}{Coefficient of variation (standard deviation / estimate)
+#'   of census estimate}
 #' }
 #'
-"bpt_proportion_calf_data"
+"census_data"

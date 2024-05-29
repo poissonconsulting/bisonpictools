@@ -16,5 +16,5 @@ A matrix of distances between locations in kilometers.
 Prepare Location Distance Matrix for Analysis
 }
 \examples{
-bpt_location_matrix(bpt_location_data)
+bpt_location_matrix(location_data)
 }

@@ -45,22 +45,22 @@ There is a downloadable excel template in each of the Shiny apps that aids the u
 
 ```{r}
 # Example data for locations of camera traps
-bpt_location_data
+location_data
 ```
 
 ```{r}
 # Example data for camera trap events
-bpt_event_data
+event_data
 ```
 
 ```{r}
 # Example data for census estimate from aerial surveys
-bpt_census_data
+census_data
 ```
 
 ```{r}
 # Example data for proportion of calves estimate from aerial surveys
-bpt_proportion_calf_data
+proportion_calf_data
 ```
 
 ## Data Visualization
@@ -72,8 +72,8 @@ For example, the adult cow:(bull + cow) ratio plotted over all years and locatio
 ``` {r, fig.dim = c(12, 8)}
 library(bisonpictools)
 bpt_plot_ratios(
-  bpt_event_data,
-  bpt_location_data,
+  event_data,
+  location_data,
   numerator = "fa",
   denominator = "ma"
 )
@@ -86,10 +86,10 @@ The following example uses the built-in example data in the demonstrative "quick
 
 ```{r, eval = FALSE}
 analysis <- bpt_analyse(
-  event_data = bpt_event_data,
-  location_data = bpt_location_data,
-  census_data = bpt_census_data,
-  proportion_calf_data = bpt_proportion_calf_data,
+  event_data = event_data,
+  location_data = location_data,
+  census_data = census_data,
+  proportion_calf_data = proportion_calf_data,
   nthin = 1L,
   analysis_mode = "quick"
 )

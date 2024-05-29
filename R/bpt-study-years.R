@@ -23,7 +23,7 @@
 #' @export
 #'
 #' @examples
-#' bpt_study_years(bpt_event_data)
+#' bpt_study_years(event_data)
 bpt_study_years <- function(data) {
   event <- try(bpt_check_data(event = data), silent = TRUE)
   census <- try(bpt_check_data(census = data), silent = TRUE)

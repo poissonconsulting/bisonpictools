@@ -56,7 +56,7 @@ data appropriately.
 
 ``` r
 # Example data for locations of camera traps
-bpt_location_data
+location_data
 ```
 
     ## # A tibble: 4 × 3
@@ -69,7 +69,7 @@ bpt_location_data
 
 ``` r
 # Example data for camera trap events
-bpt_event_data
+event_data
 ```
 
     ## # A tibble: 12 × 20
@@ -93,7 +93,7 @@ bpt_event_data
 
 ``` r
 # Example data for census estimate from aerial surveys
-bpt_census_data
+census_data
 ```
 
     ## # A tibble: 2 × 5
@@ -104,7 +104,7 @@ bpt_census_data
 
 ``` r
 # Example data for proportion of calves estimate from aerial surveys
-bpt_proportion_calf_data
+proportion_calf_data
 ```
 
     ## # A tibble: 2 × 5
@@ -127,8 +127,8 @@ locations:
 ``` r
 library(bisonpictools)
 bpt_plot_ratios(
-  bpt_event_data,
-  bpt_location_data,
+  event_data,
+  location_data,
   numerator = "fa",
   denominator = "ma"
 )
@@ -144,10 +144,10 @@ mode.
 
 ``` r
 analysis <- bpt_analyse(
-  event_data = bpt_event_data,
-  location_data = bpt_location_data,
-  census_data = bpt_census_data,
-  proportion_calf_data = bpt_proportion_calf_data,
+  event_data = event_data,
+  location_data = location_data,
+  census_data = census_data,
+  proportion_calf_data = proportion_calf_data,
   nthin = 1L,
   analysis_mode = "quick"
 )

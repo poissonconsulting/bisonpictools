@@ -37,8 +37,8 @@ numerator:(denominator + numerator) to avoid infinite values.
 \examples{
 bpt_manipulate_ratios(
   data = bpt_manipulate_data_plot(
-    bpt_event_data,
-    bpt_location_data
+    event_data,
+    location_data
   ),
   numerator = "fa",
   denominator = "ma",

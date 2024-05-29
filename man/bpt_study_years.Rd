@@ -17,5 +17,5 @@ Calculate the unique set of study years beginning on Apr. 1 of each year of a
 templated \code{event_data}, \code{census_data}, or \code{proportion_calf_data} tibble
 }
 \examples{
-bpt_study_years(bpt_event_data)
+bpt_study_years(event_data)
 }

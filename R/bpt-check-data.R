@@ -35,10 +35,10 @@
 #' \dontrun{
 #' # When all data sets are present
 #' data <- bpt_check_data(
-#'   event = bpt_event_data,
-#'   location = bpt_location_data,
-#'   census = bpt_census_data,
-#'   proportion_calf = bpt_proportion_calf_data,
+#'   event = event_data,
+#'   location = location_data,
+#'   census = census_data,
+#'   proportion_calf = proportion_calf_data,
 #'   complete = TRUE,
 #'   join = TRUE,
 #'   check_study_years = TRUE
@@ -46,12 +46,12 @@
 #' event_data <- data$event
 #' location_data <- data$location
 #' # To check only a single data set
-#' data_1 <- bpt_check_data(location = bpt_location_data)
-#' data_2 <- bpt_check_data(event = bpt_event_data)
-#' data_3 <- bpt_check_data(census = bpt_census_data)
-#' data_4 <- bpt_check_data(proportion_calf = bpt_proportion_calf_data)
+#' data_1 <- bpt_check_data(location = location_data)
+#' data_2 <- bpt_check_data(event = event_data)
+#' data_3 <- bpt_check_data(census = census_data)
+#' data_4 <- bpt_check_data(proportion_calf = proportion_calf_data)
 #' # Should error, as `complete = TRUE` requires all 4 data sets be provided
-#' try(event <- bpt_check_data(event = bpt_event_data, complete = TRUE))
+#' try(event <- bpt_check_data(event = event_data, complete = TRUE))
 #' }
 bpt_check_data <- function(
     event = NULL,

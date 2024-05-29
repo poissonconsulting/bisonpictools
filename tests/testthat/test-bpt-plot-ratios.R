@@ -14,8 +14,8 @@
 
 test_that("plot ratios cow:bull", {
   plot <- bpt_plot_ratios(
-    event_data = bpt_event_data,
-    location_data = bpt_location_data,
+    event_data = event_data,
+    location_data = location_data,
     numerator = "fa",
     denominator = "ma"
   )
@@ -24,8 +24,8 @@ test_that("plot ratios cow:bull", {
 
 test_that("plot ratios cow:bull", {
   plot <- bpt_plot_ratios(
-    event_data = bpt_event_data,
-    location_data = bpt_location_data,
+    event_data = event_data,
+    location_data = location_data,
     numerator = "fa",
     denominator = "ma"
   )
@@ -34,8 +34,8 @@ test_that("plot ratios cow:bull", {
 
 test_that("plot ratios f1:m1", {
   plot <- bpt_plot_ratios(
-    event_data = bpt_event_data,
-    location_data = bpt_location_data,
+    event_data = event_data,
+    location_data = location_data,
     numerator = "f1",
     denominator = "m1"
   )
@@ -45,8 +45,8 @@ test_that("plot ratios f1:m1", {
 
 test_that("plot ratios calf:cow", {
   plot <- bpt_plot_ratios(
-    event_data = bpt_event_data,
-    location_data = bpt_location_data,
+    event_data = event_data,
+    location_data = location_data,
     numerator = c("m0", "f0", "u0"),
     denominator = "fa"
   )
@@ -56,8 +56,8 @@ test_that("plot ratios calf:cow", {
 
 test_that("plot ratios yearling:cow", {
   plot <- bpt_plot_ratios(
-    event_data = bpt_event_data,
-    location_data = bpt_location_data,
+    event_data = event_data,
+    location_data = location_data,
     numerator = c("m1", "f1", "u1"),
     denominator = "fa"
   )
@@ -67,8 +67,8 @@ test_that("plot ratios yearling:cow", {
 
 test_that("plot ratios calf:cow 2021-2022", {
   plot <- bpt_plot_ratios(
-    event_data = bpt_event_data,
-    location_data = bpt_location_data,
+    event_data = event_data,
+    location_data = location_data,
     numerator = c("m0", "f0", "u0"),
     denominator = "fa",
     study_years = "2021-2022"
@@ -79,8 +79,8 @@ test_that("plot ratios calf:cow 2021-2022", {
 
 test_that("plot ratios calf:cow 2019-2020", {
   plot <- bpt_plot_ratios(
-    event_data = bpt_event_data,
-    location_data = bpt_location_data,
+    event_data = event_data,
+    location_data = location_data,
     numerator = c("m0", "f0", "u0"),
     denominator = "fa",
     study_years = "2019-2020"
@@ -91,8 +91,8 @@ test_that("plot ratios calf:cow 2019-2020", {
 
 test_that("plot ratios calf:cow LOCID1", {
   plot <- bpt_plot_ratios(
-    event_data = bpt_event_data,
-    location_data = bpt_location_data,
+    event_data = event_data,
+    location_data = location_data,
     numerator = c("m0", "f0", "u0"),
     denominator = "fa",
     locations = "LOCID1"
@@ -103,8 +103,8 @@ test_that("plot ratios calf:cow LOCID1", {
 
 test_that("plot ratios calf:cow LOCID2", {
   plot <- bpt_plot_ratios(
-    event_data = bpt_event_data,
-    location_data = bpt_location_data,
+    event_data = event_data,
+    location_data = location_data,
     numerator = c("m0", "f0", "u0"),
     denominator = "fa",
     locations = "LOCID2",
@@ -116,8 +116,8 @@ test_that("plot ratios calf:cow LOCID2", {
 
 test_that("plot ratios calf:cow LOCID3 2019-2020", {
   plot <- bpt_plot_ratios(
-    event_data = bpt_event_data,
-    location_data = bpt_location_data,
+    event_data = event_data,
+    location_data = location_data,
     numerator = c("m0", "f0", "u0"),
     denominator = "fa",
     study_years = "2019-2020",
@@ -129,8 +129,8 @@ test_that("plot ratios calf:cow LOCID3 2019-2020", {
 
 test_that("plot ratios calf:cow LOCID4 2021-2022", {
   plot <- bpt_plot_ratios(
-    event_data = bpt_event_data,
-    location_data = bpt_location_data,
+    event_data = event_data,
+    location_data = location_data,
     numerator = c("m0", "f0", "u0"),
     denominator = "fa",
     study_years = "2021-2022",
@@ -143,8 +143,8 @@ test_that("plot ratios calf:cow LOCID4 2021-2022", {
 test_that("plot unknown class errors denominator", {
   expect_error(
     bpt_plot_ratios(
-      event_data = bpt_event_data,
-      location_data = bpt_location_data,
+      event_data = event_data,
+      location_data = location_data,
       numerator = c("m0", "f0", "u0"),
       denominator = "f5",
       study_years = "2021-2022"
@@ -160,8 +160,8 @@ test_that("plot unknown class errors denominator", {
 test_that("plot unknown class errors numerator", {
   expect_error(
     bpt_plot_ratios(
-      event_data = bpt_event_data,
-      location_data = bpt_location_data,
+      event_data = event_data,
+      location_data = location_data,
       numerator = "f10",
       denominator = "f1",
       study_years = "2021-2022"
@@ -177,8 +177,8 @@ test_that("plot unknown class errors numerator", {
 test_that("plot with 0 individuals in ratio", {
   expect_error(
     bpt_plot_ratios(
-      event_data = bpt_event_data,
-      location_data = bpt_location_data,
+      event_data = event_data,
+      location_data = location_data,
       numerator = "fu",
       denominator = "mu",
       study_years = "2018-2019",

@@ -12,12 +12,12 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-## code to prepare `bpt_event_data` dataset goes here
+## code to prepare `event_data` dataset goes here
 path <- system.file(
   package = "bisonpictools",
   "example-data/data-raw.xlsx"
 )
 
 sheets <- readxl::excel_sheets(path)
-bpt_event_data <- readxl::read_excel(path, 2)
-usethis::use_data(bpt_event_data, overwrite = TRUE)
+event_data <- readxl::read_excel(path, 2)
+usethis::use_data(event_data, overwrite = TRUE)
