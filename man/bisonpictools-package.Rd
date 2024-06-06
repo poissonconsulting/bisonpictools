@@ -6,7 +6,7 @@
 \alias{bisonpictools-package}
 \title{bisonpictools: Wood Bison Camera Trap Tools}
 \description{
-This package facilitates the manipulation, exploration, and analysis of Wood Bison camera trap data.
+This package facilitates the manipulation, exploration, and analysis of wood bison camera trap data.
 }
 \author{
 \strong{Maintainer}: Nicole Hill \email{nicole@poissonconsulting.ca} (\href{https://orcid.org/0000-0002-7623-2153}{ORCID})

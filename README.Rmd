@@ -10,7 +10,7 @@ output: github_document
 [![codecov](https://codecov.io/gh/poissonconsulting/bisonpictools/graph/badge.svg?token=znqSXiltZo)](https://codecov.io/gh/poissonconsulting/bisonpictools)
 <!-- badges: end -->
 
-The goal of `bisonpictools` is to facilitate the visualization and analysis of camera trap data for Wood Bison herds.
+The goal of `bisonpictools` is to facilitate the visualization and analysis of camera trap data for wood bison herds.
 The package includes functions to check the correct formatting of data, visualize the data, manipulate and analyse the data using a complex custom-built Bayesian model, and generate predictions of abundances, survival and fecundity rates, and population ratios.
 
 ## bisonpic Suite
@@ -97,6 +97,7 @@ analysis <- bpt_analyse(
 ```{r, echo = FALSE}
 analysis <- readRDS(file = system.file(package = "bisonpictools", "test-objects/analysis.RDS"))
 ```
+
 ## View model estimates
 
 Use the `bpt_coefficient_table()` function to view the model estimates.
@@ -131,6 +132,7 @@ bpt_plot_predictions(analysis, prediction = "abundance-class")
 ```
 
 The other predictions can be plotted by executing the following code:
+
 ```{r, eval = FALSE}
 # Plot total abundance
 bpt_plot_predictions(analysis, prediction = "abundance-total")
@@ -144,9 +146,16 @@ bpt_plot_predictions(analysis, prediction = "ratios")
 
 ## Information
 
-Additional information is available from the [`bisonpictools` website](https://poissonconsulting.github.io/bisonpictools/).
-The [user guide](https://poissonconsulting.github.io/bisonpictools/user-guide.html), and the ["Getting Started"](https://poissonconsulting.github.io/bisonpictools/bisonpictools.html) and ["Analytical Methods"](https://poissonconsulting.github.io/bisonpictools/bisonpicmethods.html) vignettes may be particularly useful.
+Additional information is available from the [`bisonpicsuite`](https://poissonconsulting.github.io/bisonpicsuite/) and [`bisonpictools`](https://poissonconsulting.github.io/bisonpictools/) websites, which contain the following articles:
 
+- `bisonpicsuite`
+  - ["Getting Started with bisonpicsuite"](https://poissonconsulting.github.io/bisonpicsuite/bisonpicsuite-getting-started.html)
+  - ["Bisonpic User Guide"](https://poissonconsulting.github.io/bisonpicsuite/bisonpic-user-guide.html)
+
+- `bisonpictools`
+  - ["Getting Started with bisonpictools"](https://poissonconsulting.github.io/bisonpictools/bisonpictools-getting-started.html)
+  - ["Analytical Methods"](https://poissonconsulting.github.io/bisonpictools/bisonpic-methods.html)
+  
 ## Contribution
 
 Please report any [issues](https://github.com/poissonconsulting/bisonpictools/issues).

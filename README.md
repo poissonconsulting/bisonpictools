@@ -10,7 +10,7 @@ experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](h
 <!-- badges: end -->
 
 The goal of `bisonpictools` is to facilitate the visualization and
-analysis of camera trap data for Wood Bison herds. The package includes
+analysis of camera trap data for wood bison herds. The package includes
 functions to check the correct formatting of data, visualize the data,
 manipulate and analyse the data using a complex custom-built Bayesian
 model, and generate predictions of abundances, survival and fecundity
