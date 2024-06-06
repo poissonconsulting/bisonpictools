@@ -229,14 +229,22 @@ bpt_plot_predictions(analysis, prediction = "ratios")
 
 ## Information
 
-Additional information is available from the [`bisonpictools`
-website](https://poissonconsulting.github.io/bisonpictools/). The [user
-guide](https://poissonconsulting.github.io/bisonpictools/user-guide.html),
-and the [“Getting
-Started”](https://poissonconsulting.github.io/bisonpictools/bisonpictools.html)
-and [“Analytical
-Methods”](https://poissonconsulting.github.io/bisonpictools/bisonpicmethods.html)
-vignettes may be particularly useful.
+Additional information is available from the
+[`bisonpicsuite`](https://poissonconsulting.github.io/bisonpicsuite/)
+and
+[`bisonpictools`](https://poissonconsulting.github.io/bisonpictools/)
+websites, which contain the following articles:
+
+- `bisonpicsuite`
+  - [“Getting Started with
+    bisonpicsuite”](https://poissonconsulting.github.io/bisonpicsuite/bisonpicsuite-getting-started.html)
+  - [“Bisonpic User
+    Guide”](https://poissonconsulting.github.io/bisonpicsuite/bisonpic-user-guide.html)
+- `bisonpictools`
+  - [“Getting Started with
+    bisonpictools”](https://poissonconsulting.github.io/bisonpictools/bisonpictools-getting-started.html)
+  - [“Analytical
+    Methods”](https://poissonconsulting.github.io/bisonpictools/bisonpic-methods.html)
 
 ## Contribution
 
