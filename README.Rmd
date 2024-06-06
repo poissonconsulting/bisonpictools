@@ -2,6 +2,19 @@
 output: github_document 
 ---
 
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  fig.width = 10,
+  fig.height = 8
+)
+library(bisonpictools)
+```
+
 # bisonpictools
 
 <!-- badges: start -->
@@ -34,7 +47,7 @@ remotes::install_github("poissonconsulting/bisonpictools")
 
 And to load the package into the current R session:
 
-```{r}
+```{r, eval = FALSE}
 library(bisonpictools)
 ```
 
@@ -69,7 +82,7 @@ Use the `bpt_plot_ratios()` function to visualize ratios in the classified count
 The ratio plotted is `numerator:(denominator + numerator)` to avoid infinite values.
 
 For example, the adult cow:(bull + cow) ratio plotted over all years and locations:
-``` {r, fig.dim = c(12, 8)}
+``` {r}
 library(bisonpictools)
 bpt_plot_ratios(
   event_data,
@@ -149,12 +162,12 @@ bpt_plot_predictions(analysis, prediction = "ratios")
 Additional information is available from the [`bisonpicsuite`](https://poissonconsulting.github.io/bisonpicsuite/) and [`bisonpictools`](https://poissonconsulting.github.io/bisonpictools/) websites, which contain the following articles:
 
 - `bisonpicsuite`
-  - ["Getting Started with bisonpicsuite"](https://poissonconsulting.github.io/bisonpicsuite/bisonpicsuite-getting-started.html)
-  - ["Bisonpic User Guide"](https://poissonconsulting.github.io/bisonpicsuite/bisonpic-user-guide.html)
+  - [Getting Started with bisonpicsuite](https://poissonconsulting.github.io/bisonpicsuite/bisonpicsuite-getting-started.html)
+  - [Bisonpic User Guide](https://poissonconsulting.github.io/bisonpicsuite/bisonpic-user-guide.html)
 
 - `bisonpictools`
-  - ["Getting Started with bisonpictools"](https://poissonconsulting.github.io/bisonpictools/bisonpictools-getting-started.html)
-  - ["Analytical Methods"](https://poissonconsulting.github.io/bisonpictools/bisonpic-methods.html)
+  - [Getting Started with bisonpictools](https://poissonconsulting.github.io/bisonpictools/bisonpictools-getting-started.html)
+  - [Analytical Methods](https://poissonconsulting.github.io/bisonpictools/bisonpic-methods.html)
   
 ## Contribution
 
