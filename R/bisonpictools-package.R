@@ -20,5 +20,6 @@
 #' @importFrom rlang .data
 #' @import smbr
 #' @importFrom lifecycle deprecated
+#' @import BH
 ## usethis namespace: end
 NULL
