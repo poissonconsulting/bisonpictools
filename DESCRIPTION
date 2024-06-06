@@ -14,11 +14,12 @@ Authors@R: c(
     person("Province of Alberta", role = "cph")
   )
 Description: This package facilitates the manipulation, exploration, and
-    analysis of Wood Bison camera trap data.
+    analysis of wood bison camera trap data.
 License: Apache License (>= 2)
 Depends: 
     R (>= 3.5.0)
 Imports: 
+    BH,
     chk,
     chktemplate,
     dplyr,
@@ -36,7 +37,6 @@ Imports:
     tidyr,
     units
 Suggests: 
-    BH,
     knitr,
     RcppEigen,
     readxl,
