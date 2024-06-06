@@ -13,10 +13,10 @@
 # limitations under the License.
 
 if (FALSE) {
-  location_data <- bisonpictools::bpt_location_data
-  event_data <- bisonpictools::bpt_event_data
-  census_data <- bisonpictools::bpt_census_data
-  proportion_calf_data <- bisonpictools::bpt_proportion_calf_data
+  location_data <- bisonpictools::location_data
+  event_data <- bisonpictools::event_data
+  census_data <- bisonpictools::census_data
+  proportion_calf_data <- bisonpictools::proportion_calf_data
   withr::with_seed(
     101,
     {

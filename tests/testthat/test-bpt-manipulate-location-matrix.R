@@ -35,8 +35,8 @@ test_that("errors with vector inputs", {
 test_that("errors with character latitude column", {
   expect_chk_error(
     bpt_location_matrix(
-      location_data = bpt_location_data |>
-        dplyr::mutate(latitude = letters[seq_len(nrow(bpt_location_data))])
+      location_data = location_data |>
+        dplyr::mutate(latitude = letters[seq_len(nrow(location_data))])
     ),
     regexp = paste0(
       "The following values in column 'latitude' should be a number: ",
@@ -48,8 +48,8 @@ test_that("errors with character latitude column", {
 test_that("errors with character longitude column", {
   expect_chk_error(
     bpt_location_matrix(
-      location_data = bpt_location_data |>
-        dplyr::mutate(longitude = letters[seq_len(nrow(bpt_location_data))])
+      location_data = location_data |>
+        dplyr::mutate(longitude = letters[seq_len(nrow(location_data))])
     ),
     regexp = paste0(
       "The following values in column 'longitude' should be a number: ",
@@ -60,38 +60,38 @@ test_that("errors with character longitude column", {
 
 # Outputs
 test_that("returns a matrix", {
-  x <- bpt_location_matrix(bpt_location_data)
+  x <- bpt_location_matrix(location_data)
   expect_equal(class(x), c("matrix", "array"))
 })
 
 test_that("all values in matrix greater than or equal to 0", {
-  x <- bpt_location_matrix(bpt_location_data)
+  x <- bpt_location_matrix(location_data)
   expect_true(all(x >= 0))
 })
 
 test_that("rownames match the order of locations in location_data provided", {
-  x <- bpt_location_matrix(bpt_location_data)
-  expect_true(all(rownames(x) == bpt_location_data$location_id))
+  x <- bpt_location_matrix(location_data)
+  expect_true(all(rownames(x) == location_data$location_id))
 })
 
 test_that("colnames match the order of locations in location_data provided", {
-  x <- bpt_location_matrix(bpt_location_data)
-  expect_true(all(colnames(x) == bpt_location_data$location_id))
+  x <- bpt_location_matrix(location_data)
+  expect_true(all(colnames(x) == location_data$location_id))
 })
 
 test_that("matrix is symmetric", {
-  x <- bpt_location_matrix(bpt_location_data)
+  x <- bpt_location_matrix(location_data)
   expect_true(isSymmetric(x))
 })
 
 test_that("diagonal of matrix is all 0's", {
-  x <- bpt_location_matrix(bpt_location_data)
+  x <- bpt_location_matrix(location_data)
   expect_true(all(diag(x) == 0))
 })
 
 test_that("matrix dimensions match the number of rows in location data", {
-  x <- bpt_location_matrix(bpt_location_data)
+  x <- bpt_location_matrix(location_data)
   expect_true(
-    all(dim(x) == c(nrow(bpt_location_data), nrow(bpt_location_data)))
+    all(dim(x) == c(nrow(location_data), nrow(location_data)))
   )
 })

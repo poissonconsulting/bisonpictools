@@ -23,10 +23,10 @@
 #'
 #' @examples
 #' bpt_manipulate_data_analysis(
-#'   event_data = bpt_event_data,
-#'   location_data = bpt_location_data,
-#'   census_data = bpt_census_data,
-#'   proportion_calf_data = bpt_proportion_calf_data
+#'   event_data = event_data,
+#'   location_data = location_data,
+#'   census_data = census_data,
+#'   proportion_calf_data = proportion_calf_data
 #' )
 bpt_manipulate_data_analysis <- function(
     event_data,

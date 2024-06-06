@@ -1,22 +1,25 @@
 Package: bisonpictools
-Title: Ronald Wood Bison Camera Trap Tools
+Title: Wood Bison Camera Trap Tools
 Version: 0.0.0.9000
 Authors@R: c(
     person("Nicole", "Hill", , "nicole@poissonconsulting.ca", role = c("aut", "cre"),
            comment = c(ORCID = "0000-0002-7623-2153")),
-    person("Andrea", "Kortello", , "andrea@poissonconsulting.ca", role = "ctb",
+    person("Andrea", "Kortello", , "andrea@poissonconsulting.ca", role = "aut",
            comment = c(ORCID = "0000-0001-8047-3331")),
-    person("Ayla", "Pearson", , "ayla@poissonconsulting.ca", role = "ctb",
+    person("Ayla", "Pearson", , "ayla@poissonconsulting.ca", role = "aut",
            comment = c(ORCID = "0000-0001-7388-1222")),
     person("Joe", "Thorley", , "joe@poissonconsulting.ca", role = "ctb",
            comment = c(ORCID = "0000-0002-7683-4592")),
     person("Troy", "Hegel", , "Troy.Hegel@gov.ab.ca", role = "ctb"),
     person("Province of Alberta", role = "cph")
   )
-Description: This package facilitates the manipulation, exploration, and 
-  analysis of Ronald Wood Bison camera trap data.
+Description: This package facilitates the manipulation, exploration, and
+    analysis of wood bison camera trap data.
 License: Apache License (>= 2)
+Depends: 
+    R (>= 3.5.0)
 Imports: 
+    BH,
     chk,
     chktemplate,
     dplyr,
@@ -34,7 +37,6 @@ Imports:
     tidyr,
     units
 Suggests: 
-    BH,
     knitr,
     RcppEigen,
     readxl,
@@ -43,6 +45,8 @@ Suggests:
     shinybisonpic,
     testthat (>= 3.0.0),
     withr
+VignetteBuilder: 
+    knitr
 Remotes: 
     poissonconsulting/chktemplate,
     poissonconsulting/embr,
@@ -50,11 +54,8 @@ Remotes:
     poissonconsulting/runbisonpic,
     poissonconsulting/shinybisonpic,
     poissonconsulting/smbr
-Depends: 
-    R (>= 3.5.0)
-LazyData: true
+Config/testthat/edition: 3
 Encoding: UTF-8
+LazyData: true
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.3.1
-Config/testthat/edition: 3
-VignetteBuilder: knitr

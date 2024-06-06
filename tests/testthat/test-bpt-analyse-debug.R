@@ -29,10 +29,10 @@ test_that(
                 expect_warning(
                   expect_warning(
                     analysis <- bpt_analyse(
-                      event_data = bpt_event_data,
-                      location_data = bpt_location_data,
-                      census_data = bpt_census_data,
-                      proportion_calf_data = bpt_proportion_calf_data,
+                      event_data = event_data,
+                      location_data = location_data,
+                      census_data = census_data,
+                      proportion_calf_data = proportion_calf_data,
                       nthin = 1L,
                       analysis_mode = "debug"
                     ),
@@ -57,10 +57,10 @@ test_that(
         expect_equal(
           analysis$data,
           bpt_manipulate_data_analysis(
-            bpt_event_data,
-            bpt_location_data,
-            bpt_census_data,
-            bpt_proportion_calf_data
+            event_data,
+            location_data,
+            census_data,
+            proportion_calf_data
           )$data
         )
         expect_equal(

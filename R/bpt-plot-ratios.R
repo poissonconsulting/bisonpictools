@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-#' Plot Ratios of Ronald Wood Bison Camera Events
+#' Plot Ratios of Wood Bison Camera Events
 #'
 #' Generates bubble plot of ratio of the sex-age classes supplied to `numerator`
 #' and `denominator`. The ratio is given as `numerator:(denominator +
@@ -22,6 +22,8 @@
 #' ratio.
 #'
 #' @inheritParams params
+#' @param ratio_name An alternate name for the label for the value of the ratio
+#' on the plot legend. Defaults to "Ratio".
 #'
 #' @return A `ggplot` object.
 #' @export
@@ -29,15 +31,15 @@
 #' @examples
 #' # Plot calf:(cow + calf) ratio
 #' bpt_plot_ratios(
-#'   event_data = bpt_event_data,
-#'   location_data = bpt_location_data,
+#'   event_data = event_data,
+#'   location_data = location_data,
 #'   numerator = c("f0", "m0", "u0"),
 #'   denominator = c("fa")
 #' )
 #' # Plot ratio of female:(male + female) of yearlings in 2021 at site RBLH007
 #' bpt_plot_ratios(
-#'   event_data = bpt_event_data,
-#'   location_data = bpt_location_data,
+#'   event_data = event_data,
+#'   location_data = location_data,
 #'   numerator = "f1",
 #'   denominator = "m1",
 #'   study_years = "2020-2021",
@@ -49,7 +51,8 @@ bpt_plot_ratios <- function(
     numerator,
     denominator,
     study_years = bpt_study_years(event_data),
-    locations = unique(location_data$location_id)) {
+    locations = unique(location_data$location_id),
+    ratio_name = "Ratio") {
   data <- bpt_manipulate_data_plot(
     event_data,
     location_data
@@ -66,8 +69,6 @@ bpt_plot_ratios <- function(
   study_year_start <- stringr::str_extract(study_years, "\\d{4}")
 
   seasons <- bpt_seasons_plot(study_year_start)
-
-  ratio_name <- bpt_ratio_names(numerator, denominator)
 
   data$sqrt_groupsize <- sqrt(data$groupsize)
 

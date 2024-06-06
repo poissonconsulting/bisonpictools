@@ -2,7 +2,7 @@
 % Please edit documentation in R/bpt-plot-ratios.R
 \name{bpt_plot_ratios}
 \alias{bpt_plot_ratios}
-\title{Plot Ratios of Ronald Wood Bison Camera Events}
+\title{Plot Ratios of Wood Bison Camera Events}
 \usage{
 bpt_plot_ratios(
   event_data,
@@ -10,7 +10,8 @@ bpt_plot_ratios(
   numerator,
   denominator,
   study_years = bpt_study_years(event_data),
-  locations = unique(location_data$location_id)
+  locations = unique(location_data$location_id),
+  ratio_name = "Ratio"
 )
 }
 \arguments{
@@ -27,6 +28,9 @@ denominator of the ratio.}
 \item{study_years}{A character vector of study years to include in the plot.}
 
 \item{locations}{A character vector of location_ids to include in the plot.}
+
+\item{ratio_name}{An alternate name for the label for the value of the ratio
+on the plot legend. Defaults to "Ratio".}
 }
 \value{
 A \code{ggplot} object.
@@ -40,15 +44,15 @@ ratio.
 \examples{
 # Plot calf:(cow + calf) ratio
 bpt_plot_ratios(
-  event_data = bpt_event_data,
-  location_data = bpt_location_data,
+  event_data = event_data,
+  location_data = location_data,
   numerator = c("f0", "m0", "u0"),
   denominator = c("fa")
 )
 # Plot ratio of female:(male + female) of yearlings in 2021 at site RBLH007
 bpt_plot_ratios(
-  event_data = bpt_event_data,
-  location_data = bpt_location_data,
+  event_data = event_data,
+  location_data = location_data,
   numerator = "f1",
   denominator = "m1",
   study_years = "2020-2021",

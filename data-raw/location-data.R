@@ -12,12 +12,12 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-## code to prepare `bpt_location_data` dataset goes here
+## code to prepare `location_data` dataset goes here
 path <- system.file(
   package = "bisonpictools",
   "example-data/data-raw.xlsx"
 )
 
 sheets <- readxl::excel_sheets(path)
-bpt_location_data <- readxl::read_excel(path, 1)
-usethis::use_data(bpt_location_data, overwrite = TRUE)
+location_data <- readxl::read_excel(path, 1)
+usethis::use_data(location_data, overwrite = TRUE)

@@ -21,8 +21,8 @@
 #'
 #' @examples
 #' bpt_manipulate_data_plot(
-#'   bpt_event_data,
-#'   bpt_location_data
+#'   event_data,
+#'   location_data
 #' )
 bpt_manipulate_data_plot <- function(
     event_data,

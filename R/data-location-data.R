@@ -23,4 +23,4 @@
 #'   \item{latitude}{Latitude of camera trap location}
 #'   \item{longitude}{Longitude of camera trap location}
 #' }
-"bpt_location_data"
+"location_data"

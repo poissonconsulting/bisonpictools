@@ -343,3 +343,9 @@ Key limitations of the integrated population model include:
 - A long run time; with ~500 camera trap events, the model takes approximately 5 hours to converge.
 
 ## References
+
+<div id="refs"></div>
+
+```{r, results = "asis", echo = FALSE}
+cat(bpt_licensing_md())
+```

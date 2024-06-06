@@ -12,12 +12,12 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-## code to prepare `bpt_proportion_calf_data` dataset goes here
+## code to prepare `proportion_calf_data` dataset goes here
 path <- system.file(
   package = "bisonpictools",
   "example-data/data-raw.xlsx"
 )
 
 sheets <- readxl::excel_sheets(path)
-bpt_proportion_calf_data <- readxl::read_excel(path, 4)
-usethis::use_data(bpt_proportion_calf_data, overwrite = TRUE)
+proportion_calf_data <- readxl::read_excel(path, 4)
+usethis::use_data(proportion_calf_data, overwrite = TRUE)

@@ -42,24 +42,24 @@ test_that("confirm raw data is the same as the excel file", {
   data_excel <- lapply(sheets, function(x) readxl::read_excel(path, x))
   names(data_excel) <- sheets
 
-  expect_identical(data_excel$location, bpt_location_data)
-  expect_identical(data_excel$event, bpt_event_data)
-  expect_identical(data_excel$census, bpt_census_data)
-  expect_identical(data_excel$proportion_calf, bpt_proportion_calf_data)
+  expect_identical(data_excel$location, location_data)
+  expect_identical(data_excel$event, event_data)
+  expect_identical(data_excel$census, census_data)
+  expect_identical(data_excel$proportion_calf, proportion_calf_data)
 })
 
-test_that("confirm bpt_event_data is a tibble", {
-  expect_s3_class(bpt_event_data, c("tbl_df", "tbl", "data.frame"))
+test_that("confirm event_data is a tibble", {
+  expect_s3_class(event_data, c("tbl_df", "tbl", "data.frame"))
 })
 
-test_that("confirm bpt_location_data is a tibble", {
-  expect_s3_class(bpt_location_data, c("tbl_df", "tbl", "data.frame"))
+test_that("confirm location_data is a tibble", {
+  expect_s3_class(location_data, c("tbl_df", "tbl", "data.frame"))
 })
 
-test_that("confirm bpt_census_data is a tibble", {
-  expect_s3_class(bpt_census_data, c("tbl_df", "tbl", "data.frame"))
+test_that("confirm census_data is a tibble", {
+  expect_s3_class(census_data, c("tbl_df", "tbl", "data.frame"))
 })
 
-test_that("confirm bpt_proportion_calf_data is a tibble", {
-  expect_s3_class(bpt_proportion_calf_data, c("tbl_df", "tbl", "data.frame"))
+test_that("confirm proportion_calf_data is a tibble", {
+  expect_s3_class(proportion_calf_data, c("tbl_df", "tbl", "data.frame"))
 })

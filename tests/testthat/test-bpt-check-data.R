@@ -115,7 +115,7 @@ test_that("event table only errors as complete set to TRUE", {
   )
 
   expect_error(
-    bpt_check_data(event = bpt_event_data, complete = TRUE),
+    bpt_check_data(event = event_data, complete = TRUE),
     regexp =
       "The `complete = TRUE` argument was provided but not all data sets were
         supplied. Either change `complete = FALSE` or supply all the data in the

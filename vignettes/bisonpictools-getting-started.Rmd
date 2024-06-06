@@ -33,81 +33,80 @@ knitr::opts_chunk$set(
 library(bisonpictools)
 ```
 
-`bisonpictools` is an R package to facilitate the visualization and analysis of camera trap data from the Ronald Wood Bison herd.
+`bisonpictools` is an R package to facilitate the visualization and analysis of camera trap data for wood bison herds.
 The package includes functions to check the correct formatting of data, visualize the data, manipulate and analyse the data using a complex custom-built Bayesian model, and generate and plot predictions of abundances, survival and fecundity rates, and population ratios.
 
-In order to use `bisonpictools`, you need to install R (see below).
-
 ## Installation
-
-In order to install R [@r_core_team_r_2023] the appropriate binary for the user's operating system should be downloaded from [CRAN](https://cran.r-project.org/) and then installed.
-RStudio is a helpful user interface for R, and can be downloaded [here](https://posit.co/download/rstudio-desktop/).
 
 To install the latest development version of `bisonpictools`, execute the following code in the RStudio console.
 
 ```{r, eval = FALSE}
-install.packages("pak")
-pak::pak("poissonconsulting/bisonpictools")
+install.packages("remotes")
+remotes::install_github("poissonconsulting/bisonpictools")
 ```
 
 ## bisonpic Suite
 
-`bisonpictools` is part of the **bisonpic** suite of tools. 
+`bisonpictools` is part of the bisonpic suite of tools. 
 Other packages in this suite include:
 
-- [`shinybisonpic`](https://github.com/poissonconsulting/shinybisonpic)
-- [`runbisonpic`](https://github.com/poissonconsulting/runbisonpic)
-
-`bisonpictools` provides the underlying visualization and analysis functionality; `shinybisonpic` is a web-based Shiny app to aid data visualization and exploration, and `runbisonpic` is a local-based Shiny app to analyze a complex custom Bayesian model to estimate total and sex-age class abundances, fecundity and survival rates, and various ratios of sex-age classes.
-
-```{r, echo = FALSE, out.width = '70%'}
-knitr::include_graphics("figures/bisonpic_suite.png")
-```
+- [shinybisonpic](https://github.com/poissonconsulting/shinybisonpic)
+- [runbisonpic](https://github.com/poissonconsulting/runbisonpic)
 
 ## Getting Help
 
-To get additional information on a particular function just type `?` followed by the name of the function in the R console. For example ?bpt_analyse brings up the R documentation for the `bisonpictools` analysis function.
+To get additional information on a particular function just type `?` followed by the name of the function in the R console. For example, ?bpt_analyse brings up the R documentation for the `bisonpictools` analysis function.
 
 For more information on using R the reader is referred to [R for Data Science](https://r4ds.had.co.nz/) [@wickham_r_2016].
 
-If you discover a bug in `bisonpictools` please file an issue with a reprex (reproducible example) at https://github.com/poissonconsulting/bisonpictools/issues.
+If you discover a bug in `bisonpictools` please file an [issue](https://github.com/poissonconsulting/bisonpictools/issues) with a [reprex](https://reprex.tidyverse.org/) (reproducible example).
 
 ## Data 
 
-In both the `shinybisonpic` and `runbisonpic` Shiny apps, the user can download a templated excel spreadsheet to populate the following data tables:
+The easiest way to prepare the data for use with the `bisonpictools` functions is to download the templated excel spreadsheet from the [shinybisonpic website](https://poissonconsulting.shinyapps.io/shinybisonpic-dev).
+Click the **Download Template** button, and populate each sheet with your data.
 
 - `event_data` contains the camera trap event data, including the date and time of each event, location of the camera trap, and the number of individuals in each class
 - `location_data` contains the coordinates of the camera traps
 - `census_data` contains census estimates of the population from aerial surveys, and the date of the surveys
 - `proportion_calf_data` contains estimates of the proportion of calves in the population from aerial surveys, and the date of the surveys
 
-The template contains information about what is required in each column.
-When uploaded, the data is checked to ensure correct formatting.
-We suggest downloading the template from one of the Shiny apps and populating it, to ensure the tables have the correct sheet and column names, even if the user wishes to use the RStudio console to run the data visualization and/or analysis steps.
 
 ## Data Visualization
 
-### `shinybisonpic`
+### Using the RStudio Console
 
-Use the [`shinybisonpic` Shiny app](https://poissonconsulting.shinyapps.io/shinybisonpic/) to explore the locations of camera traps and the the ratios of different classes of wood bison in camera trap observations.
-Refer to the [user guide](https://poissonconsulting.github.io/bisonpictools/user-guide.html) for more information on how to use the `shinybisonpic` app.
-
-\n
-
-If desired, functions from `bisonpictools` can be run in the RStudio console.
+Functions from `bisonpictools` can be run in the RStudio console.
 The `bpt_plot_ratios()` function plots the ratios of various sex-age classes over time.
 The user needs to provide the event and location data, as well as vectors of classes to form the numerator and denominator of the ratio.
+
+#### (1) Read in data from the populated excel template
+
+```{r, eval = FALSE}
+# Change `dir` to the file path of the populated excel template on your computer
+dir <- "myfilepath.xlsx"
+# Install readxl to read the excel spreadsheet into R
+remotes::install_github("readxl")
+# Read each sheet into R
+location_data <- readxl::read_xlsx(dir, sheet = "location")
+event_data <- readxl::read_xlsx(dir, sheet = "event")
+census_data <- readxl::read_xlsx(dir, sheet = "census")
+proportion_calf_data <- readxl::read_xlsx(dir, sheet = "proportion_calf")
+```
+
+#### (2) Produce ratio plots
+
 Data checks are completed before the analysis is run to ensure they are in the correct format. 
 Please note that the ratio plotted by `bpt_plot_ratios()` is `numerator:(denominator + numerator)` to avoid plotting infinite values.
 In the plot, each point represents an event. 
-The size of the point represents the total group size, and the colour of the point represents the value of the ratio.
+The size (area) of the point indicates the ratio while the opacity of the point indicates the number of individuals in the group.
 
 For example, the adult cow:(bull + cow) ratio plotted over all years and locations from example data:
 ``` {r, fig.dim = c(8, 6)}
 library(bisonpictools)
 bpt_plot_ratios(
-  bpt_event_data,
-  bpt_location_data,
+  event_data,
+  location_data,
   numerator = "fa",
   denominator = "ma"
 )
@@ -117,8 +116,8 @@ It is also possible to subset the data to include one or more camera trap locati
 
 ``` {r, fig.dim = c(8, 6)}
 bpt_plot_ratios(
-  bpt_event_data,
-  bpt_location_data,
+  event_data,
+  location_data,
   numerator = "fa",
   denominator = "ma",
   study_years = "2019-2020",
@@ -127,36 +126,28 @@ bpt_plot_ratios(
 ```
 
 Several age/sex classes can be combined to plot ratios of interest.
-For example, this plots the calf:(cow + calf) ratio:
+For example, the next code chunk plots the calf:(cow + calf) ratio.
+
+The label for the ratio legend can be changed from the default ("Ratio"), to more specific label, using the `ratio_name` argument. 
 
 ```{r, fig.dim = c(8, 6)}
 bpt_plot_ratios(
-  bpt_event_data,
-  bpt_location_data,
+  event_data,
+  location_data,
   numerator = c("f0", "m0", "u0"),
-  denominator = c("fa")
+  denominator = c("fa"),
+  ratio_name = "calf:(cow + calf)"
 )
 ```
 
+### `shinybisonpic`
+
+The [`shinybisonpic` Shiny app](https://poissonconsulting.shinyapps.io/shinybisonpic-dev/) can be used to explore the locations of camera traps and the the ratios of different classes of wood bison in camera trap observations in a user-friendly manner.
+Refer to the [user guide](https://poissonconsulting.github.io/bisonpicsuite/bisonpic-user-guide.html) for more information on how to use the `shinybisonpic` app.
+
 ## Data Analysis
 
-### `runbisonpic`
-
-Launch the local data analysis app by running the following lines of code in the RStudio console.
-
-```{r, eval = FALSE}
-# Install `runbisonpic`
-pak::pak("poissonconsulting/runbisonpic")
-# Launch local app
-runbisonpic::launch_runbisonpic()
-```
-
-Proceed by uploading the data into the app.
-See the [user guide](https://poissonconsulting.github.io/bisonpictools/user-guide.html) for more guidance on how to use the `runbisonpic` app.
-
 ### Using the RStudio Console
-
-If desired, the steps that occur behind the scenes in the `runbisonpic` app can be executed in an R script in RStudio, by following these steps:
 
 #### (1) Read in data from the populated excel template
 
@@ -164,7 +155,7 @@ If desired, the steps that occur behind the scenes in the `runbisonpic` app can 
 # Change `dir` to the file path of the populated excel template on your computer
 dir <- "myfilepath.xlsx"
 # Install readxl to read the excel spreadsheet into R
-pak::pak("readxl")
+remotes::install_github("readxl")
 # Read each sheet into R
 location_data <- readxl::read_xlsx(dir, sheet = "location")
 event_data <- readxl::read_xlsx(dir, sheet = "event")
@@ -342,9 +333,28 @@ bpt_plot_predictions(analysis, prediction = "fecundity")
 bpt_plot_predictions(analysis, prediction = "ratios")
 ```
 
+### `runbisonpic`
+
+Alternatively, launch the local data analysis app by running the following lines of code in the RStudio console.
+
+```{r, eval = FALSE}
+# Install `runbisonpic`
+remotes::install_github("poissonconsulting/runbisonpic")
+# Launch local app
+runbisonpic::launch_runbisonpic()
+```
+
+See the [user guide](https://poissonconsulting.github.io/bisonpicsuite/bisonpic-user-guide.html) for more guidance on how to use the `runbisonpic` app.
+
 ## Going beyond `bisonpictools`
 
 The analysis object is a list that contains the model code, mcmc samples (class `mcmcr`), and other meta-data used to fit the model.
-The user can interact directly with the mcmc samples using packages such as [`mcmcr`](https://github.com/poissonconsulting/mcmcr), [`mcmcderive`](https://github.com/poissonconsulting/mcmcderive) to derive other quantities of interest.
+The user can interact directly with the mcmc samples using packages such as [`mcmcr`](https://github.com/poissonconsulting/mcmcr) and [`mcmcderive`](https://github.com/poissonconsulting/mcmcderive) to derive other quantities of interest.
 
-### References
+## References
+
+<div id="refs"></div>
+
+```{r, results = "asis", echo = FALSE}
+cat(bpt_licensing_md())
+```

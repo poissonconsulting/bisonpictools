@@ -12,7 +12,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-#' @import chk
-#' @importFrom rlang .data
-#' @import smbr
-NULL
+release_questions <- function() {
+  c(
+    "Have you confirmed Apache 2.0 license at the top of all code files?"
+  )
+}
