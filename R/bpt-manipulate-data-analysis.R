@@ -52,8 +52,17 @@ bpt_manipulate_data_analysis <- function(
       ),
       census_study_year = dttr2::dtt_study_year(date, start = 4L),
       doy = dttr2::dtt_doy(.data$date) -
-        dttr2::dtt_doy(dttr2::dtt_date("2019-04-01")),
-      doy = dplyr::if_else(.data$doy < 0, .data$doy + 365, .data$doy),
+        dttr2::dtt_doy(dttr2::dtt_date_from_ints(.data$census_year, 4L, 1L)),
+      leap_year = as.integer(
+        dttr2::dtt_leap_year(.data$date) & 
+          (.data$date >= dttr2::dtt_date_from_ints(
+            year = .data$census_year,
+            month = 3L,
+            day = 1L
+          )
+        )
+      ),
+      doy = dplyr::if_else(.data$doy < 0, .data$doy + 366 + .data$leap_year, .data$doy),
       census_doy = base::as.integer(.data$doy),
     ) |>
     dplyr::select(
@@ -73,8 +82,17 @@ bpt_manipulate_data_analysis <- function(
       ),
       prop_calf_study_year = dttr2::dtt_study_year(date, start = 4L),
       doy = dttr2::dtt_doy(.data$date) -
-        dttr2::dtt_doy(dttr2::dtt_date("2019-04-01")),
-      doy = dplyr::if_else(.data$doy < 0, .data$doy + 365, .data$doy),
+        dttr2::dtt_doy(dttr2::dtt_date_from_ints(.data$proportion_calf_year, 4L, 1L)),
+      leap_year = as.integer(
+        dttr2::dtt_leap_year(.data$date) & 
+          (.data$date >= dttr2::dtt_date_from_ints(
+            year = .data$proportion_calf_year,
+            month = 3L,
+            day = 1L
+          )
+          )
+      ),
+      doy = dplyr::if_else(.data$doy < 0, .data$doy + 366 + .data$leap_year, .data$doy),
       prop_calf_doy = base::as.integer(.data$doy),
     ) |>
     dplyr::select(
@@ -152,7 +170,7 @@ bpt_manipulate_data_analysis <- function(
     # Remove bachelor groups
     dplyr::filter(.data$groupsize_total > (.data$m2 + .data$m3 + .data$ma)) |>
     dplyr::mutate(
-      location = factor(.data$location),
+      location = base::factor(.data$location),
       location_weekfac = base::paste(.data$location, .data$week),
       location_weekfac = base::factor(.data$location_weekfac),
       id = base::factor(seq_len(dplyr::n()))
