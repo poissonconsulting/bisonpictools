@@ -12,10 +12,10 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-#' Generate Seasons Data
+#' Generate seasons data
 #'
-#' Generates a table of the dates of different seasons relevant to Wood
-#' Bison movement patterns: calving, summer/fall, and winter. Start and end
+#' Generates a table of the dates of different seasons relevant to wood
+#' bison movement patterns: calving, summer/fall, and winter. Start and end
 #' dates of each season are based in the study year 1972-1973.
 #'
 #' @return A tibble.

@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-#' Fit Integrated Population Model
+#' Fit integrated population model
 #'
 #' Fits the integrated population model to data. Run first in "debug" mode to
 #' ensure that the model samples. Next, run in "report" mode to sample the

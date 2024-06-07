@@ -12,10 +12,10 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-#' Calculate Study Years
+#' Calculate study years
 #'
 #' Calculate the unique set of study years beginning on Apr. 1 of each year of a
-#' templated `event_data`, `census_data`, or `proportion_calf_data` tibble
+#' templated `event_data`, `census_data`, or `proportion_calf_data` tibble.
 #'
 #' @param data A tibble of templated data.
 #'

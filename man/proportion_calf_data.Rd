@@ -3,7 +3,7 @@
 \docType{data}
 \name{proportion_calf_data}
 \alias{proportion_calf_data}
-\title{Sample Data for calf proportion data}
+\title{Sample data for calf proportion data}
 \format{
 A tibble with 2 rows and 5 columns:
 \describe{
@@ -19,6 +19,6 @@ estimate) of calf proportion estimate}
 proportion_calf_data
 }
 \description{
-A data set of invented calf proportion data
+A data set of invented calf proportion data.
 }
 \keyword{datasets}

@@ -12,7 +12,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-#' Extract Coefficient Table
+#' Extract coefficient table
+#'
 #' Extracts the coefficient table from the analysis object.
 #'
 #' @inheritParams params

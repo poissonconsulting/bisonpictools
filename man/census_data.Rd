@@ -3,7 +3,7 @@
 \docType{data}
 \name{census_data}
 \alias{census_data}
-\title{Sample Data for census counts}
+\title{Sample data for census counts}
 \format{
 A tibble with 2 rows and 5 columns:
 \describe{
@@ -19,6 +19,6 @@ of census estimate}
 census_data
 }
 \description{
-A data set of invented census data
+A data set of invented census data.
 }
 \keyword{datasets}

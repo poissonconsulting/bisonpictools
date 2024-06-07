@@ -3,7 +3,7 @@
 \docType{data}
 \name{template}
 \alias{template}
-\title{Raw Template for Bison Location and Event Data}
+\title{Raw template for wood bison data}
 \format{
 \subsection{}{
 

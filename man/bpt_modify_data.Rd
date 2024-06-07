@@ -2,7 +2,7 @@
 % Please edit documentation in R/bpt-modify-data.R
 \name{bpt_modify_data}
 \alias{bpt_modify_data}
-\title{Modify data for plot}
+\title{Modify data for analysis}
 \usage{
 bpt_modify_data(
   data,
@@ -45,7 +45,8 @@ of year.}
 Data in list form with the new data added.
 }
 \description{
-Modify data for plot
+Modifies data list prepared by \code{embr::analyse()} directly before passing to
+model.
 }
 \examples{
 \dontrun{

@@ -3,7 +3,7 @@
 \docType{data}
 \name{location_data}
 \alias{location_data}
-\title{Sample Data for Camera Trap Locations}
+\title{Sample data for camera trap locations}
 \format{
 A tibble with 4 rows and 3 columns:
 \describe{
@@ -16,6 +16,6 @@ A tibble with 4 rows and 3 columns:
 location_data
 }
 \description{
-A data set of invented camera trap locations
+A data set of invented camera trap locations.
 }
 \keyword{datasets}

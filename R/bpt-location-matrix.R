@@ -12,7 +12,10 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-#' Prepare Location Distance Matrix for Analysis
+#' Prepare location distance matrix for analysis
+#'
+#' Calculates the distances (in km) between every location in the location_data
+#' table.
 #'
 #' @inheritParams params
 #'

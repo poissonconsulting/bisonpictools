@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-#' Prepare Data for Analysis
+#' Prepare data for analysis
 #'
 #' Checks that data is in the correct format and manipulates it for analysis.
 #'
@@ -54,13 +54,13 @@ bpt_manipulate_data_analysis <- function(
       doy = dttr2::dtt_doy(.data$date) -
         dttr2::dtt_doy(dttr2::dtt_date_from_ints(.data$census_year, 4L, 1L)),
       leap_year = as.integer(
-        dttr2::dtt_leap_year(.data$date) & 
+        dttr2::dtt_leap_year(.data$date) &
           (.data$date >= dttr2::dtt_date_from_ints(
             year = .data$census_year,
             month = 3L,
             day = 1L
           )
-        )
+          )
       ),
       doy = dplyr::if_else(.data$doy < 0, .data$doy + 366 + .data$leap_year, .data$doy),
       census_doy = base::as.integer(.data$doy),
@@ -84,7 +84,7 @@ bpt_manipulate_data_analysis <- function(
       doy = dttr2::dtt_doy(.data$date) -
         dttr2::dtt_doy(dttr2::dtt_date_from_ints(.data$proportion_calf_year, 4L, 1L)),
       leap_year = as.integer(
-        dttr2::dtt_leap_year(.data$date) & 
+        dttr2::dtt_leap_year(.data$date) &
           (.data$date >= dttr2::dtt_date_from_ints(
             year = .data$proportion_calf_year,
             month = 3L,

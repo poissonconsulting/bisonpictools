@@ -12,9 +12,9 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-#' Sample Data for calf proportion data
+#' Sample data for calf proportion data
 #'
-#' A data set of invented calf proportion data
+#' A data set of invented calf proportion data.
 #'
 #' @format
 #' A tibble with 2 rows and 5 columns:

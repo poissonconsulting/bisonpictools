@@ -12,7 +12,9 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-#' Manipulate Data for Plot
+#' Manipulate data for plot
+#'
+#' Checks that data is in the correct format and manipulates it for plotting.
 #'
 #' @inheritParams params
 #'

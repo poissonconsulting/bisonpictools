@@ -12,9 +12,9 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-#' Load Analysis
+#' Load analysis
 #'
-#' Loads analysis object from file path where it has been saved
+#' Loads analysis object from file path where it has been saved.
 #'
 #' @param file Path to file where analysis object is saved (excluding file
 #' extension).

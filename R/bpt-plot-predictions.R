@@ -12,9 +12,9 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-#' Plot Predictions
+#' Plot predictions
 #'
-#' Generates a plot of the specified prediction
+#' Generates a plot of the specified prediction from the analysis object.
 #'
 #' @inheritParams params
 #'

@@ -2,7 +2,7 @@
 % Please edit documentation in R/bpt-load-analysis.R
 \name{bpt_load_analysis}
 \alias{bpt_load_analysis}
-\title{Load Analysis}
+\title{Load analysis}
 \usage{
 bpt_load_analysis(file)
 }
@@ -14,7 +14,7 @@ extension).}
 An smb_analysis object.
 }
 \description{
-Loads analysis object from file path where it has been saved
+Loads analysis object from file path where it has been saved.
 }
 \examples{
 \dontrun{

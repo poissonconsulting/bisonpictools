@@ -2,7 +2,7 @@
 % Please edit documentation in R/bpt-location-matrix.R
 \name{bpt_location_matrix}
 \alias{bpt_location_matrix}
-\title{Prepare Location Distance Matrix for Analysis}
+\title{Prepare location distance matrix for analysis}
 \usage{
 bpt_location_matrix(location_data)
 }
@@ -13,7 +13,8 @@ bpt_location_matrix(location_data)
 A matrix of distances between locations in kilometers.
 }
 \description{
-Prepare Location Distance Matrix for Analysis
+Calculates the distances (in km) between every location in the location_data
+table.
 }
 \examples{
 bpt_location_matrix(location_data)

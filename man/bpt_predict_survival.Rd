@@ -2,7 +2,7 @@
 % Please edit documentation in R/bpt-predict-survival.R
 \name{bpt_predict_survival}
 \alias{bpt_predict_survival}
-\title{Predict Survival}
+\title{Predict survival}
 \usage{
 bpt_predict_survival(analysis)
 }
@@ -16,7 +16,7 @@ intervals.
 }
 \description{
 Predicts the survival rates for each class for each study
-year. Bull survival corresponds to the M2, M3, and MA classes
+year. Bull survival corresponds to the M2, M3, and MA classes.
 }
 \examples{
 \dontrun{

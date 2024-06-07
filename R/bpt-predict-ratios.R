@@ -12,10 +12,10 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-#' Predict Ratios
+#' Predict ratios
 #'
 #' Predicts the following ratios for each study year: M0:F0, M1:F1, Calf:FA,
-#' Yearling:FA, M2:FA, M3:FA, MA:FA
+#' Yearling:FA, M2:FA, M3:FA, and MA:FA.
 #'
 #' @inheritParams params
 #'

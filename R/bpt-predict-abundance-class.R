@@ -12,9 +12,9 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-#' Predict Abundance by Class
+#' Predict abundance by class
 #'
-#' Predicts abundances of each class for each study year.
+#' Predicts abundances of each sex-age class for each study year.
 #'
 #' @inheritParams params
 #'

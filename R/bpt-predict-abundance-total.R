@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-#' Predict Total Abundance
+#' Predict total abundance
 #'
 #' Predicts the total herd abundance for each study year, as the sum of the
 #' predicted abundances for each class.

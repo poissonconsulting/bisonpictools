@@ -2,7 +2,7 @@
 % Please edit documentation in R/bpt-analyse.R
 \name{bpt_analyse}
 \alias{bpt_analyse}
-\title{Fit Integrated Population Model}
+\title{Fit integrated population model}
 \usage{
 bpt_analyse(
   event_data,
