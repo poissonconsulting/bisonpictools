@@ -218,7 +218,7 @@ analysis <- bpt_analyse(
   census_data = census_data,
   proportion_calf_data = proportion_calf_data,
   nthin = 1L,
-  analysis_mode = "report"
+  analysis_mode = "debug"
 )
 ```
 
