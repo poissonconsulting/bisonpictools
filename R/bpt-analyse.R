@@ -76,6 +76,8 @@ bpt_analyse <- function(
         proportion_calf_study_year = prop_calf_data$prop_calf_study_year,
         proportion_calf_day_of_year = prop_calf_data$prop_calf_doy
       )
+      location_data <- location_data |>
+        dplyr::filter(location_id %in% data_list$data$location)
       data$location_distance <- bpt_location_matrix(location_data)
       x <- as.data.frame(data[c("location_weekfac", "location", "week")]) |>
         dplyr::distinct() |>
