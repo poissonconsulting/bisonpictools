@@ -2,7 +2,7 @@
 % Please edit documentation in R/bpt-predict-abundance-total.R
 \name{bpt_predict_abundance_total}
 \alias{bpt_predict_abundance_total}
-\title{Predict Total Abundance}
+\title{Predict total abundance}
 \usage{
 bpt_predict_abundance_total(analysis)
 }

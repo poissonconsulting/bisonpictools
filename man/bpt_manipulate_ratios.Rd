@@ -2,7 +2,7 @@
 % Please edit documentation in R/bpt-manipulate-ratios.R
 \name{bpt_manipulate_ratios}
 \alias{bpt_manipulate_ratios}
-\title{Manipulate Ratios}
+\title{Manipulate ratios}
 \usage{
 bpt_manipulate_ratios(
   data,

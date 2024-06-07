@@ -12,10 +12,10 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-#' Predict Survival
+#' Predict survival
 #'
 #' Predicts the survival rates for each class for each study
-#' year. Bull survival corresponds to the M2, M3, and MA classes
+#' year. Bull survival corresponds to the M2, M3, and MA classes.
 #'
 #' @inheritParams params
 #'

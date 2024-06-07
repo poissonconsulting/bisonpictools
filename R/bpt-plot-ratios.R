@@ -119,6 +119,7 @@ bpt_plot_ratios <- function(
       labels = function(x) format(x^2, scientific = FALSE)
     ) +
     ggplot2::guides(
+      x = ggplot2::guide_axis(angle = 45),
       fill = ggplot2::guide_legend(order = 1),
       size = ggplot2::guide_legend(show.limits = TRUE, order = 2),
       alpha = ggplot2::guide_legend(show.limits = TRUE, order = 3)

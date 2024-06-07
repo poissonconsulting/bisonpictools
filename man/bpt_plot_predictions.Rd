@@ -2,7 +2,7 @@
 % Please edit documentation in R/bpt-plot-predictions.R
 \name{bpt_plot_predictions}
 \alias{bpt_plot_predictions}
-\title{Plot Predictions}
+\title{Plot predictions}
 \usage{
 bpt_plot_predictions(analysis, prediction = "abundance-total")
 }
@@ -23,7 +23,7 @@ includes M2, M3, MA).
 A \code{ggplot2} object.
 }
 \description{
-Generates a plot of the specified prediction
+Generates a plot of the specified prediction from the analysis object.
 }
 \examples{
 \dontrun{

@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-#' Raw Template for Bison Location and Event Data
+#' Raw template for wood bison data
 #'
 #' A list containing four data frames. Each data frame describes the required
 #' format for each data set. This is the raw non human readable version of the

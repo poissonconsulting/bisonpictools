@@ -12,9 +12,9 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-#' Predict Fecundity
+#' Predict fecundity
 #'
-#' Predicts the fecundity rate and proportion of reproductive cows
+#' Predicts the fecundity rate and proportion of reproductive cows.
 #'
 #' @inheritParams params
 #'

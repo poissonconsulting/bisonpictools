@@ -2,7 +2,7 @@
 % Please edit documentation in R/bpt-manipulate-data-plot.R
 \name{bpt_manipulate_data_plot}
 \alias{bpt_manipulate_data_plot}
-\title{Manipulate Data for Plot}
+\title{Manipulate data for plot}
 \usage{
 bpt_manipulate_data_plot(event_data, location_data)
 }
@@ -15,7 +15,7 @@ bpt_manipulate_data_plot(event_data, location_data)
 A tibble of data prepared for plotting.
 }
 \description{
-Manipulate Data for Plot
+Checks that data is in the correct format and manipulates it for plotting.
 }
 \examples{
 bpt_manipulate_data_plot(

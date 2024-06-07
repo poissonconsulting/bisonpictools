@@ -12,9 +12,9 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-#' Sample Data for Camera Trap Locations
+#' Sample data for camera trap locations
 #'
-#' A data set of invented camera trap locations
+#' A data set of invented camera trap locations.
 #'
 #' @format
 #' A tibble with 4 rows and 3 columns:

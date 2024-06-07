@@ -3,7 +3,7 @@
 \docType{data}
 \name{event_data}
 \alias{event_data}
-\title{Sample Data for Camera Trap Events}
+\title{Sample data for camera trap events}
 \format{
 A tibble with 12 rows and 20 columns:
 \describe{
@@ -33,6 +33,6 @@ A tibble with 12 rows and 20 columns:
 event_data
 }
 \description{
-A data set of invented camera trap event data
+A data set of invented camera trap event data.
 }
 \keyword{datasets}

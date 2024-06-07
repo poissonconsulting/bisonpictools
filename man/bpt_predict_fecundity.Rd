@@ -2,7 +2,7 @@
 % Please edit documentation in R/bpt-predict-fecundity.R
 \name{bpt_predict_fecundity}
 \alias{bpt_predict_fecundity}
-\title{Predict Fecundity}
+\title{Predict fecundity}
 \usage{
 bpt_predict_fecundity(analysis)
 }
@@ -15,7 +15,7 @@ cows, including the median posterior value (estimate) and lower and upper
 95\% credible intervals.
 }
 \description{
-Predicts the fecundity rate and proportion of reproductive cows
+Predicts the fecundity rate and proportion of reproductive cows.
 }
 \examples{
 \dontrun{

@@ -2,7 +2,7 @@
 % Please edit documentation in R/bpt-predict-abundance-class.R
 \name{bpt_predict_abundance_class}
 \alias{bpt_predict_abundance_class}
-\title{Predict Abundance by Class}
+\title{Predict abundance by class}
 \usage{
 bpt_predict_abundance_class(analysis)
 }
@@ -15,7 +15,7 @@ the median posterior value (estimate) and lower and upper 95\% credible
 intervals.
 }
 \description{
-Predicts abundances of each class for each study year.
+Predicts abundances of each sex-age class for each study year.
 }
 \examples{
 \dontrun{

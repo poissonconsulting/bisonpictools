@@ -2,7 +2,7 @@
 % Please edit documentation in R/bpt-study-years.R
 \name{bpt_study_years}
 \alias{bpt_study_years}
-\title{Calculate Study Years}
+\title{Calculate study years}
 \usage{
 bpt_study_years(data)
 }
@@ -14,7 +14,7 @@ a character vector of unique study years
 }
 \description{
 Calculate the unique set of study years beginning on Apr. 1 of each year of a
-templated \code{event_data}, \code{census_data}, or \code{proportion_calf_data} tibble
+templated \code{event_data}, \code{census_data}, or \code{proportion_calf_data} tibble.
 }
 \examples{
 bpt_study_years(event_data)

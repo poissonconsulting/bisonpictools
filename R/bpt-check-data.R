@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-#' Data Checks based on the Template
+#' Data checks based on the template
 #'
 #' Confirms the columns types match the
 #' template, the values follow the allowed ranges of the template and tables can

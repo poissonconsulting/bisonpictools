@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-#' Fit Integrated Population Model
+#' Fit integrated population model
 #'
 #' Fits the integrated population model to data. Run first in "debug" mode to
 #' ensure that the model samples. Next, run in "report" mode to sample the
@@ -76,6 +76,8 @@ bpt_analyse <- function(
         proportion_calf_study_year = prop_calf_data$prop_calf_study_year,
         proportion_calf_day_of_year = prop_calf_data$prop_calf_doy
       )
+      location_data <- location_data |>
+        dplyr::filter(.data$location_id %in% data_list$data$location)
       data$location_distance <- bpt_location_matrix(location_data)
       x <- as.data.frame(data[c("location_weekfac", "location", "week")]) |>
         dplyr::distinct() |>

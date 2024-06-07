@@ -2,7 +2,7 @@
 % Please edit documentation in R/bpt-check-data.R
 \name{bpt_check_data}
 \alias{bpt_check_data}
-\title{Data Checks based on the Template}
+\title{Data checks based on the template}
 \usage{
 bpt_check_data(
   event = NULL,

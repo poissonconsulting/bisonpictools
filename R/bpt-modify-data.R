@@ -12,7 +12,10 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-#' Modify data for plot
+#' Modify data for analysis
+#'
+#' Modifies data list prepared by `embr::analyse()` directly before passing to
+#' model.
 #'
 #' @inheritParams params
 #' @param data Data in list form as passed through embr::analyse().

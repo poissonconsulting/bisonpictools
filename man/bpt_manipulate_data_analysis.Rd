@@ -2,7 +2,7 @@
 % Please edit documentation in R/bpt-manipulate-data-analysis.R
 \name{bpt_manipulate_data_analysis}
 \alias{bpt_manipulate_data_analysis}
-\title{Prepare Data for Analysis}
+\title{Prepare data for analysis}
 \usage{
 bpt_manipulate_data_analysis(
   event_data,

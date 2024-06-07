@@ -2,7 +2,7 @@
 % Please edit documentation in R/bpt-seasons.R
 \name{bpt_seasons}
 \alias{bpt_seasons}
-\title{Generate Seasons Data}
+\title{Generate seasons data}
 \usage{
 bpt_seasons()
 }
@@ -10,8 +10,8 @@ bpt_seasons()
 A tibble.
 }
 \description{
-Generates a table of the dates of different seasons relevant to Wood
-Bison movement patterns: calving, summer/fall, and winter. Start and end
+Generates a table of the dates of different seasons relevant to wood
+bison movement patterns: calving, summer/fall, and winter. Start and end
 dates of each season are based in the study year 1972-1973.
 }
 \examples{

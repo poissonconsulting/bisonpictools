@@ -2,8 +2,7 @@
 % Please edit documentation in R/bpt-coefficient-table.R
 \name{bpt_coefficient_table}
 \alias{bpt_coefficient_table}
-\title{Extract Coefficient Table
-Extracts the coefficient table from the analysis object.}
+\title{Extract coefficient table}
 \usage{
 bpt_coefficient_table(analysis)
 }
@@ -24,7 +23,6 @@ A tibble of coefficients with the following columns:
 }
 }
 \description{
-Extract Coefficient Table
 Extracts the coefficient table from the analysis object.
 }
 \examples{

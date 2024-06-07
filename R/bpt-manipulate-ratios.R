@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-#' Manipulate Ratios
+#' Manipulate ratios
 #'
 #' Takes output from `bpt_manipulate_data_plot()` and calculates ratio of
 #' interest for plotting. Ratio of interest is calculated as

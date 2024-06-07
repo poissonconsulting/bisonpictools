@@ -12,9 +12,9 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-#' Sample Data for census counts
+#' Sample data for census counts
 #'
-#' A data set of invented census data
+#' A data set of invented census data.
 #'
 #' @format
 #' A tibble with 2 rows and 5 columns:

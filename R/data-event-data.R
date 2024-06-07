@@ -12,9 +12,9 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-#' Sample Data for Camera Trap Events
+#' Sample data for camera trap events
 #'
-#' A data set of invented camera trap event data
+#' A data set of invented camera trap event data.
 #'
 #' @format
 #' A tibble with 12 rows and 20 columns:
