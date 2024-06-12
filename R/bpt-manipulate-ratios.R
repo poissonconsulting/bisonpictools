@@ -75,11 +75,22 @@ bpt_manipulate_ratios <- function(
     "c('fa', 'f1', f0', 'fu', 'ma', 'm3', 'm2', 'm1', 'm0', 'mu', 'ua', 'u1', ",
     "'u0', 'uu')."
   ))
-
+  
   data$numerator <- rowSums(data[, numerator])
   data$denominator <- rowSums(data[, denominator])
-  data$ratio <- data$numerator / (data$numerator + data$denominator)
-
+  # data$ratio <- data$numerator / (data$numerator + data$denominator)
+  data$ratio <- data$numerator / data$denominator
+  data$infinite_ratio <- 
+    factor(
+      dplyr::case_when(
+        is.infinite(data$ratio) ~ "100% Numerator",
+        data$ratio == 0 ~ "100% Denominator",
+        .default = "Ratio Correct"
+      ),
+    levels = c("100% Numerator", "100% Denominator", "Ratio Correct")
+  )
+  data$ratio[is.infinite(data$ratio) | data$ratio == 0] <- max(data$ratio[!is.infinite(data$ratio)])
+  
   data <-
     data |>
     dplyr::filter(
@@ -91,6 +102,6 @@ bpt_manipulate_ratios <- function(
       study_year = droplevels(.data$study_year),
       location_id = droplevels(.data$location_id)
     )
-
+  
   data
 }
