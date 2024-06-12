@@ -89,7 +89,7 @@ bpt_manipulate_ratios <- function(
       ),
     levels = c("100% Numerator", "100% Denominator", "Ratio Correct")
   )
-  data$ratio[is.infinite(data$ratio) | data$ratio == 0] <- max(data$ratio[!is.infinite(data$ratio)])
+  data$ratio[is.infinite(data$ratio)] <- max(data$ratio[!is.infinite(data$ratio)])
   
   data <-
     data |>
