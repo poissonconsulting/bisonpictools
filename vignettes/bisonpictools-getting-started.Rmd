@@ -68,7 +68,8 @@ Click the **Download Template** button, and populate each sheet with your data.
 
 - `event_data` contains the camera trap event data, including the date and time of each event, location of the camera trap, and the number of individuals in each class
 - `location_data` contains the coordinates of the camera traps
-- `census_data` contains census estimates of the population from aerial surveys, and the date of the surveys
+- `census_data` contains population estimates of the population from aerial surveys, and the date of the surveys
+  - specifically, this should be an estimate of the entire population size, not a minimum count
 - `proportion_calf_data` contains estimates of the proportion of calves in the population from aerial surveys, and the date of the surveys
 
 
