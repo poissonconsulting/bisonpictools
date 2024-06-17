@@ -57,7 +57,7 @@ bpt_plot_ratios <- function(
     event_data,
     location_data
   )
-
+  
   data <- bpt_manipulate_ratios(
     data = data,
     numerator = numerator,
@@ -65,13 +65,11 @@ bpt_plot_ratios <- function(
     study_years = study_years,
     locations = locations
   )
-
+  
   study_year_start <- stringr::str_extract(study_years, "\\d{4}")
-
   seasons <- bpt_seasons_plot(study_year_start)
-
   data$sqrt_groupsize <- sqrt(data$groupsize)
-
+  
   if (nrow(data) == 0L) {
     stop(
       paste0(
@@ -80,7 +78,7 @@ bpt_plot_ratios <- function(
       )
     )
   }
-
+  
   gp <- ggplot2::ggplot() +
     ggplot2::geom_rect(
       data = seasons,
@@ -98,11 +96,9 @@ bpt_plot_ratios <- function(
       ggplot2::aes(
         x = .data$date_time,
         y = .data$location_id,
-        size = .data$sqrt_groupsize,
-        alpha = .data$ratio,
-        colour = .data$infinite_ratio
-      ),
-      show.legend = TRUE
+        alpha = .data$sqrt_groupsize,
+        size = .data$ratio
+      )
     ) +
     ggplot2::facet_wrap(~ .data$study_year, scales = "free_x") +
     ggplot2::scale_x_datetime(
@@ -111,49 +107,39 @@ bpt_plot_ratios <- function(
       expand = c(0.02, 0)
     ) +
     ggplot2::scale_fill_discrete(type = c("#63BB42", "#F7B500", "#7D7D7D")) +
-    ggplot2::scale_alpha_continuous(
-      n.breaks = 5
-    ) +
     ggplot2::scale_size_continuous(
-      limits = c(1, sqrt(max(data$groupsize))),
-      labels = function(x) format(x^2, scientific = FALSE)
+      labels = function(breaks) {
+        labels <- -breaks / (breaks - 1)
+        labels <- round(labels, digits = 1)
+        labels[labels == -Inf] <- "Inf"
+        labels
+      }
     ) +
-    ggplot2::scale_colour_manual(
-      values = c(
-        "100% Numerator" = "#E8613C",
-        "100% Denominator" = "#3063A3",
-        "Ratio Correct" = "#000000"
-      ),
-      drop = FALSE,
-      limits = levels(data$infinite_ratio)
+    ggplot2::scale_alpha_continuous(
+      range = c(0, 1),
+      limits = c(0, sqrt(max(data$groupsize))),
+      labels = function(x) format(x^2, scientific = FALSE)
     ) +
     ggplot2::guides(
       x = ggplot2::guide_axis(angle = 45),
       fill = ggplot2::guide_legend(order = 1),
       size = ggplot2::guide_legend(show.limits = TRUE, order = 2),
-      alpha = ggplot2::guide_legend(show.limits = TRUE, order = 4),
-      colour = ggplot2::guide_legend(show.limits = TRUE, order = 3)
+      alpha = ggplot2::guide_legend(show.limits = TRUE, order = 3)
     ) +
     ggplot2::xlab("Date") +
     ggplot2::ylab("Location ID") +
-    ggplot2::labs(
-      alpha = ratio_name, 
-      size = "Group Size", 
-      fill = "Season", 
-      colour = "Ratio Limits"
-    ) +
+    ggplot2::labs(alpha = "Group Size", size = ratio_name, fill = "Season") +
     NULL
-
+  
   gp
 }
-
 
 bpt_seasons_plot <- function(study_year_start) {
   x <- dplyr::tibble(
     year = as.integer(study_year_start),
     year_diff = .data$year - 1972L
   )
-
+  
   bpt_seasons() |>
     dplyr::cross_join(x) |>
     dplyr::mutate(
@@ -180,3 +166,4 @@ bpt_seasons_plot <- function(study_year_start) {
       "season", "start_date_time", "end_date_time", "study_year"
     )
 }
+
