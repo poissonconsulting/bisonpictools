@@ -57,7 +57,7 @@ bpt_plot_ratios <- function(
     event_data,
     location_data
   )
-  
+
   data <- bpt_manipulate_ratios(
     data = data,
     numerator = numerator,
@@ -65,11 +65,11 @@ bpt_plot_ratios <- function(
     study_years = study_years,
     locations = locations
   )
-  
+
   study_year_start <- stringr::str_extract(study_years, "\\d{4}")
   seasons <- bpt_seasons_plot(study_year_start)
   data$sqrt_groupsize <- sqrt(data$groupsize)
-  
+
   if (nrow(data) == 0L) {
     stop(
       paste0(
@@ -78,7 +78,7 @@ bpt_plot_ratios <- function(
       )
     )
   }
-  
+
   gp <- ggplot2::ggplot() +
     ggplot2::geom_rect(
       data = seasons,
@@ -130,7 +130,7 @@ bpt_plot_ratios <- function(
     ggplot2::ylab("Location ID") +
     ggplot2::labs(alpha = "Group Size", size = ratio_name, fill = "Season") +
     NULL
-  
+
   gp
 }
 
@@ -139,7 +139,7 @@ bpt_seasons_plot <- function(study_year_start) {
     year = as.integer(study_year_start),
     year_diff = .data$year - 1972L
   )
-  
+
   bpt_seasons() |>
     dplyr::cross_join(x) |>
     dplyr::mutate(
@@ -166,4 +166,3 @@ bpt_seasons_plot <- function(study_year_start) {
       "season", "start_date_time", "end_date_time", "study_year"
     )
 }
-

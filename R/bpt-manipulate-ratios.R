@@ -75,11 +75,11 @@ bpt_manipulate_ratios <- function(
     "c('fa', 'f1', f0', 'fu', 'ma', 'm3', 'm2', 'm1', 'm0', 'mu', 'ua', 'u1', ",
     "'u0', 'uu')."
   ))
-  
+
   data$numerator <- rowSums(data[, numerator])
   data$denominator <- rowSums(data[, denominator])
   data$ratio <- data$numerator / (data$numerator + data$denominator)
-  
+
   data <-
     data |>
     dplyr::filter(
@@ -91,6 +91,6 @@ bpt_manipulate_ratios <- function(
       study_year = droplevels(.data$study_year),
       location_id = droplevels(.data$location_id)
     )
-  
+
   data
 }
