@@ -78,18 +78,7 @@ bpt_manipulate_ratios <- function(
   
   data$numerator <- rowSums(data[, numerator])
   data$denominator <- rowSums(data[, denominator])
-  # data$ratio <- data$numerator / (data$numerator + data$denominator)
-  data$ratio <- data$numerator / data$denominator
-  data$infinite_ratio <- 
-    factor(
-      dplyr::case_when(
-        is.infinite(data$ratio) ~ "100% Numerator",
-        data$ratio == 0 ~ "100% Denominator",
-        .default = "Ratio Correct"
-      ),
-    levels = c("100% Numerator", "100% Denominator", "Ratio Correct")
-  )
-  data$ratio[is.infinite(data$ratio)] <- max(data$ratio[!is.infinite(data$ratio)])
+  data$ratio <- data$numerator / (data$numerator + data$denominator)
   
   data <-
     data |>
