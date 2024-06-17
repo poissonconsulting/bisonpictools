@@ -15,11 +15,12 @@
 #' Plot Ratios of Wood Bison Camera Events
 #'
 #' Generates bubble plot of ratio of the sex-age classes supplied to `numerator`
-#' and `denominator`. The ratio is given as `numerator:(denominator +
-#' numerator))` to avoid infinite values when `numerator ≥ 1` and `denominator =
-#' 0`. Each point represents an event. The size of the point represents the
-#' total group size, and the colour of the point represents the value of the
-#' ratio.
+#' and `denominator`. Each point represents an event. The size of the point 
+#' represents the total group size, and the colour of the point represents the 
+#' value of the ratio. Note that a ratio value of "Inf" (infinity) indicates 
+#' that the group in a particular camera trap event has no individuals in the 
+#' denominator class. Similarly, a ratio of "0" indicates that the ratio in 
+#' a particular camera trap event has no individuals in the numerator class.
 #'
 #' @inheritParams params
 #' @param ratio_name An alternate name for the label for the value of the ratio
@@ -29,14 +30,14 @@
 #' @export
 #'
 #' @examples
-#' # Plot calf:(cow + calf) ratio
+#' # Plot calf:cow ratio
 #' bpt_plot_ratios(
 #'   event_data = event_data,
 #'   location_data = location_data,
 #'   numerator = c("f0", "m0", "u0"),
 #'   denominator = c("fa")
 #' )
-#' # Plot ratio of female:(male + female) of yearlings in 2021 at site RBLH007
+#' # Plot ratio of female:male yearling ratio in 2020-2021 at site RBLH007
 #' bpt_plot_ratios(
 #'   event_data = event_data,
 #'   location_data = location_data,

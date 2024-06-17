@@ -32,7 +32,7 @@ The original tibble, with additional columns \code{numerator},
 \description{
 Takes output from \code{bpt_manipulate_data_plot()} and calculates ratio of
 interest for plotting. Ratio of interest is calculated as
-numerator:(denominator + numerator) to avoid infinite values.
+numerator:(denominator + numerator) to avoid plotting infinite values.
 }
 \examples{
 bpt_manipulate_ratios(
