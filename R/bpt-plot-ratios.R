@@ -68,7 +68,7 @@ bpt_plot_ratios <- function(
   )
 
   study_year_start <- stringr::str_extract(study_years, "\\d{4}")
-  seasons <- bpt_seasons_plot(study_year_start)
+  seasons <- seasons_plot(study_year_start)
   data$sqrt_groupsize <- sqrt(data$groupsize)
 
   if (nrow(data) == 0L) {
@@ -109,12 +109,7 @@ bpt_plot_ratios <- function(
     ) +
     ggplot2::scale_fill_discrete(type = c("#63BB42", "#F7B500", "#7D7D7D")) +
     ggplot2::scale_size_continuous(
-      labels = function(breaks) {
-        labels <- -breaks / (breaks - 1)
-        labels <- round(labels, digits = 1)
-        labels[labels == -Inf] <- "Inf"
-        labels
-      }
+      labels = ratio_labels
     ) +
     ggplot2::scale_alpha_continuous(
       range = c(0, 1),
@@ -135,7 +130,7 @@ bpt_plot_ratios <- function(
   gp
 }
 
-bpt_seasons_plot <- function(study_year_start) {
+seasons_plot <- function(study_year_start) {
   x <- dplyr::tibble(
     year = as.integer(study_year_start),
     year_diff = .data$year - 1972L
@@ -166,4 +161,11 @@ bpt_seasons_plot <- function(study_year_start) {
     dplyr::select(
       "season", "start_date_time", "end_date_time", "study_year"
     )
+}
+
+ratio_labels <- function(breaks) {
+  labels <- -breaks / (breaks - 1)
+  labels <- round(labels, digits = 1)
+  labels[labels == -Inf] <- "Inf"
+  labels
 }

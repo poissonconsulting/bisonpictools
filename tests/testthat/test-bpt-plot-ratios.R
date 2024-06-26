@@ -190,3 +190,16 @@ test_that("plot with 0 individuals in ratio", {
     )
   )
 })
+
+test_that("seasons plot function gets seasons ", {
+  expect_snapshot(
+    seasons_plot(c("2021", "2022"))
+  )
+})
+
+test_that("label function changes to true ratio", {
+  breaks <- seq(0, 1, 0.1)
+  expect_snapshot(
+    ratio_labels(breaks)
+  )
+})
