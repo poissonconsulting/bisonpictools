@@ -108,7 +108,7 @@ test_that("plot ratios calf:cow LOCID2", {
     numerator = c("m0", "f0", "u0"),
     denominator = "fa",
     locations = "LOCID2",
-    ratio_name = "calf:(calf + cow)"
+    ratio_name = "calf:cow"
   )
   expect_s3_class(plot, "ggplot")
   expect_snapshot_plot(plot, "plot_calf_cow_LOCID2")
@@ -188,5 +188,18 @@ test_that("plot with 0 individuals in ratio", {
       "There are 0 individuals in the selection for numerator and ",
       "denominator. Ratio not plotted."
     )
+  )
+})
+
+test_that("seasons plot function gets seasons ", {
+  expect_snapshot(
+    seasons_plot(c("2021", "2022"))
+  )
+})
+
+test_that("label function changes to true ratio", {
+  breaks <- seq(0, 1, 0.1)
+  expect_snapshot(
+    ratio_labels(breaks)
   )
 })

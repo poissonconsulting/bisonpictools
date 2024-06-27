@@ -15,11 +15,12 @@
 #' Plot Ratios of Wood Bison Camera Events
 #'
 #' Generates bubble plot of ratio of the sex-age classes supplied to `numerator`
-#' and `denominator`. The ratio is given as `numerator:(denominator +
-#' numerator))` to avoid infinite values when `numerator ≥ 1` and `denominator =
-#' 0`. Each point represents an event. The size of the point represents the
-#' total group size, and the colour of the point represents the value of the
-#' ratio.
+#' and `denominator`. Each point represents an event. The size of the point 
+#' represents the total group size, and the colour of the point represents the 
+#' value of the ratio. Note that a ratio value of "Inf" (infinity) indicates 
+#' that the group in a particular camera trap event has no individuals in the 
+#' denominator class. Similarly, a ratio of "0" indicates that the ratio in 
+#' a particular camera trap event has no individuals in the numerator class.
 #'
 #' @inheritParams params
 #' @param ratio_name An alternate name for the label for the value of the ratio
@@ -29,14 +30,14 @@
 #' @export
 #'
 #' @examples
-#' # Plot calf:(cow + calf) ratio
+#' # Plot calf:cow ratio
 #' bpt_plot_ratios(
 #'   event_data = event_data,
 #'   location_data = location_data,
 #'   numerator = c("f0", "m0", "u0"),
 #'   denominator = c("fa")
 #' )
-#' # Plot ratio of female:(male + female) of yearlings in 2021 at site RBLH007
+#' # Plot ratio of female:male yearling ratio in 2020-2021 at site RBLH007
 #' bpt_plot_ratios(
 #'   event_data = event_data,
 #'   location_data = location_data,
@@ -67,9 +68,7 @@ bpt_plot_ratios <- function(
   )
 
   study_year_start <- stringr::str_extract(study_years, "\\d{4}")
-
-  seasons <- bpt_seasons_plot(study_year_start)
-
+  seasons <- seasons_plot(study_year_start)
   data$sqrt_groupsize <- sqrt(data$groupsize)
 
   if (nrow(data) == 0L) {
@@ -110,8 +109,7 @@ bpt_plot_ratios <- function(
     ) +
     ggplot2::scale_fill_discrete(type = c("#63BB42", "#F7B500", "#7D7D7D")) +
     ggplot2::scale_size_continuous(
-      breaks = (seq(0, 1, by = 0.2)),
-      limits = c(0, 1)
+      labels = ratio_labels
     ) +
     ggplot2::scale_alpha_continuous(
       range = c(0, 1),
@@ -132,8 +130,7 @@ bpt_plot_ratios <- function(
   gp
 }
 
-
-bpt_seasons_plot <- function(study_year_start) {
+seasons_plot <- function(study_year_start) {
   x <- dplyr::tibble(
     year = as.integer(study_year_start),
     year_diff = .data$year - 1972L
@@ -164,4 +161,11 @@ bpt_seasons_plot <- function(study_year_start) {
     dplyr::select(
       "season", "start_date_time", "end_date_time", "study_year"
     )
+}
+
+ratio_labels <- function(breaks) {
+  labels <- -breaks / (breaks - 1)
+  labels <- round(labels, digits = 1)
+  labels[labels == -Inf] <- "Inf"
+  labels
 }

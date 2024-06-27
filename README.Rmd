@@ -79,16 +79,15 @@ proportion_calf_data
 ## Data Visualization
 
 Use the `bpt_plot_ratios()` function to visualize ratios in the classified counts from the camera trap events over time.
-The ratio plotted is `numerator:(denominator + numerator)` to avoid infinite values.
 
-For example, the adult cow:(bull + cow) ratio plotted over all years and locations:
+For example, the calf:cow ratio plotted over all years and locations:
 ``` {r}
 library(bisonpictools)
 bpt_plot_ratios(
   event_data,
   location_data,
-  numerator = "fa",
-  denominator = "ma"
+  numerator = c("f0", "m0", "u0"),
+  denominator = "fa"
 )
 ```
 

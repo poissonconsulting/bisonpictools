@@ -16,7 +16,7 @@
 #'
 #' Takes output from `bpt_manipulate_data_plot()` and calculates ratio of
 #' interest for plotting. Ratio of interest is calculated as
-#' numerator:(denominator + numerator) to avoid infinite values.
+#' numerator:(denominator + numerator) to avoid plotting infinite values.
 #'
 #' @inheritParams params
 #' @param data A tibble of manipulated event, and location data.

@@ -179,7 +179,8 @@ bpt_analyse <- function(
     )
   )
 
-  on.exit(embr::set_analysis_mode(mode = "reset"))
+  current_mb_options <- embr::get_analysis_mode()
+  on.exit(options(current_mb_options))
   embr::set_analysis_mode(analysis_mode)
   analysis <- embr::analyse(model, data = data, nthin = nthin)
 

@@ -68,7 +68,8 @@ Click the **Download Template** button, and populate each sheet with your data.
 
 - `event_data` contains the camera trap event data, including the date and time of each event, location of the camera trap, and the number of individuals in each class
 - `location_data` contains the coordinates of the camera traps
-- `census_data` contains census estimates of the population from aerial surveys, and the date of the surveys
+- `census_data` contains population estimates of the population from aerial surveys, and the date of the surveys
+  - specifically, this should be an estimate of the entire population size, not a minimum count
 - `proportion_calf_data` contains estimates of the proportion of calves in the population from aerial surveys, and the date of the surveys
 
 
@@ -97,18 +98,23 @@ proportion_calf_data <- readxl::read_xlsx(dir, sheet = "proportion_calf")
 #### (2) Produce ratio plots
 
 Data checks are completed before the analysis is run to ensure they are in the correct format. 
-Please note that the ratio plotted by `bpt_plot_ratios()` is `numerator:(denominator + numerator)` to avoid plotting infinite values.
 In the plot, each point represents an event. 
 The size (area) of the point indicates the ratio while the opacity of the point indicates the number of individuals in the group.
 
-For example, the adult cow:(bull + cow) ratio plotted over all years and locations from example data:
+Note that a ratio value of "Inf" (infinity) indicates that the group in a particular camera trap event has no individuals in the denominator class.
+For example, if plotting the calf:cow ratio, a ratio value of "Inf" would represent an event with one or more calves and no cows.
+Similarly, a ratio of "0" indicates that the ratio in a particular camera trap event has no individuals in the numerator class.
+For the calf:cow ratio example, this would represent an event with one or more cows and no calves.
+
+
+For example, the female calf:male calf ratio plotted over all years and locations from example data:
 ``` {r, fig.dim = c(8, 6)}
 library(bisonpictools)
 bpt_plot_ratios(
   event_data,
   location_data,
-  numerator = "fa",
-  denominator = "ma"
+  numerator = "f0",
+  denominator = "m0"
 )
 ```
 
@@ -118,8 +124,8 @@ It is also possible to subset the data to include one or more camera trap locati
 bpt_plot_ratios(
   event_data,
   location_data,
-  numerator = "fa",
-  denominator = "ma",
+  numerator = "f0",
+  denominator = "m0",
   study_years = "2019-2020",
   locations = c("LOCID1", "LOCID2")
 )
@@ -136,7 +142,7 @@ bpt_plot_ratios(
   location_data,
   numerator = c("f0", "m0", "u0"),
   denominator = c("fa"),
-  ratio_name = "calf:(cow + calf)"
+  ratio_name = "calf:cow"
 )
 ```
 
