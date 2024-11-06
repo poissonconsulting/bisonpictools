@@ -21,8 +21,8 @@ rates, and population ratios.
 
 ## bisonpic Suite
 
-`bisonpictools` is one of three packages in the **bisonpic** suite of
-tools:
+`bisonpictools` is one of three packages in the [bisonpic
+suite](https://github.com/poissonconsulting/bisonpicsuite) of tools.
 
 - [`bisonpictools`](https://github.com/poissonconsulting/bisonpictools)
 - [`shinybisonpic`](https://github.com/poissonconsulting/shinybisonpic)
