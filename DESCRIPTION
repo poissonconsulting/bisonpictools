@@ -54,8 +54,6 @@ Remotes:
     poissonconsulting/chktemplate,
     poissonconsulting/embr,
     poissonconsulting/newdata,
-    poissonconsulting/runbisonpic,
-    poissonconsulting/shinybisonpic,
     poissonconsulting/smbr
 Config/testthat/edition: 3
 Encoding: UTF-8
