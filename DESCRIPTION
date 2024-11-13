@@ -44,8 +44,6 @@ Suggests:
     RcppEigen,
     readxl,
     rmarkdown,
-    runbisonpic,
-    shinybisonpic,
     testthat (>= 3.0.0),
     withr
 VignetteBuilder: 
