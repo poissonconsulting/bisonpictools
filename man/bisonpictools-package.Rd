@@ -8,6 +8,15 @@
 \description{
 This package facilitates the manipulation, exploration, and analysis of wood bison camera trap data.
 }
+\seealso{
+Useful links:
+\itemize{
+  \item \url{https://github.com/poissonconsulting/bisonpictools}
+  \item \url{https://poissonconsulting.github.io/bisonpictools/}
+  \item Report bugs at \url{https://github.com/poissonconsulting/bisonpictools/issues}
+}
+
+}
 \author{
 \strong{Maintainer}: Nicole Hill \email{nicole@poissonconsulting.ca} (\href{https://orcid.org/0000-0002-7623-2153}{ORCID})
 

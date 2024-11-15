@@ -8,7 +8,8 @@
 [![Lifecycle:
 experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
 [![R-CMD-check](https://github.com/poissonconsulting/bisonpictools/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/poissonconsulting/bisonpictools/actions/workflows/R-CMD-check.yaml)
-[![codecov](https://codecov.io/gh/poissonconsulting/bisonpictools/graph/badge.svg?token=znqSXiltZo)](https://codecov.io/gh/poissonconsulting/bisonpictools)
+[![Codecov test
+coverage](https://codecov.io/gh/poissonconsulting/bisonpictools/graph/badge.svg)](https://app.codecov.io/gh/poissonconsulting/bisonpictools)
 <!-- badges: end -->
 
 The goal of `bisonpictools` is to facilitate the visualization and
@@ -20,8 +21,8 @@ rates, and population ratios.
 
 ## bisonpic Suite
 
-`bisonpictools` is one of three packages in the **bisonpic** suite of
-tools:
+`bisonpictools` is one of three packages in the [bisonpic
+suite](https://github.com/poissonconsulting/bisonpicsuite) of tools.
 
 - [`bisonpictools`](https://github.com/poissonconsulting/bisonpictools)
 - [`shinybisonpic`](https://github.com/poissonconsulting/shinybisonpic)
