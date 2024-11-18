@@ -6,7 +6,7 @@
 \alias{bisonpictools-package}
 \title{bisonpictools: Wood Bison Camera Trap Tools}
 \description{
-This package facilitates the manipulation, exploration, and analysis of wood bison camera trap data.
+Facilitates the manipulation, exploration, and analysis of wood bison camera trap data.
 }
 \seealso{
 Useful links:
