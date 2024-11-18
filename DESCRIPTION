@@ -13,8 +13,7 @@ Authors@R: c(
     person("Troy", "Hegel", , "Troy.Hegel@gov.ab.ca", role = "ctb"),
     person("Province of Alberta", role = "cph")
   )
-Description: This package facilitates the manipulation, exploration, and
-    analysis of wood bison camera trap data.
+Description: Facilitates the manipulation, exploration, and analysis of wood bison camera trap data.
 License: Apache License (>= 2)
 URL: https://github.com/poissonconsulting/bisonpictools,
     https://poissonconsulting.github.io/bisonpictools/
@@ -44,6 +43,8 @@ Suggests:
     RcppEigen,
     readxl,
     rmarkdown,
+    runbisonpic,
+    shinybisonpic,
     testthat (>= 3.0.0),
     withr
 VignetteBuilder: 
@@ -52,9 +53,12 @@ Remotes:
     poissonconsulting/chktemplate,
     poissonconsulting/embr,
     poissonconsulting/newdata,
+    poissonconsulting/runbisonpic,
+    poissonconsulting/shinybisonpic,
     poissonconsulting/smbr
 Config/testthat/edition: 3
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.3.2
+Config/Needs/website: rmarkdown
