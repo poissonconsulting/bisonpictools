@@ -63,7 +63,7 @@ If you discover a bug in `bisonpictools` please file an [issue](https://github.c
 
 ## Data 
 
-The easiest way to prepare the data for use with the `bisonpictools` functions is to download the templated excel spreadsheet from the [shinybisonpic website](https://poissonconsulting.shinyapps.io/shinybisonpic-dev).
+The easiest way to prepare the data for use with the `bisonpictools` functions is to download the templated excel spreadsheet from the [shinybisonpic website](https://poissonconsulting.shinyapps.io/shinybisonpic/).
 Click the **Download Template** button, and populate each sheet with your data.
 
 - `event_data` contains the camera trap event data, including the date and time of each event, location of the camera trap, and the number of individuals in each class
@@ -148,7 +148,7 @@ bpt_plot_ratios(
 
 ### `shinybisonpic`
 
-The [`shinybisonpic` Shiny app](https://poissonconsulting.shinyapps.io/shinybisonpic-dev/) can be used to explore the locations of camera traps and the the ratios of different classes of wood bison in camera trap observations in a user-friendly manner.
+The [`shinybisonpic` Shiny app](https://poissonconsulting.shinyapps.io/shinybisonpic) can be used to explore the locations of camera traps and the the ratios of different classes of wood bison in camera trap observations in a user-friendly manner.
 Refer to the [user guide](https://poissonconsulting.github.io/bisonpicsuite/articles/bisonpic-user-guide.html) for more information on how to use the `shinybisonpic` app.
 
 ## Data Analysis
