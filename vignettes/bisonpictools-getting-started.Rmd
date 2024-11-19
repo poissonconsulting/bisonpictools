@@ -55,7 +55,7 @@ Other packages in this suite include:
 
 ## Getting Help
 
-To get additional information on a particular function just type `?` followed by the name of the function in the R console. For example, ?bpt_analyse brings up the R documentation for the `bisonpictools` analysis function.
+To get additional information on a particular function just type `?` followed by the name of the function in the R console. For example, `?bpt_analyse()` brings up the R documentation for the `bisonpictools` analysis function.
 
 For more information on using R the reader is referred to [R for Data Science](https://r4ds.had.co.nz/) [@wickham_r_2016].
 
@@ -149,7 +149,7 @@ bpt_plot_ratios(
 ### `shinybisonpic`
 
 The [`shinybisonpic` Shiny app](https://poissonconsulting.shinyapps.io/shinybisonpic-dev/) can be used to explore the locations of camera traps and the the ratios of different classes of wood bison in camera trap observations in a user-friendly manner.
-Refer to the [user guide](https://poissonconsulting.github.io/bisonpicsuite/bisonpic-user-guide.html) for more information on how to use the `shinybisonpic` app.
+Refer to the [user guide](https://poissonconsulting.github.io/bisonpicsuite/articles/bisonpic-user-guide.html) for more information on how to use the `shinybisonpic` app.
 
 ## Data Analysis
 
@@ -350,7 +350,7 @@ remotes::install_github("poissonconsulting/runbisonpic")
 runbisonpic::launch_runbisonpic()
 ```
 
-See the [user guide](https://poissonconsulting.github.io/bisonpicsuite/bisonpic-user-guide.html) for more guidance on how to use the `runbisonpic` app.
+See the [user guide](https://poissonconsulting.github.io/bisonpicsuite/articles/bisonpic-user-guide.html) for more guidance on how to use the `runbisonpic` app.
 
 ## Going beyond `bisonpictools`
 
