@@ -231,14 +231,14 @@ websites, which contain the following articles:
 
 - `bisonpicsuite`
   - [Getting Started with
-    bisonpicsuite](https://poissonconsulting.github.io/bisonpicsuite/bisonpicsuite-getting-started.html)
+    bisonpicsuite](https://poissonconsulting.github.io/bisonpicsuite/articles/bisonpicsuite-getting-started.html)
   - [Bisonpic User
-    Guide](https://poissonconsulting.github.io/bisonpicsuite/bisonpic-user-guide.html)
+    Guide](https://poissonconsulting.github.io/bisonpicsuite/articles/bisonpic-user-guide.html)
 - `bisonpictools`
   - [Getting Started with
-    bisonpictools](https://poissonconsulting.github.io/bisonpictools/bisonpictools-getting-started.html)
+    bisonpictools](https://poissonconsulting.github.io/bisonpictools/articles/bisonpictools-getting-started.html)
   - [Analytical
-    Methods](https://poissonconsulting.github.io/bisonpictools/bisonpic-methods.html)
+    Methods](https://poissonconsulting.github.io/bisonpictools/articles/bisonpic-methods.html)
 
 ## Contribution
 
