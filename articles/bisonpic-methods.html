@@ -558,9 +558,7 @@ abundances and proportions for the day of the study year of the
 aerial survey.</p>
 <p>The census data was incorporated using a normal distribution as
 follows,</p>
-<p><span class="math display">$$C_a \sim \text{Normal} \biggl(
-\sum_{j=1}^J \mathbf{n}_{j,a}, \sigma_{C_a} \biggr) \space T[0,
-]$$</span></p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>C</mi><mi>a</mi></msub><mo>∼</mo><mtext mathvariant="normal">Normal</mtext><mo minsize="2.4" maxsize="2.4" stretchy="false" form="prefix">(</mo><munderover><mo>∑</mo><mrow><mi>j</mi><mo>=</mo><mn>1</mn></mrow><mi>J</mi></munderover><msub><mi>𝐧</mi><mrow><mi>j</mi><mo>,</mo><mi>a</mi></mrow></msub><mo>,</mo><msub><mi>σ</mi><msub><mi>C</mi><mi>a</mi></msub></msub><mo minsize="2.4" maxsize="2.4" stretchy="false" form="postfix">)</mo><mrow><mspace width="0.333em"></mspace><mtext mathvariant="normal"> T[0, ]</mtext></mrow></mrow><annotation encoding="application/x-tex">C_a \sim \text{Normal} \biggl( \sum_{j=1}^J \mathbf{n}_{j,a}, \sigma_{C_a} \biggr) \text{ T[0, ]}</annotation></semantics></math></p>
 <p>where
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>C</mi><mi>a</mi></msub><annotation encoding="application/x-tex">C_a</annotation></semantics></math>
 is the census estimate in the
@@ -582,8 +580,7 @@ to ensure that the abundance estimates remain positive.</p>
 </h3>
 <p>The data on the proportion of calves in the herd was incorporated
 similarly,</p>
-<p><span class="math display">$$P_a \sim \text{Normal}(p_{F0,a} +
-p_{M0,a}, \sigma_{P_a}) \space T[0, 1]$$</span></p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>P</mi><mi>a</mi></msub><mo>∼</mo><mtext mathvariant="normal">Normal</mtext><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>p</mi><mrow><mi>F</mi><mn>0</mn><mo>,</mo><mi>a</mi></mrow></msub><mo>+</mo><msub><mi>p</mi><mrow><mi>M</mi><mn>0</mn><mo>,</mo><mi>a</mi></mrow></msub><mo>,</mo><msub><mi>σ</mi><msub><mi>P</mi><mi>a</mi></msub></msub><mo stretchy="true" form="postfix">)</mo></mrow><mrow><mspace width="0.333em"></mspace><mtext mathvariant="normal"> T[0, 1]</mtext></mrow></mrow><annotation encoding="application/x-tex">P_a \sim \text{Normal}(p_{F0,a} + p_{M0,a}, \sigma_{P_a}) \text{ T[0, 1]}</annotation></semantics></math></p>
 <p>where
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>P</mi><mi>a</mi></msub><annotation encoding="application/x-tex">P_a</annotation></semantics></math>
 is the proportion of calves estimate in the
@@ -608,7 +605,7 @@ to ensure that the estimates remain on the probability scale.</p>
 uses “report” mode and a thinning rate of 10 to save 500 MCMC samples
 from each of three chains (after discarding the first halves). To aid
 with debugging, other analysis modes (“debug” and “quick”) can be set
-(see the <a href="https://poissonconsulting.github.io/bisonpictools/user-guide.html">user
+(see the <a href="https://poissonconsulting.github.io/bisonpicsuite/articles/bisonpic-user-guide.html" class="external-link">user
 guide</a> for more detail). The user can increment the thinning rate as
 required to achieve convergence. The model-fitting process is automated
 in the <a href="https://github.com/poissonconsulting/runbisonpic" class="external-link"><code>runbisonpic</code></a>
