@@ -26,6 +26,9 @@ library(bisonpictools)
 The goal of `bisonpictools` is to facilitate the visualization and analysis of camera trap data for wood bison herds.
 The package includes functions to check the correct formatting of data, visualize the data, manipulate and analyse the data using a complex custom-built Bayesian model, and generate predictions of abundances, survival and fecundity rates, and population ratios.
 
+The data are analyzed using an Bayesian Integrated Population Model, which combines a stage-structured population projection matrix model with multiple sources of data into a unified framework, allowing for estimates of age-sex class ratios, population vital rates, and abundances, while maintaining the correct propagation of uncertainty.
+See the [analytical methods](https://poissonconsulting.github.io/bisonpictools/articles/bisonpic-methods.html) vignette for more detail on the modeling approach.
+
 ## bisonpic Suite
 
 `bisonpictools` is one of three packages in the [bisonpic suite](https://github.com/poissonconsulting/bisonpicsuite) of tools.
