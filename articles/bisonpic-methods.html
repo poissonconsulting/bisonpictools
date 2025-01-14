@@ -6,11 +6,15 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>Analytic Methods for Estimating Wood Bison Ratios, Survival and Fecundity Rates, and Abundance • bisonpictools</title>
-<script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<script src="../katex-auto.js"></script><script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="../deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet">
-<script src="../deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="../deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
+<script src="../deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="../deps/Roboto_Condensed-0.4.9/font.css" rel="stylesheet">
+<link href="../deps/Roboto_Mono-0.4.9/font.css" rel="stylesheet">
+<link href="../deps/Playfair_Display-0.4.9/font.css" rel="stylesheet">
+<link href="../deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
 <link href="../deps/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet">
-<script src="../deps/headroom-0.11.0/headroom.min.js"></script><script src="../deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="../deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="../deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="../deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="../deps/search-1.0.0/fuse.min.js"></script><script src="../deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Analytic Methods for Estimating Wood Bison Ratios, Survival and Fecundity Rates, and Abundance">
+<script src="../deps/headroom-0.11.0/headroom.min.js"></script><script src="../deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="../deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="../deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="../deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="../deps/search-1.0.0/fuse.min.js"></script><script src="../deps/search-1.0.0/mark.min.js"></script><link href="../deps/KaTex-0.16.10/katex.min.css" rel="stylesheet">
+<script src="../deps/KaTex-0.16.10/katex.min.js"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Analytic Methods for Estimating Wood Bison Ratios, Survival and Fecundity Rates, and Abundance">
 </head>
 <body>
     <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
@@ -76,6 +80,9 @@
 <!-- WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. -->
 <!-- See the License for the specific language governing permissions and -->
 <!-- limitations under the License. -->
+<pre><code><span><span class="co">#&gt; Registered S3 method overwritten by 'mcmcr':</span></span>
+<span><span class="co">#&gt;   method         from </span></span>
+<span><span class="co">#&gt;   as.mcmc.nlists nlist</span></span></code></pre>
 <div class="section level2">
 <h2 id="introduction-to-the-study-system">Introduction to the Study System<a class="anchor" aria-label="anchor" href="#introduction-to-the-study-system"></a>
 </h2>
@@ -91,12 +98,8 @@ Researchers are able to classify the individuals in the photographs
 captured during a camera trap “event”, here defined as a series of
 photographs of the same group of wood bison in front of the same camera,
 into classes by age and sex, as shown in Table 1. In the text to follow,
-“bull(s)” will refer to the set of
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>M</mi><mn>2</mn></mrow><annotation encoding="application/x-tex">M2</annotation></semantics></math>,
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>M</mi><mn>3</mn></mrow><annotation encoding="application/x-tex">M3</annotation></semantics></math>,
-and
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>M</mi><mi>A</mi></mrow><annotation encoding="application/x-tex">MA</annotation></semantics></math>
-individuals.</p>
+“bull(s)” will refer to the set of <span class="math inline">M2</span>,
+<span class="math inline">M3</span>, and <span class="math inline">MA</span> individuals.</p>
 <table class="table">
 <caption>Table 1. Classification of wood bison individuals from camera
 trap events.</caption>
@@ -106,59 +109,59 @@ trap events.</caption>
 </tr></thead>
 <tbody>
 <tr class="odd">
-<td align="left"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>F</mi><mn>0</mn></mrow><annotation encoding="application/x-tex">F0</annotation></semantics></math></td>
+<td align="left"><span class="math inline">F0</span></td>
 <td align="left">Female calves</td>
 </tr>
 <tr class="even">
-<td align="left"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>F</mi><mn>1</mn></mrow><annotation encoding="application/x-tex">F1</annotation></semantics></math></td>
+<td align="left"><span class="math inline">F1</span></td>
 <td align="left">Female yearlings</td>
 </tr>
 <tr class="odd">
-<td align="left"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>F</mi><mi>A</mi></mrow><annotation encoding="application/x-tex">FA</annotation></semantics></math></td>
+<td align="left"><span class="math inline">FA</span></td>
 <td align="left">Female adults (includes 2+year-olds)</td>
 </tr>
 <tr class="even">
-<td align="left"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>M</mi><mn>0</mn></mrow><annotation encoding="application/x-tex">M0</annotation></semantics></math></td>
+<td align="left"><span class="math inline">M0</span></td>
 <td align="left">Male calves</td>
 </tr>
 <tr class="odd">
-<td align="left"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>M</mi><mn>1</mn></mrow><annotation encoding="application/x-tex">M1</annotation></semantics></math></td>
+<td align="left"><span class="math inline">M1</span></td>
 <td align="left">Male yearlings</td>
 </tr>
 <tr class="even">
-<td align="left"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>M</mi><mn>2</mn></mrow><annotation encoding="application/x-tex">M2</annotation></semantics></math></td>
+<td align="left"><span class="math inline">M2</span></td>
 <td align="left">Male 2-year-olds</td>
 </tr>
 <tr class="odd">
-<td align="left"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>M</mi><mn>3</mn></mrow><annotation encoding="application/x-tex">M3</annotation></semantics></math></td>
+<td align="left"><span class="math inline">M3</span></td>
 <td align="left">Male 3-year-olds</td>
 </tr>
 <tr class="even">
-<td align="left"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>M</mi><mi>A</mi></mrow><annotation encoding="application/x-tex">MA</annotation></semantics></math></td>
+<td align="left"><span class="math inline">MA</span></td>
 <td align="left">Male 4+year-olds</td>
 </tr>
 <tr class="odd">
-<td align="left"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>U</mi><mn>0</mn></mrow><annotation encoding="application/x-tex">U0</annotation></semantics></math></td>
+<td align="left"><span class="math inline">U0</span></td>
 <td align="left">Unknown sex calves</td>
 </tr>
 <tr class="even">
-<td align="left"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>U</mi><mn>1</mn></mrow><annotation encoding="application/x-tex">U1</annotation></semantics></math></td>
+<td align="left"><span class="math inline">U1</span></td>
 <td align="left">Unknown sex yearlings</td>
 </tr>
 <tr class="odd">
-<td align="left"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>U</mi><mi>A</mi></mrow><annotation encoding="application/x-tex">UA</annotation></semantics></math></td>
+<td align="left"><span class="math inline">UA</span></td>
 <td align="left">Unknown sex adults</td>
 </tr>
 <tr class="even">
-<td align="left"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>F</mi><mi>U</mi></mrow><annotation encoding="application/x-tex">FU</annotation></semantics></math></td>
+<td align="left"><span class="math inline">FU</span></td>
 <td align="left">Unknown age females</td>
 </tr>
 <tr class="odd">
-<td align="left"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>M</mi><mi>U</mi></mrow><annotation encoding="application/x-tex">MU</annotation></semantics></math></td>
+<td align="left"><span class="math inline">MU</span></td>
 <td align="left">Unknown age males</td>
 </tr>
 <tr class="even">
-<td align="left"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>U</mi><mi>U</mi></mrow><annotation encoding="application/x-tex">UU</annotation></semantics></math></td>
+<td align="left"><span class="math inline">UU</span></td>
 <td align="left">Individuals of unknown age and sex</td>
 </tr>
 </tbody>
@@ -193,17 +196,12 @@ incrementation, and survival.</p>
 <p>In this system, there are 8 stages, corresponding to the first 8 rows
 in Table 1. The other classes in Table 1 do not represent true stages,
 rather the individuals’ sexes and/or ages are simply unknown. The
-abundances of each stage during the
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>t</mi><mrow><mi>t</mi><mi>h</mi></mrow></msup><annotation encoding="application/x-tex">t^{th}</annotation></semantics></math>
-study year can be described by a vector,
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>𝐧</mi><mi>t</mi></msub><annotation encoding="application/x-tex">\mathbf{n}_t</annotation></semantics></math>,
-which is composed of the numbers of individuals in each of the stages
-during that study year
-(<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>F</mi><msub><mn>0</mn><mi>t</mi></msub></mrow><annotation encoding="application/x-tex">F0_t</annotation></semantics></math>,
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>F</mi><msub><mn>1</mn><mi>t</mi></msub></mrow><annotation encoding="application/x-tex">F1_t</annotation></semantics></math>,
-etc.).</p>
-<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>𝐧</mi><mi>𝐭</mi></msub><mo>=</mo><mrow><mo stretchy="true" form="prefix">[</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><mi>F</mi><msub><mn>0</mn><mi>t</mi></msub></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mi>F</mi><msub><mn>1</mn><mi>t</mi></msub></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mi>F</mi><msub><mi>A</mi><mi>t</mi></msub></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mi>M</mi><msub><mn>0</mn><mi>t</mi></msub></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mi>M</mi><msub><mn>1</mn><mi>t</mi></msub></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mi>M</mi><msub><mn>2</mn><mi>t</mi></msub></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mi>M</mi><msub><mn>3</mn><mi>t</mi></msub></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mi>M</mi><msub><mi>A</mi><mi>t</mi></msub></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"></mtd></mtr></mtable><mo stretchy="true" form="postfix">]</mo></mrow></mrow><annotation encoding="application/x-tex">\mathbf{n_t} = 
-\begin{bmatrix} 
+abundances of each stage during the <span class="math inline">t^{th}</span> study year can be described by a
+vector, <span class="math inline">\mathbf{n}_t</span>, which is composed
+of the numbers of individuals in each of the stages during that study
+year (<span class="math inline">F0_t</span>, <span class="math inline">F1_t</span>, etc.).</p>
+<p><span class="math display">\mathbf{n_t} =
+\begin{bmatrix}
     F0_{t} \\
     F1_{t} \\
     FA_{t} \\
@@ -213,31 +211,27 @@ etc.).</p>
     M3_{t} \\
     MA_{t} \\
 \end{bmatrix}
-</annotation></semantics></math></p>
+</span></p>
 <p>To ease model formulation, the population projection matrix can be
 broken up into subprocess matrices <span class="citation">(Newman et al.
 2014)</span>. Each subprocess has a separate matrix: in this model, the
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>𝐁</mi><annotation encoding="application/x-tex">\mathbf{B}</annotation></semantics></math>
-matrix describes the stochastic birth process, the
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>𝐀</mi><annotation encoding="application/x-tex">\mathbf{A}</annotation></semantics></math>
-matrix describes the deterministic age incrementation process, and the
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>𝐒</mi><annotation encoding="application/x-tex">\mathbf{S}</annotation></semantics></math>
-matrix describes the stochastic survival process.</p>
+<span class="math inline">\mathbf{B}</span> matrix describes the
+stochastic birth process, the <span class="math inline">\mathbf{A}</span> matrix describes the deterministic
+age incrementation process, and the <span class="math inline">\mathbf{S}</span> matrix describes the stochastic
+survival process.</p>
 <p>To get the vector of stage-wise abundances in the next study year,
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>𝐧</mi><mrow><mi>t</mi><mo>+</mo><mn>1</mn></mrow></msub><annotation encoding="application/x-tex">\mathbf{n}_{t+1}</annotation></semantics></math>,
-we multiply the subprocess matrices together in reverse chronological
-order, and then by the vector of stage-wise abundances in the current
-study year,
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>𝐧</mi><mi>t</mi></msub><annotation encoding="application/x-tex">\mathbf{n}_{t}</annotation></semantics></math>.
-In this model, we assume that survival occurs first, then age
-incrementation, and finally births, resulting in the
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>𝐁</mi><mi>𝐀</mi><mi>𝐒</mi></mrow><annotation encoding="application/x-tex">\mathbf{BAS}</annotation></semantics></math>
+<span class="math inline">\mathbf{n}_{t+1}</span>, we multiply the
+subprocess matrices together in reverse chronological order, and then by
+the vector of stage-wise abundances in the current study year, <span class="math inline">\mathbf{n}_{t}</span>. In this model, we assume that
+survival occurs first, then age incrementation, and finally births,
+resulting in the <span class="math inline">\mathbf{BAS}</span>
 multiplication order. We also assume that the fecundity rate is fixed
 and that the survival rates vary by study year.</p>
-<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>𝐧</mi><mrow><mi>t</mi><mo>+</mo><mn>1</mn></mrow></msub><mo>=</mo><msub><mrow><mi>𝐁</mi><mi>𝐀</mi><mi>𝐒</mi></mrow><mi>t</mi></msub><msub><mi>𝐧</mi><mi>t</mi></msub></mrow><annotation encoding="application/x-tex">\mathbf{n}_{t+1} = \mathbf{BAS}_{t}\mathbf{n}_{t}</annotation></semantics></math></p>
+<p><span class="math display">\mathbf{n}_{t+1} =
+\mathbf{BAS}_{t}\mathbf{n}_{t}</span></p>
 <p>With the full population abundance vectors and subprocess matrices,
 we arrive at the following:</p>
-<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mtable><mtr><mtd columnalign="right" style="text-align: right"><mrow><mo stretchy="true" form="prefix">[</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><mi>F</mi><msub><mn>0</mn><mrow><mi>t</mi><mo>+</mo><mn>1</mn></mrow></msub></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mi>F</mi><msub><mn>1</mn><mrow><mi>t</mi><mo>+</mo><mn>1</mn></mrow></msub></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mi>F</mi><msub><mi>A</mi><mrow><mi>t</mi><mo>+</mo><mn>1</mn></mrow></msub></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mi>M</mi><msub><mn>0</mn><mrow><mi>t</mi><mo>+</mo><mn>1</mn></mrow></msub></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mi>M</mi><msub><mn>1</mn><mrow><mi>t</mi><mo>+</mo><mn>1</mn></mrow></msub></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mi>M</mi><msub><mn>2</mn><mrow><mi>t</mi><mo>+</mo><mn>1</mn></mrow></msub></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mi>M</mi><msub><mn>3</mn><mrow><mi>t</mi><mo>+</mo><mn>1</mn></mrow></msub></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mi>M</mi><msub><mi>A</mi><mrow><mi>t</mi><mo>+</mo><mn>1</mn></mrow></msub></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"></mtd></mtr></mtable><mo stretchy="true" form="postfix">]</mo></mrow><mo>=</mo></mtd><mtd columnalign="left" style="text-align: left"><mrow><mo stretchy="true" form="prefix">[</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mfrac><mrow><mi>f</mi><msub><mi>p</mi><mi>f</mi></msub></mrow><mn>2</mn></mfrac></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>1</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>1</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mfrac><mrow><mi>f</mi><msub><mi>p</mi><mi>f</mi></msub></mrow><mn>2</mn></mfrac></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>1</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>1</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>1</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>1</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"></mtd></mtr></mtable><mo stretchy="true" form="postfix">]</mo></mrow><mo>×</mo><mrow><mo stretchy="true" form="prefix">[</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mn>1</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>1</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>1</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>1</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>1</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>1</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>1</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>1</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"></mtd></mtr></mtable><mo stretchy="true" form="postfix">]</mo></mrow><mo>×</mo></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right"></mtd><mtd columnalign="left" style="text-align: left"><mrow><mo stretchy="true" form="prefix">[</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><msub><mi>ϕ</mi><mrow><mi>F</mi><msub><mn>0</mn><mi>t</mi></msub></mrow></msub></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><msub><mi>ϕ</mi><mrow><mi>F</mi><msub><mn>1</mn><mi>t</mi></msub></mrow></msub></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><msub><mi>ϕ</mi><mrow><mi>F</mi><msub><mi>A</mi><mi>t</mi></msub></mrow></msub></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><msub><mi>ϕ</mi><mrow><mi>M</mi><msub><mn>0</mn><mi>t</mi></msub></mrow></msub></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><msub><mi>ϕ</mi><mrow><mi>M</mi><msub><mn>1</mn><mi>t</mi></msub></mrow></msub></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><msub><mi>ϕ</mi><mrow><mi>B</mi><mi>u</mi><mi>l</mi><msub><mi>l</mi><mi>t</mi></msub></mrow></msub></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><msub><mi>ϕ</mi><mrow><mi>B</mi><mi>u</mi><mi>l</mi><msub><mi>l</mi><mi>t</mi></msub></mrow></msub></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><msub><mi>ϕ</mi><mrow><mi>B</mi><mi>u</mi><mi>l</mi><msub><mi>l</mi><mi>t</mi></msub></mrow></msub></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"></mtd></mtr></mtable><mo stretchy="true" form="postfix">]</mo></mrow><mo>×</mo><mrow><mo stretchy="true" form="prefix">[</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><mi>F</mi><msub><mn>0</mn><mi>t</mi></msub></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mi>F</mi><msub><mn>1</mn><mi>t</mi></msub></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mi>F</mi><msub><mi>A</mi><mi>t</mi></msub></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mi>M</mi><msub><mn>0</mn><mi>t</mi></msub></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mi>M</mi><msub><mn>1</mn><mi>t</mi></msub></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mi>M</mi><msub><mn>2</mn><mi>t</mi></msub></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mi>M</mi><msub><mn>3</mn><mi>t</mi></msub></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mi>M</mi><msub><mi>A</mi><mi>t</mi></msub></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"></mtd></mtr></mtable><mo stretchy="true" form="postfix">]</mo></mrow></mtd></mtr></mtable><annotation encoding="application/x-tex">
+<p><span class="math display">
 \begin{split}
 \begin{bmatrix}
     F0_{t+1} \\
@@ -249,18 +243,20 @@ we arrive at the following:</p>
     M3_{t+1} \\
     MA_{t+1} \\
 \end{bmatrix}
-= 
+=
 &amp;
 \begin{bmatrix}
-    0 &amp; 0 &amp; \frac{fp_f}{2} &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\
+    0 &amp; 0 &amp; \frac{fp_f}{2} &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp;
+0 \\
     0 &amp; 1 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\
     0 &amp; 0 &amp; 1 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\
-    0 &amp; 0 &amp; \frac{fp_f}{2} &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\
+    0 &amp; 0 &amp; \frac{fp_f}{2} &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp;
+0 \\
     0 &amp; 0 &amp; 0 &amp; 0 &amp; 1 &amp; 0 &amp; 0 &amp; 0 \\
     0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 1 &amp; 0 &amp; 0 \\
     0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 1 &amp; 0 \\
     0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 1 \\
-\end{bmatrix} 
+\end{bmatrix}
 \times
 \begin{bmatrix}
     0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\
@@ -271,20 +267,27 @@ we arrive at the following:</p>
     0 &amp; 0 &amp; 0 &amp; 0 &amp; 1 &amp; 0 &amp; 0 &amp; 0 \\
     0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 1 &amp; 0 &amp; 0 \\
     0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 1 &amp; 1 \\
-\end{bmatrix} 
+\end{bmatrix}
 \times
-\\ 
+\\
 &amp;
 \begin{bmatrix}
     \phi_{F0_t}&amp;0&amp;0&amp;0&amp;0&amp;0&amp;0&amp;0 \\
-    0 &amp; \phi_{F1_t} &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\
-    0 &amp; 0 &amp; \phi_{FA_t} &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\
-    0 &amp; 0 &amp; 0 &amp; \phi_{M0_t} &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\
-    0 &amp; 0 &amp; 0 &amp; 0 &amp; \phi_{M1_t} &amp; 0 &amp; 0 &amp; 0 \\
-    0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; \phi_{Bull_t} &amp; 0 &amp; 0 \\
-    0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; \phi_{Bull_t} &amp; 0 \\
-    0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; \phi_{Bull_t} \\
-\end{bmatrix} 
+    0 &amp; \phi_{F1_t} &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0
+\\
+    0 &amp; 0 &amp; \phi_{FA_t} &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0
+\\
+    0 &amp; 0 &amp; 0 &amp; \phi_{M0_t} &amp; 0 &amp; 0 &amp; 0 &amp; 0
+\\
+    0 &amp; 0 &amp; 0 &amp; 0 &amp; \phi_{M1_t} &amp; 0 &amp; 0 &amp; 0
+\\
+    0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; \phi_{Bull_t} &amp; 0 &amp;
+0 \\
+    0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; \phi_{Bull_t} &amp;
+0 \\
+    0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp;
+\phi_{Bull_t} \\
+\end{bmatrix}
 \times
 \begin{bmatrix}
     F0_{t} \\
@@ -297,28 +300,16 @@ we arrive at the following:</p>
     MA_{t} \\
 \end{bmatrix}
 \end{split}
-</annotation></semantics></math></p>
-<p>where
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>f</mi><annotation encoding="application/x-tex">f</annotation></semantics></math>
-represents the fecundity rate,
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>p</mi><mi>f</mi></msub><annotation encoding="application/x-tex">p_f</annotation></semantics></math>
-represents the proportion of fecund
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>F</mi><mi>A</mi></mrow><annotation encoding="application/x-tex">FA</annotation></semantics></math>
-individuals, and each of the
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>ϕ</mi><mi>t</mi></msub><annotation encoding="application/x-tex">\phi_t</annotation></semantics></math>
-terms represent the annual survival rate of their respective stage.
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>M</mi><mn>2</mn></mrow><annotation encoding="application/x-tex">M2</annotation></semantics></math>s,
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>M</mi><mn>3</mn></mrow><annotation encoding="application/x-tex">M3</annotation></semantics></math>s,
-and
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>M</mi><mi>A</mi></mrow><annotation encoding="application/x-tex">MA</annotation></semantics></math>s
-all share a survival rate,
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>ϕ</mi><mrow><mi>B</mi><mi>u</mi><mi>l</mi><mi>l</mi></mrow></msub><annotation encoding="application/x-tex">\phi_{Bull}</annotation></semantics></math>.
-The
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>𝐧</mi><mi>t</mi></msub><annotation encoding="application/x-tex">\mathbf{n}_t</annotation></semantics></math>
-stage-wise abundance vectors represent the <em>expected</em> number of
-individuals in each stage in the
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>t</mi><mrow><mi>t</mi><mi>h</mi></mrow></msup><annotation encoding="application/x-tex">t^{th}</annotation></semantics></math>
-study year.</p>
+</span></p>
+<p>where <span class="math inline">f</span> represents the fecundity
+rate, <span class="math inline">p_f</span> represents the proportion of
+fecund <span class="math inline">FA</span> individuals, and each of the
+<span class="math inline">\phi_t</span> terms represent the annual
+survival rate of their respective stage. <span class="math inline">M2</span>s, <span class="math inline">M3</span>s,
+and <span class="math inline">MA</span>s all share a survival rate,
+<span class="math inline">\phi_{Bull}</span>. The <span class="math inline">\mathbf{n}_t</span> stage-wise abundance vectors
+represent the <em>expected</em> number of individuals in each stage in
+the <span class="math inline">t^{th}</span> study year.</p>
 <p>Diffuse priors were used to provide the model with stage-wise
 abundances in the initial study year as a starting point. From there,
 the population projection matrix was used to update the stage-wise
@@ -332,71 +323,50 @@ values on April 1. To ensure the correct abundances and proportions were
 used to model this continuous data, the expected abundances and
 proportions were calculated for the day of the study year of each camera
 trap event. This involved using an exponential relationship between the
-expected annual survival rate for the
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>j</mi><mrow><mi>t</mi><mi>h</mi></mrow></msup><annotation encoding="application/x-tex">j^{th}</annotation></semantics></math>
-class,
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>ϕ</mi><mrow><mi>j</mi><mo>,</mo><mi>t</mi></mrow></msub><annotation encoding="application/x-tex">\phi_{j,t}</annotation></semantics></math>,
-and the day of the study year of the
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>i</mi><mrow><mi>t</mi><mi>h</mi></mrow></msup><annotation encoding="application/x-tex">i^{th}</annotation></semantics></math>
-camera trap event,
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>d</mi><mi>i</mi></msub><annotation encoding="application/x-tex">d_i</annotation></semantics></math>,
-to calculate the expected survival rates for the
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>j</mi><mrow><mi>t</mi><mi>h</mi></mrow></msup><annotation encoding="application/x-tex">j^{th}</annotation></semantics></math>
-class on day of the
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>i</mi><mrow><mi>t</mi><mi>h</mi></mrow></msup><annotation encoding="application/x-tex">i^{th}</annotation></semantics></math>
-event,
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>ϕ</mi><mrow><mi>i</mi><mo>,</mo><mi>j</mi></mrow></msub><annotation encoding="application/x-tex">\phi_{i,j}</annotation></semantics></math>:</p>
-<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>ϕ</mi><mrow><mi>j</mi><mo>,</mo><mi>i</mi></mrow></msub><mo>=</mo><msup><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>ϕ</mi><mrow><mi>j</mi><mo>,</mo><mi>t</mi></mrow></msub><mo stretchy="true" form="postfix">)</mo></mrow><mfrac><msub><mi>d</mi><mi>i</mi></msub><mn>365.25</mn></mfrac></msup></mrow><annotation encoding="application/x-tex">\phi_{j,i} = (\phi_{j,t})^\frac{d_i}{365.25}</annotation></semantics></math></p>
+expected annual survival rate for the <span class="math inline">j^{th}</span> class, <span class="math inline">\phi_{j,t}</span>, and the day of the study year of
+the <span class="math inline">i^{th}</span> camera trap event, <span class="math inline">d_i</span>, to calculate the expected survival rates
+for the <span class="math inline">j^{th}</span> class on day of the
+<span class="math inline">i^{th}</span> event, <span class="math inline">\phi_{i,j}</span>:</p>
+<p><span class="math display">\phi_{j,i} =
+(\phi_{j,t})^\frac{d_i}{365.25}</span></p>
 <p>These survival rates were used to update the abundances for each
 camera trap event using a calculation similar to the projection matrix
 above:</p>
-<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>𝐧</mi><mi>𝐢</mi></msub><mo>=</mo><mrow><msub><mi>𝐒</mi><mi>𝐢</mi></msub><msub><mi>𝐧</mi><mi>𝐭</mi></msub></mrow></mrow><annotation encoding="application/x-tex">\mathbf{n_i} = \mathbf{S_in_t}</annotation></semantics></math></p>
-<p>where
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>𝐧</mi><mi>t</mi></msub><annotation encoding="application/x-tex">\mathbf{n}_t</annotation></semantics></math>
-is the stage-wise abundance vector in the study year of the
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>i</mi><mrow><mi>t</mi><mi>h</mi></mrow></msup><annotation encoding="application/x-tex">i^{th}</annotation></semantics></math>
-camera trap event, and
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>𝐒</mi><mi>𝐢</mi></msub><annotation encoding="application/x-tex">\mathbf{S_i}</annotation></semantics></math>
-is the survival matrix with the updated survival rates:</p>
-<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>𝐒</mi><mi>𝐢</mi></msub><mo>=</mo><mrow><mo stretchy="true" form="prefix">[</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><msub><mi>ϕ</mi><mrow><mi>F</mi><msub><mn>0</mn><mi>i</mi></msub></mrow></msub></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><msub><mi>ϕ</mi><mrow><mi>F</mi><msub><mn>1</mn><mi>i</mi></msub></mrow></msub></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><msub><mi>ϕ</mi><mrow><mi>F</mi><msub><mi>A</mi><mi>i</mi></msub></mrow></msub></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><msub><mi>ϕ</mi><mrow><mi>M</mi><msub><mn>0</mn><mi>i</mi></msub></mrow></msub></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><msub><mi>ϕ</mi><mrow><mi>M</mi><msub><mn>1</mn><mi>i</mi></msub></mrow></msub></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><msub><mi>ϕ</mi><mrow><mi>B</mi><mi>u</mi><mi>l</mi><msub><mi>l</mi><mi>i</mi></msub></mrow></msub></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><msub><mi>ϕ</mi><mrow><mi>B</mi><mi>u</mi><mi>l</mi><msub><mi>l</mi><mi>i</mi></msub></mrow></msub></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><msub><mi>ϕ</mi><mrow><mi>B</mi><mi>u</mi><mi>l</mi><msub><mi>l</mi><mi>i</mi></msub></mrow></msub></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"></mtd></mtr></mtable><mo stretchy="true" form="postfix">]</mo></mrow></mrow><annotation encoding="application/x-tex">
+<p><span class="math display">\mathbf{n_i} = \mathbf{S_in_t}</span></p>
+<p>where <span class="math inline">\mathbf{n}_t</span> is the stage-wise
+abundance vector in the study year of the <span class="math inline">i^{th}</span> camera trap event, and <span class="math inline">\mathbf{S_i}</span> is the survival matrix with the
+updated survival rates:</p>
+<p><span class="math display">
 \mathbf{S_i} =
 \begin{bmatrix}
    \phi_{F0_i}&amp;0&amp;0&amp;0&amp;0&amp;0&amp;0&amp;0 \\
-   0 &amp; \phi_{F1_i} &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\
-   0 &amp; 0 &amp; \phi_{FA_i} &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\
-   0 &amp; 0 &amp; 0 &amp; \phi_{M0_i} &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\
-   0 &amp; 0 &amp; 0 &amp; 0 &amp; \phi_{M1_i} &amp; 0 &amp; 0 &amp; 0 \\
-   0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; \phi_{Bull_i} &amp; 0 &amp; 0 \\
-   0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; \phi_{Bull_i} &amp; 0 \\
-   0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; \phi_{Bull_i} \\
-\end{bmatrix} 
-</annotation></semantics></math></p>
-<p>By dividing the expected abundance of the
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>j</mi><mrow><mi>t</mi><mi>h</mi></mrow></msup><annotation encoding="application/x-tex">j^{th}</annotation></semantics></math>
-stage on the date of the
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>i</mi><mrow><mi>t</mi><mi>h</mi></mrow></msup><annotation encoding="application/x-tex">i^{th}</annotation></semantics></math>
-camera trap event,
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>𝐧</mi><mrow><mi>j</mi><mo>,</mo><mi>i</mi></mrow></msub><annotation encoding="application/x-tex">\mathbf{n}_{j,i}</annotation></semantics></math>
-by the total expected abundance on the day of the
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>i</mi><mrow><mi>t</mi><mi>h</mi></mrow></msup><annotation encoding="application/x-tex">i^{th}</annotation></semantics></math>
+   0 &amp; \phi_{F1_i} &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0
+\\
+   0 &amp; 0 &amp; \phi_{FA_i} &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0
+\\
+   0 &amp; 0 &amp; 0 &amp; \phi_{M0_i} &amp; 0 &amp; 0 &amp; 0 &amp; 0
+\\
+   0 &amp; 0 &amp; 0 &amp; 0 &amp; \phi_{M1_i} &amp; 0 &amp; 0 &amp; 0
+\\
+   0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; \phi_{Bull_i} &amp; 0 &amp; 0
+\\
+   0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; \phi_{Bull_i} &amp; 0
+\\
+   0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; \phi_{Bull_i}
+\\
+\end{bmatrix}
+</span></p>
+<p>By dividing the expected abundance of the <span class="math inline">j^{th}</span> stage on the date of the <span class="math inline">i^{th}</span> camera trap event, <span class="math inline">\mathbf{n}_{j,i}</span> by the total expected
+abundance on the day of the <span class="math inline">i^{th}</span>
 event (i.e., the sum of the stage-wise abundances), we can derive the
 expected proportion of individuals in each stage on that day. The
-proportion of the population represented by the
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>j</mi><mrow><mi>t</mi><mi>h</mi></mrow></msup><annotation encoding="application/x-tex">j^{th}</annotation></semantics></math>
-stage during the
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>i</mi><mrow><mi>t</mi><mi>h</mi></mrow></msup><annotation encoding="application/x-tex">i^{th}</annotation></semantics></math>
-event,
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>p</mi><mrow><mi>j</mi><mo>,</mo><mi>i</mi></mrow></msub><annotation encoding="application/x-tex">p_{j,i}</annotation></semantics></math>
-is:</p>
-<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>p</mi><mrow><mi>j</mi><mo>,</mo><mi>i</mi></mrow></msub><mo>=</mo><mfrac><msub><mi>𝐧</mi><mrow><mi>j</mi><mo>,</mo><mi>i</mi></mrow></msub><mrow><munderover><mo>∑</mo><mrow><mi>j</mi><mo>=</mo><mn>1</mn></mrow><mi>J</mi></munderover><msub><mi>𝐧</mi><mrow><mi>j</mi><mo>,</mo><mi>i</mi></mrow></msub></mrow></mfrac></mrow><annotation encoding="application/x-tex">p_{j,i} = \frac{\mathbf{n}_{j,i}}{\sum_{j = 1}^J \mathbf{n}_{j,i}}</annotation></semantics></math></p>
-<p>where
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>J</mi><annotation encoding="application/x-tex">J</annotation></semantics></math>
-is the total number of stages (8). The vector of these proportions,
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>𝐩</mi><mi>i</mi></msub><annotation encoding="application/x-tex">\mathbf{p}_i</annotation></semantics></math>,
-will be used to model the data from camera trap events and the estimated
-proportion of calves from aerial surveys. By rule, each vector of
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>𝐩</mi><mi>i</mi></msub><annotation encoding="application/x-tex">\mathbf{p}_i</annotation></semantics></math>
-values sums to 1.</p>
+proportion of the population represented by the <span class="math inline">j^{th}</span> stage during the <span class="math inline">i^{th}</span> event, <span class="math inline">p_{j,i}</span> is:</p>
+<p><span class="math display">p_{j,i} = \frac{\mathbf{n}_{j,i}}{\sum_{j
+= 1}^J \mathbf{n}_{j,i}}</span></p>
+<p>where <span class="math inline">J</span> is the total number of
+stages (8). The vector of these proportions, <span class="math inline">\mathbf{p}_i</span>, will be used to model the data
+from camera trap events and the estimated proportion of calves from
+aerial surveys. By rule, each vector of <span class="math inline">\mathbf{p}_i</span> values sums to 1.</p>
 </div>
 <div class="section level3">
 <h3 id="camera-trap-event-data">Camera Trap Event Data<a class="anchor" aria-label="anchor" href="#camera-trap-event-data"></a>
@@ -412,102 +382,58 @@ excluded from the analysis to avoid bias associated with uncertainty in
 the transition period during which the calves start being classified as
 yearlings, and because the herd migrates northward during the calving
 season, away from the set of camera traps. To ensure that the survival
-rates of the calves,
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>ϕ</mi><mrow><mi>F</mi><mn>0</mn></mrow></msub><annotation encoding="application/x-tex">\phi_{F0}</annotation></semantics></math>
-and
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>ϕ</mi><mrow><mi>M</mi><mn>0</mn></mrow></msub><annotation encoding="application/x-tex">\phi_{M0}</annotation></semantics></math>,
-represent the true annual survival rates, an additional probability of
-initial mortality of calves was incorporated. This allows the calves to
-undergo higher mortality when first born compared to the rest of the
-study year, which is more biologically realistic.</p>
-<p><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>M</mi><mi>A</mi></mrow><annotation encoding="application/x-tex">MA</annotation></semantics></math>
-individuals are known to go off on their own or form small bachelor
-groups <span class="citation">(Komers, Messier, and Gates 1992)</span>.
-This was accounted for in the model by assuming that only a proportion
-of
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>M</mi><mi>A</mi></mrow><annotation encoding="application/x-tex">MA</annotation></semantics></math>s
-are present in the mixed groups, and that this proportion varies
-seasonally. This proportion will be denoted by
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>r</mi><mi>s</mi></msub><annotation encoding="application/x-tex">r_s</annotation></semantics></math>
-for the
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>s</mi><mrow><mi>t</mi><mi>h</mi></mrow></msup><annotation encoding="application/x-tex">s^{th}</annotation></semantics></math>
-season. The
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>M</mi><mi>A</mi></mrow><annotation encoding="application/x-tex">MA</annotation></semantics></math>s
-are expected to spend more time with the other members of the herd in
-the summer/fall than the winter <span class="citation">(Komers, Messier,
-and Gates 1992)</span>. Camera trap events that detect only bulls are
-excluded from the analysis, because they do not represent a random draw
-of individuals from the total population.</p>
+rates of the calves, <span class="math inline">\phi_{F0}</span> and
+<span class="math inline">\phi_{M0}</span>, represent the true annual
+survival rates, an additional probability of initial mortality of calves
+was incorporated. This allows the calves to undergo higher mortality
+when first born compared to the rest of the study year, which is more
+biologically realistic.</p>
+<p><span class="math inline">MA</span> individuals are known to go off
+on their own or form small bachelor groups <span class="citation">(Komers, Messier, and Gates 1992)</span>. This was
+accounted for in the model by assuming that only a proportion of <span class="math inline">MA</span>s are present in the mixed groups, and that
+this proportion varies seasonally. This proportion will be denoted by
+<span class="math inline">r_s</span> for the <span class="math inline">s^{th}</span> season. The <span class="math inline">MA</span>s are expected to spend more time with the
+other members of the herd in the summer/fall than the winter <span class="citation">(Komers, Messier, and Gates 1992)</span>. Camera trap
+events that detect only bulls are excluded from the analysis, because
+they do not represent a random draw of individuals from the total
+population.</p>
 <p>An ideal way to model the camera trap data would be to use a
 multinomial distribution to model the probabilities that the individuals
 captured during a camera trap event belong to each of the stages.
 However, a considerable percentage of individuals (~20%) were not sexed,
-and were only classified as unknown calf
-(<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>U</mi><mn>0</mn></mrow><annotation encoding="application/x-tex">U0</annotation></semantics></math>),
-unknown yearling
-(<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>U</mi><mn>1</mn></mrow><annotation encoding="application/x-tex">U1</annotation></semantics></math>),
-or unknown adult
-(<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>U</mi><mi>A</mi></mrow><annotation encoding="application/x-tex">UA</annotation></semantics></math>).
-A series of binomial distributions were used instead to model the count
-information (including the unsexed individuals) and ratio information
-(excluding the unsexed individuals) separately, in order to incorporate
-the valuable information contained in these semi-classified individuals.
-The individuals that were sexed but not aged
-(<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>F</mi><mi>U</mi></mrow><annotation encoding="application/x-tex">FU</annotation></semantics></math>,
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>M</mi><mi>U</mi></mrow><annotation encoding="application/x-tex">MU</annotation></semantics></math>;
-~0.01%), or neither sexed nor aged
-(<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>U</mi><mi>U</mi></mrow><annotation encoding="application/x-tex">UU</annotation></semantics></math>;
-~6%), were excluded from the analysis.</p>
+and were only classified as unknown calf (<span class="math inline">U0</span>), unknown yearling (<span class="math inline">U1</span>), or unknown adult (<span class="math inline">UA</span>). A series of binomial distributions were
+used instead to model the count information (including the unsexed
+individuals) and ratio information (excluding the unsexed individuals)
+separately, in order to incorporate the valuable information contained
+in these semi-classified individuals. The individuals that were sexed
+but not aged (<span class="math inline">FU</span>, <span class="math inline">MU</span>; ~0.01%), or neither sexed nor aged (<span class="math inline">UU</span>; ~6%), were excluded from the
+analysis.</p>
 <div class="section level4">
 <h4 id="counts">Counts<a class="anchor" aria-label="anchor" href="#counts"></a>
 </h4>
-<p>The total group size observed during event
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>i</mi><annotation encoding="application/x-tex">i</annotation></semantics></math>
-will be referred to as
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>N</mi><mi>i</mi></msub><annotation encoding="application/x-tex">N_i</annotation></semantics></math>,
-excluding individuals with unknown ages.</p>
-<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>N</mi><mi>i</mi></msub><mo>=</mo><mi>F</mi><msub><mn>0</mn><mi>i</mi></msub><mo>+</mo><mi>F</mi><msub><mn>1</mn><mi>i</mi></msub><mo>+</mo><mi>F</mi><msub><mn>2</mn><mi>i</mi></msub><mo>+</mo><mi>M</mi><msub><mn>0</mn><mi>i</mi></msub><mo>+</mo><mi>M</mi><msub><mn>1</mn><mi>i</mi></msub><mo>+</mo><mi>M</mi><msub><mn>2</mn><mi>i</mi></msub><mo>+</mo><mi>M</mi><msub><mn>3</mn><mi>i</mi></msub><mo>+</mo><mi>M</mi><msub><mi>A</mi><mi>i</mi></msub><mo>+</mo><mi>U</mi><msub><mn>0</mn><mi>i</mi></msub><mo>+</mo><mi>U</mi><msub><mn>1</mn><mi>i</mi></msub><mo>+</mo><mi>U</mi><msub><mi>A</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">N_i = F0_i + F1_i + F2_i + M0_i + M1_i + M2_i + M3_i + MA_i + U0_i + U1_i + UA_i</annotation></semantics></math></p>
+<p>The total group size observed during event <span class="math inline">i</span> will be referred to as <span class="math inline">N_i</span>, excluding individuals with unknown
+ages.</p>
+<p><span class="math display">N_i = F0_i + F1_i + F2_i + M0_i + M1_i +
+M2_i + M3_i + MA_i + U0_i + U1_i + UA_i</span></p>
 <p>To incorporate the unsexed individuals in each age class, we add all
 individuals of each age class together, getting the expected number of
-calves,
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>C</mi><mi>i</mi></msub><annotation encoding="application/x-tex">C_i</annotation></semantics></math>,
-the number of yearlings,
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>Y</mi><mi>i</mi></msub><annotation encoding="application/x-tex">Y_i</annotation></semantics></math>,
-and the number of adults,
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>A</mi><mi>i</mi></msub><annotation encoding="application/x-tex">A_i</annotation></semantics></math>,
-during the
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>i</mi><mrow><mi>t</mi><mi>h</mi></mrow></msup><annotation encoding="application/x-tex">i^{th}</annotation></semantics></math>
-event:</p>
-<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>C</mi><mi>i</mi></msub><mo>=</mo><mi>F</mi><msub><mn>0</mn><mi>i</mi></msub><mo>+</mo><mi>M</mi><msub><mn>0</mn><mi>i</mi></msub><mo>+</mo><mi>U</mi><msub><mn>0</mn><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">C_i = F0_i + M0_i + U0_i</annotation></semantics></math><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>Y</mi><mi>i</mi></msub><mo>=</mo><mi>F</mi><msub><mn>1</mn><mi>i</mi></msub><mo>+</mo><mi>M</mi><msub><mn>1</mn><mi>i</mi></msub><mo>+</mo><mi>U</mi><msub><mn>1</mn><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">Y_i = F1_i + M1_i + U1_i</annotation></semantics></math><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>A</mi><mi>i</mi></msub><mo>=</mo><mi>F</mi><msub><mi>A</mi><mi>i</mi></msub><mo>+</mo><mi>M</mi><msub><mn>2</mn><mi>i</mi></msub><mo>+</mo><mi>M</mi><msub><mn>3</mn><mi>i</mi></msub><mo>+</mo><mi>M</mi><msub><mi>A</mi><mi>i</mi></msub><mo>+</mo><mi>U</mi><msub><mi>A</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">A_i = FA_i + M2_i + M3_i + MA_i + UA_i</annotation></semantics></math></p>
+calves, <span class="math inline">C_i</span>, the number of yearlings,
+<span class="math inline">Y_i</span>, and the number of adults, <span class="math inline">A_i</span>, during the <span class="math inline">i^{th}</span> event:</p>
+<p><span class="math display">C_i = F0_i + M0_i + U0_i</span> <span class="math display">Y_i = F1_i + M1_i + U1_i</span> <span class="math display">A_i = FA_i + M2_i + M3_i + MA_i + UA_i</span></p>
 <p>The proportion of individuals from each stage expected during the
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>i</mi><mrow><mi>t</mi><mi>h</mi></mrow></msup><annotation encoding="application/x-tex">i^{th}</annotation></semantics></math>
-event can also be added together to get the total expected proportions
-of calves,
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>p</mi><msub><mi>C</mi><mi>i</mi></msub></msub><annotation encoding="application/x-tex">p_{C_i}</annotation></semantics></math>,
-yearlings,
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>p</mi><msub><mi>Y</mi><mi>i</mi></msub></msub><annotation encoding="application/x-tex">p_{Y_i}</annotation></semantics></math>,
-and adults,
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>p</mi><msub><mi>A</mi><mi>i</mi></msub></msub><annotation encoding="application/x-tex">p_{A_i}</annotation></semantics></math>:</p>
-<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>p</mi><msub><mi>C</mi><mi>i</mi></msub></msub><mo>=</mo><msub><mi>p</mi><mrow><mi>F</mi><msub><mn>0</mn><mi>i</mi></msub></mrow></msub><mo>+</mo><msub><mi>p</mi><mrow><mi>M</mi><msub><mn>0</mn><mi>i</mi></msub></mrow></msub></mrow><annotation encoding="application/x-tex">p_{C_i} = p_{F0_i} + p_{M0_i}</annotation></semantics></math><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>p</mi><msub><mi>Y</mi><mi>i</mi></msub></msub><mo>=</mo><msub><mi>p</mi><mrow><mi>F</mi><msub><mn>1</mn><mi>i</mi></msub></mrow></msub><mo>+</mo><msub><mi>p</mi><mrow><mi>M</mi><msub><mn>1</mn><mi>i</mi></msub></mrow></msub></mrow><annotation encoding="application/x-tex">p_{Y_i} = p_{F1_i} + p_{M1_i}</annotation></semantics></math><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>p</mi><msub><mi>A</mi><mi>i</mi></msub></msub><mo>=</mo><msub><mi>p</mi><mrow><mi>F</mi><msub><mi>A</mi><mi>i</mi></msub></mrow></msub><mo>+</mo><msub><mi>p</mi><mrow><mi>M</mi><msub><mn>2</mn><mi>i</mi></msub></mrow></msub><mo>+</mo><msub><mi>p</mi><mrow><mi>M</mi><msub><mn>3</mn><mi>i</mi></msub></mrow></msub><mo>+</mo><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>p</mi><mrow><mi>M</mi><msub><mi>A</mi><mi>i</mi></msub></mrow></msub><msub><mi>r</mi><msub><mi>s</mi><mi>i</mi></msub></msub><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">p_{A_i} = p_{FA_i} + p_{M2_i} + p_{M3_i} + (p_{MA_i}r_{s_i})</annotation></semantics></math></p>
-<p>where
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>r</mi><msub><mi>s</mi><mi>i</mi></msub></msub><annotation encoding="application/x-tex">r_{s_i}</annotation></semantics></math>
-is is the expected proportion of males present, in the season
-(<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>s</mi><annotation encoding="application/x-tex">s</annotation></semantics></math>)
-of the
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>i</mi><mrow><mi>t</mi><mi>h</mi></mrow></msup><annotation encoding="application/x-tex">i^{th}</annotation></semantics></math>
-camera trap event.</p>
-<p>Each of the counts
-(<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>C</mi><mi>i</mi></msub><annotation encoding="application/x-tex">C_i</annotation></semantics></math>,
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>Y</mi><mi>i</mi></msub><annotation encoding="application/x-tex">Y_i</annotation></semantics></math>,
-and
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>A</mi><mi>i</mi></msub><annotation encoding="application/x-tex">A_i</annotation></semantics></math>)
-then follow binomial distributions, with size equal to the group size at
-event
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>i</mi><annotation encoding="application/x-tex">i</annotation></semantics></math>,
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>N</mi><mi>i</mi></msub><annotation encoding="application/x-tex">N_i</annotation></semantics></math>,
-and the probability equal to the respective proportions described
-above.</p>
-<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>C</mi><mi>i</mi></msub><mo>∼</mo><mtext mathvariant="normal">Binomial</mtext><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>N</mi><mi>i</mi></msub><mo>,</mo><msub><mi>p</mi><msub><mi>C</mi><mi>i</mi></msub></msub><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">C_i \sim \text{Binomial}(N_i, p_{C_i})</annotation></semantics></math><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>Y</mi><mi>i</mi></msub><mo>∼</mo><mtext mathvariant="normal">Binomial</mtext><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>N</mi><mi>i</mi></msub><mo>,</mo><msub><mi>p</mi><msub><mi>Y</mi><mi>i</mi></msub></msub><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">Y_i \sim \text{Binomial}(N_i, p_{Y_i})</annotation></semantics></math><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>A</mi><mi>i</mi></msub><mo>∼</mo><mtext mathvariant="normal">Binomial</mtext><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>N</mi><mi>i</mi></msub><mo>,</mo><msub><mi>p</mi><msub><mi>A</mi><mi>i</mi></msub></msub><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">A_i \sim \text{Binomial}(N_i, p_{A_i})</annotation></semantics></math></p>
+<span class="math inline">i^{th}</span> event can also be added together
+to get the total expected proportions of calves, <span class="math inline">p_{C_i}</span>, yearlings, <span class="math inline">p_{Y_i}</span>, and adults, <span class="math inline">p_{A_i}</span>:</p>
+<p><span class="math display">p_{C_i} = p_{F0_i} + p_{M0_i}</span> <span class="math display">p_{Y_i} = p_{F1_i} + p_{M1_i}</span> <span class="math display">p_{A_i} = p_{FA_i} + p_{M2_i} + p_{M3_i} +
+(p_{MA_i}r_{s_i})</span></p>
+<p>where <span class="math inline">r_{s_i}</span> is is the expected
+proportion of males present, in the season (<span class="math inline">s</span>) of the <span class="math inline">i^{th}</span> camera trap event.</p>
+<p>Each of the counts (<span class="math inline">C_i</span>, <span class="math inline">Y_i</span>, and <span class="math inline">A_i</span>) then follow binomial distributions, with
+size equal to the group size at event <span class="math inline">i</span>, <span class="math inline">N_i</span>, and
+the probability equal to the respective proportions described above.</p>
+<p><span class="math display">C_i \sim \text{Binomial}(N_i,
+p_{C_i})</span> <span class="math display">Y_i \sim \text{Binomial}(N_i,
+p_{Y_i})</span> <span class="math display">A_i \sim \text{Binomial}(N_i,
+p_{A_i})</span></p>
 </div>
 <div class="section level4">
 <h4 id="ratios">Ratios<a class="anchor" aria-label="anchor" href="#ratios"></a>
@@ -517,16 +443,18 @@ to incorporate the other information included in the fully-classified
 (i.e., known sex and age) count data from the camera trap events.</p>
 <p>For calves and yearlings, there are two stages, one for each sex,
 allowing us to model the sex ratios with a binomial distribution:</p>
-<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>F</mi><msub><mn>0</mn><mi>i</mi></msub><mo>∼</mo><mtext mathvariant="normal">Binomial</mtext><mo minsize="3.0" maxsize="3.0" stretchy="false" form="prefix">(</mo><mi>F</mi><msub><mn>0</mn><mi>i</mi></msub><mo>+</mo><mi>M</mi><msub><mn>0</mn><mi>i</mi></msub><mo>,</mo><mfrac><msub><mi>p</mi><mrow><mi>F</mi><msub><mn>0</mn><mi>i</mi></msub></mrow></msub><mrow><msub><mi>p</mi><mrow><mi>F</mi><msub><mn>0</mn><mi>i</mi></msub></mrow></msub><mo>+</mo><msub><mi>p</mi><mrow><mi>M</mi><msub><mn>0</mn><mi>i</mi></msub></mrow></msub></mrow></mfrac><mo minsize="3.0" maxsize="3.0" stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">F0_i \sim \text{Binomial}\Biggl(F0_i + M0_i, \frac{p_{F0_i}}{p_{F0_i} + p_{M0_i}}\Biggr)</annotation></semantics></math><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>F</mi><msub><mn>1</mn><mi>i</mi></msub><mo>∼</mo><mtext mathvariant="normal">Binomial</mtext><mo minsize="3.0" maxsize="3.0" stretchy="false" form="prefix">(</mo><mi>F</mi><msub><mn>1</mn><mi>i</mi></msub><mo>+</mo><mi>M</mi><msub><mn>1</mn><mi>i</mi></msub><mo>,</mo><mfrac><msub><mi>p</mi><mrow><mi>F</mi><msub><mn>1</mn><mi>i</mi></msub></mrow></msub><mrow><msub><mi>p</mi><mrow><mi>F</mi><msub><mn>1</mn><mi>i</mi></msub></mrow></msub><mo>+</mo><msub><mi>p</mi><mrow><mi>M</mi><msub><mn>1</mn><mi>i</mi></msub></mrow></msub></mrow></mfrac><mo minsize="3.0" maxsize="3.0" stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">F1_i \sim \text{Binomial}\Biggl(F1_i + M1_i, \frac{p_{F1_i}}{p_{F1_i} + p_{M1_i}}\Biggr)</annotation></semantics></math></p>
+<p><span class="math display">F0_i \sim \text{Binomial}\Biggl(F0_i +
+M0_i, \frac{p_{F0_i}}{p_{F0_i} + p_{M0_i}}\Biggr)</span> <span class="math display">F1_i \sim \text{Binomial}\Biggl(F1_i + M1_i,
+\frac{p_{F1_i}}{p_{F1_i} + p_{M1_i}}\Biggr)</span></p>
 <p>Three ratios were picked to ensure differences between all four of
-the adult stages were accounted for. These were the
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>F</mi><mi>A</mi></mrow><annotation encoding="application/x-tex">FA</annotation></semantics></math>:Bull
-ratio, the
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>M</mi><mn>2</mn><mo>:</mo><mi>M</mi><mn>3</mn></mrow><annotation encoding="application/x-tex">M2:M3</annotation></semantics></math>
-ratio, and the
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>M</mi><mi>A</mi><mo>:</mo><mi>F</mi><mi>A</mi></mrow><annotation encoding="application/x-tex">MA:FA</annotation></semantics></math>
-ratio:</p>
-<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>F</mi><msub><mi>A</mi><mi>i</mi></msub><mo>∼</mo><mtext mathvariant="normal">Binomial</mtext><mo minsize="3.0" maxsize="3.0" stretchy="false" form="prefix">(</mo><mi>F</mi><msub><mi>A</mi><mi>i</mi></msub><mo>+</mo><mi>M</mi><msub><mn>2</mn><mi>i</mi></msub><mo>+</mo><mi>M</mi><msub><mn>3</mn><mi>i</mi></msub><mo>+</mo><mi>M</mi><msub><mi>A</mi><mi>i</mi></msub><mo>,</mo><mfrac><msub><mi>p</mi><mrow><mi>F</mi><msub><mi>A</mi><mi>i</mi></msub></mrow></msub><mrow><msub><mi>p</mi><mrow><mi>F</mi><msub><mi>A</mi><mi>i</mi></msub></mrow></msub><mo>+</mo><msub><mi>p</mi><mrow><mi>M</mi><msub><mn>2</mn><mi>i</mi></msub></mrow></msub><mo>+</mo><msub><mi>p</mi><mrow><mi>M</mi><msub><mn>3</mn><mi>i</mi></msub></mrow></msub><mo>+</mo><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>p</mi><mrow><mi>M</mi><msub><mi>A</mi><mi>i</mi></msub></mrow></msub><msub><mi>r</mi><msub><mi>s</mi><mi>i</mi></msub></msub><mo stretchy="true" form="postfix">)</mo></mrow></mrow></mfrac><mo minsize="3.0" maxsize="3.0" stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">FA_i \sim \text{Binomial}\Biggl(FA_i + M2_i + M3_i + MA_i, \frac{p_{FA_i}}{p_{FA_i} + p_{M2_i} + p_{M3_i} + (p_{MA_i}r_{s_i})}\Biggr)</annotation></semantics></math><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>M</mi><msub><mn>2</mn><mi>i</mi></msub><mo>∼</mo><mtext mathvariant="normal">Binomial</mtext><mo minsize="3.0" maxsize="3.0" stretchy="false" form="prefix">(</mo><mi>M</mi><msub><mn>2</mn><mi>i</mi></msub><mo>+</mo><mi>M</mi><msub><mn>3</mn><mi>i</mi></msub><mo>,</mo><mfrac><msub><mi>p</mi><mrow><mi>M</mi><msub><mn>2</mn><mi>i</mi></msub></mrow></msub><mrow><msub><mi>p</mi><mrow><mi>M</mi><msub><mn>2</mn><mi>i</mi></msub></mrow></msub><mo>+</mo><msub><mi>p</mi><mrow><mi>M</mi><msub><mn>3</mn><mi>i</mi></msub></mrow></msub></mrow></mfrac><mo minsize="3.0" maxsize="3.0" stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">M2_i \sim \text{Binomial}\Biggl(M2_i + M3_i, \frac{p_{M2_i}}{p_{M2_i} + p_{M3_i}}\Biggr)</annotation></semantics></math><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>M</mi><msub><mi>A</mi><mi>i</mi></msub><mo>∼</mo><mtext mathvariant="normal">Binomial</mtext><mo minsize="3.0" maxsize="3.0" stretchy="false" form="prefix">(</mo><mi>M</mi><msub><mi>A</mi><mi>i</mi></msub><mo>+</mo><mi>F</mi><msub><mi>A</mi><mi>i</mi></msub><mo>,</mo><mfrac><mrow><msub><mi>p</mi><mrow><mi>M</mi><msub><mi>A</mi><mi>i</mi></msub></mrow></msub><msub><mi>r</mi><msub><mi>s</mi><mi>i</mi></msub></msub></mrow><mrow><msub><mi>p</mi><mrow><mi>M</mi><msub><mi>A</mi><mi>i</mi></msub></mrow></msub><msub><mi>r</mi><msub><mi>s</mi><mi>i</mi></msub></msub><mo>+</mo><msub><mi>p</mi><mrow><mi>F</mi><msub><mi>A</mi><mi>i</mi></msub></mrow></msub></mrow></mfrac><mo minsize="3.0" maxsize="3.0" stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">MA_i \sim \text{Binomial}\Biggl(MA_i + FA_i, \frac{p_{MA_i}r_{s_i}}{p_{MA_i}r_{s_i} + p_{FA_i}}\Biggr)</annotation></semantics></math></p>
+the adult stages were accounted for. These were the <span class="math inline">FA</span>:Bull ratio, the <span class="math inline">M2:M3</span> ratio, and the <span class="math inline">MA:FA</span> ratio:</p>
+<p><span class="math display">FA_i \sim \text{Binomial}\Biggl(FA_i +
+M2_i + M3_i + MA_i, \frac{p_{FA_i}}{p_{FA_i} + p_{M2_i} + p_{M3_i} +
+(p_{MA_i}r_{s_i})}\Biggr)</span> <span class="math display">M2_i \sim
+\text{Binomial}\Biggl(M2_i + M3_i, \frac{p_{M2_i}}{p_{M2_i} +
+p_{M3_i}}\Biggr)</span> <span class="math display">MA_i \sim
+\text{Binomial}\Biggl(MA_i + FA_i,
+\frac{p_{MA_i}r_{s_i}}{p_{MA_i}r_{s_i} + p_{FA_i}}\Biggr)</span></p>
 </div>
 <div class="section level4">
 <h4 id="covariance-structure">Covariance Structure<a class="anchor" aria-label="anchor" href="#covariance-structure"></a>
@@ -553,49 +481,34 @@ year of the aerial survey used to inform the census estimate.</p>
 <p>To ensure the model relates correctly to the day the census estimate
 was completed, a process identical to that described above for the
 camera trap event data was done to calculate the expected stage-wise
-abundances and proportions for the day of the study year of the
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>a</mi><mrow><mi>t</mi><mi>h</mi></mrow></msup><annotation encoding="application/x-tex">a^{th}</annotation></semantics></math>
-aerial survey.</p>
+abundances and proportions for the day of the study year of the <span class="math inline">a^{th}</span> aerial survey.</p>
 <p>The census data was incorporated using a normal distribution as
 follows,</p>
-<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>C</mi><mi>a</mi></msub><mo>∼</mo><mtext mathvariant="normal">Normal</mtext><mo minsize="2.4" maxsize="2.4" stretchy="false" form="prefix">(</mo><munderover><mo>∑</mo><mrow><mi>j</mi><mo>=</mo><mn>1</mn></mrow><mi>J</mi></munderover><msub><mi>𝐧</mi><mrow><mi>j</mi><mo>,</mo><mi>a</mi></mrow></msub><mo>,</mo><msub><mi>σ</mi><msub><mi>C</mi><mi>a</mi></msub></msub><mo minsize="2.4" maxsize="2.4" stretchy="false" form="postfix">)</mo><mrow><mspace width="0.333em"></mspace><mtext mathvariant="normal"> T[0, ]</mtext></mrow></mrow><annotation encoding="application/x-tex">C_a \sim \text{Normal} \biggl( \sum_{j=1}^J \mathbf{n}_{j,a}, \sigma_{C_a} \biggr) \text{ T[0, ]}</annotation></semantics></math></p>
-<p>where
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>C</mi><mi>a</mi></msub><annotation encoding="application/x-tex">C_a</annotation></semantics></math>
-is the census estimate in the
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>a</mi><mrow><mi>t</mi><mi>h</mi></mrow></msup><annotation encoding="application/x-tex">a^{th}</annotation></semantics></math>
-aerial survey,
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mo>∑</mo><mrow><mi>j</mi><mo>=</mo><mn>1</mn></mrow><mi>J</mi></msubsup><msub><mi>𝐧</mi><mrow><mi>j</mi><mo>,</mo><mi>a</mi></mrow></msub></mrow><annotation encoding="application/x-tex">\sum_{j=1}^J \mathbf{n}_{j,a}</annotation></semantics></math>
-is the total expected abundance on the day of the
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>a</mi><mrow><mi>t</mi><mi>h</mi></mrow></msup><annotation encoding="application/x-tex">a^{th}</annotation></semantics></math>
-study year, and
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>σ</mi><msub><mi>C</mi><mi>a</mi></msub></msub><annotation encoding="application/x-tex">\sigma_{C_a}</annotation></semantics></math>
-is the standard deviation of the census estimate (calculated as the
-product of the census estimate
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>C</mi><mi>a</mi></msub><annotation encoding="application/x-tex">C_a</annotation></semantics></math>
-and its associated CV). The normal distribution is lower-truncated at 0
-to ensure that the abundance estimates remain positive.</p>
+<p><span class="math display">C_a \sim \text{Normal} \biggl(
+\sum_{j=1}^J \mathbf{n}_{j,a}, \sigma_{C_a} \biggr) \text{ T[0,
+]}</span></p>
+<p>where <span class="math inline">C_a</span> is the census estimate in
+the <span class="math inline">a^{th}</span> aerial survey, <span class="math inline">\sum_{j=1}^J \mathbf{n}_{j,a}</span> is the total
+expected abundance on the day of the <span class="math inline">a^{th}</span> study year, and <span class="math inline">\sigma_{C_a}</span> is the standard deviation of the
+census estimate (calculated as the product of the census estimate <span class="math inline">C_a</span> and its associated CV). The normal
+distribution is lower-truncated at 0 to ensure that the abundance
+estimates remain positive.</p>
 </div>
 <div class="section level3">
 <h3 id="calf-proportion-data">Calf Proportion Data<a class="anchor" aria-label="anchor" href="#calf-proportion-data"></a>
 </h3>
 <p>The data on the proportion of calves in the herd was incorporated
 similarly,</p>
-<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>P</mi><mi>a</mi></msub><mo>∼</mo><mtext mathvariant="normal">Normal</mtext><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>p</mi><mrow><mi>F</mi><mn>0</mn><mo>,</mo><mi>a</mi></mrow></msub><mo>+</mo><msub><mi>p</mi><mrow><mi>M</mi><mn>0</mn><mo>,</mo><mi>a</mi></mrow></msub><mo>,</mo><msub><mi>σ</mi><msub><mi>P</mi><mi>a</mi></msub></msub><mo stretchy="true" form="postfix">)</mo></mrow><mrow><mspace width="0.333em"></mspace><mtext mathvariant="normal"> T[0, 1]</mtext></mrow></mrow><annotation encoding="application/x-tex">P_a \sim \text{Normal}(p_{F0,a} + p_{M0,a}, \sigma_{P_a}) \text{ T[0, 1]}</annotation></semantics></math></p>
-<p>where
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>P</mi><mi>a</mi></msub><annotation encoding="application/x-tex">P_a</annotation></semantics></math>
-is the proportion of calves estimate in the
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>a</mi><mrow><mi>t</mi><mi>h</mi></mrow></msup><annotation encoding="application/x-tex">a^{th}</annotation></semantics></math>
-aerial survey,
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>p</mi><mrow><mi>F</mi><mn>0</mn><mo>,</mo><mi>a</mi></mrow></msub><mo>+</mo><msub><mi>p</mi><mrow><mi>M</mi><mn>0</mn><mo>,</mo><mi>a</mi></mrow></msub></mrow><annotation encoding="application/x-tex">p_{F0,a} + p_{M0,a}</annotation></semantics></math>
-is the expected proportion of calves on the day of the
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>a</mi><mrow><mi>t</mi><mi>h</mi></mrow></msup><annotation encoding="application/x-tex">a^{th}</annotation></semantics></math>
-aerial survey, and
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>σ</mi><msub><mi>P</mi><mi>a</mi></msub></msub><annotation encoding="application/x-tex">\sigma_{P_a}</annotation></semantics></math>
-is the standard deviation in the estimate of the proportion of calves
-(calculated as the product of the proportion of calves estimate
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>P</mi><mi>a</mi></msub><annotation encoding="application/x-tex">P_a</annotation></semantics></math>
-and its associated CV). The normal distribution is truncated at 0 and 1
-to ensure that the estimates remain on the probability scale.</p>
+<p><span class="math display">P_a \sim \text{Normal}(p_{F0,a} +
+p_{M0,a}, \sigma_{P_a}) \text{ T[0, 1]}</span></p>
+<p>where <span class="math inline">P_a</span> is the proportion of
+calves estimate in the <span class="math inline">a^{th}</span> aerial
+survey, <span class="math inline">p_{F0,a} + p_{M0,a}</span> is the
+expected proportion of calves on the day of the <span class="math inline">a^{th}</span> aerial survey, and <span class="math inline">\sigma_{P_a}</span> is the standard deviation in the
+estimate of the proportion of calves (calculated as the product of the
+proportion of calves estimate <span class="math inline">P_a</span> and
+its associated CV). The normal distribution is truncated at 0 and 1 to
+ensure that the estimates remain on the probability scale.</p>
 </div>
 <div class="section level3">
 <h3 id="model-fitting">Model Fitting<a class="anchor" aria-label="anchor" href="#model-fitting"></a>
@@ -629,9 +542,8 @@ Shiny app also facilitates the visualization of these predictions.</p>
 <li>The survival rates for each stage vary by study year.</li>
 <li>The initial mortality rate of calves varies by study year.</li>
 <li>The fecundity rate is fixed.</li>
-<li>The proportion of
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>M</mi><mi>A</mi></mrow><annotation encoding="application/x-tex">MA</annotation></semantics></math>
-individuals present with the mixed groups varies by season.</li>
+<li>The proportion of <span class="math inline">MA</span> individuals
+present with the mixed groups varies by season.</li>
 <li>There is no grouping structure beyond what is accounted for by the
 covariance.</li>
 <li>Every stage is equally detectable during a camera trap event.</li>
@@ -701,7 +613,7 @@ limitations under the License.</p>
 
 
     <footer><div class="pkgdown-footer-left">
-  <p>Developed by Nicole Hill, Andrea Kortello, Ayla Pearson.</p>
+  <p>Developed by Nicole Hill, Andrea Kortello, <a href="https://www.poissonconsulting.ca/author/ayla-pearson/" class="external-link">Ayla Pearson</a>.</p>
 </div>
 
 <div class="pkgdown-footer-right">

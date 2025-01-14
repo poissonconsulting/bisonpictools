@@ -6,11 +6,15 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>Getting Started with bisonpictools • bisonpictools</title>
-<script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<script src="../katex-auto.js"></script><script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="../deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet">
-<script src="../deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="../deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
+<script src="../deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="../deps/Roboto_Condensed-0.4.9/font.css" rel="stylesheet">
+<link href="../deps/Roboto_Mono-0.4.9/font.css" rel="stylesheet">
+<link href="../deps/Playfair_Display-0.4.9/font.css" rel="stylesheet">
+<link href="../deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
 <link href="../deps/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet">
-<script src="../deps/headroom-0.11.0/headroom.min.js"></script><script src="../deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="../deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="../deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="../deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="../deps/search-1.0.0/fuse.min.js"></script><script src="../deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Getting Started with bisonpictools">
+<script src="../deps/headroom-0.11.0/headroom.min.js"></script><script src="../deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="../deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="../deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="../deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="../deps/search-1.0.0/fuse.min.js"></script><script src="../deps/search-1.0.0/mark.min.js"></script><link href="../deps/KaTex-0.16.10/katex.min.css" rel="stylesheet">
+<script src="../deps/KaTex-0.16.10/katex.min.js"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Getting Started with bisonpictools">
 </head>
 <body>
     <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
@@ -76,6 +80,9 @@
 <!-- WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. -->
 <!-- See the License for the specific language governing permissions and -->
 <!-- limitations under the License. -->
+<pre><code><span><span class="co">#&gt; Registered S3 method overwritten by 'mcmcr':</span></span>
+<span><span class="co">#&gt;   method         from </span></span>
+<span><span class="co">#&gt;   as.mcmc.nlists nlist</span></span></code></pre>
 <p><code>bisonpictools</code> is an R package to facilitate the
 visualization and analysis of camera trap data for wood bison herds. The
 package includes functions to check the correct formatting of data,
@@ -88,7 +95,7 @@ abundances, survival and fecundity rates, and population ratios.</p>
 <p>To install the latest development version of
 <code>bisonpictools</code>, execute the following code in the RStudio
 console.</p>
-<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"remotes"</span><span class="op">)</span></span>
 <span><span class="fu">remotes</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"poissonconsulting/bisonpictools"</span><span class="op">)</span></span></code></pre></div>
 </div>
@@ -158,7 +165,7 @@ and denominator of the ratio.</p>
 <div class="section level4">
 <h4 id="read-in-data-from-the-populated-excel-template">(1) Read in data from the populated excel template<a class="anchor" aria-label="anchor" href="#read-in-data-from-the-populated-excel-template"></a>
 </h4>
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Change `dir` to the file path of the populated excel template on your computer</span></span>
 <span><span class="va">dir</span> <span class="op">&lt;-</span> <span class="st">"myfilepath.xlsx"</span></span>
 <span><span class="co"># Install readxl to read the excel spreadsheet into R</span></span>
@@ -186,7 +193,7 @@ calf:cow ratio example, this would represent an event with one or more
 cows and no calves.</p>
 <p>For example, the female calf:male calf ratio plotted over all years
 and locations from example data:</p>
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/poissonconsulting/bisonpictools" class="external-link">bisonpictools</a></span><span class="op">)</span></span>
 <span><span class="fu"><a href="../reference/bpt_plot_ratios.html">bpt_plot_ratios</a></span><span class="op">(</span></span>
 <span>  <span class="va">event_data</span>,</span>
@@ -197,7 +204,7 @@ and locations from example data:</p>
 <p><img src="bisonpictools-getting-started_files/figure-html/unnamed-chunk-4-1.png" width="768"></p>
 <p>It is also possible to subset the data to include one or more camera
 trap locations and/or study years:</p>
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/bpt_plot_ratios.html">bpt_plot_ratios</a></span><span class="op">(</span></span>
 <span>  <span class="va">event_data</span>,</span>
 <span>  <span class="va">location_data</span>,</span>
@@ -212,7 +219,7 @@ For example, the next code chunk plots the calf:(cow + calf) ratio.</p>
 <p>The label for the ratio legend can be changed from the default
 (“Ratio”), to more specific label, using the <code>ratio_name</code>
 argument.</p>
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/bpt_plot_ratios.html">bpt_plot_ratios</a></span><span class="op">(</span></span>
 <span>  <span class="va">event_data</span>,</span>
 <span>  <span class="va">location_data</span>,</span>
@@ -244,7 +251,7 @@ guide</a> for more information on how to use the
 <div class="section level4">
 <h4 id="read-in-data-from-the-populated-excel-template-1">(1) Read in data from the populated excel template<a class="anchor" aria-label="anchor" href="#read-in-data-from-the-populated-excel-template-1"></a>
 </h4>
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Change `dir` to the file path of the populated excel template on your computer</span></span>
 <span><span class="va">dir</span> <span class="op">&lt;-</span> <span class="st">"myfilepath.xlsx"</span></span>
 <span><span class="co"># Install readxl to read the excel spreadsheet into R</span></span>
@@ -287,10 +294,8 @@ analysis (500 iterations from 3 chains).</li>
 <code>nthin = 1L</code> saves every sample; use this for
 <code>"debug"</code> and <code>"quick"</code> modes,</li>
 <li>
-<code>nthin = 10L</code> saves every
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mn>10</mn><mrow><mi>t</mi><mi>h</mi></mrow></msup><annotation encoding="application/x-tex">10^{th}</annotation></semantics></math>
-sample, and is the detault; use this for <code>"report"</code>
-mode,</li>
+<code>nthin = 10L</code> saves every <span class="math inline">10^{th}</span> sample, and is the detault; use this
+for <code>"report"</code> mode,</li>
 <li>increase <code>nthin</code> by 5 if the model does not converge in
 “report” mode.</li>
 </ul>
@@ -311,7 +316,7 @@ the model.</li>
 in <code>analysis_mode = "debug"</code> with a thinning rate of
 <code>nthin = 1L</code> to print informative error messages.</li>
 </ol>
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Start by running once on "quick" mode, with a thinning rate of 1</span></span>
 <span><span class="va">analysis</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/bpt_analyse.html">bpt_analyse</a></span><span class="op">(</span></span>
 <span>  event_data <span class="op">=</span> <span class="va">event_data</span>,</span>
@@ -364,7 +369,7 @@ converge (i.e., the “converged” column reads <code>FALSE</code>).</p>
 </h4>
 <p>Use the <code><a href="../reference/bpt_coefficient_table.html">bpt_coefficient_table()</a></code> function to print out
 the estimated parameters from the model run.</p>
-<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">coef</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/bpt_coefficient_table.html">bpt_coefficient_table</a></span><span class="op">(</span><span class="va">analysis</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">coef</span><span class="op">)</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 57 × 5</span></span></span>
@@ -388,14 +393,14 @@ the estimated parameters from the model run.</p>
 <p>Ensure that the analysis object is saved once the model finishes
 running. The <code><a href="../reference/bpt_save_analysis.html">bpt_save_analysis()</a></code> function saves the
 analysis to the desired file path.</p>
-<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Save the analysis object.</span></span>
 <span><span class="co"># Change the file path to the desired directory (does not require a file extension)</span></span>
 <span><span class="fu"><a href="../reference/bpt_save_analysis.html">bpt_save_analysis</a></span><span class="op">(</span><span class="va">analysis</span>, file <span class="op">=</span> <span class="st">"file_path/analysis"</span><span class="op">)</span></span></code></pre></div>
 <p>To load the analysis object back into R, use the complimentary
 function, <code><a href="../reference/bpt_load_analysis.html">bpt_load_analysis()</a></code>, using the same file path it
 was saved to above.</p>
-<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Load analysis object if not still in the environment, using the same file path</span></span>
 <span><span class="co"># it was saved to in step (4) above.</span></span>
 <span><span class="va">analysis</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/bpt_load_analysis.html">bpt_load_analysis</a></span><span class="op">(</span><span class="st">"file_path/analysis"</span><span class="op">)</span></span></code></pre></div>
@@ -407,7 +412,7 @@ was saved to above.</p>
 fecundity rates, and select ratios are derived from the posterior
 distributions of the estimated parameters. Use the functions with the
 <code>bpt_predict</code> prefix to generate the predictions.</p>
-<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Predict total abundance</span></span>
 <span><span class="fu"><a href="../reference/bpt_predict_abundance_total.html">bpt_predict_abundance_total</a></span><span class="op">(</span><span class="va">analysis</span><span class="op">)</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 4 × 4</span></span></span>
@@ -417,7 +422,7 @@ distributions of the estimated parameters. Use the functions with the
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> 2019-2020     225.  205.  252.</span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> 2020-2021     254.  230.  280.</span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span> 2021-2022     295.  258.  311.</span></span></code></pre></div>
-<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Predicts abundance by class:</span></span>
 <span><span class="fu"><a href="../reference/bpt_predict_abundance_class.html">bpt_predict_abundance_class</a></span><span class="op">(</span><span class="va">analysis</span><span class="op">)</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 32 × 5</span></span></span>
@@ -434,7 +439,7 @@ distributions of the estimated parameters. Use the functions with the
 <span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> 2018-2019 FA        64.0 51.8   82.0</span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> 2019-2020 FA        80.6 65.1   91.5</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># ℹ 22 more rows</span></span></span></code></pre></div>
-<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Predicts survival rates by class:</span></span>
 <span><span class="fu"><a href="../reference/bpt_predict_survival.html">bpt_predict_survival</a></span><span class="op">(</span><span class="va">analysis</span><span class="op">)</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 24 × 5</span></span></span>
@@ -451,7 +456,7 @@ distributions of the estimated parameters. Use the functions with the
 <span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> 2018-2019 F1       0.873 0.679  0.932</span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> 2019-2020 F1       0.850 0.726  0.919</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># ℹ 14 more rows</span></span></span></code></pre></div>
-<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Predicts fecundity rate and proportion of reproductive cows:</span></span>
 <span><span class="fu"><a href="../reference/bpt_predict_fecundity.html">bpt_predict_fecundity</a></span><span class="op">(</span><span class="va">analysis</span><span class="op">)</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 2 × 4</span></span></span>
@@ -459,7 +464,7 @@ distributions of the estimated parameters. Use the functions with the
 <span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                              <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> Fecundity                          0.875 0.836 0.936</span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> Proportion of Reproductive Cows    0.965 0.888 0.996</span></span></code></pre></div>
-<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Predicts population ratios:</span></span>
 <span><span class="fu"><a href="../reference/bpt_predict_ratios.html">bpt_predict_ratios</a></span><span class="op">(</span><span class="va">analysis</span><span class="op">)</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 28 × 5</span></span></span>
@@ -482,23 +487,23 @@ distributions of the estimated parameters. Use the functions with the
 </h4>
 <p>The <code><a href="../reference/bpt_plot_predictions.html">bpt_plot_predictions()</a></code> function can be used to
 visualize the predictions.</p>
-<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Plot predicted abundances by class</span></span>
 <span><span class="fu"><a href="../reference/bpt_plot_predictions.html">bpt_plot_predictions</a></span><span class="op">(</span><span class="va">analysis</span>, prediction <span class="op">=</span> <span class="st">"abundance-class"</span><span class="op">)</span></span></code></pre></div>
 <p><img src="bisonpictools-getting-started_files/figure-html/unnamed-chunk-19-1.png" width="672"></p>
-<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Plot total abundance</span></span>
 <span><span class="fu"><a href="../reference/bpt_plot_predictions.html">bpt_plot_predictions</a></span><span class="op">(</span><span class="va">analysis</span>, prediction <span class="op">=</span> <span class="st">"abundance-total"</span><span class="op">)</span></span></code></pre></div>
 <p><img src="bisonpictools-getting-started_files/figure-html/unnamed-chunk-20-1.png" width="672"></p>
-<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Plot survival rates</span></span>
 <span><span class="fu"><a href="../reference/bpt_plot_predictions.html">bpt_plot_predictions</a></span><span class="op">(</span><span class="va">analysis</span>, prediction <span class="op">=</span> <span class="st">"survival"</span><span class="op">)</span></span></code></pre></div>
 <p><img src="bisonpictools-getting-started_files/figure-html/unnamed-chunk-21-1.png" width="672"></p>
-<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Plot fecundity rates</span></span>
 <span><span class="fu"><a href="../reference/bpt_plot_predictions.html">bpt_plot_predictions</a></span><span class="op">(</span><span class="va">analysis</span>, prediction <span class="op">=</span> <span class="st">"fecundity"</span><span class="op">)</span></span></code></pre></div>
 <p><img src="bisonpictools-getting-started_files/figure-html/unnamed-chunk-22-1.png" width="672"></p>
-<div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Plot ratios</span></span>
 <span><span class="fu"><a href="../reference/bpt_plot_predictions.html">bpt_plot_predictions</a></span><span class="op">(</span><span class="va">analysis</span>, prediction <span class="op">=</span> <span class="st">"ratios"</span><span class="op">)</span></span></code></pre></div>
 <p><img src="bisonpictools-getting-started_files/figure-html/unnamed-chunk-23-1.png" width="672"></p>
@@ -510,7 +515,7 @@ visualize the predictions.</p>
 </h3>
 <p>Alternatively, launch the local data analysis app by running the
 following lines of code in the RStudio console.</p>
-<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb23"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Install `runbisonpic`</span></span>
 <span><span class="fu">remotes</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"poissonconsulting/runbisonpic"</span><span class="op">)</span></span>
 <span><span class="co"># Launch local app</span></span>
@@ -562,7 +567,7 @@ limitations under the License.</p>
 
 
     <footer><div class="pkgdown-footer-left">
-  <p>Developed by Nicole Hill, Andrea Kortello, Ayla Pearson.</p>
+  <p>Developed by Nicole Hill, Andrea Kortello, <a href="https://www.poissonconsulting.ca/author/ayla-pearson/" class="external-link">Ayla Pearson</a>.</p>
 </div>
 
 <div class="pkgdown-footer-right">
