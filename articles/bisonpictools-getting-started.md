@@ -320,7 +320,7 @@ print(coef)
 #>  4 bInitialMortalityCalfAnnual[1]   -3.75  -5.78    -2.12   4.39 
 #>  5 bInitialMortalityCalfAnnual[2]   -4.56  -7.45    -2.35   4.39 
 #>  6 bInitialMortalityCalfAnnual[3]   -2.87  -7.46    -1.60   4.39 
-#>  7 bInitialMortalityCalfAnnual[4]   -1.09  -6.11     3.64   0.485
+#>  7 bInitialMortalityCalfAnnual[4]   -1.09  -6.11     3.64   0.515
 #>  8 bKmWeekSummerFall                 2.22   0.266    4.42   4.39 
 #>  9 bKmWeekWin                        1.93   1.21     2.63   4.39 
 #> 10 bMAProportion[1]                  0.440  0.258    0.582  4.39 
