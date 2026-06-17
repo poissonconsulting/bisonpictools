@@ -1,11 +1,11 @@
 // Copyright 2023 Province of Alberta
-// 
+//
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
 // You may obtain a copy of the License at
-// 
+//
 // http://www.apache.org/licenses/LICENSE-2.0
-// 
+//
 // Unless required by applicable law or agreed to in writing, software
 // distributed under the License is distributed on an "AS IS" BASIS,
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -32,87 +32,87 @@ functions{
 }
 
 data {
-  int <lower=0> nObs;
-  int <lower=0> nclass;
-  int <lower=0> nannual;
-  int <lower=0> nseason;
-  int <lower=0> nseason_annual;
-  int <lower=0> nlocation;
-  int <lower=0> nlocation_weekfac;
-  
-  int <lower=0> f0[nObs];
-  int <lower=0> m0[nObs];
-  int <lower=0> calf[nObs];
-  int <lower=0> f1[nObs];
-  int <lower=0> m1[nObs];
-  int <lower=0> yearling[nObs];
-  int <lower=0> m2[nObs];
-  int <lower=0> m3[nObs];
-  int <lower=0> ma[nObs];
-  int <lower=0> fa[nObs];
-  int <lower=0> adult[nObs];
-  int <lower=0> groupsize_total[nObs]; 
-  int <lower=0> annual[nObs];
-  int <lower=0> season[nObs];
-  int <lower=0> season_annual[nObs];
-  int <lower=0, upper=366> doy[nObs];
-  int <lower=0> location[nObs];
-  int <lower=0> location_weekfac[nObs];
-  
-  matrix[nlocation, nlocation] location_distance;
-  int <lower=0> lookup_location[nlocation_weekfac];
-  int <lower=0> lookup_week[nlocation_weekfac];
-  
-  int <lower=0> ncensus;
-  real <lower=0> census[ncensus];
-  real <lower=0> sCensus[ncensus];
-  int <lower=1, upper=366> doy_census[ncensus];
-  int <lower=0> annual_census[ncensus];
+  int<lower=0> nObs;
+  int<lower=0> nclass;
+  int<lower=0> nannual;
+  int<lower=0> nseason;
+  int<lower=0> nseason_annual;
+  int<lower=0> nlocation;
+  int<lower=0> nlocation_weekfac;
 
-  int <lower=0> nprop_calf;
-  real <lower=0, upper=1> prop_calf[nprop_calf];
-  real <lower=0> sPropCalf[nprop_calf];
-  int <lower=1, upper=366> doy_prop_calf[nprop_calf];
-  int <lower=0> annual_prop_calf[nprop_calf];
+  array[nObs] int<lower=0> f0;
+  array[nObs] int<lower=0> m0;
+  array[nObs] int<lower=0> calf;
+  array[nObs] int<lower=0> f1;
+  array[nObs] int<lower=0> m1;
+  array[nObs] int<lower=0> yearling;
+  array[nObs] int<lower=0> m2;
+  array[nObs] int<lower=0> m3;
+  array[nObs] int<lower=0> ma;
+  array[nObs] int<lower=0> fa;
+  array[nObs] int<lower=0> adult;
+  array[nObs] int<lower=0> groupsize_total;
+  array[nObs] int<lower=0> annual;
+  array[nObs] int<lower=0> season;
+  array[nObs] int<lower=0> season_annual;
+  array[nObs] int<lower=0, upper=366> doy;
+  array[nObs] int<lower=0> location;
+  array[nObs] int<lower=0> location_weekfac;
+
+  matrix[nlocation, nlocation] location_distance;
+  array[nlocation_weekfac] int<lower=0> lookup_location;
+  array[nlocation_weekfac] int<lower=0> lookup_week;
+
+  int<lower=0> ncensus;
+  array[ncensus] real<lower=0> census;
+  array[ncensus] real<lower=0> sCensus;
+  array[ncensus] int<lower=1, upper=366> doy_census;
+  array[ncensus] int<lower=0> annual_census;
+
+  int<lower=0> nprop_calf;
+  array[nprop_calf] real<lower=0, upper=1> prop_calf;
+  array[nprop_calf] real<lower=0> sPropCalf;
+  array[nprop_calf] int<lower=1, upper=366> doy_prop_calf;
+  array[nprop_calf] int<lower=0> annual_prop_calf;
 }
 
 // Bull = M2, M3, MA
-// FA = reproductive and non-reproductive cows 
+// FA = reproductive and non-reproductive cows
 // Adult = FA, M2, M3, MA, UA
 
 parameters {
-  real bSurvF0Annual[nannual];
-  real bSurvF1Annual[nannual];
-  real bSurvFAAnnual[nannual];
-  real bSurvM0Annual[nannual];
-  real bSurvM1Annual[nannual];
-  real bSurvBullAnnual[nannual];
-  real <lower=0> bPopulationAbundanceInit;
-  real <lower=0> bPopulationF0Init; 
-  real <lower=0> bPopulationF1Init; 
-  real <lower=0> bPopulationFAInit; 
-  real <lower=0> bPopulationM0Init; 
-  real <lower=0> bPopulationM1Init; 
-  real <lower=0> bPopulationM2Init; 
-  real <lower=0> bPopulationM3Init; 
-  real <lower=0> bPopulationMAInit; 
-  simplex [nclass] bPropVecInit;
-  real <lower=0, upper=1> bPropReproductiveFA; 
-  real bFecundityReproductiveFA; 
-  real bInitialMortalityCalfAnnual[nannual]; 
-  real <lower=0, upper=1> bMAProportion[nseason]; 
-  
-  real <lower=0> bKmWeekSummerFall;
-  real <lower=0> bKmWeekWin;
-  
-  real <lower=0> bEtaSummerFall;
-  real <lower=0> bRhoSummerFall;
-  real <lower=0> bSigmaSummerFall;
+  array[nannual] real bSurvF0Annual;
+  array[nannual] real bSurvF1Annual;
+  array[nannual] real bSurvFAAnnual;
+  array[nannual] real bSurvM0Annual;
+  array[nannual] real bSurvM1Annual;
+  array[nannual] real bSurvBullAnnual;
+  real<lower=0> bPopulationAbundanceInit;
+  real<lower=0> bPopulationF0Init;
+  real<lower=0> bPopulationF1Init;
+  real<lower=0> bPopulationFAInit;
+  real<lower=0> bPopulationM0Init;
+  real<lower=0> bPopulationM1Init;
+  real<lower=0> bPopulationM2Init;
+  real<lower=0> bPopulationM3Init;
+  real<lower=0> bPopulationMAInit;
+  simplex[nclass] bPropVecInit;
+  real<lower=0, upper=1> bPropReproductiveFA;
+  real bFecundityReproductiveFA;
+  array[nannual] real bInitialMortalityCalfAnnual;
+  array[nseason] real<lower=0, upper=1> bMAProportion;
 
-  real <lower=0> bEtaWin;
-  real <lower=0> bRhoWin;
-  real <lower=0> bSigmaWin;
-  
+  real<lower=0> bKmWeekSummerFall;
+  real<lower=0> bKmWeekWin;
+
+  real<lower=0> bEtaSummerFall;
+  real<lower=0> bRhoSummerFall;
+  real<lower=0> bSigmaSummerFall;
+
+  real<lower=0> bEtaWin;
+  real<lower=0> bRhoWin;
+  real<lower=0> bSigmaWin;
+
   vector[nlocation_weekfac] eZSummerFallF0M0;
   vector[nlocation_weekfac] eZSummerFallF1M1;
   vector[nlocation_weekfac] eZSummerFallFABull;
@@ -121,7 +121,7 @@ parameters {
   vector[nlocation_weekfac] eZSummerFallCalf;
   vector[nlocation_weekfac] eZSummerFallYearling;
   vector[nlocation_weekfac] eZSummerFallAdult;
-  
+
   vector[nlocation_weekfac] eZWinF0M0;
   vector[nlocation_weekfac] eZWinF1M1;
   vector[nlocation_weekfac] eZWinFABull;
@@ -135,65 +135,65 @@ parameters {
 transformed parameters {
   // Setup holding variables for derived parameters
   // Annual
-  simplex[nclass] bPropVecAnnual[nannual];
-  matrix <lower=0> [nclass, nannual] bPopulationAnnual; // Population abundances on Apr. 1
+  array[nannual] simplex[nclass] bPropVecAnnual;
+  matrix<lower=0>[nclass, nannual] bPopulationAnnual; // Population abundances on Apr. 1
 
-  matrix <lower=0, upper=1> [nclass, nclass] eSurvivalMatrixAnnual[nannual];
-  matrix <lower=0, upper=1> [nclass, nclass] eBirthMatrixAnnual[nannual];
-  matrix <lower=0, upper=1> [nclass, nclass] eAgeMatrix;
+  array[nannual] matrix<lower=0, upper=1>[nclass, nclass] eSurvivalMatrixAnnual;
+  array[nannual] matrix<lower=0, upper=1>[nclass, nclass] eBirthMatrixAnnual;
+  matrix<lower=0, upper=1>[nclass, nclass] eAgeMatrix;
 
-  real <lower=0, upper=1> eSurvF0Annual[nannual];
-  real <lower=0, upper=1> eSurvF1Annual[nannual];
-  real <lower=0, upper=1> eSurvFAAnnual[nannual];
-  real <lower=0, upper=1> eSurvM0Annual[nannual];
-  real <lower=0, upper=1> eSurvM1Annual[nannual];
-  real <lower=0, upper=1> eSurvBullAnnual[nannual];
-  
-  real <lower=0, upper=1> eFecundityFA;
-  real <lower=0, upper=1> eInitialMortalityAnnual[nannual];
-  
+  array[nannual] real<lower=0, upper=1> eSurvF0Annual;
+  array[nannual] real<lower=0, upper=1> eSurvF1Annual;
+  array[nannual] real<lower=0, upper=1> eSurvFAAnnual;
+  array[nannual] real<lower=0, upper=1> eSurvM0Annual;
+  array[nannual] real<lower=0, upper=1> eSurvM1Annual;
+  array[nannual] real<lower=0, upper=1> eSurvBullAnnual;
+
+  real<lower=0, upper=1> eFecundityFA;
+  array[nannual] real<lower=0, upper=1> eInitialMortalityAnnual;
+
   // Event
-  simplex[nclass] bPropVecEvent[nObs];
-  matrix <lower=0> [nclass, nObs] ePopulationEvent;
+  array[nObs] simplex[nclass] bPropVecEvent;
+  matrix<lower=0>[nclass, nObs] ePopulationEvent;
 
-  real <lower=0, upper=1> eSurvF0Event[nObs];
-  real <lower=0, upper=1> eSurvF1Event[nObs];
-  real <lower=0, upper=1> eSurvFAEvent[nObs];
-  real <lower=0, upper=1> eSurvM0Event[nObs];
-  real <lower=0, upper=1> eSurvM1Event[nObs];
-  real <lower=0, upper=1> eSurvBullEvent[nObs];
+  array[nObs] real<lower=0, upper=1> eSurvF0Event;
+  array[nObs] real<lower=0, upper=1> eSurvF1Event;
+  array[nObs] real<lower=0, upper=1> eSurvFAEvent;
+  array[nObs] real<lower=0, upper=1> eSurvM0Event;
+  array[nObs] real<lower=0, upper=1> eSurvM1Event;
+  array[nObs] real<lower=0, upper=1> eSurvBullEvent;
 
-  matrix <lower=0, upper=1> [nclass, nclass] eSurvivalMatrixEvent[nObs];
-  
+  array[nObs] matrix<lower=0, upper=1>[nclass, nclass] eSurvivalMatrixEvent;
+
   // Mar 31 - to derive ratios at the stable point at the end of the year.
-  simplex[nclass] bPropVecMar31[nannual];
-  matrix <lower=0> [nclass, nannual] ePopulationMar31; // Population abundances on Mar 31
+  array[nannual] simplex[nclass] bPropVecMar31;
+  matrix<lower=0>[nclass, nannual] ePopulationMar31; // Population abundances on Mar 31
 
   // Incorporate census data
-  matrix <lower=0> [nclass, ncensus] ePopulationCensus;
+  matrix<lower=0>[nclass, ncensus] ePopulationCensus;
 
-  real <lower=0, upper=1> eSurvF0Census[ncensus];
-  real <lower=0, upper=1> eSurvF1Census[ncensus];
-  real <lower=0, upper=1> eSurvFACensus[ncensus];
-  real <lower=0, upper=1> eSurvM0Census[ncensus];
-  real <lower=0, upper=1> eSurvM1Census[ncensus];
-  real <lower=0, upper=1> eSurvBullCensus[ncensus];
+  array[ncensus] real<lower=0, upper=1> eSurvF0Census;
+  array[ncensus] real<lower=0, upper=1> eSurvF1Census;
+  array[ncensus] real<lower=0, upper=1> eSurvFACensus;
+  array[ncensus] real<lower=0, upper=1> eSurvM0Census;
+  array[ncensus] real<lower=0, upper=1> eSurvM1Census;
+  array[ncensus] real<lower=0, upper=1> eSurvBullCensus;
 
-  matrix <lower=0, upper=1> [nclass, nclass] eSurvivalMatrixCensus[ncensus];
+  array[ncensus] matrix<lower=0, upper=1>[nclass, nclass] eSurvivalMatrixCensus;
 
   // Incorporate data on proportion of calves
-  simplex[nclass] ePropVecPropCalf[nprop_calf];
-  matrix <lower=0> [nclass, nprop_calf] ePopulationPropCalf;
+  array[nprop_calf] simplex[nclass] ePropVecPropCalf;
+  matrix<lower=0>[nclass, nprop_calf] ePopulationPropCalf;
 
-  real <lower=0, upper=1> eSurvF0PropCalf[nprop_calf];
-  real <lower=0, upper=1> eSurvF1PropCalf[nprop_calf];
-  real <lower=0, upper=1> eSurvFAPropCalf[nprop_calf];
-  real <lower=0, upper=1> eSurvM0PropCalf[nprop_calf];
-  real <lower=0, upper=1> eSurvM1PropCalf[nprop_calf];
-  real <lower=0, upper=1> eSurvBullPropCalf[nprop_calf];
+  array[nprop_calf] real<lower=0, upper=1> eSurvF0PropCalf;
+  array[nprop_calf] real<lower=0, upper=1> eSurvF1PropCalf;
+  array[nprop_calf] real<lower=0, upper=1> eSurvFAPropCalf;
+  array[nprop_calf] real<lower=0, upper=1> eSurvM0PropCalf;
+  array[nprop_calf] real<lower=0, upper=1> eSurvM1PropCalf;
+  array[nprop_calf] real<lower=0, upper=1> eSurvBullPropCalf;
 
-  matrix <lower=0, upper=1> [nclass, nclass] eSurvivalMatrixPropCalf[nprop_calf];
-  
+  array[nprop_calf] matrix<lower=0, upper=1>[nclass, nclass] eSurvivalMatrixPropCalf;
+
   // Covariance structure
   matrix[nlocation_weekfac, nseason] bSpaceTimeF0M0;
   matrix[nlocation_weekfac, nseason] bSpaceTimeF1M1;
@@ -203,18 +203,18 @@ transformed parameters {
   matrix[nlocation_weekfac, nseason] bSpaceTimeCalf;
   matrix[nlocation_weekfac, nseason] bSpaceTimeYearling;
   matrix[nlocation_weekfac, nseason] bSpaceTimeAdult;
-  
+
   matrix[nlocation_weekfac, nlocation_weekfac] eDistanceMatSummerFall;
   matrix[nlocation_weekfac, nlocation_weekfac] eCovMatSummerFall;
   matrix[nlocation_weekfac, nlocation_weekfac] eLCovMatSummerFall;
-  
+
   matrix[nlocation_weekfac, nlocation_weekfac] eDistanceMatWin;
   matrix[nlocation_weekfac, nlocation_weekfac] eCovMatWin;
   matrix[nlocation_weekfac, nlocation_weekfac] eLCovMatWin;
-  
+
   // Calculate derived parameters
   bPopulationAnnual[, 1] = [bPopulationF0Init, bPopulationF1Init, bPopulationFAInit, bPopulationM0Init, bPopulationM1Init, bPopulationM2Init, bPopulationM3Init, bPopulationMAInit]';
-  
+
   for (i in 1:nannual) {
     eSurvF0Annual[i] = inv_logit(bSurvF0Annual[i]);
     eSurvM0Annual[i] = inv_logit(bSurvM0Annual[i]);
@@ -225,9 +225,9 @@ transformed parameters {
 
     eSurvivalMatrixAnnual[i] = diag_matrix([eSurvF0Annual[i], eSurvF1Annual[i], eSurvFAAnnual[i], eSurvM0Annual[i], eSurvM1Annual[i], eSurvBullAnnual[i], eSurvBullAnnual[i], eSurvBullAnnual[i]]');
   }
-  
+
   eFecundityFA = inv_logit(bFecundityReproductiveFA);
-  
+
   for (i in 1:nannual) {
     eInitialMortalityAnnual[i] = inv_logit(bInitialMortalityCalfAnnual[i]);
     eBirthMatrixAnnual[i] = diag_matrix(rep_vector(1.0, nclass));
@@ -236,7 +236,7 @@ transformed parameters {
     eBirthMatrixAnnual[i, 1, 3] = eFecundityFA * 0.5 * bPropReproductiveFA * (1 - eInitialMortalityAnnual[i]);
     eBirthMatrixAnnual[i, 4, 3] = eFecundityFA * 0.5 * bPropReproductiveFA * (1 - eInitialMortalityAnnual[i]);
   }
-  
+
   eAgeMatrix = diag_matrix(rep_vector(0.0, nclass));
   eAgeMatrix[2, 1] = 1.0;
   eAgeMatrix[3, 2] = 1.0;
@@ -274,7 +274,7 @@ transformed parameters {
   // Update population for each event
   for (i in 1:nObs) {
     // Assumes exponential decay in population classes through year
-    ePopulationEvent[, i] = eSurvivalMatrixEvent[i] * bPopulationAnnual[, annual[i]]; 
+    ePopulationEvent[, i] = eSurvivalMatrixEvent[i] * bPopulationAnnual[, annual[i]];
   }
 
    // Derive proportions in age classes for each event
@@ -323,7 +323,7 @@ transformed parameters {
       ePropVecPropCalf[i, j] = ePopulationPropCalf[j, i] / sum(ePopulationPropCalf[, i]);
     }
   }
-  
+
   // Covariance structure
   for (i in 1:(nlocation_weekfac - 1)) {
     for (j in (i + 1):nlocation_weekfac) {
@@ -331,21 +331,21 @@ transformed parameters {
       eDistanceMatSummerFall[i, j] = sqrt((location_distance[lookup_location[i], lookup_location[j]])^2 +
       (bKmWeekSummerFall * abs(lookup_week[i] - lookup_week[j]))^2);
       eDistanceMatSummerFall[j, i] = eDistanceMatSummerFall[i, j];
-      
+
       eDistanceMatWin[i, j] = sqrt((location_distance[lookup_location[i], lookup_location[j]])^2 +
       (bKmWeekWin * abs(lookup_week[i] - lookup_week[j]))^2);
       eDistanceMatWin[j, i] = eDistanceMatWin[i, j];
     }
   }
-  
+
   for (i in 1:nlocation_weekfac) {
     eDistanceMatSummerFall[i, i] = 0.0;
     eDistanceMatWin[i, i] = 0.0;
   }
-  
+
   eCovMatSummerFall = cov_GPL2(eDistanceMatSummerFall, bEtaSummerFall, bRhoSummerFall, bSigmaSummerFall);
   eLCovMatSummerFall = cholesky_decompose(eCovMatSummerFall);
-  
+
   bSpaceTimeF0M0[, 1] = eLCovMatSummerFall * eZSummerFallF0M0;
   bSpaceTimeF1M1[, 1] = eLCovMatSummerFall * eZSummerFallF1M1;
   bSpaceTimeFABull[, 1] = eLCovMatSummerFall * eZSummerFallFABull;
@@ -354,10 +354,10 @@ transformed parameters {
   bSpaceTimeCalf[, 1] = eLCovMatSummerFall * eZSummerFallCalf;
   bSpaceTimeYearling[, 1] = eLCovMatSummerFall * eZSummerFallYearling;
   bSpaceTimeAdult[, 1] = eLCovMatSummerFall * eZSummerFallAdult;
-  
+
   eCovMatWin = cov_GPL2(eDistanceMatWin, bEtaWin, bRhoWin, bSigmaWin);
   eLCovMatWin = cholesky_decompose(eCovMatWin);
-  
+
   bSpaceTimeF0M0[, 2] = eLCovMatWin * eZWinF0M0;
   bSpaceTimeF1M1[, 2] = eLCovMatWin * eZWinF1M1;
   bSpaceTimeFABull[, 2] = eLCovMatWin * eZWinFABull;
@@ -369,15 +369,15 @@ transformed parameters {
 }
 
 model {
-  real ePropCalf[nObs];
-  real ePropYearling[nObs];
-  real ePropAdult[nObs];
+  array[nObs] real ePropCalf;
+  array[nObs] real ePropYearling;
+  array[nObs] real ePropAdult;
 
-  real ePropF0M0[nObs];
-  real ePropF1M1[nObs];
-  real ePropFABull[nObs];
-  real ePropM2M3[nObs];
-  real ePropMAFA[nObs];
+  array[nObs] real ePropF0M0;
+  array[nObs] real ePropF1M1;
+  array[nObs] real ePropFABull;
+  array[nObs] real ePropM2M3;
+  array[nObs] real ePropMAFA;
 
   bMAProportion[1] ~ normal(0.45, 0.1) T[0, 1];
   bMAProportion[2] ~ normal(0.1, 0.1) T[0, 1];
@@ -388,7 +388,7 @@ model {
   bSurvM0Annual ~ normal(logit(0.44), 0.5);
   bSurvF1Annual ~ normal(logit(0.85), 0.5);
   bSurvM1Annual ~ normal(logit(0.85), 0.5);
-  bSurvFAAnnual ~ normal(logit(0.99), 0.5); # More informative prior from survival analysis
+  bSurvFAAnnual ~ normal(logit(0.99), 0.5); // More informative prior from survival analysis
   bSurvBullAnnual ~ normal(logit(0.92), 0.5);
 
   bInitialMortalityCalfAnnual ~ normal(0, 3);
@@ -418,11 +418,11 @@ model {
 
   bKmWeekSummerFall ~ normal(2, 1) T[0, ];
   bKmWeekWin ~ normal(2, 1) T[0, ];
-  
+
   bEtaSummerFall ~ exponential(1);
   bRhoSummerFall ~ exponential(1);
   bSigmaSummerFall ~ exponential(1);
-  
+
   bEtaWin ~ exponential(1);
   bRhoWin ~ exponential(1);
   bSigmaWin ~ exponential(1);
@@ -444,8 +444,8 @@ model {
   eZWinCalf ~ std_normal();
   eZWinYearling ~ std_normal();
   eZWinAdult ~ std_normal();
-  
-  for (i in 1:ncensus) { 
+
+  for (i in 1:ncensus) {
     census[i] ~ normal(sum(ePopulationCensus[, i]), sCensus[i]) T[0, ];
   }
 
@@ -456,25 +456,25 @@ model {
   for (i in 1:nObs) {
     // Calves
     ePropCalf[i] = inv_logit(
-      logit(bPropVecEvent[i, 1] + bPropVecEvent[i, 4]) * 
+      logit(bPropVecEvent[i, 1] + bPropVecEvent[i, 4]) *
       exp(bSpaceTimeCalf[location_weekfac[i], season[i]])
     );
     calf[i] ~ binomial(groupsize_total[i], ePropCalf[i]);
 
     // Yearlings
     ePropYearling[i] = inv_logit(
-      logit(bPropVecEvent[i, 2] + bPropVecEvent[i, 5]) * 
+      logit(bPropVecEvent[i, 2] + bPropVecEvent[i, 5]) *
       exp(bSpaceTimeYearling[location_weekfac[i], season[i]])
     );
     yearling[i] ~ binomial(groupsize_total[i], ePropYearling[i]);
-   
+
     // Adults
     ePropAdult[i] = inv_logit(
-      logit(bPropVecEvent[i, 3] + bPropVecEvent[i, 6] + bPropVecEvent[i, 7] + (bPropVecEvent[i, 8] * bMAProportion[season[i]])) * 
+      logit(bPropVecEvent[i, 3] + bPropVecEvent[i, 6] + bPropVecEvent[i, 7] + (bPropVecEvent[i, 8] * bMAProportion[season[i]])) *
       exp(bSpaceTimeAdult[location_weekfac[i], season[i]])
     );
     adult[i] ~ binomial(groupsize_total[i], ePropAdult[i]);
-    
+
 
     // Ratios of known sex
     // Proportion of female calves
@@ -483,7 +483,7 @@ model {
       exp(bSpaceTimeF0M0[location_weekfac[i], season[i]])
     );
     f0[i] ~ binomial(f0[i] + m0[i], ePropF0M0[i]);
-    
+
     // Proportion of male calves
     ePropF1M1[i] = inv_logit(
       logit(bPropVecEvent[i, 2] / (bPropVecEvent[i, 2] + bPropVecEvent[i, 5])) *

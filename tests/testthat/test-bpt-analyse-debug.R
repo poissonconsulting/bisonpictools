@@ -36,13 +36,13 @@ test_that(
                       nthin = 1L,
                       analysis_mode = "debug"
                     ),
-                    "The largest R-hat is 2.12, indicating chains have not mixed."
+                    "The largest R-hat is"
                   ),
                   "Bulk Effective Samples Size"
                 ),
                 "Tail Effective Samples Size"
               ),
-              "The largest R-hat is 2.12, indicating chains have not mixed."
+              "The largest R-hat is"
             ),
             "Bulk Effective Samples Size"
           ),

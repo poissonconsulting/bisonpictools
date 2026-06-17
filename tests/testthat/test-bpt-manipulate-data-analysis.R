@@ -430,6 +430,37 @@ test_that("count columns are positive", {
   expect_true(all(x$data$adult >= 0))
 })
 
+test_that("groupsize column is equal to sum of all sex-age classes", {
+  x <- bpt_manipulate_data_analysis(
+    event_data = event_data,
+    location_data = location_data,
+    census_data = census_data,
+    proportion_calf_data = proportion_calf_data
+  )
+  expect_true(
+    all(
+      (x$data$f0 + x$data$f1 + x$data$fa + x$data$m0 + x$data$m1 + x$data$m2 +
+          x$data$m3 + x$data$ma + x$data$u0 + x$data$u1 + x$data$ua) == 
+        x$data$groupsize_total
+    )
+  )
+})
+
+test_that("groupsize column is equal to sum of all age classes", {
+  x <- bpt_manipulate_data_analysis(
+    event_data = event_data,
+    location_data = location_data,
+    census_data = census_data,
+    proportion_calf_data = proportion_calf_data
+  )
+  expect_true(
+    all(
+      (x$data$calf + x$data$yearling + x$data$adult) == 
+        x$data$groupsize_total
+    )
+  )
+})
+
 # Extra data
 # Census (x$census_data)
 test_that("census column is positive integer", {

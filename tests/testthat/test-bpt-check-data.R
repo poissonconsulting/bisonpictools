@@ -427,8 +427,7 @@ test_that("event data fails if location ID and datetime are not unique", {
 
   expect_chk_error(
     bpt_check_data(event = event_data, complete = FALSE),
-    "Columns 'location_id', 'start_year', 'start_month', 'start_day', ",
-    "'start_hour' and 'start_minute' in event must be a unique key."
+    "Columns 'location_id', 'start_year', 'start_month', 'start_day', 'start_hour' and 'start_minute' in event must be a unique key."
   )
 })
 
@@ -530,7 +529,7 @@ test_that("Errors if start year is an incompatible string", {
 test_that("Errors if event year is before 2019", {
   event_data <- dplyr::tibble(
     location_id = c("SiteA", "SiteB"),
-    start_year = c("2018", "2022"),
+    start_year = c("1999", "2022"),
     start_month = c(4L, 4L),
     start_day = c(12L, 12L),
     start_hour = c(13L, 13L),
@@ -553,7 +552,7 @@ test_that("Errors if event year is before 2019", {
 
   expect_error(
     bpt_check_data(event = event_data),
-    "`event\\$start_year` must have values between 2019 and 2050."
+    "`event\\$start_year` must have values between 2000 and 2050."
   )
 })
 
@@ -583,7 +582,7 @@ test_that("Errors if event year is after 2050", {
 
   expect_error(
     bpt_check_data(event = event_data),
-    "`event\\$start_year` must have values between 2019 and 2050."
+    "`event\\$start_year` must have values between 2000 and 2050."
   )
 })
 
@@ -2903,7 +2902,7 @@ test_that("Errors if non-coerceable string provided in longitude column", {
 ## Checks on census data template
 test_that("Errors when year below range", {
   census_data <- dplyr::tibble(
-    census_year = c(2016L, 2022L),
+    census_year = c(1999L, 2022L),
     census_month = c(3L, 3L),
     census_day = c(31L, 31L),
     census = c(200L, 140L),
@@ -2912,7 +2911,7 @@ test_that("Errors when year below range", {
 
   expect_chk_error(
     bpt_check_data(census = census_data),
-    regexp = "`census\\$census_year` must have values between 2019 and 2050."
+    regexp = "`census\\$census_year` must have values between 2000 and 2050."
   )
 })
 
@@ -2927,7 +2926,7 @@ test_that("Errors when year above range", {
 
   expect_chk_error(
     bpt_check_data(census = census_data),
-    regexp = "`census\\$census_year` must have values between 2019 and 2050."
+    regexp = "`census\\$census_year` must have values between 2000 and 2050."
   )
 })
 
@@ -3273,7 +3272,7 @@ test_that("Errors when duplicate dates provided to calf proportion data", {
 
 test_that("Errors when year below range", {
   proportion_calf_data <- dplyr::tibble(
-    proportion_calf_year = c(2016L, 2022L),
+    proportion_calf_year = c(1999L, 2022L),
     proportion_calf_month = c(3L, 3L),
     proportion_calf_day = c(31L, 31L),
     proportion_calf = c(0.2, 0.05),
@@ -3283,7 +3282,7 @@ test_that("Errors when year below range", {
   expect_chk_error(
     bpt_check_data(proportion_calf = proportion_calf_data),
     regexp = paste0(
-      "`proportion_calf\\$proportion_calf_year` must have values between 2019 ",
+      "`proportion_calf\\$proportion_calf_year` must have values between 2000 ",
       "and 2050."
     )
   )
@@ -3302,7 +3301,7 @@ test_that("Errors when year above range", {
     bpt_check_data(proportion_calf = proportion_calf_data),
     regexp = paste0(
       "`proportion_calf\\$proportion_calf_year` must have values between ",
-      "2019 and 2050."
+      "2000 and 2050."
     )
   )
 })
@@ -3552,7 +3551,7 @@ test_that("Errors when CV is below the expected range", {
   expect_chk_error(
     bpt_check_data(proportion_calf = proportion_calf_data),
     regexp = paste0(
-      "`proportion_calf\\$proportion_calf_cv` must have values between 0 and 1"
+      "`proportion_calf\\$proportion_calf_cv` must have values between 0 and 5"
     )
   )
 })
@@ -3563,13 +3562,13 @@ test_that("Errors when CV is above the expected range", {
     proportion_calf_month = c(3L, 3L),
     proportion_calf_day = c(31L, 31L),
     proportion_calf = c(0.2, 0.05),
-    proportion_calf_cv = c(1, 1.4)
+    proportion_calf_cv = c(1, 6)
   )
 
   expect_chk_error(
     bpt_check_data(proportion_calf = proportion_calf_data),
     regexp = paste0(
-      "`proportion_calf\\$proportion_calf_cv` must have values between 0 and 1."
+      "`proportion_calf\\$proportion_calf_cv` must have values between 0 and 5."
     )
   )
 })
