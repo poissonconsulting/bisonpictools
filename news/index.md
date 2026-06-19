@@ -1,5 +1,10 @@
 # Changelog
 
+## bisonpictools 0.1.0.9000
+
+- Add fledge-bump workflow
+- Add fledge-tag-on-merge workflow
+
 ## bisonpictools 0.1.0
 
 - Initial public release.

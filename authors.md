@@ -28,13 +28,13 @@ Source:
 [`DESCRIPTION`](https://github.com/poissonconsulting/bisonpictools/blob/main/DESCRIPTION)
 
 Hill N, Kortello A, Pearson A (2026). *bisonpictools: Wood Bison Camera
-Trap Tools*. R package version 0.1.0,
+Trap Tools*. R package version 0.1.0.9000,
 <https://github.com/poissonconsulting/bisonpictools>.
 
     @Manual{,
       title = {bisonpictools: Wood Bison Camera Trap Tools},
       author = {Nicole Hill and Andrea Kortello and Ayla Pearson},
       year = {2026},
-      note = {R package version 0.1.0},
+      note = {R package version 0.1.0.9000},
       url = {https://github.com/poissonconsulting/bisonpictools},
     }
