@@ -1,5 +1,10 @@
 <!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
 
+# bisonpictools 0.1.0.9001
+
+- Same as previous version.
+
+
 # bisonpictools 0.1.0.9000
 
 * Add fledge-bump workflow
