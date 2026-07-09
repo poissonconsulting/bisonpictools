@@ -54,13 +54,14 @@
 #' try(event <- bpt_check_data(event = event_data, complete = TRUE))
 #' }
 bpt_check_data <- function(
-    event = NULL,
-    location = NULL,
-    census = NULL,
-    proportion_calf = NULL,
-    complete = FALSE,
-    join = FALSE,
-    check_study_years = FALSE) {
+  event = NULL,
+  location = NULL,
+  census = NULL,
+  proportion_calf = NULL,
+  complete = FALSE,
+  join = FALSE,
+  check_study_years = FALSE
+) {
   data <- chktemplate::check_data_format(
     event = event,
     location = location,

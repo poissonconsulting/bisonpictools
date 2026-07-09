@@ -47,8 +47,14 @@ bpt_predict_abundance_class <- function(analysis) {
 
   abundance <-
     dplyr::bind_rows(
-      abundance_f0, abundance_f1, abundance_fa,
-      abundance_m0, abundance_m1, abundance_m2, abundance_m3, abundance_ma
+      abundance_f0,
+      abundance_f1,
+      abundance_fa,
+      abundance_m0,
+      abundance_m1,
+      abundance_m2,
+      abundance_m3,
+      abundance_ma
     ) |>
     dplyr::select("annual", "class", "estimate", "lower", "upper")
 

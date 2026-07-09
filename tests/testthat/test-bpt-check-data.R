@@ -116,8 +116,7 @@ test_that("event table only errors as complete set to TRUE", {
 
   expect_error(
     bpt_check_data(event = event_data, complete = TRUE),
-    regexp =
-      "The `complete = TRUE` argument was provided but not all data sets were
+    regexp = "The `complete = TRUE` argument was provided but not all data sets were
         supplied. Either change `complete = FALSE` or supply all the data in the
         `...` argument."
   )
@@ -132,8 +131,7 @@ test_that("location table only errors as complete set to TRUE", {
 
   expect_error(
     bpt_check_data(location = location_data, complete = TRUE),
-    regexp =
-      "The `complete = TRUE` argument was provided but not all data sets were
+    regexp = "The `complete = TRUE` argument was provided but not all data sets were
         supplied. Either change `complete = FALSE` or supply all the data in the
         `...` argument."
   )
@@ -150,8 +148,7 @@ test_that("census table only errors as complete set to TRUE", {
 
   expect_error(
     bpt_check_data(census = census_data, complete = TRUE),
-    regexp =
-      "The `complete = TRUE` argument was provided but not all data sets were
+    regexp = "The `complete = TRUE` argument was provided but not all data sets were
         supplied. Either change `complete = FALSE` or supply all the data in the
         `...` argument."
   )
@@ -168,8 +165,7 @@ test_that("calf proportion table only errors as complete set to TRUE", {
 
   expect_error(
     bpt_check_data(proportion_calf = proportion_calf_data, complete = TRUE),
-    regexp =
-      "The `complete = TRUE` argument was provided but not all data sets were
+    regexp = "The `complete = TRUE` argument was provided but not all data sets were
         supplied. Either change `complete = FALSE` or supply all the data in the
         `...` argument."
   )

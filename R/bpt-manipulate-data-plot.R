@@ -27,8 +27,9 @@
 #'   location_data
 #' )
 bpt_manipulate_data_plot <- function(
-    event_data,
-    location_data) {
+  event_data,
+  location_data
+) {
   data <- bpt_check_data(
     location = location_data,
     event = event_data,
@@ -48,16 +49,40 @@ bpt_manipulate_data_plot <- function(
         hour = .data$start_hour,
         minute = .data$start_minute
       ),
-      groupsize = .data$fa + .data$f1 + .data$f0 + .data$fu + .data$ma +
-        .data$m3 + .data$m2 + .data$m1 + .data$m0 + .data$mu +
-        .data$ua + .data$u1 + .data$u0 + .data$uu,
+      groupsize = .data$fa +
+        .data$f1 +
+        .data$f0 +
+        .data$fu +
+        .data$ma +
+        .data$m3 +
+        .data$m2 +
+        .data$m1 +
+        .data$m0 +
+        .data$mu +
+        .data$ua +
+        .data$u1 +
+        .data$u0 +
+        .data$uu,
       year = dttr2::dtt_year(.data$datetime_start),
       study_year = dttr2::dtt_study_year(.data$datetime_start, 4L),
       month = dttr2::dtt_month(.data$datetime_start),
       dplyr::across(
         c(
-          "fa", "f1", "f0", "fu", "ma", "m3", "m2", "m1", "m0", "mu", "ua",
-          "u1", "u0", "uu", "groupsize"
+          "fa",
+          "f1",
+          "f0",
+          "fu",
+          "ma",
+          "m3",
+          "m2",
+          "m1",
+          "m0",
+          "mu",
+          "ua",
+          "u1",
+          "u0",
+          "uu",
+          "groupsize"
         ),
         \(x) base::as.integer(x)
       )
@@ -71,8 +96,24 @@ bpt_manipulate_data_plot <- function(
       date_time = "datetime_start"
     ) |>
     dplyr::select(
-      "location_id", "groupsize", "fa", "f1", "f0", "fu", "ma", "m3", "m2",
-      "m1", "m0", "mu", "ua", "u1", "u0", "uu", "study_year", "date_time",
+      "location_id",
+      "groupsize",
+      "fa",
+      "f1",
+      "f0",
+      "fu",
+      "ma",
+      "m3",
+      "m2",
+      "m1",
+      "m0",
+      "mu",
+      "ua",
+      "u1",
+      "u0",
+      "uu",
+      "study_year",
+      "date_time",
       "year"
     )
   data

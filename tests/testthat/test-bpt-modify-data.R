@@ -513,33 +513,30 @@ test_that("errors if census_study_year is not a subset of levels_annual", {
   )
 })
 
-test_that(
-  "errors if proportion_calf_study_year is not a subset of levels_annual",
-  {
-    expect_chk_error(
-      bpt_modify_data(
-        data = list(
-          annual = as.factor(c("2021-2022", "2022-2023")),
-          x = 1:2,
-          y = 10:11
-        ),
-        levels_annual = levels(as.factor(c("2021-2022", "2022-2023"))),
-        census = 200L,
-        census_cv = 0.2,
-        census_study_year = c("2021-2022"),
-        census_day_of_year = 365L,
-        proportion_calf = c(0.2, 0.3),
-        proportion_calf_cv = c(0.5, 0.5),
-        proportion_calf_study_year = c("2021-2022", "2026-2027"),
-        proportion_calf_day_of_year = c(365L, 365L)
+test_that("errors if proportion_calf_study_year is not a subset of levels_annual", {
+  expect_chk_error(
+    bpt_modify_data(
+      data = list(
+        annual = as.factor(c("2021-2022", "2022-2023")),
+        x = 1:2,
+        y = 10:11
       ),
-      regexp = paste0(
-        "`proportion_calf_study_year` must have values matching '2021-2022' ",
-        "or '2022-2023'."
-      )
+      levels_annual = levels(as.factor(c("2021-2022", "2022-2023"))),
+      census = 200L,
+      census_cv = 0.2,
+      census_study_year = c("2021-2022"),
+      census_day_of_year = 365L,
+      proportion_calf = c(0.2, 0.3),
+      proportion_calf_cv = c(0.5, 0.5),
+      proportion_calf_study_year = c("2021-2022", "2026-2027"),
+      proportion_calf_day_of_year = c(365L, 365L)
+    ),
+    regexp = paste0(
+      "`proportion_calf_study_year` must have values matching '2021-2022' ",
+      "or '2022-2023'."
     )
-  }
-)
+  )
+})
 
 
 test_that("errors if census_day_of_year is not an integer", {
