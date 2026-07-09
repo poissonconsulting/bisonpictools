@@ -29,8 +29,11 @@ bpt_study_years <- function(data) {
   census <- try(bpt_check_data(census = data), silent = TRUE)
   proportion_calf <- try(bpt_check_data(proportion_calf = data), silent = TRUE)
 
-  if (inherits(event, "try-error") && inherits(census, "try-error") &&
-    inherits(proportion_calf, "try-error")) {
+  if (
+    inherits(event, "try-error") &&
+      inherits(census, "try-error") &&
+      inherits(proportion_calf, "try-error")
+  ) {
     chk::abort_chk(
       paste0(
         "Data is not a compatible tibble. Ensure columns match the formatting ",

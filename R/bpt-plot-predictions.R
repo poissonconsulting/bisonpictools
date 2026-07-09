@@ -30,7 +30,8 @@
 #' bpt_plot_predictions(analysis = analysis, prediction = "ratios")
 #' }
 bpt_plot_predictions <- function(analysis, prediction = "abundance-total") {
-  preds <- base::switch(prediction,
+  preds <- base::switch(
+    prediction,
     "abundance-class" = bisonpictools::bpt_predict_abundance_class(analysis),
     "abundance-total" = bisonpictools::bpt_predict_abundance_total(analysis),
     "survival" = bisonpictools::bpt_predict_survival(analysis),
@@ -38,7 +39,8 @@ bpt_plot_predictions <- function(analysis, prediction = "abundance-total") {
     "ratios" = bisonpictools::bpt_predict_ratios(analysis)
   )
 
-  xvar <- base::switch(prediction,
+  xvar <- base::switch(
+    prediction,
     "abundance-class" = "annual",
     "abundance-total" = "annual",
     "survival" = "annual",
@@ -46,7 +48,8 @@ bpt_plot_predictions <- function(analysis, prediction = "abundance-total") {
     "ratios" = "annual"
   )
 
-  facets <- base::switch(prediction,
+  facets <- base::switch(
+    prediction,
     "abundance-class" = "class",
     "survival" = "class",
     "ratios" = "ratio",
@@ -54,13 +57,15 @@ bpt_plot_predictions <- function(analysis, prediction = "abundance-total") {
     "abundance-total" = NA_character_
   )
 
-  scales <- base::switch(prediction,
+  scales <- base::switch(
+    prediction,
     "abundance-class" = "free_y",
     "survival" = "free_y",
     "ratios" = "free_y"
   )
 
-  xlab <- base::switch(prediction,
+  xlab <- base::switch(
+    prediction,
     "abundance-class" = "Study Year",
     "abundance-total" = "Study Year",
     "survival" = "Study Year",
@@ -68,7 +73,8 @@ bpt_plot_predictions <- function(analysis, prediction = "abundance-total") {
     "ratios" = "Study Year"
   )
 
-  ylab <- base::switch(prediction,
+  ylab <- base::switch(
+    prediction,
     "abundance-class" = "Abundance",
     "abundance-total" = "Abundance",
     "survival" = "Survival Rate (%)",
@@ -76,14 +82,14 @@ bpt_plot_predictions <- function(analysis, prediction = "abundance-total") {
     "ratios" = "Ratio"
   )
 
-  expand_lims <- base::switch(prediction,
+  expand_lims <- base::switch(
+    prediction,
     "abundance-class" = c(0),
     "abundance-total" = c(0),
     "survival" = c(0, 1),
     "fecundity" = c(0, 1),
     "ratios" = c(0)
   )
-
 
   gp <- ggplot2::ggplot(preds) +
     ggplot2::geom_pointrange(

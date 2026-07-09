@@ -45,18 +45,34 @@ bpt_predict_ratios <- function(analysis) {
     dplyr::mutate(ratio = "MA:FA")
 
   ratios <- dplyr::bind_rows(
-    m0_f0, m1_f1, calf_fa, yearling_fa, m2_fa, m3_fa, ma_fa
+    m0_f0,
+    m1_f1,
+    calf_fa,
+    yearling_fa,
+    m2_fa,
+    m3_fa,
+    ma_fa
   ) |>
     dplyr::mutate(
       ratio = base::factor(
         .data$ratio,
         levels = c(
-          "M0:F0", "M1:F1", "Calf:FA", "Yearling:FA", "M2:FA", "M3:FA", "MA:FA"
+          "M0:F0",
+          "M1:F1",
+          "Calf:FA",
+          "Yearling:FA",
+          "M2:FA",
+          "M3:FA",
+          "MA:FA"
         )
       )
     ) |>
     dplyr::select(
-      "annual", "ratio", "estimate", "lower", "upper"
+      "annual",
+      "ratio",
+      "estimate",
+      "lower",
+      "upper"
     )
 
   ratios

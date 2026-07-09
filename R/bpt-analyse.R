@@ -35,12 +35,13 @@
 #' )
 #' }
 bpt_analyse <- function(
-    event_data,
-    location_data,
-    census_data,
-    proportion_calf_data,
-    nthin = 10L,
-    analysis_mode = "report") {
+  event_data,
+  location_data,
+  census_data,
+  proportion_calf_data,
+  nthin = 10L,
+  analysis_mode = "report"
+) {
   chk::chk_integer(nthin)
   chk::chk_gte(nthin, 1L)
   chk::chk_subset(analysis_mode, c("report", "quick", "debug"))

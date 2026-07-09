@@ -84,7 +84,11 @@ bpt_predict_survival <- function(analysis) {
       )
     ) |>
     dplyr::select(
-      "annual", "class", "estimate", "lower", "upper"
+      "annual",
+      "class",
+      "estimate",
+      "lower",
+      "upper"
     )
 
   survival
