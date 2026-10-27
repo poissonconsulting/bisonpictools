@@ -42,7 +42,7 @@ test_that(
                 ),
                 "Tail Effective Samples Size"
               ),
-              "The largest R-hat is 2.12, indicating chains have not mixed."
+              "The largest R-hat is 2.05, indicating chains have not mixed."
             ),
             "Bulk Effective Samples Size"
           ),
