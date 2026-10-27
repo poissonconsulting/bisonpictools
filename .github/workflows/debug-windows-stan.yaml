@@ -1,0 +1,68 @@
+# Temporary workflow to capture the full Stan C++ compiler output on Windows.
+# Delete before merging.
+name: debug-windows-stan
+on:
+  workflow_dispatch:
+  push:
+    branches: [bug-fixes]
+    paths:
+      - ".github/workflows/debug-windows-stan.yaml"
+      - "inst/stan/**"
+permissions:
+  contents: read
+jobs:
+  compile:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: r-lib/actions/setup-r@v2
+        with:
+          use-public-rspm: true
+      - uses: r-lib/actions/setup-r-dependencies@v2
+        with:
+          extra-packages: any::rstan, any::pkgbuild
+          needs: check
+      - name: Toolchain info
+        shell: Rscript {0}
+        run: |
+          sessioninfo::session_info(c("rstan", "StanHeaders", "RcppEigen", "BH"))
+          print(pkgbuild::has_build_tools(debug = TRUE))
+          for (v in c("CXX", "CXX17", "CXX17FLAGS", "CXXFLAGS")) {
+            cat(v, ":", system2(file.path(R.home("bin"), "R"), c("CMD", "config", v), stdout = TRUE), "\n")
+          }
+          mv <- file.path(Sys.getenv("USERPROFILE"), ".R", "Makevars.win")
+          cat("Makevars.win exists:", file.exists(mv), "\n")
+          if (file.exists(mv)) cat(readLines(mv), sep = "\n")
+      - name: Compile model verbosely
+        shell: Rscript {0}
+        run: |
+          options(warning.length = 8170L)
+          sc <- rstan::stanc(file = "inst/stan/model.stan")
+          log <- "compile.log"
+          con <- file(log, open = "wt")
+          sink(con, type = "output")
+          sink(con, type = "message")
+          res <- tryCatch(
+            rstan::stan_model(stanc_ret = sc, verbose = TRUE, save_dso = FALSE),
+            error = function(e) e
+          )
+          sink(type = "message")
+          sink(type = "output")
+          close(con)
+          lines <- readLines(log)
+          cat("Compile log has", length(lines), "lines\n")
+          cat("---- lines matching error/fatal/sections/memory ----\n")
+          cat(grep("error|fatal|sections|too big|memory|killed", lines, value = TRUE, ignore.case = TRUE), sep = "\n")
+          cat("---- last 80 lines ----\n")
+          cat(utils::tail(lines, 80), sep = "\n")
+          if (inherits(res, "error")) {
+            cat("---- R error ----\n", conditionMessage(res), "\n")
+            quit(status = 1)
+          }
+          cat("Model compiled successfully\n")
+      - name: Upload compile log
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: compile-log
+          path: compile.log
