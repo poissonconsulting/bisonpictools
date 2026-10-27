@@ -95,7 +95,8 @@ test_that(
               analysis,
               simplify = TRUE,
               param_type = "fixed",
-              directional_information = FALSE
+              directional_information = FALSE,
+              sd = FALSE
             ),
             n = 500,
             width = 100
@@ -107,7 +108,8 @@ test_that(
               analysis,
               simplify = TRUE,
               param_type = "random",
-              directional_information = FALSE
+              directional_information = FALSE,
+              sd = FALSE
             ),
             n = 500,
             width = 100
@@ -119,7 +121,8 @@ test_that(
               analysis,
               simplify = TRUE,
               param_type = "derived",
-              directional_information = FALSE
+              directional_information = FALSE,
+              sd = FALSE
             ),
             n = 500,
             width = 100

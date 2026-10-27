@@ -12,7 +12,7 @@
 
     Code
       print(embr::coef(analysis, simplify = TRUE, param_type = "fixed",
-        directional_information = FALSE), n = 500, width = 100)
+        directional_information = FALSE, sd = FALSE), n = 500, width = 100)
     Output
       # A tibble: 57 x 5
          term                           estimate     lower    upper  svalue
@@ -79,7 +79,7 @@
 
     Code
       print(embr::coef(analysis, simplify = TRUE, param_type = "random",
-        directional_information = FALSE), n = 500, width = 100)
+        directional_information = FALSE, sd = FALSE), n = 500, width = 100)
     Output
       # A tibble: 176 x 5
           term                      estimate lower upper  svalue
@@ -265,7 +265,7 @@
 
     Code
       print(embr::coef(analysis, simplify = TRUE, param_type = "derived",
-        directional_information = FALSE), n = 500, width = 100)
+        directional_information = FALSE, sd = FALSE), n = 500, width = 100)
     Output
       # A tibble: 328 x 5
           term                        estimate    lower    upper   svalue

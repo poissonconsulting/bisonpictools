@@ -29,19 +29,54 @@
 #' bpt_predict_ratios(analysis)
 #' }
 bpt_predict_ratios <- function(analysis) {
-  m0_f0 <- embr::predict(analysis, "annual", term = "m0_f0") |>
+  m0_f0 <- embr::predict(
+    analysis,
+    "annual",
+    term = "m0_f0",
+    sd = FALSE
+  ) |>
     dplyr::mutate(ratio = "M0:F0")
-  m1_f1 <- embr::predict(analysis, "annual", term = "m1_f1") |>
+  m1_f1 <- embr::predict(
+    analysis,
+    "annual",
+    term = "m1_f1",
+    sd = FALSE
+  ) |>
     dplyr::mutate(ratio = "M1:F1")
-  calf_fa <- embr::predict(analysis, "annual", term = "calf_fa") |>
+  calf_fa <- embr::predict(
+    analysis,
+    "annual",
+    term = "calf_fa",
+    sd = FALSE
+  ) |>
     dplyr::mutate(ratio = "Calf:FA")
-  yearling_fa <- embr::predict(analysis, "annual", term = "yearling_fa") |>
+  yearling_fa <- embr::predict(
+    analysis,
+    "annual",
+    term = "yearling_fa",
+    sd = FALSE
+  ) |>
     dplyr::mutate(ratio = "Yearling:FA")
-  m2_fa <- embr::predict(analysis, "annual", term = "m2_fa") |>
+  m2_fa <- embr::predict(
+    analysis,
+    "annual",
+    term = "m2_fa",
+    sd = FALSE
+  ) |>
     dplyr::mutate(ratio = "M2:FA")
-  m3_fa <- embr::predict(analysis, "annual", term = "m3_fa") |>
+  m3_fa <- embr::predict(
+    analysis,
+    "annual",
+    term = "m3_fa",
+    sd = FALSE
+  ) |>
     dplyr::mutate(ratio = "M3:FA")
-  ma_fa <- embr::predict(analysis, "annual", term = "ma_fa") |>
+  ma_fa <- embr::predict(
+    analysis,
+    "annual",
+    term = "ma_fa",
+    sd = FALSE
+  ) |>
     dplyr::mutate(ratio = "MA:FA")
 
   ratios <- dplyr::bind_rows(
