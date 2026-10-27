@@ -33,6 +33,14 @@ jobs:
           mv <- file.path(Sys.getenv("USERPROFILE"), ".R", "Makevars.win")
           cat("Makevars.win exists:", file.exists(mv), "\n")
           if (file.exists(mv)) cat(readLines(mv), sep = "\n")
+      - name: Suppress compiler warnings so only errors are reported
+        shell: Rscript {0}
+        run: |
+          dir.create(file.path(Sys.getenv("USERPROFILE"), ".R"), showWarnings = FALSE)
+          writeLines(
+            "CXX17FLAGS = -O2 -mfpmath=sse -msse2 -mstackrealign -w",
+            file.path(Sys.getenv("USERPROFILE"), ".R", "Makevars.win")
+          )
       - name: Compile model verbosely
         shell: Rscript {0}
         run: |
