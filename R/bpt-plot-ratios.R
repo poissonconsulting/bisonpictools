@@ -88,8 +88,8 @@ bpt_plot_ratios <- function(
         xmin = .data$start_date_time,
         xmax = .data$end_date_time
       ),
-      ymin = 0,
-      ymax = nlevels(data$location_id) + 1,
+      ymin = -Inf,
+      ymax = Inf,
       alpha = 0.1
     ) +
     ggplot2::geom_point(
@@ -119,8 +119,8 @@ bpt_plot_ratios <- function(
     ggplot2::guides(
       x = ggplot2::guide_axis(angle = 45),
       fill = ggplot2::guide_legend(order = 1),
-      size = ggplot2::guide_legend(show.limits = TRUE, order = 2),
-      alpha = ggplot2::guide_legend(show.limits = TRUE, order = 3)
+      size = ggplot2::guide_legend(order = 2),
+      alpha = ggplot2::guide_legend(order = 3)
     ) +
     ggplot2::xlab("Date") +
     ggplot2::ylab("Location ID") +
