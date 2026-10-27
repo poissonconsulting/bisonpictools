@@ -20,7 +20,7 @@ jobs:
           use-public-rspm: true
       - uses: r-lib/actions/setup-r-dependencies@v2
         with:
-          extra-packages: any::rstan, any::pkgbuild
+          extra-packages: any::rstan, any::pkgbuild, StanHeaders@2.32.10
           needs: check
       - name: Toolchain info
         shell: Rscript {0}
