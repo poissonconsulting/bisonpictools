@@ -27,7 +27,7 @@ Imports:
     chktemplate,
     dplyr,
     dttr2,
-    embr,
+    embr (>= 1.1.0),
     forcats,
     ggplot2,
     lifecycle,
