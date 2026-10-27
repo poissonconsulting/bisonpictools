@@ -36,11 +36,14 @@ jobs:
       - name: Suppress compiler warnings so only errors are reported
         shell: Rscript {0}
         run: |
-          dir.create(file.path(Sys.getenv("USERPROFILE"), ".R"), showWarnings = FALSE)
-          writeLines(
-            "CXX17FLAGS = -O2 -mfpmath=sse -msse2 -mstackrealign -w",
-            file.path(Sys.getenv("USERPROFILE"), ".R", "Makevars.win")
-          )
+          path <- normalizePath(file.path(getwd(), "Makevars.debug"), winslash = "/", mustWork = FALSE)
+          writeLines("CXX17FLAGS = -O2 -mfpmath=sse -msse2 -mstackrealign -w", path)
+          cat(paste0("R_MAKEVARS_USER=", path), file = Sys.getenv("GITHUB_ENV"), sep = "\n", append = TRUE)
+      - name: Check Makevars is picked up
+        shell: Rscript {0}
+        run: |
+          cat("makevars_user():", tools::makevars_user(), "\n")
+          cat(readLines(tools::makevars_user()), sep = "\n")
       - name: Compile model verbosely
         shell: Rscript {0}
         run: |
