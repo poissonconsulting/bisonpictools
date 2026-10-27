@@ -28,19 +28,28 @@ test_that(
               expect_warning(
                 expect_warning(
                   expect_warning(
-                    analysis <- bpt_analyse(
-                      event_data = event_data,
-                      location_data = location_data,
-                      census_data = census_data,
-                      proportion_calf_data = proportion_calf_data,
-                      nthin = 1L,
-                      analysis_mode = "debug"
+                    expect_warning(
+                      expect_warning(
+                        expect_warning(
+                          analysis <- bpt_analyse(
+                            event_data = event_data,
+                            location_data = location_data,
+                            census_data = census_data,
+                            proportion_calf_data = proportion_calf_data,
+                            nthin = 1L,
+                            analysis_mode = "debug"
+                          ),
+                          "The largest R-hat is 2.12, indicating chains have not mixed."
+                        ),
+                        "Bulk Effective Samples Size"
+                      ),
+                      "Tail Effective Samples Size"
                     ),
-                    "The largest R-hat is 2.12, indicating chains have not mixed."
+                    "There were 3 divergent transitions after warmup."
                   ),
-                  "Bulk Effective Samples Size"
+                  "There were 1 chains where the estimated Bayesian Fraction of Missing Information was low."
                 ),
-                "Tail Effective Samples Size"
+                "Examine the pairs\\(\\) plot to diagnose sampling problems"
               ),
               "The largest R-hat is 2.05, indicating chains have not mixed."
             ),
