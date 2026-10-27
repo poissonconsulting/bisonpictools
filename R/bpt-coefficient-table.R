@@ -32,6 +32,6 @@
 #' bpt_coefficient_table(analysis)
 #' }
 bpt_coefficient_table <- function(analysis) {
-  coef <- coef(analysis, simplify = TRUE)
+  coef <- coef(analysis, simplify = TRUE, directional_information = FALSE)
   coef
 }

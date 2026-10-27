@@ -91,21 +91,36 @@ test_that(
         )
         expect_snapshot(
           print(
-            embr::coef(analysis, simplify = TRUE, param_type = "fixed"),
+            embr::coef(
+              analysis,
+              simplify = TRUE,
+              param_type = "fixed",
+              directional_information = FALSE
+            ),
             n = 500,
             width = 100
           )
         )
         expect_snapshot(
           print(
-            embr::coef(analysis, simplify = TRUE, param_type = "random"),
+            embr::coef(
+              analysis,
+              simplify = TRUE,
+              param_type = "random",
+              directional_information = FALSE
+            ),
             n = 500,
             width = 100
           )
         )
         expect_snapshot(
           print(
-            embr::coef(analysis, simplify = TRUE, param_type = "derived"),
+            embr::coef(
+              analysis,
+              simplify = TRUE,
+              param_type = "derived",
+              directional_information = FALSE
+            ),
             n = 500,
             width = 100
           )
