@@ -427,8 +427,10 @@ test_that("event data fails if location ID and datetime are not unique", {
 
   expect_chk_error(
     bpt_check_data(event = event_data, complete = FALSE),
-    "Columns 'location_id', 'start_year', 'start_month', 'start_day', ",
-    "'start_hour' and 'start_minute' in event must be a unique key."
+    regexp = paste0(
+      "Columns 'location_id', 'start_year', 'start_month', 'start_day', ",
+      "'start_hour' and 'start_minute' in event must be a unique key."
+    )
   )
 })
 
