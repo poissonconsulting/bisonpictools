@@ -68,24 +68,21 @@ test_that("non-coercable characters in 'f0' column produces error", {
   )
 })
 
-test_that(
-  "errors if census date is outside of range of study years in event_data",
-  {
-    expect_chk_error(
-      bpt_manipulate_data_analysis(
-        event_data,
-        location_data,
-        census_data |>
-          dplyr::mutate(census_year = c(2030, 2031)),
-        proportion_calf_data
-      ),
-      regexp = paste0(
-        "Census data must include only dates that are within the study years ",
-        "of the event data."
-      )
+test_that("errors if census date is outside of range of study years in event_data", {
+  expect_chk_error(
+    bpt_manipulate_data_analysis(
+      event_data,
+      location_data,
+      census_data |>
+        dplyr::mutate(census_year = c(2030, 2031)),
+      proportion_calf_data
+    ),
+    regexp = paste0(
+      "Census data must include only dates that are within the study years ",
+      "of the event data."
     )
-  }
-)
+  )
+})
 
 # Expected outputs
 test_that("returns list", {
@@ -190,7 +187,17 @@ test_that("week_fac column has correct levels", {
     all(
       levels(x$data$weekfac) ==
         c(
-          "1", "22", "35", "42", "49", "51", "79", "92", "100", "111", "130",
+          "1",
+          "22",
+          "35",
+          "42",
+          "49",
+          "51",
+          "79",
+          "92",
+          "100",
+          "111",
+          "130",
           "148"
         )
     )
@@ -216,8 +223,7 @@ test_that("season column has correct levels", {
   )
   expect_true(
     all(
-      levels(x$data$season) ==
-        c("Summer/Fall", "Winter")
+      levels(x$data$season) == c("Summer/Fall", "Winter")
     )
   )
 })
@@ -243,8 +249,12 @@ test_that("season_annual column has correct levels", {
     all(
       levels(x$data$season_annual) ==
         c(
-          "Winter 2018-2019", "Summer/Fall 2019-2020", "Winter 2019-2020",
-          "Summer/Fall 2020-2021", "Winter 2020-2021", "Summer/Fall 2021-2022",
+          "Winter 2018-2019",
+          "Summer/Fall 2019-2020",
+          "Winter 2019-2020",
+          "Summer/Fall 2020-2021",
+          "Winter 2020-2021",
+          "Summer/Fall 2021-2022",
           "Winter 2021-2022"
         )
     )
@@ -286,8 +296,18 @@ test_that("doy_fac column has correct levels", {
     all(
       levels(x$data$doy_fac) ==
         c(
-          "12", "122", "146", "158", "212", "246", "261", "269", "302",
-          "313", "327", "336"
+          "12",
+          "122",
+          "146",
+          "158",
+          "212",
+          "246",
+          "261",
+          "269",
+          "302",
+          "313",
+          "327",
+          "336"
         )
     )
   )
@@ -312,8 +332,7 @@ test_that("location column has correct levels", {
   )
   expect_true(
     all(
-      levels(x$data$location) ==
-        c("LOCID1", "LOCID2", "LOCID3", "LOCID4")
+      levels(x$data$location) == c("LOCID1", "LOCID2", "LOCID3", "LOCID4")
     )
   )
 })
@@ -339,8 +358,16 @@ test_that("location_weekfac column has correct levels", {
     all(
       levels(x$data$location_weekfac) ==
         c(
-          "LOCID1 130", "LOCID1 22", "LOCID1 79", "LOCID2 35", "LOCID2 92",
-          "LOCID3 100", "LOCID3 42", "LOCID3 51", "LOCID4 1", "LOCID4 148",
+          "LOCID1 130",
+          "LOCID1 22",
+          "LOCID1 79",
+          "LOCID2 35",
+          "LOCID2 92",
+          "LOCID3 100",
+          "LOCID3 42",
+          "LOCID3 51",
+          "LOCID4 1",
+          "LOCID4 148",
           "LOCID4 49"
         )
     )
@@ -520,8 +547,10 @@ test_that("prop_calf_doy column is an integer between 1 and 366", {
     proportion_calf_data = proportion_calf_data
   )
   expect_true(
-    all(x$prop_calf_data$prop_calf_doy >= 1 &
-      x$prop_calf_data$prop_calf_doy <= 366)
+    all(
+      x$prop_calf_data$prop_calf_doy >= 1 &
+        x$prop_calf_data$prop_calf_doy <= 366
+    )
   )
   expect_true(all(is.integer(x$prop_calf_data$prop_calf_doy)))
 })

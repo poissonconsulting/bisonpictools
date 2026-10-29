@@ -40,35 +40,29 @@ test_that("NULL inputs throw error", {
 })
 
 
-test_that(
-  "errors if study years of census data don't match those of event data",
-  {
-    census_data <- census_data |>
-      dplyr::mutate(census_year = c(2030, 2031))
-    expect_chk_error(
-      check_study_year(event_data, census_data, proportion_calf_data),
-      regexp = paste0(
-        "Census data must include only dates that are within the study years ",
-        "of the event data."
-      )
+test_that("errors if study years of census data don't match those of event data", {
+  census_data <- census_data |>
+    dplyr::mutate(census_year = c(2030, 2031))
+  expect_chk_error(
+    check_study_year(event_data, census_data, proportion_calf_data),
+    regexp = paste0(
+      "Census data must include only dates that are within the study years ",
+      "of the event data."
     )
-  }
-)
+  )
+})
 
-test_that(
-  "errors if study years of census data don't match those of event data",
-  {
-    prop_calf_data <- proportion_calf_data |>
-      dplyr::mutate(proportion_calf_year = c(2030, 2031))
-    expect_chk_error(
-      check_study_year(event_data, census_data, prop_calf_data),
-      regexp = paste0(
-        "Calf proportion data must include only dates that are within the ",
-        "study years of the event data."
-      )
+test_that("errors if study years of census data don't match those of event data", {
+  prop_calf_data <- proportion_calf_data |>
+    dplyr::mutate(proportion_calf_year = c(2030, 2031))
+  expect_chk_error(
+    check_study_year(event_data, census_data, prop_calf_data),
+    regexp = paste0(
+      "Calf proportion data must include only dates that are within the ",
+      "study years of the event data."
     )
-  }
-)
+  )
+})
 
 test_that(
   paste0(

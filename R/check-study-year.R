@@ -30,9 +30,10 @@
 #'   proportion_calf_data
 #' )
 check_study_year <- function(
-    event_data,
-    census_data,
-    proportion_calf_data) {
+  event_data,
+  census_data,
+  proportion_calf_data
+) {
   sy_event <- bpt_study_years(event_data)
   sy_census <- bpt_study_years(census_data)
   sy_prop_calf <- bpt_study_years(proportion_calf_data)

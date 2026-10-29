@@ -16,8 +16,7 @@
 test_that("errors with null input", {
   expect_chk_error(
     bpt_location_matrix(NULL),
-    regexp =
-      "The names of the data supplied in the `...` argument do not match the
+    regexp = "The names of the data supplied in the `...` argument do not match the
       template names."
   )
 })

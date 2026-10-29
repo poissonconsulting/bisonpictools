@@ -46,7 +46,10 @@ bpt_predict_fecundity <- function(analysis) {
 
   rates <- dplyr::bind_rows(fecundity, prop_reproductive) |>
     dplyr::select(
-      "rate", "estimate", "lower", "upper"
+      "rate",
+      "estimate",
+      "lower",
+      "upper"
     )
 
   rates

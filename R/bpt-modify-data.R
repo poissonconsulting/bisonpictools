@@ -40,16 +40,17 @@
 #' )
 #' }
 bpt_modify_data <- function(
-    data,
-    levels_annual,
-    census,
-    census_cv,
-    census_study_year,
-    census_day_of_year,
-    proportion_calf,
-    proportion_calf_cv,
-    proportion_calf_study_year,
-    proportion_calf_day_of_year) {
+  data,
+  levels_annual,
+  census,
+  census_cv,
+  census_study_year,
+  census_day_of_year,
+  proportion_calf,
+  proportion_calf_cv,
+  proportion_calf_study_year,
+  proportion_calf_day_of_year
+) {
   chk::chk_list(data)
   df <- base::is.data.frame(data)
   if (df) {

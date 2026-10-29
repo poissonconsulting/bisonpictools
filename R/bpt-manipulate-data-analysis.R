@@ -29,10 +29,11 @@
 #'   proportion_calf_data = proportion_calf_data
 #' )
 bpt_manipulate_data_analysis <- function(
-    event_data,
-    location_data,
-    census_data,
-    proportion_calf_data) {
+  event_data,
+  location_data,
+  census_data,
+  proportion_calf_data
+) {
   data <- bpt_check_data(
     event = event_data,
     location = location_data,
@@ -55,18 +56,25 @@ bpt_manipulate_data_analysis <- function(
         dttr2::dtt_doy(dttr2::dtt_date_from_ints(.data$census_year, 4L, 1L)),
       leap_year = as.integer(
         dttr2::dtt_leap_year(.data$date) &
-          (.data$date >= dttr2::dtt_date_from_ints(
-            year = .data$census_year,
-            month = 3L,
-            day = 1L
-          )
-          )
+          (.data$date >=
+            dttr2::dtt_date_from_ints(
+              year = .data$census_year,
+              month = 3L,
+              day = 1L
+            ))
       ),
-      doy = dplyr::if_else(.data$doy < 0, .data$doy + 366 + .data$leap_year, .data$doy),
+      doy = dplyr::if_else(
+        .data$doy < 0,
+        .data$doy + 366 + .data$leap_year,
+        .data$doy
+      ),
       census_doy = base::as.integer(.data$doy),
     ) |>
     dplyr::select(
-      "census", "census_cv", "census_study_year", "census_doy"
+      "census",
+      "census_cv",
+      "census_study_year",
+      "census_doy"
     )
 
   prop_calf_data <- data$proportion_calf |>
@@ -82,21 +90,32 @@ bpt_manipulate_data_analysis <- function(
       ),
       prop_calf_study_year = dttr2::dtt_study_year(date, start = 4L),
       doy = dttr2::dtt_doy(.data$date) -
-        dttr2::dtt_doy(dttr2::dtt_date_from_ints(.data$proportion_calf_year, 4L, 1L)),
+        dttr2::dtt_doy(dttr2::dtt_date_from_ints(
+          .data$proportion_calf_year,
+          4L,
+          1L
+        )),
       leap_year = as.integer(
         dttr2::dtt_leap_year(.data$date) &
-          (.data$date >= dttr2::dtt_date_from_ints(
-            year = .data$proportion_calf_year,
-            month = 3L,
-            day = 1L
-          )
-          )
+          (.data$date >=
+            dttr2::dtt_date_from_ints(
+              year = .data$proportion_calf_year,
+              month = 3L,
+              day = 1L
+            ))
       ),
-      doy = dplyr::if_else(.data$doy < 0, .data$doy + 366 + .data$leap_year, .data$doy),
+      doy = dplyr::if_else(
+        .data$doy < 0,
+        .data$doy + 366 + .data$leap_year,
+        .data$doy
+      ),
       prop_calf_doy = base::as.integer(.data$doy),
     ) |>
     dplyr::select(
-      "prop_calf", "prop_calf_cv", "prop_calf_study_year", "prop_calf_doy"
+      "prop_calf",
+      "prop_calf_cv",
+      "prop_calf_study_year",
+      "prop_calf_doy"
     )
 
   seasons_long <-
@@ -111,9 +130,20 @@ bpt_manipulate_data_analysis <- function(
   data <-
     data$event |>
     dplyr::mutate(
-      groupsize_total = .data$fa + .data$f1 + .data$f0 + .data$fu + .data$ma +
-        .data$m3 + .data$m2 + .data$m1 + .data$m0 + .data$mu + .data$ua +
-        .data$u1 + .data$u0 + .data$uu,
+      groupsize_total = .data$fa +
+        .data$f1 +
+        .data$f0 +
+        .data$fu +
+        .data$ma +
+        .data$m3 +
+        .data$m2 +
+        .data$m1 +
+        .data$m0 +
+        .data$mu +
+        .data$ua +
+        .data$u1 +
+        .data$u0 +
+        .data$uu,
       calf = .data$f0 + .data$m0 + .data$u0,
       yearling = .data$f1 + .data$m1 + .data$u1,
       adult = .data$fa + .data$m2 + .data$m3 + .data$ma + .data$ua,
@@ -176,10 +206,31 @@ bpt_manipulate_data_analysis <- function(
       id = base::factor(seq_len(dplyr::n()))
     ) |>
     dplyr::select(
-      "f0", "f1", "m2", "m3", "ma", "fa", "m0", "m1", "u0", "u1", "ua",
-      "calf", "yearling", "adult", "groupsize_total",
-      "annual", "week", "weekfac", "season", "doy", "doy_fac",
-      "location", "location_weekfac", "season_annual", "id"
+      "f0",
+      "f1",
+      "m2",
+      "m3",
+      "ma",
+      "fa",
+      "m0",
+      "m1",
+      "u0",
+      "u1",
+      "ua",
+      "calf",
+      "yearling",
+      "adult",
+      "groupsize_total",
+      "annual",
+      "week",
+      "weekfac",
+      "season",
+      "doy",
+      "doy_fac",
+      "location",
+      "location_weekfac",
+      "season_annual",
+      "id"
     )
 
   chk::chk_not_any_na(data)

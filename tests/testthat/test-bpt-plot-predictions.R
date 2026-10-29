@@ -69,16 +69,13 @@ test_that("plot is ggplot if we turn off snapshots", {
   expect_s3_class(plot, "ggplot")
 })
 
-test_that(
-  "default prediction type gives same type as the abundance-total specifies",
-  {
-    plot1 <- bpt_plot_predictions(
-      analysis = analysis
-    )
-    plot2 <- bpt_plot_predictions(
-      analysis = analysis,
-      prediction = "abundance-total"
-    )
-    expect_equal(plot1, plot2)
-  }
-)
+test_that("default prediction type gives same type as the abundance-total specifies", {
+  plot1 <- bpt_plot_predictions(
+    analysis = analysis
+  )
+  plot2 <- bpt_plot_predictions(
+    analysis = analysis,
+    prediction = "abundance-total"
+  )
+  expect_equal(plot1, plot2)
+})

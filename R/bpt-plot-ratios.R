@@ -15,11 +15,11 @@
 #' Plot Ratios of Wood Bison Camera Events
 #'
 #' Generates bubble plot of ratio of the sex-age classes supplied to `numerator`
-#' and `denominator`. Each point represents an event. The size of the point 
-#' represents the total group size, and the colour of the point represents the 
-#' value of the ratio. Note that a ratio value of "Inf" (infinity) indicates 
-#' that the group in a particular camera trap event has no individuals in the 
-#' denominator class. Similarly, a ratio of "0" indicates that the ratio in 
+#' and `denominator`. Each point represents an event. The size of the point
+#' represents the total group size, and the colour of the point represents the
+#' value of the ratio. Note that a ratio value of "Inf" (infinity) indicates
+#' that the group in a particular camera trap event has no individuals in the
+#' denominator class. Similarly, a ratio of "0" indicates that the ratio in
 #' a particular camera trap event has no individuals in the numerator class.
 #'
 #' @inheritParams params
@@ -47,13 +47,14 @@
 #'   locations = "LOCID1"
 #' )
 bpt_plot_ratios <- function(
-    event_data,
-    location_data,
-    numerator,
-    denominator,
-    study_years = bpt_study_years(event_data),
-    locations = unique(location_data$location_id),
-    ratio_name = "Ratio") {
+  event_data,
+  location_data,
+  numerator,
+  denominator,
+  study_years = bpt_study_years(event_data),
+  locations = unique(location_data$location_id),
+  ratio_name = "Ratio"
+) {
   data <- bpt_manipulate_data_plot(
     event_data,
     location_data
@@ -159,7 +160,10 @@ seasons_plot <- function(study_year_start) {
       )
     ) |>
     dplyr::select(
-      "season", "start_date_time", "end_date_time", "study_year"
+      "season",
+      "start_date_time",
+      "end_date_time",
+      "study_year"
     )
 }
 

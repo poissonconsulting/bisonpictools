@@ -58,7 +58,8 @@ test_that("same number of rows as event_data without filtering", {
     denominator = "f1"
   )
   expect_equal(
-    nrow(x), nrow(event_data |> dplyr::filter(f0 > 0 | f1 > 0))
+    nrow(x),
+    nrow(event_data |> dplyr::filter(f0 > 0 | f1 > 0))
   )
 })
 
