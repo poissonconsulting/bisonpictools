@@ -29,7 +29,12 @@
 #' bpt_predict_abundance_total(analysis)
 #' }
 bpt_predict_abundance_total <- function(analysis) {
-  abundance <- embr::predict(analysis, "annual", term = "eAbundance") |>
+  abundance <- embr::predict(
+    analysis,
+    "annual",
+    term = "eAbundance",
+    sd = FALSE
+  ) |>
     dplyr::select("annual", "estimate", "lower", "upper")
   abundance
 }

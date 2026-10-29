@@ -35,37 +35,43 @@ bpt_predict_survival <- function(analysis) {
   survival_f0 <- embr::predict(
     analysis,
     seq_annual,
-    term = "PredSurvF0Annual"
+    term = "PredSurvF0Annual",
+    sd = FALSE
   ) |>
     dplyr::mutate(class = "F0")
   survival_m0 <- embr::predict(
     analysis,
     seq_annual,
-    term = "PredSurvM0Annual"
+    term = "PredSurvM0Annual",
+    sd = FALSE
   ) |>
     dplyr::mutate(class = "M0")
   survival_f1 <- embr::predict(
     analysis,
     seq_annual,
-    term = "PredSurvF1Annual"
+    term = "PredSurvF1Annual",
+    sd = FALSE
   ) |>
     dplyr::mutate(class = "F1")
   survival_m1 <- embr::predict(
     analysis,
     seq_annual,
-    term = "PredSurvM1Annual"
+    term = "PredSurvM1Annual",
+    sd = FALSE
   ) |>
     dplyr::mutate(class = "M1")
   survival_fa <- embr::predict(
     analysis,
     seq_annual,
-    term = "PredSurvFAAnnual"
+    term = "PredSurvFAAnnual",
+    sd = FALSE
   ) |>
     dplyr::mutate(class = "FA")
   survival_bull <- embr::predict(
     analysis,
     seq_annual,
-    term = "PredSurvBullAnnual"
+    term = "PredSurvBullAnnual",
+    sd = FALSE
   ) |>
     dplyr::mutate(class = "Bull")
 

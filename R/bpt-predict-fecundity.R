@@ -31,14 +31,16 @@ bpt_predict_fecundity <- function(analysis) {
   fecundity <- embr::predict(
     analysis,
     base::character(0),
-    term = "PredFecundityReproductiveFA"
+    term = "PredFecundityReproductiveFA",
+    sd = FALSE
   ) |>
     dplyr::mutate(rate = "Fecundity")
 
   prop_reproductive <- embr::predict(
     analysis,
     base::character(0),
-    term = "ePropReproductiveFA"
+    term = "ePropReproductiveFA",
+    sd = FALSE
   ) |>
     dplyr::mutate(rate = "Proportion of Reproductive Cows")
 
