@@ -1,9 +1,5 @@
 # Getting Started with bisonpictools
 
-    #> Registered S3 method overwritten by 'mcmcr':
-    #>   method         from 
-    #>   as.mcmc.nlists nlist
-
 `bisonpictools` is an R package to facilitate the visualization and
 analysis of camera trap data for wood bison herds. The package includes
 functions to check the correct formatting of data, visualize the data,
@@ -117,14 +113,6 @@ bpt_plot_ratios(
   numerator = "f0",
   denominator = "m0"
 )
-#> Warning in ggplot2::guide_legend(show.limits = TRUE, order = 2): Arguments in `...` must be used.
-#> ✖ Problematic argument:
-#> • show.limits = TRUE
-#> ℹ Did you misspell an argument name?
-#> Warning in ggplot2::guide_legend(show.limits = TRUE, order = 3): Arguments in `...` must be used.
-#> ✖ Problematic argument:
-#> • show.limits = TRUE
-#> ℹ Did you misspell an argument name?
 ```
 
 ![](bisonpictools-getting-started_files/figure-html/unnamed-chunk-4-1.png)
@@ -142,14 +130,6 @@ bpt_plot_ratios(
   study_years = "2019-2020",
   locations = c("LOCID1", "LOCID2")
 )
-#> Warning in ggplot2::guide_legend(show.limits = TRUE, order = 2): Arguments in `...` must be used.
-#> ✖ Problematic argument:
-#> • show.limits = TRUE
-#> ℹ Did you misspell an argument name?
-#> Warning in ggplot2::guide_legend(show.limits = TRUE, order = 3): Arguments in `...` must be used.
-#> ✖ Problematic argument:
-#> • show.limits = TRUE
-#> ℹ Did you misspell an argument name?
 ```
 
 ![](bisonpictools-getting-started_files/figure-html/unnamed-chunk-5-1.png)
@@ -169,14 +149,6 @@ bpt_plot_ratios(
   denominator = c("fa"),
   ratio_name = "calf:cow"
 )
-#> Warning in ggplot2::guide_legend(show.limits = TRUE, order = 2): Arguments in `...` must be used.
-#> ✖ Problematic argument:
-#> • show.limits = TRUE
-#> ℹ Did you misspell an argument name?
-#> Warning in ggplot2::guide_legend(show.limits = TRUE, order = 3): Arguments in `...` must be used.
-#> ✖ Problematic argument:
-#> • show.limits = TRUE
-#> ℹ Did you misspell an argument name?
 ```
 
 ![](bisonpictools-getting-started_files/figure-html/unnamed-chunk-6-1.png)

@@ -1,10 +1,10 @@
 pandoc: 3.8.3
-pkgdown: 2.2.0
+pkgdown: 2.2.1
 pkgdown_sha: ~
 articles:
   bisonpic-methods: bisonpic-methods.html
   bisonpictools-getting-started: bisonpictools-getting-started.html
-last_built: 2026-06-26T08:17Z
+last_built: 2026-10-29T21:16Z
 urls:
   reference: https://poissonconsulting.github.io/bisonpictools/reference
   article: https://poissonconsulting.github.io/bisonpictools/articles

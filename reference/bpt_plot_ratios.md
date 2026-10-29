@@ -70,14 +70,6 @@ bpt_plot_ratios(
   numerator = c("f0", "m0", "u0"),
   denominator = c("fa")
 )
-#> Warning: Arguments in `...` must be used.
-#> ✖ Problematic argument:
-#> • show.limits = TRUE
-#> ℹ Did you misspell an argument name?
-#> Warning: Arguments in `...` must be used.
-#> ✖ Problematic argument:
-#> • show.limits = TRUE
-#> ℹ Did you misspell an argument name?
 
 # Plot ratio of female:male yearling ratio in 2020-2021 at site RBLH007
 bpt_plot_ratios(
@@ -88,12 +80,4 @@ bpt_plot_ratios(
   study_years = "2020-2021",
   locations = "LOCID1"
 )
-#> Warning: Arguments in `...` must be used.
-#> ✖ Problematic argument:
-#> • show.limits = TRUE
-#> ℹ Did you misspell an argument name?
-#> Warning: Arguments in `...` must be used.
-#> ✖ Problematic argument:
-#> • show.limits = TRUE
-#> ℹ Did you misspell an argument name?
 ```

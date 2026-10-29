@@ -1,9 +1,5 @@
 # Analytic Methods for Estimating Wood Bison Ratios, Survival and Fecundity Rates, and Abundance
 
-    #> Registered S3 method overwritten by 'mcmcr':
-    #>   method         from 
-    #>   as.mcmc.nlists nlist
-
 ## Introduction to the Study System
 
 Alberta Environment and Protected Areas wishes to monitor the status of
