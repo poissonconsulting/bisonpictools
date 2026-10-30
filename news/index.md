@@ -1,5 +1,27 @@
 # Changelog
 
+## bisonpictools 0.1.0.9002
+
+### Chore
+
+- Format with air
+  ([\#60](https://github.com/poissonconsulting/bisonpictools/issues/60),
+  [\#61](https://github.com/poissonconsulting/bisonpictools/issues/61)).
+
+### Uncategorized
+
+- Merge pull request
+  [\#65](https://github.com/poissonconsulting/bisonpictools/issues/65)
+  from poissonconsulting/f-ci.
+
+  Standardize CI (tier: important)
+
+- Merge pull request
+  [\#66](https://github.com/poissonconsulting/bisonpictools/issues/66)
+  from poissonconsulting/bug-fixes.
+
+  Fix test failures
+
 ## bisonpictools 0.1.0.9001
 
 - Same as previous version.
