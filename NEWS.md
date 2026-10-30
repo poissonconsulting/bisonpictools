@@ -1,4 +1,21 @@
-<!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
+<!-- NEWS.md is maintained by https://fledge.cynkra.com, contributors should not edit this file -->
+
+# bisonpictools 0.1.0.9002
+
+## Chore
+
+- Format with air (#60, #61).
+
+## Uncategorized
+
+- Merge pull request #65 from poissonconsulting/f-ci.
+
+  Standardize CI (tier: important)
+
+- Merge pull request #66 from poissonconsulting/bug-fixes.
+
+  Fix test failures
+
 
 # bisonpictools 0.1.0.9001
 
