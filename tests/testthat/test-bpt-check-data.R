@@ -525,10 +525,38 @@ test_that("Errors if start year is an incompatible string", {
   )
 })
 
-test_that("Errors if event year is before 2019", {
+test_that("Passes if event year is 2000", {
+  event_data <- dplyr::tibble(
+    location_id = c("SiteA"),
+    start_year = c(2000L),
+    start_month = c(4L),
+    start_day = c(12L),
+    start_hour = c(13L),
+    start_minute = c(50L),
+    fa = c(1L),
+    f1 = c(1L),
+    f0 = c(2L),
+    fu = c(0L),
+    ma = c(1L),
+    m3 = c(0L),
+    m2 = c(0L),
+    m1 = c(1L),
+    m0 = c(1L),
+    mu = c(0L),
+    ua = c(0L),
+    u1 = c(1L),
+    u0 = c(1L),
+    uu = c(1L)
+  )
+  event <- bpt_check_data(event = event_data, complete = FALSE)
+
+  expect_identical(event$event, event_data)
+})
+
+test_that("Errors if event year is before 2000", {
   event_data <- dplyr::tibble(
     location_id = c("SiteA", "SiteB"),
-    start_year = c("2018", "2022"),
+    start_year = c("1999", "2022"),
     start_month = c(4L, 4L),
     start_day = c(12L, 12L),
     start_hour = c(13L, 13L),
@@ -551,7 +579,7 @@ test_that("Errors if event year is before 2019", {
 
   expect_error(
     bpt_check_data(event = event_data),
-    "`event\\$start_year` must have values between 2019 and 2050."
+    "`event\\$start_year` must have values between 2000 and 2050."
   )
 })
 
@@ -581,7 +609,7 @@ test_that("Errors if event year is after 2050", {
 
   expect_error(
     bpt_check_data(event = event_data),
-    "`event\\$start_year` must have values between 2019 and 2050."
+    "`event\\$start_year` must have values between 2000 and 2050."
   )
 })
 
@@ -2899,9 +2927,23 @@ test_that("Errors if non-coerceable string provided in longitude column", {
 })
 
 ## Checks on census data template
+test_that("Passes when year is 2000", {
+  census_data <- dplyr::tibble(
+    census_year = c(2000L, 2022L),
+    census_month = c(3L, 3L),
+    census_day = c(31L, 31L),
+    census = c(200L, 140L),
+    census_cv = c(0.2, 0.1)
+  )
+
+  census <- bpt_check_data(census = census_data, complete = FALSE)
+
+  expect_identical(census$census, census_data)
+})
+
 test_that("Errors when year below range", {
   census_data <- dplyr::tibble(
-    census_year = c(2016L, 2022L),
+    census_year = c(1999L, 2022L),
     census_month = c(3L, 3L),
     census_day = c(31L, 31L),
     census = c(200L, 140L),
@@ -2910,7 +2952,7 @@ test_that("Errors when year below range", {
 
   expect_chk_error(
     bpt_check_data(census = census_data),
-    regexp = "`census\\$census_year` must have values between 2019 and 2050."
+    regexp = "`census\\$census_year` must have values between 2000 and 2050."
   )
 })
 
@@ -2925,7 +2967,7 @@ test_that("Errors when year above range", {
 
   expect_chk_error(
     bpt_check_data(census = census_data),
-    regexp = "`census\\$census_year` must have values between 2019 and 2050."
+    regexp = "`census\\$census_year` must have values between 2000 and 2050."
   )
 })
 
@@ -3269,9 +3311,26 @@ test_that("Errors when duplicate dates provided to calf proportion data", {
   )
 })
 
+test_that("Passes when year is 2000", {
+  proportion_calf_data <- dplyr::tibble(
+    proportion_calf_year = c(2000L, 2022L),
+    proportion_calf_month = c(3L, 3L),
+    proportion_calf_day = c(31L, 31L),
+    proportion_calf = c(0.2, 0.05),
+    proportion_calf_cv = c(0.2, 0.1)
+  )
+
+  proportion_calf <- bpt_check_data(
+    proportion_calf = proportion_calf_data,
+    complete = FALSE
+  )
+
+  expect_identical(proportion_calf$proportion_calf, proportion_calf_data)
+})
+
 test_that("Errors when year below range", {
   proportion_calf_data <- dplyr::tibble(
-    proportion_calf_year = c(2016L, 2022L),
+    proportion_calf_year = c(1999L, 2022L),
     proportion_calf_month = c(3L, 3L),
     proportion_calf_day = c(31L, 31L),
     proportion_calf = c(0.2, 0.05),
@@ -3281,7 +3340,7 @@ test_that("Errors when year below range", {
   expect_chk_error(
     bpt_check_data(proportion_calf = proportion_calf_data),
     regexp = paste0(
-      "`proportion_calf\\$proportion_calf_year` must have values between 2019 ",
+      "`proportion_calf\\$proportion_calf_year` must have values between 2000 ",
       "and 2050."
     )
   )
@@ -3300,7 +3359,7 @@ test_that("Errors when year above range", {
     bpt_check_data(proportion_calf = proportion_calf_data),
     regexp = paste0(
       "`proportion_calf\\$proportion_calf_year` must have values between ",
-      "2019 and 2050."
+      "2000 and 2050."
     )
   )
 })
