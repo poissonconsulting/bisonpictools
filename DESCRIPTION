@@ -14,7 +14,8 @@ Authors@R: c(
            comment = c(ORCID = "0000-0001-5363-7716")),
     person("Province of Alberta", role = "cph")
   )
-Description: Facilitates the manipulation, exploration, and analysis of wood bison camera trap data.
+Description: Facilitates the manipulation, exploration, and analysis of
+    wood bison camera trap data.
 License: Apache License (>= 2)
 URL: https://github.com/poissonconsulting/bisonpictools,
     https://poissonconsulting.github.io/bisonpictools/
@@ -53,13 +54,12 @@ VignetteBuilder:
 Remotes: 
     poissonconsulting/chktemplate,
     poissonconsulting/embr,
-    poissonconsulting/newdata,
     poissonconsulting/runbisonpic,
     poissonconsulting/shinybisonpic,
     poissonconsulting/smbr
+Config/Needs/website: poissonconsulting/poissontemplate
+Config/roxygen2/version: 8.1.0
 Config/testthat/edition: 3
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
-Config/Needs/website: poissonconsulting/poissontemplate
-Config/roxygen2/version: 8.1.0
