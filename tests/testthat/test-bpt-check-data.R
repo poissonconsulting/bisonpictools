@@ -3609,7 +3609,7 @@ test_that("Errors when CV is below the expected range", {
   expect_chk_error(
     bpt_check_data(proportion_calf = proportion_calf_data),
     regexp = paste0(
-      "`proportion_calf\\$proportion_calf_cv` must have values between 0 and 1"
+      "`proportion_calf\\$proportion_calf_cv` must have values between 0 and 5"
     )
   )
 })
@@ -3620,13 +3620,13 @@ test_that("Errors when CV is above the expected range", {
     proportion_calf_month = c(3L, 3L),
     proportion_calf_day = c(31L, 31L),
     proportion_calf = c(0.2, 0.05),
-    proportion_calf_cv = c(1, 1.4)
+    proportion_calf_cv = c(1, 6)
   )
 
   expect_chk_error(
     bpt_check_data(proportion_calf = proportion_calf_data),
     regexp = paste0(
-      "`proportion_calf\\$proportion_calf_cv` must have values between 0 and 1."
+      "`proportion_calf\\$proportion_calf_cv` must have values between 0 and 5."
     )
   )
 })

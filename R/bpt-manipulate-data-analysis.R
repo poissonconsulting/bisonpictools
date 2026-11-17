@@ -133,17 +133,14 @@ bpt_manipulate_data_analysis <- function(
       groupsize_total = .data$fa +
         .data$f1 +
         .data$f0 +
-        .data$fu +
         .data$ma +
         .data$m3 +
         .data$m2 +
         .data$m1 +
         .data$m0 +
-        .data$mu +
         .data$ua +
         .data$u1 +
-        .data$u0 +
-        .data$uu,
+        .data$u0,
       calf = .data$f0 + .data$m0 + .data$u0,
       yearling = .data$f1 + .data$m1 + .data$u1,
       adult = .data$fa + .data$m2 + .data$m3 + .data$ma + .data$ua,
