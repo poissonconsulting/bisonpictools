@@ -1,32 +1,8 @@
 <!-- NEWS.md is maintained by https://fledge.cynkra.com, contributors should not edit this file -->
 
-# bisonpictools 0.1.0.9002
+# bisonpictools 0.2.0
 
-## Chore
-
-- Format with air (#60, #61).
-
-## Uncategorized
-
-- Merge pull request #65 from poissonconsulting/f-ci.
-
-  Standardize CI (tier: important)
-
-- Merge pull request #66 from poissonconsulting/bug-fixes.
-
-  Fix test failures
-
-
-# bisonpictools 0.1.0.9001
-
-- Same as previous version.
-
-
-# bisonpictools 0.1.0.9000
-
-* Add fledge-bump workflow
-* Add fledge-tag-on-merge workflow
-
+-  Update model priors and update minimum year for data from 2019 to 2000.
 
 <!-- NEWS.md is maintained by https://fledge.cynkra.com, contributors should not edit this file -->
 
