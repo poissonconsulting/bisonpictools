@@ -129,7 +129,7 @@ template
 #>   <chr>     <chr>       <chr>      <chr>       <chr>     <chr>      <chr>       
 #> 1 example   "RLBH006"   2019       11          23        14         35          
 #> 2 descript… "Location … The year … The month … The day … The hour … The minute …
-#> 3 chk       "c(\"\")"   c(2019L, … c(1L, 12L)  c(1L, 31… c(0L, 23L) c(0L, 59L)  
+#> 3 chk       "c(\"\")"   c(2000L, … c(1L, 12L)  c(1L, 31… c(0L, 23L) c(0L, 59L)  
 #> 4 pkey      "TRUE"      TRUE       TRUE        TRUE      TRUE       TRUE        
 #> 5 join      "location"  NA         NA          NA        NA         NA          
 #> # ℹ 14 more variables: fa <chr>, f1 <chr>, f0 <chr>, fu <chr>, ma <chr>,
@@ -142,7 +142,7 @@ template
 #>   <chr>       <chr>                   <chr>          <chr>      <chr>  <chr>    
 #> 1 example     2021                    3              31         250    0.05     
 #> 2 description Year of census estimate Month of cens… Day of ce… Estim… Coeffici…
-#> 3 chk         c(2019L, 2050L)         c(1L, 12L)     c(1L, 31L) c(1L,… c(0, 0.5)
+#> 3 chk         c(2000L, 2050L)         c(1L, 12L)     c(1L, 31L) c(1L,… c(0, 0.5)
 #> 4 pkey        TRUE                    TRUE           TRUE       NA     NA       
 #> 5 join        NA                      NA             NA         NA     NA       
 #> 
@@ -152,7 +152,7 @@ template
 #>   <chr>       <chr>                    <chr>                 <chr>              
 #> 1 example     2021                     3                     31                 
 #> 2 description Year of calf proportion… Month of calf propor… Day of calf propor…
-#> 3 chk         c(2019L, 2050L)          c(1L, 12L)            c(1L, 31L)         
+#> 3 chk         c(2000L, 2050L)          c(1L, 12L)            c(1L, 31L)         
 #> 4 pkey        TRUE                     TRUE                  TRUE               
 #> 5 join        NA                       NA                    NA                 
 #> # ℹ 2 more variables: proportion_calf <chr>, proportion_calf_cv <chr>

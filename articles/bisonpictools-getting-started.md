@@ -271,7 +271,7 @@ This is an example of a model run in “quick” mode that did not converge
     #> # A tibble: 1 × 8
     #>       n     K nchains niters nthin   ess  rhat converged
     #>   <int> <int>   <int>  <int> <int> <int> <dbl> <lgl>    
-    #> 1    11    57       2     10     1     7  1.97 FALSE
+    #> 1    11    57       2     10     1     9  1.52 FALSE
 
 #### (4) Coefficient table
 
@@ -284,18 +284,18 @@ function to print out the estimated parameters from the model run.
 coef <- bpt_coefficient_table(analysis)
 print(coef)
 #> # A tibble: 57 × 5
-#>    term                           estimate    lower  upper svalue
-#>    <term>                            <dbl>    <dbl>  <dbl>  <dbl>
-#>  1 bEtaSummerFall                    0.232  0.00955  0.753  4.39 
-#>  2 bEtaWin                           0.101  0.00114  0.484  4.39 
-#>  3 bFecundityReproductiveFA          1.94   1.63     2.69   4.39 
-#>  4 bInitialMortalityCalfAnnual[1]   -3.75  -5.78    -2.12   4.39 
-#>  5 bInitialMortalityCalfAnnual[2]   -4.56  -7.45    -2.35   4.39 
-#>  6 bInitialMortalityCalfAnnual[3]   -2.87  -7.46    -1.60   4.39 
-#>  7 bInitialMortalityCalfAnnual[4]   -1.09  -6.11     3.64   0.515
-#>  8 bKmWeekSummerFall                 2.22   0.266    4.42   4.39 
-#>  9 bKmWeekWin                        1.93   1.21     2.63   4.39 
-#> 10 bMAProportion[1]                  0.440  0.258    0.582  4.39 
+#>    term                           estimate   lower  upper svalue
+#>    <term>                            <dbl>   <dbl>  <dbl>  <dbl>
+#>  1 bEtaSummerFall                    0.387  0.0455  1.26    4.39
+#>  2 bEtaWin                           0.249  0.0381  0.578   4.39
+#>  3 bFecundityReproductiveFA          1.65   1.17    2.31    4.39
+#>  4 bInitialMortalityCalfAnnual[1]   -2.74  -8.00   -0.823   4.39
+#>  5 bInitialMortalityCalfAnnual[2]   -4.03  -6.28   -2.19    4.39
+#>  6 bInitialMortalityCalfAnnual[3]   -3.40  -5.96   -1.32    4.39
+#>  7 bInitialMortalityCalfAnnual[4]    1.90  -5.82    6.85    1.32
+#>  8 bKmWeekSummerFall                 1.64   0.0185  4.39    4.39
+#>  9 bKmWeekWin                        1.82   0.860   3.42    4.39
+#> 10 bMAProportion[1]                  0.441  0.204   0.699   4.39
 #> # ℹ 47 more rows
 ```
 
@@ -338,10 +338,10 @@ bpt_predict_abundance_total(analysis)
 #> # A tibble: 4 × 4
 #>   annual    estimate lower upper
 #>   <fct>        <dbl> <dbl> <dbl>
-#> 1 2018-2019     211.  182.  244.
-#> 2 2019-2020     225.  205.  252.
-#> 3 2020-2021     254.  230.  280.
-#> 4 2021-2022     295.  258.  311.
+#> 1 2018-2019     243.  209.  281.
+#> 2 2019-2020     259.  231.  283.
+#> 3 2020-2021     278.  264.  298.
+#> 4 2021-2022     300.  286.  327.
 ```
 
 ``` r
@@ -351,16 +351,16 @@ bpt_predict_abundance_class(analysis)
 #> # A tibble: 32 × 5
 #>    annual    class estimate lower upper
 #>    <fct>     <chr>    <dbl> <dbl> <dbl>
-#>  1 2018-2019 F0        41.3 27.8   63.3
-#>  2 2019-2020 F0        32.6 26.2   36.9
-#>  3 2020-2021 F0        40.9 35.3   43.0
-#>  4 2021-2022 F0        44.4 35.0   47.6
-#>  5 2018-2019 F1        17.0  6.53  43.2
-#>  6 2019-2020 F1        20.1 12.4   31.6
-#>  7 2020-2021 F1        17.7  8.95  23.2
-#>  8 2021-2022 F1        25.0 20.2   30.2
-#>  9 2018-2019 FA        64.0 51.8   82.0
-#> 10 2019-2020 FA        80.6 65.1   91.5
+#>  1 2018-2019 F0        36.8 17.3   54.0
+#>  2 2019-2020 F0        38.0 29.9   46.4
+#>  3 2020-2021 F0        45.4 37.5   50.6
+#>  4 2021-2022 F0        44.5 37.3   55.0
+#>  5 2018-2019 F1        16.9  5.75  33.9
+#>  6 2019-2020 F1        18.2  8.90  29.1
+#>  7 2020-2021 F1        17.2  8.02  23.4
+#>  8 2021-2022 F1        25.0 18.8   29.8
+#>  9 2018-2019 FA       103.  70.5  114. 
+#> 10 2019-2020 FA       107.  94.0  125. 
 #> # ℹ 22 more rows
 ```
 
@@ -369,18 +369,18 @@ bpt_predict_abundance_class(analysis)
 # Predicts survival rates by class:
 bpt_predict_survival(analysis)
 #> # A tibble: 24 × 5
-#>    annual    class estimate  lower upper
-#>    <fct>     <fct>    <dbl>  <dbl> <dbl>
-#>  1 2018-2019 F0       0.460 0.366  0.648
-#>  2 2019-2020 F0       0.510 0.312  0.682
-#>  3 2020-2021 F0       0.587 0.469  0.701
-#>  4 2021-2022 F0       0.324 0.0146 0.635
-#>  5 2018-2019 M0       0.445 0.196  0.679
-#>  6 2019-2020 M0       0.570 0.414  0.760
-#>  7 2020-2021 M0       0.507 0.406  0.643
-#>  8 2021-2022 M0       0.364 0.0174 0.677
-#>  9 2018-2019 F1       0.873 0.679  0.932
-#> 10 2019-2020 F1       0.850 0.726  0.919
+#>    annual    class estimate    lower upper
+#>    <fct>     <fct>    <dbl>    <dbl> <dbl>
+#>  1 2018-2019 F0      0.467  0.293    0.588
+#>  2 2019-2020 F0      0.434  0.238    0.580
+#>  3 2020-2021 F0      0.537  0.367    0.665
+#>  4 2021-2022 F0      0.0688 0.000398 0.510
+#>  5 2018-2019 M0      0.445  0.272    0.633
+#>  6 2019-2020 M0      0.539  0.312    0.743
+#>  7 2020-2021 M0      0.532  0.383    0.673
+#>  8 2021-2022 M0      0.0543 0.000352 0.492
+#>  9 2018-2019 F1      0.844  0.695    0.933
+#> 10 2019-2020 F1      0.859  0.784    0.916
 #> # ℹ 14 more rows
 ```
 
@@ -391,8 +391,8 @@ bpt_predict_fecundity(analysis)
 #> # A tibble: 2 × 4
 #>   rate                            estimate lower upper
 #>   <chr>                              <dbl> <dbl> <dbl>
-#> 1 Fecundity                          0.875 0.836 0.936
-#> 2 Proportion of Reproductive Cows    0.965 0.888 0.996
+#> 1 Fecundity                          0.839 0.762 0.910
+#> 2 Proportion of Reproductive Cows    0.956 0.831 0.994
 ```
 
 ``` r
@@ -402,16 +402,16 @@ bpt_predict_ratios(analysis)
 #> # A tibble: 28 × 5
 #>    annual    ratio   estimate lower upper
 #>    <fct>     <fct>      <dbl> <dbl> <dbl>
-#>  1 2018-2019 M0:F0      0.802 0.384 1.35 
-#>  2 2019-2020 M0:F0      1.13  0.895 1.63 
-#>  3 2020-2021 M0:F0      0.847 0.647 1.26 
-#>  4 2021-2022 M0:F0      1.12  0.668 2.40 
-#>  5 2018-2019 M1:F1      1.14  0.439 3.28 
-#>  6 2019-2020 M1:F1      0.771 0.393 1.28 
-#>  7 2020-2021 M1:F1      1.08  0.938 1.72 
-#>  8 2021-2022 M1:F1      0.935 0.523 1.45 
-#>  9 2018-2019 Calf:FA    0.590 0.367 0.758
-#> 10 2019-2020 Calf:FA    0.464 0.297 0.591
+#>  1 2018-2019 M0:F0      0.768 0.417 1.39 
+#>  2 2019-2020 M0:F0      1.33  0.538 2.21 
+#>  3 2020-2021 M0:F0      0.980 0.686 1.82 
+#>  4 2021-2022 M0:F0      0.924 0.754 1.50 
+#>  5 2018-2019 M1:F1      1.13  0.522 2.58 
+#>  6 2019-2020 M1:F1      0.836 0.411 1.42 
+#>  7 2020-2021 M1:F1      1.35  0.544 2.47 
+#>  8 2021-2022 M1:F1      1.05  0.666 1.77 
+#>  9 2018-2019 Calf:FA    0.348 0.188 0.628
+#> 10 2019-2020 Calf:FA    0.382 0.235 0.552
 #> # ℹ 18 more rows
 ```
 
