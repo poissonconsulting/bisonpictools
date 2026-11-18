@@ -388,24 +388,17 @@ model {
   bSurvM0Annual ~ normal(logit(0.44), 0.5);
   bSurvF1Annual ~ normal(logit(0.85), 0.5);
   bSurvM1Annual ~ normal(logit(0.85), 0.5);
-  bSurvFAAnnual ~ normal(logit(0.99), 0.5); // More informative prior from survival analysis
-  bSurvBullAnnual ~ normal(logit(0.92), 0.5);
+  bSurvFAAnnual ~ normal(logit(0.94), 0.5);
+  bSurvBullAnnual ~ normal(logit(0.90), 0.5);
 
   bInitialMortalityCalfAnnual ~ normal(0, 3);
 
-  bFecundityReproductiveFA ~ normal(logit(0.81), 0.5);
+  bFecundityReproductiveFA ~ normal(logit(0.71), 0.5);
   bPropReproductiveFA ~ normal(0.9, 0.2) T[0, 1];
 
-  bPopulationAbundanceInit ~ normal(300, 100) T[0, ];
+  bPopulationAbundanceInit ~ normal(400, 100) T[0, ];
 
-  bPropVecInit[1] ~ normal(0.10, 0.1) T[0, 1];
-  bPropVecInit[2] ~ normal(0.05, 0.1) T[0, 1];
-  bPropVecInit[3] ~ normal(0.40, 0.1) T[0, 1];
-  bPropVecInit[4] ~ normal(0.10, 0.1) T[0, 1];
-  bPropVecInit[5] ~ normal(0.05, 0.1) T[0, 1];
-  bPropVecInit[6] ~ normal(0.05, 0.1) T[0, 1];
-  bPropVecInit[7] ~ normal(0.05, 0.1) T[0, 1];
-  bPropVecInit[8] ~ normal(0.20, 0.1) T[0, 1];
+  bPropVecInit ~ dirichlet([10, 5, 40, 10, 5, 5, 5, 20]');
 
   bPopulationF0Init ~ normal(bPopulationAbundanceInit * bPropVecInit[1], 5) T[0, ];
   bPopulationF1Init ~ normal(bPopulationAbundanceInit * bPropVecInit[2], 5) T[0, ];
